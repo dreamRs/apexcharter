@@ -1,0 +1,17 @@
+Package: apexcharter
+Version: 0.0.0.9000
+Title: Create Interactive Chart with the JavaScript 'ApexCharts' Library
+Description: Provides an 'htmlwidgets' interface to 'apexcharts.js'.
+Authors@R: c(
+  person("Victor", "Perrier", email = "victor.perrier@dreamrs.fr", role = c("aut", "cre")),
+  person("Fanny", "Meyer", email = "fanny.meyer@dreamrs.fr", role = c("aut")),
+  person("ApexCharts", role = c("cph"), comment = "apexcharts.js library"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports: 
+    htmlwidgets
+RoxygenNote: 6.0.1
+URL: https://github.com/dreamRs/apexcharter
+BugReports: https://github.com/dreamRs/apexcharter/issues
