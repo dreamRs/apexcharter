@@ -1,0 +1,633 @@
+
+
+
+
+
+# ApexCharts API ----------------------------------------------------------
+
+
+#' Annotations properties
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param position 
+#' @param yaxis 
+#' @param xaxis 
+#' @param points 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_annotations <- function(ax,
+                           position = NULL,
+                           yaxis = NULL,
+                           xaxis = NULL,
+                           points = NULL,
+                           ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "annotations", l = dropNulls(params))
+}
+
+
+#' Chart parameters
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
+#'  \code{"histogram"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
+#' @param stacked Logical. Enables stacked option for axis charts. 
+#' @param stackType When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100%"}
+#' @param animations List.
+#' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.
+#' @param foreColor Sets the text color for the chart. Defaults to \code{#373d3f}.
+#' @param dropShadow List.
+#' @param events List.
+#' @param offsetX 
+#' @param offsetY 
+#' @param scroller List.
+#' @param selection List.
+#' @param sparkline List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .
+#' @param toolbar
+#' @param zoom  
+#' @param width Width of the chart. 
+#' @param height Height of the chart. 
+#' @param ... Additional parameters. 
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_chart <- function(ax,
+                     type = NULL,
+                     stacked = NULL,
+                     stackType = NULL,
+                     animations = NULL,
+                     background = NULL,
+                     foreColor = NULL,
+                     dropShadow = NULL,
+                     events = NULL,
+                     offsetX = NULL,
+                     offsetY = NULL,
+                     scroller = NULL,
+                     selection = NULL,
+                     sparkline = NULL,
+                     toolbar = NULL,
+                     zoom = NULL,
+                     width = NULL,
+                     height = NULL,
+                     ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "chart", l = dropNulls(params))
+}
+
+
+#' Specific options for chart
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param bar 
+#' @param heatmap 
+#' @param radialBar 
+#' @param pie 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_plotOptions <- function(ax,
+                           bar = NULL,
+                           heatmap = NULL,
+                           radialBar = NULL,
+                           pie = NULL,
+                           ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "plotOptions", l = dropNulls(params))
+}
+
+
+#' Colors
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param ... Colors for the chart’s series. When all colors are used, it starts from the beginning.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_colors <- function(ax, ...) {
+  .ax_opt(ax, "colors", ...)
+}
+
+
+#' Labels on data
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param enabled 
+#' @param textAnchor 
+#' @param offsetX 
+#' @param offsetY 
+#' @param style 
+#' @param dropShadow 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_dataLabels <- function(ax,
+                          enabled = NULL,
+                          textAnchor = NULL,
+                          offsetX = NULL,
+                          offsetY = NULL,
+                          style = NULL,
+                          dropShadow = NULL,
+                          ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "dataLabels", l = dropNulls(params))
+}
+
+
+#' Fill property
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param type 
+#' @param colors 
+#' @param opacity 
+#' @param gradient 
+#' @param image 
+#' @param pattern 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_fill <- function(ax,
+                    type = NULL,
+                    colors = NULL,
+                    opacity = NULL,
+                    gradient = NULL,
+                    image = NULL,
+                    pattern = NULL,
+                    ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "fill", l = dropNulls(params))
+}
+
+
+#' Add grids on chart
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param show Logical. To show or hide grid area (including xaxis / yaxis)
+#' @param borderColor Colors of grid borders / lines.
+#' @param strokeDashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
+#' @param position Whether to place grid behind chart paths of in front. Available options for position: \code{"front"} or \code{"back"}
+#' @param xaxis List.
+#' @param yaxis List.
+#' @param row List.
+#' @param column List.
+#' @param padding List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_grid <- function(ax,
+                    show = NULL,
+                    borderColor = NULL,
+                    strokeDashArray = NULL,
+                    position = NULL,
+                    xaxis = NULL,
+                    yaxis = NULL,
+                    row = NULL,
+                    column = NULL,
+                    padding = NULL,
+                    ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "grid", l = dropNulls(params))
+}
+
+
+#' Alternative axis labels
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param ... 
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_labels <- function(ax, ...) {
+  .ax_opt(ax, "labels", ...)
+}
+
+
+#' Legend properties
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param show 
+#' @param floating 
+#' @param position 
+#' @param horizontalAlign 
+#' @param verticalAlign 
+#' @param fontSize 
+#' @param textAnchor 
+#' @param offsetY 
+#' @param offsetX 
+#' @param formatter 
+#' @param labels 
+#' @param markers 
+#' @param itemMargin 
+#' @param containerMargin 
+#' @param onItemClick 
+#' @param onItemHover 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_legend <- function(ax,
+                      show = NULL,
+                      floating = NULL,
+                      position = NULL,
+                      horizontFalAlign = NULL,
+                      verticalAlign = NULL,
+                      fontSize = NULL,
+                      textAnchor = NULL,
+                      offsetY = NULL,
+                      offsetX = NULL,
+                      formatter = NULL,
+                      labels = NULL,
+                      markers = NULL,
+                      itemMargin = NULL,
+                      containerMargin = NULL,
+                      onItemClick = NULL,
+                      onItemHover = NULL,
+                      ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "legend", l = dropNulls(params))
+}
+
+
+#' Markers properties
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param discrete 
+#' @param size 
+#' @param colors 
+#' @param strokeColor 
+#' @param strokeWidth 
+#' @param strokeOpacity 
+#' @param fillOpacity 
+#' @param shape 
+#' @param radius 
+#' @param offsetX 
+#' @param offsetY 
+#' @param hover 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_markers <- function(ax,
+                       discrete = NULL,
+                       size = NULL,
+                       colors = NULL,
+                       strokeColor = NULL,
+                       strokeWidth = NULL,
+                       strokeOpacity = NULL,
+                       fillOpacity = NULL,
+                       shape = NULL,
+                       radius = NULL,
+                       offsetX = NULL,
+                       offsetY = NULL,
+                       hover = NULL,
+                       ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "markers", l = dropNulls(params))
+}
+
+
+#' No data specification
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param text 
+#' @param align 
+#' @param verticalAlign 
+#' @param offsetX 
+#' @param offsetY 
+#' @param style 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_noData <- function(ax,
+                      text = NULL,
+                      align = NULL,
+                      verticalAlign = NULL,
+                      offsetX = NULL,
+                      offsetY = NULL,
+                      style = NULL,
+                      ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "noData", l = dropNulls(params))
+}
+
+
+#' Responsive options
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param ... 
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_responsive <- function(ax, ...) {
+  .ax_opt(ax, "responsive", ...)
+}
+
+
+#' Add data to a chart
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_series <- function(ax, ...) {
+  .ax_opt(ax, "series", ...)
+}
+
+
+#' Charts' states
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param normal 
+#' @param hover 
+#' @param active 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_states <- function(ax,
+                      normal = NULL,
+                      hover = NULL,
+                      active = NULL,
+                      ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "states", l = dropNulls(params))
+}
+
+
+#' Chart's title
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param text 
+#' @param align 
+#' @param margin 
+#' @param offsetX 
+#' @param offsetY 
+#' @param floating 
+#' @param style 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_title <- function(ax,
+                     text = NULL,
+                     align = NULL,
+                     margin = NULL,
+                     offsetX = NULL,
+                     offsetY = NULL,
+                     floating = NULL,
+                     style = NULL,
+                     ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "title", l = dropNulls(params))
+}
+
+
+#' Chart's subtitle
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param text Text to display as a subtitle of chart.
+#' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
+#' @param margin Numeric. Vertical spacing around the subtitle text.
+#' @param offsetX Numeric. Sets the left offset for subtitle text.
+#' @param offsetY Numeric. Sets the top offset for subtitle text
+#' @param floating Logical. The floating option will take out the subtitle text from the chart area and make it float on top of the chart.
+#' @param style List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_subtitle <- function(ax,
+                        text = NULL,
+                        align = NULL,
+                        margin = NULL,
+                        offsetX = NULL,
+                        offsetY = NULL,
+                        floating = NULL,
+                        style = NULL,
+                        ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "subtitle", l = dropNulls(params))
+}
+
+
+#' Stroke properties
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param show Logical. To show or hide path-stroke / line
+#' @param curve In line / area charts, whether to draw smooth lines or straight lines.
+#'  Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline) 
+#'  and \code{"straight"} (connect the points in straight lines.).
+#' @param lineCap For setting the starting and ending points of stroke. Available Options:
+#'  \code{"butt"} (ends the stroke with a 90-degree angle), \code{"square"}
+#'   (similar to butt except that it extends the stroke beyond the length of the path) 
+#'   and \code{"round"} (ends the path-stroke with a radius that smooths out the start and end points)
+#' @param width Sets the width of border for svg path.
+#' @param colors Colors to fill the border for paths.
+#' @param dashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border. 
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_stroke <- function(ax,
+                      show = NULL,
+                      curve = NULL,
+                      lineCap = NULL,
+                      width = NULL,
+                      colors = NULL,
+                      dashArray = NULL,
+                      ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "stroke", l = dropNulls(params))
+}
+
+
+#' Tooltip options
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param enabled Logical. Show tooltip when user hovers over chart area.
+#' @param shared Logical. When having multiple series, show a shared tooltip.
+#' @param followCursor Logical. Follow user’s cursor position instead of putting tooltip on actual data points.
+#' @param intersect Logical. Show tooltip only when user hovers exactly over datapoint.
+#' @param inverseOrder Logical. In multiple series, when having shared tooltip, inverse the order of series (for better comparison in stacked charts).
+#' @param custom JS function. Draw a custom html tooltip instead of the default one based on the values provided in the function arguments. 
+#' @param fillSeriesColor Logical. When enabled, fill the tooltip background with the corresponding series color.
+#' @param onDatasetHover List.
+#' @param theme List.
+#' @param x List.
+#' @param y List.
+#' @param z List.
+#' @param marker List.
+#' @param items List.
+#' @param fixed List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_tooltip <- function(ax,
+                       enabled = NULL,
+                       shared = NULL,
+                       followCursor = NULL,
+                       intersect = NULL,
+                       inverseOrder = NULL,
+                       custom = NULL,
+                       fillSeriesColor = NULL,
+                       onDatasetHover = NULL,
+                       theme = NULL,
+                       x = NULL,
+                       y = NULL,
+                       z = NULL,
+                       marker = NULL,
+                       items = NULL,
+                       fixed = NULL,
+                       ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "tooltip", l = dropNulls(params))
+}
+
+
+#' X-axis options
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param type Character. Available Options : \code{"categories"} and \code{"datetime"}.
+#' @param categories Categories are labels which are displayed on the x-axis.
+#' @param labels List.
+#' @param axisBorder List.
+#' @param axisTicks List.
+#' @param tickAmount Number of Tick Intervals to show.
+#' @param min Lowest number to be set for the x-axis. The graph drawing beyond this number will be clipped off.
+#' @param max Highest number to be set for the x-axis. The graph drawing beyond this number will be clipped off.
+#' @param range Range takes the max value of x-axis, subtracts the provided range value and gets the min value based on that.
+#'  So, technically it helps to keep the same range when min and max values gets updated dynamically.
+#' @param floating Logical. Floating takes x-axis is taken out of normal flow and places x-axis on svg element directly,
+#'  similar to an absolutely positioned element. Set the offsetX and offsetY then to adjust the position manually
+#' @param position Setting this option allows you to change the x-axis position. Available options: \code{"top"} and \code{"bottom"}.
+#' @param title List.
+#' @param crosshairs List.
+#' @param tooltip List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_xaxis <- function(ax,
+                     type = NULL,
+                     categories = NULL,
+                     labels = NULL,
+                     axisBorder = NULL,
+                     axisTicks = NULL,
+                     tickAmount = NULL,
+                     min = NULL,
+                     max = NULL,
+                     range = NULL,
+                     floating = NULL,
+                     position = NULL,
+                     title = NULL,
+                     crosshairs = NULL,
+                     tooltip = NULL,
+                     ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "xaxis", l = dropNulls(params))
+}
+
+
+#' Y-axis options
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param opposite Logical. When enabled, will draw the yaxis on the right side of the chart.
+#' @param tickAmount Number of Tick Intervals to show.
+#' @param max Lowest number to be set for the y-axis. The graph drawing beyond this number will be clipped off.
+#' @param min Highest number to be set for the y-axis. The graph drawing beyond this number will be clipped off.
+#' @param floating Logical. Floating takes y-axis is taken out of normal flow and places y-axis on svg element directly,
+#'  similar to an absolutely positioned element. Set the offsetX and offsetY then to adjust the position manually
+#' @param labels List.
+#' @param axisBorder List.
+#' @param axisTicks List.
+#' @param title List.
+#' @param tooltip List.
+#' @param crosshairs List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_yaxis <- function(ax,
+                     opposite = NULL,
+                     tickAmount = NULL,
+                     max = NULL,
+                     min = NULL,
+                     floating = NULL,
+                     labels = NULL,
+                     axisBorder = NULL,
+                     axisTicks = NULL,
+                     title = NULL,
+                     tooltip = NULL,
+                     crosshairs = NULL,
+                     ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "yaxis", l = dropNulls(params))
+}
+
+
+#' Theme for charts
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param palette Character. Available palettes: \code{"palette1"} to \code{"palette10"}.
+#' @param monochrome List.
+#' @param ... Additional parameters.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+ax_theme <- function(ax,
+                     palette = NULL,
+                     monochrome = NULL,
+                     ...) {
+  params <- c(as.list(environment()), list(...))[-1]
+  .ax_opt2(ax, "theme", l = dropNulls(params))
+}
