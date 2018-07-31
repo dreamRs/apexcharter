@@ -9,7 +9,7 @@ ax_series(ax, ...)
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{...}{Additional parameters.}
+\item{...}{Lists containing data to plot, typically list with two items: \code{name} and \code{data}.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.

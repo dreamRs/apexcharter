@@ -13,9 +13,49 @@ You can install the development version from [GitHub](https://github.com/) with:
 devtools::install_github("dreamRs/apexcharter")
 ```
 
+## Basic example
+
+Simple bar chart :
+
+```r
+library(apexcharter)
+library(ggplot2) # for data
+library(dplyr)
+library(magrittr)
+
+data(mpg)
+dat <- count(mpg, manufacturer)
+
+apexcharter() %>% 
+  ax_chart(type = "bar") %>% 
+  ax_plotOptions(bar = list(
+    horizontal = FALSE,
+    endingShape = "flat",
+    columnWidth = "70%",
+    dataLabels = list(
+      position = "top"
+    ))
+  ) %>% 
+  ax_grid(
+    show = TRUE,
+    position = "front"
+  ) %>% 
+  ax_series(list(
+    name = "Count",
+    data = dat$n
+  )) %>% 
+  ax_colors("#112446") %>% 
+  ax_xaxis(categories = dat$manufacturer) %>% 
+  ax_title(text = "Number of models") %>% 
+  ax_subtitle(text = "Data from ggplot2")
+```
+
+![alt text](img/api-bars.png)
+
+
 ## Raw API
 
-Only raw API available for now :
+Pass a list of parameters to the function:
 
 ``` r
 apexcharter(ax_opts = list(

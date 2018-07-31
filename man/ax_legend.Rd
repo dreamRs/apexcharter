@@ -4,48 +4,53 @@
 \alias{ax_legend}
 \title{Legend properties}
 \usage{
-ax_legend(ax, show = NULL, floating = NULL, position = NULL,
-  horizontFalAlign = NULL, verticalAlign = NULL, fontSize = NULL,
-  textAnchor = NULL, offsetY = NULL, offsetX = NULL, formatter = NULL,
-  labels = NULL, markers = NULL, itemMargin = NULL,
-  containerMargin = NULL, onItemClick = NULL, onItemHover = NULL, ...)
+ax_legend(ax, show = NULL, position = NULL, horizontFalAlign = NULL,
+  verticalAlign = NULL, fontSize = NULL, textAnchor = NULL,
+  offsetY = NULL, offsetX = NULL, formatter = NULL, labels = NULL,
+  markers = NULL, itemMargin = NULL, containerMargin = NULL,
+  onItemClick = NULL, onItemHover = NULL, floating = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{show}{}
+\item{show}{Logical. Whether to show or hide the legend container.}
 
-\item{floating}{}
+\item{position}{Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.}
 
-\item{position}{}
+\item{verticalAlign}{Available options for vertical alignment: \code{"top"}, \code{"middle"}, \code{"bottom"}}
 
-\item{verticalAlign}{}
+\item{fontSize}{Sets the fontSize of legend text elements}
 
-\item{fontSize}{}
+\item{textAnchor}{The alignment of text relative to legend’s drawing position}
 
-\item{textAnchor}{}
+\item{offsetY}{Sets the top offset for legend container.}
 
-\item{offsetY}{}
+\item{offsetX}{Sets the left offset for legend container.}
 
-\item{offsetX}{}
+\item{formatter}{JS function. A custom formatter function to append additional text to the legend series names.}
 
-\item{formatter}{}
+\item{labels}{List with two items \code{"foreColor"} (Custom text color for legend labels)
+and \code{"useSeriesColors"} (Logical, whether to use primary colors or not)}
 
-\item{labels}{}
+\item{markers}{List.}
 
-\item{markers}{}
+\item{itemMargin}{List with two items \code{"horizontal"} (Horizontal margin for individual legend item)
+and \code{"vertical"} (Vertical margin for individual legend item).}
 
-\item{itemMargin}{}
+\item{containerMargin}{List with two items \code{"top"} (Top margin for the whole legend container)
+and \code{"left"} (Left margin for the whole legend container).}
 
-\item{containerMargin}{}
+\item{onItemClick}{List with item \code{"toggleDataSeries"}, logical,
+when clicked on legend item, it will toggle the visibility of the series in chart.}
 
-\item{onItemClick}{}
+\item{onItemHover}{List with item \code{"highlightDataSeries"}, logical,
+when hovered on legend item, it will highlight the paths of the hovered series in chart.}
 
-\item{onItemHover}{}
+\item{floating}{Logical. The floating option will take out the legend from the chart area and make it float above the chart.}
 
 \item{...}{Additional parameters.}
 
-\item{horizontalAlign}{}
+\item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.

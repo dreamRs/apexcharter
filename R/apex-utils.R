@@ -212,7 +212,8 @@ ax_grid <- function(ax,
 #' Alternative axis labels
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param ... 
+#' @param ... Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
+#'  option. While, in pie/donut charts, each label corresponds to value in series array.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
@@ -226,22 +227,27 @@ ax_labels <- function(ax, ...) {
 #' Legend properties
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param show 
-#' @param floating 
-#' @param position 
-#' @param horizontalAlign 
-#' @param verticalAlign 
-#' @param fontSize 
-#' @param textAnchor 
-#' @param offsetY 
-#' @param offsetX 
-#' @param formatter 
-#' @param labels 
-#' @param markers 
-#' @param itemMargin 
-#' @param containerMargin 
-#' @param onItemClick 
-#' @param onItemHover 
+#' @param show Logical. Whether to show or hide the legend container.
+#' @param position Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.
+#' @param horizontalAlign Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.
+#' @param verticalAlign Available options for vertical alignment: \code{"top"}, \code{"middle"}, \code{"bottom"}
+#' @param fontSize Sets the fontSize of legend text elements
+#' @param textAnchor The alignment of text relative to legend’s drawing position
+#' @param offsetY Sets the top offset for legend container.
+#' @param offsetX Sets the left offset for legend container.
+#' @param formatter JS function. A custom formatter function to append additional text to the legend series names.
+#' @param labels List with two items \code{"foreColor"} (Custom text color for legend labels)
+#'  and \code{"useSeriesColors"} (Logical, whether to use primary colors or not)
+#' @param markers List.
+#' @param itemMargin List with two items \code{"horizontal"} (Horizontal margin for individual legend item)
+#'  and \code{"vertical"} (Vertical margin for individual legend item).
+#' @param containerMargin List with two items \code{"top"} (Top margin for the whole legend container)
+#'  and \code{"left"} (Left margin for the whole legend container).
+#' @param onItemClick List with item \code{"toggleDataSeries"}, logical,
+#'  when clicked on legend item, it will toggle the visibility of the series in chart.
+#' @param onItemHover List with item \code{"highlightDataSeries"}, logical,
+#'  when hovered on legend item, it will highlight the paths of the hovered series in chart.
+#' @param floating Logical. The floating option will take out the legend from the chart area and make it float above the chart.
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
@@ -250,7 +256,6 @@ ax_labels <- function(ax, ...) {
 #' @examples
 ax_legend <- function(ax,
                       show = NULL,
-                      floating = NULL,
                       position = NULL,
                       horizontFalAlign = NULL,
                       verticalAlign = NULL,
@@ -265,6 +270,7 @@ ax_legend <- function(ax,
                       containerMargin = NULL,
                       onItemClick = NULL,
                       onItemHover = NULL,
+                      floating = NULL,
                       ...) {
   params <- c(as.list(environment()), list(...))[-1]
   .ax_opt2(ax, "legend", l = dropNulls(params))
@@ -356,7 +362,7 @@ ax_responsive <- function(ax, ...) {
 #' Add data to a chart
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param ... Additional parameters.
+#' @param ... Lists containing data to plot, typically list with two items: \code{name} and \code{data}.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
@@ -370,9 +376,9 @@ ax_series <- function(ax, ...) {
 #' Charts' states
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param normal 
-#' @param hover 
-#' @param active 
+#' @param normal List.
+#' @param hover List.
+#' @param active List.
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
@@ -392,13 +398,13 @@ ax_states <- function(ax,
 #' Chart's title
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param text 
-#' @param align 
-#' @param margin 
-#' @param offsetX 
-#' @param offsetY 
-#' @param floating 
-#' @param style 
+#' @param text Text to display as a title of chart.
+#' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
+#' @param margin Numeric. Vertical spacing around the title text.
+#' @param offsetX Numeric. Sets the left offset for subtitle text.
+#' @param offsetY Numeric. Sets the top offset for subtitle text
+#' @param floating Logical. The floating option will take out the subtitle text from the chart area and make it float on top of the chart.
+#' @param style List with two items: \code{fontSize} (Font Size of the title text) and \code{color} (Fore color of the title text).
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
@@ -428,7 +434,7 @@ ax_title <- function(ax,
 #' @param offsetX Numeric. Sets the left offset for subtitle text.
 #' @param offsetY Numeric. Sets the top offset for subtitle text
 #' @param floating Logical. The floating option will take out the subtitle text from the chart area and make it float on top of the chart.
-#' @param style List.
+#' @param style List with two items: \code{fontSize} (Font Size of the subtitle text) and \code{color} (Fore color of the subtitle text).
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.

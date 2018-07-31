@@ -22,7 +22,7 @@ ax_subtitle(ax, text = NULL, align = NULL, margin = NULL,
 
 \item{floating}{Logical. The floating option will take out the subtitle text from the chart area and make it float on top of the chart.}
 
-\item{style}{List.}
+\item{style}{List with two items: \code{fontSize} (Font Size of the subtitle text) and \code{color} (Fore color of the subtitle text).}
 
 \item{...}{Additional parameters.}
 }

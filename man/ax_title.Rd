@@ -10,19 +10,19 @@ ax_title(ax, text = NULL, align = NULL, margin = NULL, offsetX = NULL,
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{text}{}
+\item{text}{Text to display as a title of chart.}
 
-\item{align}{}
+\item{align}{Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.}
 
-\item{margin}{}
+\item{margin}{Numeric. Vertical spacing around the title text.}
 
-\item{offsetX}{}
+\item{offsetX}{Numeric. Sets the left offset for subtitle text.}
 
-\item{offsetY}{}
+\item{offsetY}{Numeric. Sets the top offset for subtitle text}
 
-\item{floating}{}
+\item{floating}{Logical. The floating option will take out the subtitle text from the chart area and make it float on top of the chart.}
 
-\item{style}{}
+\item{style}{List with two items: \code{fontSize} (Font Size of the title text) and \code{color} (Fore color of the title text).}
 
 \item{...}{Additional parameters.}
 }
