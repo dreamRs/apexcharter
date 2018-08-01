@@ -4,37 +4,35 @@
 \alias{ax_markers}
 \title{Markers properties}
 \usage{
-ax_markers(ax, discrete = NULL, size = NULL, colors = NULL,
-  strokeColor = NULL, strokeWidth = NULL, strokeOpacity = NULL,
-  fillOpacity = NULL, shape = NULL, radius = NULL, offsetX = NULL,
-  offsetY = NULL, hover = NULL, ...)
+ax_markers(ax, size = NULL, colors = NULL, strokeColor = NULL,
+  strokeWidth = NULL, strokeOpacity = NULL, fillOpacity = NULL,
+  shape = NULL, radius = NULL, offsetX = NULL, offsetY = NULL,
+  hover = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{discrete}{}
+\item{size}{Numeric. Size of the marker point.}
 
-\item{size}{}
+\item{colors}{Sets the fill color(s) of the marker point.}
 
-\item{colors}{}
+\item{strokeColor}{Stroke Color of the marker.}
 
-\item{strokeColor}{}
+\item{strokeWidth}{Stroke Size of the marker.}
 
-\item{strokeWidth}{}
+\item{strokeOpacity}{Opacity of the border around marker.}
 
-\item{strokeOpacity}{}
+\item{fillOpacity}{Opacity of the marker fill color.}
 
-\item{fillOpacity}{}
+\item{shape}{Shape of the marker. Available Options for shape: \code{"square"} or \code{"circle"}.}
 
-\item{shape}{}
+\item{radius}{Numeric. Radius of the marker (applies to square shape)}
 
-\item{radius}{}
+\item{offsetX}{Numeric. Sets the left offset of the marker.}
 
-\item{offsetX}{}
+\item{offsetY}{Numeric. Sets the top offset of the marker.}
 
-\item{offsetY}{}
-
-\item{hover}{}
+\item{hover}{List with item \code{size} (Size of the marker when it is active).}
 
 \item{...}{Additional parameters.}
 }

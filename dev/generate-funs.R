@@ -34,6 +34,27 @@ make_fun <- function(opts, name, file = "") {
   return(invisible(res))
 }
 
+make_opts <- function(opts, name, file = "") {
+  args <- names(opts[[name]])
+  if (is.null(args)) {
+    args <- "..."
+    body <- "list(...)"
+  } else {
+    body <- sprintf("%s = %s", args, args)
+    body <- paste(body, collapse = ",\n")
+    body <- paste0("list(", body, ", ...)")
+    args <- sprintf("%s = NULL", args)
+    args <- paste(args, collapse = ",\n")
+    args <- paste0(args, ", ...")
+  }
+  body <- paste0("dropNulls(", body, ")")
+  res <- paste0(name, "Opts", " <- function(", args, ") {", body, "}\n\n\n")
+  cat(res, file = file, append = TRUE)
+  return(invisible(res))
+}
+
+
+
 
 # chart -------------------------------------------------------------------
 
@@ -56,4 +77,17 @@ lapply(
 )
 
 
+
+
+
+
+# Options -----------------------------------------------------------------
+
+# scroller
+str(ApexOpts$chart$scroller)
+
+make_opts(ApexOpts$chart, "scroller")
+
+# plotOptions -- bar
+make_opts(ApexOpts$plotOptions, "bar")
 

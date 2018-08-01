@@ -17,6 +17,9 @@ HTMLWidgets.widget({
         ax_opts = x.ax_opts;
 
         // Sizing
+        if (typeof ax_opts.chart === 'undefined') {
+          ax_opts.chart = {};
+        }
         ax_opts.chart.width = width;
         ax_opts.chart.height = height;
 

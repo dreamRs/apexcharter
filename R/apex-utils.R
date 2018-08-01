@@ -9,11 +9,13 @@
 #' Annotations properties
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param position 
-#' @param yaxis 
-#' @param xaxis 
-#' @param points 
+#' @param position Whether to put the annotations behind the charts or in front of it. Available Options: \code{"front"} or \code{"back"}.
+#' @param yaxis List of lists.
+#' @param xaxis List of lists.
+#' @param points List of lists.
 #' @param ... Additional parameters.
+#' 
+#' @note See \url{https://apexcharts.com/docs/options/annotations/}.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
@@ -280,18 +282,17 @@ ax_legend <- function(ax,
 #' Markers properties
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param discrete 
-#' @param size 
-#' @param colors 
-#' @param strokeColor 
-#' @param strokeWidth 
-#' @param strokeOpacity 
-#' @param fillOpacity 
-#' @param shape 
-#' @param radius 
-#' @param offsetX 
-#' @param offsetY 
-#' @param hover 
+#' @param size Numeric. Size of the marker point.
+#' @param colors Sets the fill color(s) of the marker point.
+#' @param strokeColor Stroke Color of the marker.
+#' @param strokeWidth Stroke Size of the marker.
+#' @param strokeOpacity Opacity of the border around marker.
+#' @param fillOpacity Opacity of the marker fill color.
+#' @param shape Shape of the marker. Available Options for shape: \code{"square"} or \code{"circle"}.
+#' @param radius Numeric. Radius of the marker (applies to square shape)
+#' @param offsetX Numeric. Sets the left offset of the marker.
+#' @param offsetY Numeric. Sets the top offset of the marker.
+#' @param hover List with item \code{size} (Size of the marker when it is active).
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
@@ -299,7 +300,6 @@ ax_legend <- function(ax,
 #'
 #' @examples
 ax_markers <- function(ax,
-                       discrete = NULL,
                        size = NULL,
                        colors = NULL,
                        strokeColor = NULL,
@@ -368,6 +368,26 @@ ax_responsive <- function(ax, ...) {
 #' @export
 #'
 #' @examples
+#' 
+#' # One serie
+#' apexcharter() %>% 
+#'   ax_series(list(
+#'     name = "rnorm",
+#'     data = rnorm(10)
+#'   ))
+#' 
+#' # Two series
+#' apexcharter() %>% 
+#'   ax_series(
+#'     list(
+#'       name = "rnorm 1",
+#'       data = rnorm(10)
+#'     ),
+#'     list(
+#'       name = "rnorm 2",
+#'       data = rnorm(10)
+#'     )
+#'   )
 ax_series <- function(ax, ...) {
   .ax_opt(ax, "series", ...)
 }

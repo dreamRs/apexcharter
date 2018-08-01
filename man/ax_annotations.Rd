@@ -10,13 +10,13 @@ ax_annotations(ax, position = NULL, yaxis = NULL, xaxis = NULL,
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{position}{}
+\item{position}{Whether to put the annotations behind the charts or in front of it. Available Options: \code{"front"} or \code{"back"}.}
 
-\item{yaxis}{}
+\item{yaxis}{List of lists.}
 
-\item{xaxis}{}
+\item{xaxis}{List of lists.}
 
-\item{points}{}
+\item{points}{List of lists.}
 
 \item{...}{Additional parameters.}
 }
@@ -25,4 +25,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Annotations properties
+}
+\note{
+See \url{https://apexcharts.com/docs/options/annotations/}.
 }
