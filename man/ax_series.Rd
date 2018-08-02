@@ -17,3 +17,25 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Add data to a chart
 }
+\examples{
+
+# One serie
+apexcharter() \%>\% 
+  ax_series(list(
+    name = "rnorm",
+    data = rnorm(10)
+  ))
+
+# Two series
+apexcharter() \%>\% 
+  ax_series(
+    list(
+      name = "rnorm 1",
+      data = rnorm(10)
+    ),
+    list(
+      name = "rnorm 2",
+      data = rnorm(10)
+    )
+  )
+}

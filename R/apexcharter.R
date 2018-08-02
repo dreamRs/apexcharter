@@ -47,6 +47,8 @@ apexcharter <- function(ax_opts = list(), data = NULL, width = NULL, height = NU
       viewer.defaultWidth = "100%",
       knitr.figure = FALSE,
       browser.fill = TRUE,
+      viewer.suppress = TRUE,
+      browser.external = TRUE,
       padding = 20
     )
   )

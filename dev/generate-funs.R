@@ -42,7 +42,7 @@ make_opts <- function(opts, name, file = "") {
   } else {
     body <- sprintf("%s = %s", args, args)
     body <- paste(body, collapse = ",\n")
-    body <- paste0("list(", body, ", ...)")
+    body <- paste0("c(list(", body, "), list(...))")
     args <- sprintf("%s = NULL", args)
     args <- paste(args, collapse = ",\n")
     args <- paste0(args, ", ...")
@@ -90,4 +90,31 @@ make_opts(ApexOpts$chart, "scroller")
 
 # plotOptions -- bar
 make_opts(ApexOpts$plotOptions, "bar")
+
+
+
+
+### write funs
+
+# chart
+str(ApexOpts$chart, max.level = 1)
+make_opts(ApexOpts$chart, "scroller", file = "R/apex-options.R")
+make_opts(ApexOpts$chart, "events", file = "R/apex-options.R")
+make_opts(ApexOpts$chart, "selection", file = "R/apex-options.R")
+
+
+# plotOptions
+str(ApexOpts$plotOptions, max.level = 1)
+make_opts(ApexOpts$plotOptions, "bar", file = "R/apex-options.R")
+make_opts(ApexOpts$plotOptions, "heatmap", file = "R/apex-options.R")
+make_opts(ApexOpts$plotOptions, "radialBar", file = "R/apex-options.R")
+make_opts(ApexOpts$plotOptions, "pie", file = "R/apex-options.R")
+
+
+
+
+
+
+
+
 
