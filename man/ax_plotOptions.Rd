@@ -10,13 +10,13 @@ ax_plotOptions(ax, bar = NULL, heatmap = NULL, radialBar = NULL,
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{bar}{}
+\item{bar}{See \code{\link{barOpts}}.}
 
-\item{heatmap}{}
+\item{heatmap}{See \code{\link{heatmapOpts}}.}
 
-\item{radialBar}{}
+\item{radialBar}{See \code{\link{radialBarOpts}}.}
 
-\item{pie}{}
+\item{pie}{See \code{\link{pieOpts}}.}
 
 \item{...}{Additional parameters.}
 }

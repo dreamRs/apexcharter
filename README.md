@@ -28,7 +28,7 @@ dat <- count(mpg, manufacturer)
 
 apexcharter() %>% 
   ax_chart(type = "bar") %>% 
-  ax_plotOptions(bar = list(
+  ax_plotOptions(bar = barOpts(
     horizontal = FALSE,
     endingShape = "flat",
     columnWidth = "70%",

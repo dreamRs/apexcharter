@@ -86,10 +86,10 @@ ax_chart <- function(ax,
 #' Specific options for chart
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param bar 
-#' @param heatmap 
-#' @param radialBar 
-#' @param pie 
+#' @param bar See \code{\link{barOpts}}.
+#' @param heatmap See \code{\link{heatmapOpts}}.
+#' @param radialBar See \code{\link{radialBarOpts}}.
+#' @param pie See \code{\link{pieOpts}}.
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
