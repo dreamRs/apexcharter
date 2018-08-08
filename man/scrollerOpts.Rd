@@ -4,9 +4,9 @@
 \alias{scrollerOpts}
 \title{Options for scroller}
 \usage{
-scrollerOpts(enabled = NULL, height = NULL, track = NULL, thumb = NULL,
-  scrollButtons = NULL, padding = NULL, offsetX = NULL, offsetY = NULL,
-  ...)
+scrollerOpts(enabled = NULL, height = NULL, track = NULL,
+  thumb = NULL, scrollButtons = NULL, padding = NULL,
+  offsetX = NULL, offsetY = NULL, ...)
 }
 \arguments{
 \item{enabled}{}

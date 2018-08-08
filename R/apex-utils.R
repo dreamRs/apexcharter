@@ -38,7 +38,7 @@ ax_annotations <- function(ax,
 #' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
 #'  \code{"histogram"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param stacked Logical. Enables stacked option for axis charts. 
-#' @param stackType When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100%"}
+#' @param stackType When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}
 #' @param animations List.
 #' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.
 #' @param foreColor Sets the text color for the chart. Defaults to \code{#373d3f}.
@@ -49,8 +49,8 @@ ax_annotations <- function(ax,
 #' @param scroller List.
 #' @param selection List.
 #' @param sparkline List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .
-#' @param toolbar
-#' @param zoom  
+#' @param toolbar List.
+#' @param zoom List.
 #' @param width Width of the chart. 
 #' @param height Height of the chart. 
 #' @param ... Additional parameters. 

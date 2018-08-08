@@ -5,7 +5,8 @@
 \title{Chart's subtitle}
 \usage{
 ax_subtitle(ax, text = NULL, align = NULL, margin = NULL,
-  offsetX = NULL, offsetY = NULL, floating = NULL, style = NULL, ...)
+  offsetX = NULL, offsetY = NULL, floating = NULL, style = NULL,
+  ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

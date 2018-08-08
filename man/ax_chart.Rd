@@ -7,8 +7,8 @@
 ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
   animations = NULL, background = NULL, foreColor = NULL,
   dropShadow = NULL, events = NULL, offsetX = NULL, offsetY = NULL,
-  scroller = NULL, selection = NULL, sparkline = NULL, toolbar = NULL,
-  zoom = NULL, width = NULL, height = NULL, ...)
+  scroller = NULL, selection = NULL, sparkline = NULL,
+  toolbar = NULL, zoom = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
@@ -17,6 +17,8 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 \code{"histogram"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
 
 \item{stacked}{Logical. Enables stacked option for axis charts.}
+
+\item{stackType}{When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}}
 
 \item{animations}{List.}
 
@@ -38,7 +40,9 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 
 \item{sparkline}{List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .}
 
-\item{zoom}{}
+\item{toolbar}{List.}
+
+\item{zoom}{List.}
 
 \item{width}{Width of the chart.}
 

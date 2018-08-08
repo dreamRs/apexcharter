@@ -4,8 +4,8 @@
 \alias{pieOpts}
 \title{Pie options}
 \usage{
-pieOpts(size = NULL, donut = NULL, customScale = NULL, offsetX = NULL,
-  offsetY = NULL, dataLabels = NULL, ...)
+pieOpts(size = NULL, donut = NULL, customScale = NULL,
+  offsetX = NULL, offsetY = NULL, dataLabels = NULL, ...)
 }
 \arguments{
 \item{size}{Numeric. Custom size of the pie which will override the default size calculations.}
