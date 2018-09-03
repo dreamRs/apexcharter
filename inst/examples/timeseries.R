@@ -79,7 +79,7 @@ apexcharter() %>%
   ax_subtitle(text = "Data from ggplot2") %>% 
   ax_yaxis(
     min = 0, max = 30,
-    tickAmount = 4,
+    tickAmount = 6,
     labels = list(
       formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
     ),

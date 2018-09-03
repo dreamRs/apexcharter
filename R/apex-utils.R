@@ -371,6 +371,8 @@ ax_responsive <- function(ax, ...) {
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
+#' 
+#' @name ax-series
 #'
 #' @examples
 #' 
@@ -395,6 +397,13 @@ ax_responsive <- function(ax, ...) {
 #'   )
 ax_series <- function(ax, ...) {
   .ax_opt(ax, "series", ...)
+}
+
+#' @param l A list.
+#' @export
+#' @rdname ax-series
+ax_series2 <- function(ax, l) {
+  .ax_opt2(ax, "series", l)
 }
 
 
