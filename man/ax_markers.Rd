@@ -42,3 +42,6 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Markers properties
 }
+\note{
+See \url{https://apexcharts.com/docs/options/markers/}
+}

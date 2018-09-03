@@ -5,22 +5,26 @@
 \title{Labels on data}
 \usage{
 ax_dataLabels(ax, enabled = NULL, textAnchor = NULL, offsetX = NULL,
-  offsetY = NULL, style = NULL, dropShadow = NULL, ...)
+  offsetY = NULL, style = NULL, dropShadow = NULL,
+  formatter = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{enabled}{}
+\item{enabled}{To determine whether to show dataLabels or not.}
 
-\item{textAnchor}{}
+\item{textAnchor}{The alignment of text relative to dataLabel’s drawing position.
+Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.}
 
-\item{offsetX}{}
+\item{offsetX}{Sets the left offset for dataLabels.}
 
-\item{offsetY}{}
+\item{offsetY}{Sets the top offset for dataLabels.}
 
-\item{style}{}
+\item{style}{A list of parameters.}
 
-\item{dropShadow}{}
+\item{dropShadow}{A list of parameters.}
+
+\item{formatter}{The formatter function takes in a single value and allows you to format the value before displaying}
 
 \item{...}{Additional parameters.}
 }
@@ -29,4 +33,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Labels on data
+}
+\note{
+See \url{https://apexcharts.com/docs/options/datalabels/}
 }

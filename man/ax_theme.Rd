@@ -11,7 +11,7 @@ ax_theme(ax, palette = NULL, monochrome = NULL, ...)
 
 \item{palette}{Character. Available palettes: \code{"palette1"} to \code{"palette10"}.}
 
-\item{monochrome}{List.}
+\item{monochrome}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -20,4 +20,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Theme for charts
+}
+\note{
+See \url{https://apexcharts.com/docs/options/theme/}
 }

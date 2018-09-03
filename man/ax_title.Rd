@@ -33,3 +33,6 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Chart's title
 }
+\note{
+See \url{https://apexcharts.com/docs/options/title/}
+}

@@ -9,11 +9,11 @@ ax_states(ax, normal = NULL, hover = NULL, active = NULL, ...)
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{normal}{List.}
+\item{normal}{A list of parameters.}
 
-\item{hover}{List.}
+\item{hover}{A list of parameters.}
 
-\item{active}{List.}
+\item{active}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -22,4 +22,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Charts' states
+}
+\note{
+See \url{https://apexcharts.com/docs/options/states/}
 }

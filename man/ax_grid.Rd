@@ -19,15 +19,15 @@ ax_grid(ax, show = NULL, borderColor = NULL, strokeDashArray = NULL,
 
 \item{position}{Whether to place grid behind chart paths of in front. Available options for position: \code{"front"} or \code{"back"}}
 
-\item{xaxis}{List.}
+\item{xaxis}{A list of parameters.}
 
-\item{yaxis}{List.}
+\item{yaxis}{A list of parameters.}
 
-\item{row}{List.}
+\item{row}{A list of parameters.}
 
-\item{column}{List.}
+\item{column}{A list of parameters.}
 
-\item{padding}{List.}
+\item{padding}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -36,4 +36,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Add grids on chart
+}
+\note{
+See \url{https://apexcharts.com/docs/options/grid/}
 }

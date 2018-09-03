@@ -27,21 +27,21 @@ ax_tooltip(ax, enabled = NULL, shared = NULL, followCursor = NULL,
 
 \item{fillSeriesColor}{Logical. When enabled, fill the tooltip background with the corresponding series color.}
 
-\item{onDatasetHover}{List.}
+\item{onDatasetHover}{A list of parameters.}
 
-\item{theme}{List.}
+\item{theme}{A list of parameters.}
 
-\item{x}{List.}
+\item{x}{A list of parameters.}
 
-\item{y}{List.}
+\item{y}{A list of parameters.}
 
-\item{z}{List.}
+\item{z}{A list of parameters.}
 
-\item{marker}{List.}
+\item{marker}{A list of parameters.}
 
-\item{items}{List.}
+\item{items}{A list of parameters.}
 
-\item{fixed}{List.}
+\item{fixed}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -50,4 +50,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Tooltip options
+}
+\note{
+See \url{https://apexcharts.com/docs/options/tooltip/}
 }

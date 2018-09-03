@@ -35,3 +35,6 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Stroke properties
 }
+\note{
+See \url{https://apexcharts.com/docs/options/stroke/}
+}

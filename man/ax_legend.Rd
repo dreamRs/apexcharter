@@ -4,7 +4,7 @@
 \alias{ax_legend}
 \title{Legend properties}
 \usage{
-ax_legend(ax, show = NULL, position = NULL, horizontFalAlign = NULL,
+ax_legend(ax, show = NULL, position = NULL, horizontalAlign = NULL,
   verticalAlign = NULL, fontSize = NULL, textAnchor = NULL,
   offsetY = NULL, offsetX = NULL, formatter = NULL, labels = NULL,
   markers = NULL, itemMargin = NULL, containerMargin = NULL,
@@ -16,6 +16,8 @@ ax_legend(ax, show = NULL, position = NULL, horizontFalAlign = NULL,
 \item{show}{Logical. Whether to show or hide the legend container.}
 
 \item{position}{Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.}
+
+\item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
 
 \item{verticalAlign}{Available options for vertical alignment: \code{"top"}, \code{"middle"}, \code{"bottom"}}
 
@@ -49,12 +51,13 @@ when hovered on legend item, it will highlight the paths of the hovered series i
 \item{floating}{Logical. The floating option will take out the legend from the chart area and make it float above the chart.}
 
 \item{...}{Additional parameters.}
-
-\item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Legend properties
+}
+\note{
+See \url{https://apexcharts.com/docs/options/legend/}
 }

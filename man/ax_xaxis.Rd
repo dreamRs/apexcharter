@@ -17,11 +17,11 @@ ax_xaxis(ax, type = NULL, categories = NULL, labels = NULL,
 
 \item{categories}{Categories are labels which are displayed on the x-axis.}
 
-\item{labels}{List.}
+\item{labels}{A list of parameters.}
 
-\item{axisBorder}{List.}
+\item{axisBorder}{A list of parameters.}
 
-\item{axisTicks}{List.}
+\item{axisTicks}{A list of parameters.}
 
 \item{tickAmount}{Number of Tick Intervals to show.}
 
@@ -37,11 +37,11 @@ similar to an absolutely positioned element. Set the offsetX and offsetY then to
 
 \item{position}{Setting this option allows you to change the x-axis position. Available options: \code{"top"} and \code{"bottom"}.}
 
-\item{title}{List.}
+\item{title}{A list of parameters.}
 
-\item{crosshairs}{List.}
+\item{crosshairs}{A list of parameters.}
 
-\item{tooltip}{List.}
+\item{tooltip}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -50,4 +50,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 X-axis options
+}
+\note{
+See \url{https://apexcharts.com/docs/options/xaxis/}
 }

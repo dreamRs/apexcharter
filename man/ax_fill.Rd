@@ -10,17 +10,18 @@ ax_fill(ax, type = NULL, colors = NULL, opacity = NULL,
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{type}{}
+\item{type}{Whether to fill the paths with solid colors or gradient.
+Available options: \code{"solid"}, \code{"gradient"}, \code{"pattern"} or \code{"image"}.}
 
-\item{colors}{}
+\item{colors}{Colors to fill the svg paths..}
 
-\item{opacity}{}
+\item{opacity}{Opacity of the fill attribute.}
 
-\item{gradient}{}
+\item{gradient}{A list of parameters.}
 
-\item{image}{}
+\item{image}{A list of parameters.}
 
-\item{pattern}{}
+\item{pattern}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -29,4 +30,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Fill property
+}
+\note{
+See \url{https://apexcharts.com/docs/options/fill/}
 }

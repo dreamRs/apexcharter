@@ -20,29 +20,29 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 
 \item{stackType}{When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}}
 
-\item{animations}{List.}
+\item{animations}{A list of parameters.}
 
 \item{background}{Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.}
 
 \item{foreColor}{Sets the text color for the chart. Defaults to \code{#373d3f}.}
 
-\item{dropShadow}{List.}
+\item{dropShadow}{A list of parameters. See \url{https://apexcharts.com/docs/options/chart/dropshadow/}.}
 
-\item{events}{List.}
+\item{events}{A list of parameters. See\url{https://apexcharts.com/docs/options/chart/events/}.}
 
-\item{offsetX}{}
+\item{offsetX}{Sets the left offset for chart.}
 
-\item{offsetY}{}
+\item{offsetY}{Sets the top offset for chart.}
 
-\item{scroller}{List.}
+\item{scroller}{A list of parameters.}
 
-\item{selection}{List.}
+\item{selection}{A list of parameters.}
 
 \item{sparkline}{List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .}
 
-\item{toolbar}{List.}
+\item{toolbar}{A list of parameters. See \url{https://apexcharts.com/docs/options/chart/toolbar/}.}
 
-\item{zoom}{List.}
+\item{zoom}{A list of parameters. See \url{https://apexcharts.com/docs/options/chart/zoom/}.}
 
 \item{width}{Width of the chart.}
 

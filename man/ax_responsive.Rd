@@ -9,11 +9,14 @@ ax_responsive(ax, ...)
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{...}{}
+\item{...}{Additional parameters.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Responsive options
+}
+\note{
+See \url{https://apexcharts.com/docs/options/responsive/}
 }

@@ -16,9 +16,9 @@
 #' @param padding 
 #' @param offsetX 
 #' @param offsetY 
-#' @param ... 
+#' @param ... Additional parameters.
 #'
-#' @export
+#' @noRd
 #'
 scrollerOpts <- function(enabled = NULL,
                          height = NULL,
@@ -97,7 +97,7 @@ eventsOpts <- function(beforeMount = NULL,
 #' @param yaxis 
 #' @param ... 
 #'
-#' @export
+#' @noRd
 #'
 selectionOpts <- function(enabled = NULL,
                           type = NULL,

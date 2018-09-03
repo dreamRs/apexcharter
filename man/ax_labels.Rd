@@ -18,3 +18,6 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Alternative axis labels
 }
+\note{
+See \url{https://apexcharts.com/docs/options/labels/}
+}

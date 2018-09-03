@@ -23,17 +23,17 @@ ax_yaxis(ax, opposite = NULL, tickAmount = NULL, max = NULL,
 \item{floating}{Logical. Floating takes y-axis is taken out of normal flow and places y-axis on svg element directly,
 similar to an absolutely positioned element. Set the offsetX and offsetY then to adjust the position manually}
 
-\item{labels}{List.}
+\item{labels}{A list of parameters.}
 
-\item{axisBorder}{List.}
+\item{axisBorder}{A list of parameters.}
 
-\item{axisTicks}{List.}
+\item{axisTicks}{A list of parameters.}
 
-\item{title}{List.}
+\item{title}{A list of parameters.}
 
-\item{tooltip}{List.}
+\item{tooltip}{A list of parameters.}
 
-\item{crosshairs}{List.}
+\item{crosshairs}{A list of parameters.}
 
 \item{...}{Additional parameters.}
 }
@@ -42,4 +42,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Y-axis options
+}
+\note{
+See \url{https://apexcharts.com/docs/options/yaxis/}
 }

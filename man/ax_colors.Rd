@@ -17,3 +17,6 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Colors
 }
+\note{
+See \url{https://apexcharts.com/docs/options/colors/}
+}
