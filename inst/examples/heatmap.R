@@ -30,7 +30,7 @@ data("vaccines")
 #O trying to recreate "The Impact of Vaccines" (http://jkunst.com/highcharter/showcase.html)
 
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "heatmap") %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(lapply(

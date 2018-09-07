@@ -25,7 +25,7 @@ data("economics", package = "ggplot2")
 # One serie (class Date) --------------------------------------------------
 
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "area", zoom = list(enabled = TRUE)) %>% 
   ax_plotOptions(line = list(curve = "smooth")) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
@@ -60,7 +60,7 @@ apexcharter() %>%
 
 # Two series (Date) -------------------------------------------------------
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "line", zoom = list(enabled = TRUE)) %>% 
   ax_plotOptions(line = list(curve = "smooth")) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
@@ -86,6 +86,33 @@ apexcharter() %>%
     title = "Personal savings rate"
   ) %>% 
   ax_xaxis(type = "datetime", labels = list(format = "d MMM yy"))
+
+
+
+
+
+
+# Scroller (zoom) ---------------------------------------------------------
+
+apexchart() %>% 
+  ax_chart(type = "area", scroller = list(enabled = TRUE)) %>% 
+  ax_dataLabels(enabled = FALSE) %>% 
+  ax_series(list(
+    name = "personal savings rate",
+    data = parse_df(economics[, c("date", "psavert")])
+  )) %>% 
+  ax_title(text = "US economic time series", align = "left") %>% 
+  ax_subtitle(text = "Data from ggplot2") %>% 
+  ax_yaxis(
+    min = 0, max = 20,
+    tickAmount = 4,
+    labels = list(
+      formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
+    ),
+    title = "Personal savings rate"
+  ) %>% 
+  ax_xaxis(type = "datetime", labels = list(format = "d MMM yy"))
+
 
 
 

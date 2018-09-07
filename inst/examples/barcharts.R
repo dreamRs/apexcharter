@@ -23,7 +23,7 @@ library(dplyr) # for count
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar") %>% 
   ax_plotOptions(bar = barOpts(
     horizontal = FALSE,
@@ -55,7 +55,7 @@ apexcharter() %>%
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar") %>% 
   ax_plotOptions(bar = barOpts(
     horizontal = TRUE,
@@ -79,6 +79,57 @@ apexcharter() %>%
 
 
 
+
+
+
+# Stacked bar -------------------------------------------------------------
+
+stacked <- count(mpg, manufacturer, year)
+
+apexchart() %>% 
+  ax_chart(type = "bar", stacked = TRUE) %>% 
+  ax_series(
+    list(
+      name = "1999", 
+      data = filter(stacked, year == 1999) %>% pull(n)
+    ),
+    list(
+      name = "2008", 
+      data = filter(stacked, year == 2008) %>% pull(n)
+    )
+  ) %>% 
+  ax_xaxis(categories = unique(stacked$manufacturer)) %>% 
+  ax_legend(
+    position = "right",
+    verticalAlign = "top",
+    offsetX = 0,
+    offsetY = 50
+  )
+
+
+
+
+# Grouped bar -------------------------------------------------------------
+
+stacked <- count(mpg, manufacturer, year)
+
+apexchart() %>% 
+  ax_chart(type = "bar", stacked = FALSE) %>% 
+  ax_plotOptions(bar = barOpts(
+    endingShape = "rounded"
+  )) %>% 
+  ax_series(
+    list(
+      name = "1999", 
+      data = filter(stacked, year == 1999) %>% pull(n)
+    ),
+    list(
+      name = "2008", 
+      data = filter(stacked, year == 2008) %>% pull(n)
+    )
+  ) %>% 
+  ax_dataLabels(enabled = FALSE) %>% 
+  ax_xaxis(categories = unique(stacked$manufacturer))
 
 
 

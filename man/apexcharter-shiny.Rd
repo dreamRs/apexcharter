@@ -2,13 +2,13 @@
 % Please edit documentation in R/apexcharter.R
 \name{apexcharter-shiny}
 \alias{apexcharter-shiny}
-\alias{apexcharterOutput}
-\alias{renderApexcharter}
+\alias{apexchartOutput}
+\alias{renderApexchart}
 \title{Shiny bindings for apexcharter}
 \usage{
-apexcharterOutput(outputId, width = "100\%", height = "400px")
+apexchartOutput(outputId, width = "100\%", height = "400px")
 
-renderApexcharter(expr, env = parent.frame(), quoted = FALSE)
+renderApexchart(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

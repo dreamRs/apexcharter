@@ -16,7 +16,7 @@
 #'
 #' library(apexcharter)
 #'
-#' apexcharter(ax_opts = list(
+#' apexchart(ax_opts = list(
 #'   chart = list(type = "bar"),
 #'   series = list(list(
 #'     name = "Example",
@@ -24,7 +24,7 @@
 #'   )),
 #'   xaxis = list(categories = LETTERS[1:5])
 #' ))
-apexcharter <- function(ax_opts = list(), data = NULL, width = NULL, height = NULL, elementId = NULL) {
+apexchart <- function(ax_opts = list(), data = NULL, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x <- list(
@@ -73,13 +73,13 @@ apexcharter <- function(ax_opts = list(), data = NULL, width = NULL, height = NU
 #' @export
 #'
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
-apexcharterOutput <- function(outputId, width = '100%', height = '400px'){
+apexchartOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'apexcharter', width, height, package = 'apexcharter')
 }
 
 #' @rdname apexcharter-shiny
 #' @export
-renderApexcharter <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderApexchart <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, apexcharterOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, apexchartOutput, env, quoted = TRUE)
 }

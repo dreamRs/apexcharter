@@ -28,6 +28,10 @@ HTMLWidgets.widget({
         chart.render();
 
       },
+      
+      getChart: function(){
+        return chart;
+      },
 
       resize: function(width, height) {
         chart.updateOptions({
@@ -41,3 +45,37 @@ HTMLWidgets.widget({
     };
   }
 });
+
+// From Friss tuto (https://github.com/FrissAnalytics/shinyJsTutorials/blob/master/tutorials/tutorial_03.Rmd)
+function get_widget(id){
+  
+  // Get the HTMLWidgets object
+  var htmlWidgetsObj = HTMLWidgets.find("#" + id);
+  
+  // Use the getChart method we created to get the underlying billboard chart
+  var widgetObj ;
+  
+  if (typeof htmlWidgetsObj != 'undefined') {
+    widgetObj = htmlWidgetsObj.getChart();
+  }
+
+  return(widgetObj);
+}
+
+
+
+if (HTMLWidgets.shinyMode) {
+  // data = load
+  Shiny.addCustomMessageHandler('update-apexcharts-series',
+    function(obj) {
+      var chart = get_widget(data.id);
+      if (typeof chart != 'undefined') {
+        chart.updateSeries(obj.newSeries, obj.animate);
+      }
+  });
+}
+
+
+
+
+

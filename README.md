@@ -26,7 +26,7 @@ library(magrittr)
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar") %>% 
   ax_plotOptions(bar = barOpts(
     horizontal = FALSE,
@@ -58,7 +58,7 @@ apexcharter() %>%
 Pass a list of parameters to the function:
 
 ``` r
-apexcharter(ax_opts = list(
+apexchart(ax_opts = list(
   chart = list(
     type = "line"
   ),
