@@ -66,11 +66,11 @@ function get_widget(id){
 
 if (HTMLWidgets.shinyMode) {
   // data = load
-  Shiny.addCustomMessageHandler('update-apexcharts-series',
+  Shiny.addCustomMessageHandler('update-apexchart-series',
     function(obj) {
-      var chart = get_widget(data.id);
+      var chart = get_widget(obj.id);
       if (typeof chart != 'undefined') {
-        chart.updateSeries(obj.newSeries, obj.animate);
+        chart.updateSeries(obj.data.newSeries, obj.data.animate);
       }
   });
 }

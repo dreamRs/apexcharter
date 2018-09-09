@@ -15,23 +15,47 @@
 library(apexcharter)
 library(highcharter) # data
 library(dplyr)
-
-
-# Data --------------------------------------------------------------------
-
-data("vaccines")
+library(tidyr)
 
 
 
 
+# Mtcars heatmap ----------------------------------------------------------
 
-# Heatmap -----------------------------------------------------------------
-
-#O trying to recreate "The Impact of Vaccines" (http://jkunst.com/highcharter/showcase.html)
+mtcars_long <- mtcars %>% 
+  tibble::rownames_to_column(var = "model") %>% 
+  gather(variable, value, -model)
 
 
 apexchart() %>% 
   ax_chart(type = "heatmap") %>% 
+  ax_dataLabels(enabled = FALSE) %>% 
+  ax_series2(lapply(
+    X = unique(mtcars_long$model),
+    FUN = function(x) {
+      list(
+        name = x,
+        data = parse_df(mtcars_long[mtcars_long$model == x, c("variable", "value")])
+      )
+    }
+  )) %>% 
+  ax_xaxis(type = "category", categories = unique(mtcars_long$variable))
+
+
+
+
+
+
+# Large Heatmap -----------------------------------------------------------
+
+# pretty slow
+
+# trying to recreate "The Impact of Vaccines" (http://jkunst.com/highcharter/showcase.html)
+
+data("vaccines", package = "highcharter")
+
+apexchart() %>% 
+  ax_chart(type = "heatmap", animations = list(enabled = FALSE)) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(lapply(
     X = unique(vaccines$state),
