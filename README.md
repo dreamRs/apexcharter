@@ -2,6 +2,8 @@
 
 > Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js)
 
+[![Travis build status](https://travis-ci.org/dreamRs/apexcharter.svg?branch=master)](https://travis-ci.org/dreamRs/apexcharter)
+
 :construction: :warning: Under development !! API will change (and this doesn't work properly in RStudio viewer for now) :warning: :construction:
 
 ## Installation
