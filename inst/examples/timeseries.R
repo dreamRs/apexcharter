@@ -70,7 +70,7 @@ apexchart() %>%
       data = parse_df(economics[, c("date", "psavert")])
     ),
     list(
-      name = "median duration of unemployment, in weeks,",
+      name = "median duration of unemployment (in weeks)",
       data = parse_df(economics[, c("date", "uempmed")])
     )
   ) %>% 
@@ -93,6 +93,8 @@ apexchart() %>%
 
 
 # Scroller (zoom) ---------------------------------------------------------
+
+# doesn't work since 2.0.0
 
 apexchart() %>% 
   ax_chart(type = "area", scroller = list(enabled = TRUE)) %>% 

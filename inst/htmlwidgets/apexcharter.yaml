@@ -1,5 +1,5 @@
 dependencies:
   - name: apexcharts
-    version: 1.5.5
-    src: htmlwidgets/lib/apexcharts-1.5
+    version: 2.0.1
+    src: htmlwidgets/lib/apexcharts-2.0
     script: apexcharts.min.js

@@ -7,8 +7,8 @@
 ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
   animations = NULL, background = NULL, foreColor = NULL,
   dropShadow = NULL, events = NULL, offsetX = NULL, offsetY = NULL,
-  scroller = NULL, selection = NULL, sparkline = NULL,
-  toolbar = NULL, zoom = NULL, width = NULL, height = NULL, ...)
+  selection = NULL, sparkline = NULL, toolbar = NULL, zoom = NULL,
+  width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
@@ -33,8 +33,6 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 \item{offsetX}{Sets the left offset for chart.}
 
 \item{offsetY}{Sets the top offset for chart.}
-
-\item{scroller}{A list of parameters.}
 
 \item{selection}{A list of parameters.}
 

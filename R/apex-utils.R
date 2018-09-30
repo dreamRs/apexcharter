@@ -45,7 +45,6 @@ ax_annotations <- function(ax,
 #' @param events A list of parameters. See\url{https://apexcharts.com/docs/options/chart/events/}.
 #' @param offsetX Sets the left offset for chart.
 #' @param offsetY Sets the top offset for chart.
-#' @param scroller A list of parameters.
 #' @param selection A list of parameters.
 #' @param sparkline List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .
 #' @param toolbar A list of parameters. See \url{https://apexcharts.com/docs/options/chart/toolbar/}.
@@ -68,7 +67,6 @@ ax_chart <- function(ax,
                      events = NULL,
                      offsetX = NULL,
                      offsetY = NULL,
-                     scroller = NULL,
                      selection = NULL,
                      sparkline = NULL,
                      toolbar = NULL,
