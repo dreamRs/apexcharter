@@ -60,7 +60,7 @@ apexchart() %>%
   ax_plotOptions(bar = barOpts(
     horizontal = TRUE,
     dataLabels = list(
-      position = "top"
+      position = "center"
     ))
   ) %>% 
   ax_grid(
