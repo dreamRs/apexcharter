@@ -27,13 +27,14 @@ data("economics", package = "ggplot2")
 
 apexchart() %>% 
   ax_chart(type = "area", zoom = list(enabled = TRUE)) %>% 
-  ax_plotOptions(line = list(curve = "smooth")) %>% 
+  # ax_stroke(curve = "smooth") %>% 
+  ax_plotOptions(line = list(curve = "smooth")) %>%
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series(list(
     name = "personal savings rate",
     data = parse_df(economics[, c("date", "psavert")])
   )) %>% 
-  ax_markers(size = 0, style = "full") %>% 
+  ax_markers(size = 0, style = "full") %>%
   ax_title(text = "US economic time series", align = "left") %>% 
   ax_subtitle(text = "Data from ggplot2") %>% 
   ax_fill(gradient = list(
@@ -43,16 +44,17 @@ apexchart() %>%
     opacityFrom = 0,
     opacityTo = 1,
     stops = c(0, 2000)
-  )) %>% 
+  )) %>%
   ax_yaxis(
     min = 0, max = 20,
     tickAmount = 4,
     labels = list(
       formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
     ),
-    title = "Personal savings rate"
-  ) %>% 
-  ax_xaxis(type = "datetime", labels = list(format = "d MMM yy"))
+    title = list(text = "Personal savings rate")
+  ) %>%
+  ax_xaxis(type = "datetime", labels = list(format = "dd MMM yyyy")) %>% 
+  ax_tooltip(x = list(format = "dd MMM yyyy"))
 
 
 
@@ -83,9 +85,10 @@ apexchart() %>%
     labels = list(
       formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
     ),
-    title = "Personal savings rate"
+    title = list(text = "Personal savings rate")
   ) %>% 
-  ax_xaxis(type = "datetime", labels = list(format = "d MMM yy"))
+  ax_xaxis(type = "datetime", labels = list(format = "d MMM yy")) %>% 
+  ax_tooltip(x = list(format = "dd MMM yyyy"))
 
 
 
@@ -111,7 +114,7 @@ apexchart() %>%
     labels = list(
       formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
     ),
-    title = "Personal savings rate"
+    title = list(text = "Personal savings rate")
   ) %>% 
   ax_xaxis(type = "datetime", labels = list(format = "d MMM yy"))
 

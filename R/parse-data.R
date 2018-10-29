@@ -14,7 +14,7 @@ parse_df <- function(data) {
     X = data[],
     FUN = function(x) {
       if (inherits(x, "Date")) {
-        as.numeric(x) * 864000
+        as.numeric(x) * 86400000
       } else if (inherits(x, "POSIXt")) {
         as.numeric(x)
       } else if (inherits(x, "factor")) {
