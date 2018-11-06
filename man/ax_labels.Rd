@@ -2,15 +2,20 @@
 % Please edit documentation in R/apex-utils.R
 \name{ax_labels}
 \alias{ax_labels}
+\alias{ax_labels2}
 \title{Alternative axis labels}
 \usage{
 ax_labels(ax, ...)
+
+ax_labels2(ax, labels)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
 \item{...}{Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
 option. While, in pie/donut charts, each label corresponds to value in series array.}
+
+\item{labels}{A vector to use as labels.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.

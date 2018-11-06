@@ -1,5 +1,5 @@
 Package: apexcharter
-Version: 0.0.0.9200
+Version: 0.0.0.9300
 Title: Create Interactive Chart with the JavaScript 'ApexCharts' Library
 Description: Provides an 'htmlwidgets' interface to 'apexcharts.js'.
 Authors@R: c(
@@ -10,6 +10,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
+Depends: R (>= 2.10)
 Imports: 
     htmlwidgets,
     magrittr,

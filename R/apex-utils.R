@@ -217,16 +217,25 @@ ax_grid <- function(ax,
 #' Alternative axis labels
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param labels A vector to use as labels.
 #' @param ... Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
 #'  option. While, in pie/donut charts, each label corresponds to value in series array.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
+#' 
+#' @name ax_labels
 #'
 #' @note See \url{https://apexcharts.com/docs/options/labels/}
 ax_labels <- function(ax, ...) {
   .ax_opt(ax, "labels", ...)
 }
+#' @rdname ax_labels
+#' @export
+ax_labels2 <- function(ax, labels) {
+  .ax_opt2(ax, "labels", l = labels)
+}
+
 
 
 #' Legend properties

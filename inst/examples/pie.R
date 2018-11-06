@@ -22,7 +22,8 @@ library(apexcharter)
 
 apexchart() %>% 
   ax_chart(type = "pie") %>% 
-  ax_series(23, 45, 56)
+  ax_series(23, 45, 56) %>% 
+  ax_labels("A", "B", "C")
 
 
 
@@ -32,6 +33,7 @@ apexchart() %>%
 
 apexchart() %>% 
   ax_chart(type = "donut") %>% 
-  ax_series2(l = c(23, 45, 56))
+  ax_series2(c(23, 45, 56)) %>% 
+  ax_labels2(c("A", "B", "C"))
 
 
