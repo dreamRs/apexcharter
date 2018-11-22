@@ -1,5 +1,5 @@
 Package: apexcharter
-Version: 0.0.0.9300
+Version: 0.0.0.9400
 Title: Create Interactive Chart with the JavaScript 'ApexCharts' Library
 Description: Provides an 'htmlwidgets' interface to 'apexcharts.js'.
 Authors@R: c(
@@ -15,6 +15,6 @@ Imports:
     htmlwidgets,
     magrittr,
     data.table
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 URL: https://github.com/dreamRs/apexcharter
 BugReports: https://github.com/dreamRs/apexcharter/issues
