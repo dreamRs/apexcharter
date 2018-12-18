@@ -4,10 +4,13 @@
 \alias{parse_df}
 \title{Convert a \code{data.frame} to a \code{list}}
 \usage{
-parse_df(data)
+parse_df(data, add_names = FALSE)
 }
 \arguments{
 \item{data}{A \code{data.frame} or an object coercible to \code{data.frame}.}
+
+\item{add_names}{Use names of columns in output. Can be logical to
+reuse \code{data} names or a character vector of new names.}
 }
 \description{
 Convert data to a format suitable for ApexCharts.js
