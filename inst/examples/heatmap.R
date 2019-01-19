@@ -26,23 +26,43 @@ mtcars_long <- mtcars %>%
   tibble::rownames_to_column(var = "model") %>% 
   gather(variable, value, -model)
 
+mtcars_long$value <- round(mtcars_long$value)
 
-apexchart() %>% 
+test <- apexchart() %>% 
   ax_chart(type = "heatmap") %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(lapply(
     X = unique(mtcars_long$model),
     FUN = function(x) {
       list(
-        name = x,
-        data = parse_df(mtcars_long[mtcars_long$model == x, c("variable", "value")])
+        name = tolower(gsub(pattern = "\\s", replacement = "", x = x)),
+        data = parse_df(
+          data = mtcars_long[mtcars_long$model == x, c("variable", "value")], 
+          add_names = c("x", "y")
+        )
       )
     }
   )) %>% 
   ax_xaxis(type = "category", categories = unique(mtcars_long$variable))
 
 
-
+apexchart() %>% 
+  ax_chart(type = "heatmap") %>% 
+  ax_dataLabels(enabled = FALSE) %>% 
+  ax_series2(l = list(
+    list(
+      name = "A",
+      data = list(
+        list(x = "a", y = "4"), list(x = "b", y = "2"), list(x = "c", y = "7")
+      )
+    ),
+    list(
+      name = "B",
+      data = list(
+        list(x = "a", y = "5"), list(x = "b", y = "4"), list(x = "c", y = "1")
+      )
+    )
+  ))
 
 
 
