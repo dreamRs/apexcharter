@@ -4,7 +4,7 @@
 #' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
 #' @param type Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
-#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
+#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
@@ -16,13 +16,22 @@
 #' @importFrom utils modifyList
 #'
 apex <- function(data, mapping, type = "column", ..., width = NULL, height = NULL, elementId = NULL) {
-  type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline", "pie", "donut", "radialBar", "scatter", "bubble", "heatmap"))
+  type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
+                            "pie", "donut", "radialBar", "radar", "scatter", "bubble", "heatmap"))
   data <- as.data.frame(data)
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  opts <- list(
-    chart = list(type = correct_type(type)),
-    series = make_series(mapdata, mapping, type)
-  )
+  if (type %in% c("pie", "donut", "radialBar", "radar")) {
+    opts <- list(
+      chart = list(type = correct_type(type)),
+      series = list1(mapdata$y),
+      labels = list1(mapdata$x)
+    )
+  } else {
+    opts <- list(
+      chart = list(type = correct_type(type)),
+      series = make_series(mapdata, mapping, type)
+    )
+  }
   opts <- modifyList(opts, choose_config(type, is_datetime(mapdata)))
   apexcharter(ax_opts = opts, width = width, height = height, elementId = elementId)
 }
@@ -32,14 +41,12 @@ apex <- function(data, mapping, type = "column", ..., width = NULL, height = NUL
 make_series <- function(mapdata, mapping, type) {
   mapdata <- as.data.frame(mapdata)
   series_names <- "Series"
-  series <- list()
-  if (identical(names(mapping), c("x", "y"))) {
+  if (!is.null(mapping$y))
     series_names <- rlang::as_name(mapping$y)
-    series <- list(list(
-      name = series_names,
-      data = parse_df(mapdata, add_names = names(mapping))
-    ))
-  }
+  series <- list(list(
+    name = series_names,
+    data = parse_df(mapdata, add_names = names(mapping))
+  ))
   if ("fill" %in% names(mapping)) {
     series <- lapply(
       X = unique(mapdata$fill),
@@ -58,7 +65,13 @@ make_series <- function(mapdata, mapping, type) {
 is_datetime <- function(mapdata) {
   inherits(mapdata$x, what = c("Date", "POSIXt"))
 }
-
+list1 <- function(x) {
+  if (length(x) == 1) {
+    list(x)
+  } else {
+    x
+  }
+}
 
 
 # Change type of charts for helpers type

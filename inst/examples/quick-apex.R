@@ -65,5 +65,38 @@ apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, 
 apex(data = iris, type = "scatter", mapping = aes(x = Sepal.Length, y = Sepal.Width, fill = Species)) %>% 
   ax_yaxis(min = min(iris$Sepal.Width))
 
+apex(data = iris, type = "scatter", mapping = aes(x = Sepal.Length, y = Sepal.Width, fill = Species, z = Petal.Length)) %>% 
+  ax_yaxis(min = min(iris$Sepal.Width))
+
+
+
+apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg))
+apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl))
+apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, z = scales::rescale(qsec)))
+
+
+
+
+
+# Pie ---------------------------------------------------------------------
+
+fruits <- data.frame(
+  name = c('Apples', 'Oranges', 'Bananas', 'Berries'),
+  value = c(44, 55, 67, 83)
+)
+apex(data = fruits, type = "pie", mapping = aes(x = name, y = value))
+
+
+
+
+# Radial ------------------------------------------------------------------
+
+apex(data = NULL, type = "radialBar", mapping = aes(x = "My value", y = 65))
+
+fruits <- data.frame(
+  name = c('Apples', 'Oranges', 'Bananas', 'Berries'),
+  value = c(44, 55, 67, 83)
+)
+apex(data = fruits, type = "radialBar", mapping = aes(x = name, y = value))
 
 

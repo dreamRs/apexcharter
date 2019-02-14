@@ -13,7 +13,7 @@ apex(data, mapping, type = "column", ..., width = NULL,
 \item{mapping}{Default list of aesthetic mappings to use for chart}
 
 \item{type}{Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
-\code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
+\code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
