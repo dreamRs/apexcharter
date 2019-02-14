@@ -59,3 +59,11 @@ apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, 
 
 
 
+# Scatter & Bubble --------------------------------------------------------
+
+
+apex(data = iris, type = "scatter", mapping = aes(x = Sepal.Length, y = Sepal.Width, fill = Species)) %>% 
+  ax_yaxis(min = min(iris$Sepal.Width))
+
+
+

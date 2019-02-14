@@ -23,11 +23,12 @@ parse_df <- function(data, add_names = FALSE) {
       } else if (inherits(x, "factor")) {
         as.character(x)
       } else {
-        if (!identical(add_names, FALSE)) {
-          formatNoSci(x)
-        } else {
-          x
-        }
+        # if (!identical(add_names, FALSE)) {
+        #   formatNoSci(x)
+        # } else {
+        #   x
+        # }
+        x
       }
     }
   )

@@ -6,7 +6,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var ax_opts, chart;
+    var ax_opts;
     var apexchart = null;
 
     return {
@@ -36,11 +36,11 @@ HTMLWidgets.widget({
       },
       
       getChart: function(){
-        return chart;
+        return apexchart;
       },
 
       resize: function(width, height) {
-        chart.updateOptions({
+        apexchart.updateOptions({
           chart: {
             width: width,
             height: height
