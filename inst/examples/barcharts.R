@@ -23,7 +23,7 @@ library(dplyr) # for count
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "bar") %>% 
   ax_plotOptions(bar = barOpts(
     horizontal = FALSE,
@@ -55,7 +55,7 @@ apexchart() %>%
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "bar") %>% 
   ax_plotOptions(bar = barOpts(
     horizontal = TRUE,
@@ -86,7 +86,7 @@ apexchart() %>%
 
 stacked <- count(mpg, manufacturer, year)
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "bar", stacked = TRUE) %>% 
   ax_series(
     list(
@@ -113,7 +113,7 @@ apexchart() %>%
 
 stacked <- count(mpg, manufacturer, year)
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "bar", stacked = FALSE) %>% 
   ax_plotOptions(bar = barOpts(
     endingShape = "rounded"

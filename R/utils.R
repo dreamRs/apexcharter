@@ -14,11 +14,11 @@ dropNulls <- function(x) {
 
 #' Utility function to create ApexChart parameters JSON
 #'
-#' @param ax A \code{apexchart} \code{htmlwidget} object.
+#' @param ax A \code{apexcharts} \code{htmlwidget} object.
 #' @param name Slot's name to edit
 #' @param ... Arguments for the slot
 #'
-#' @return A \code{apexchart} \code{htmlwidget} object.
+#' @return A \code{apexcharts} \code{htmlwidget} object.
 #' 
 #' @importFrom utils modifyList
 #'
@@ -40,11 +40,11 @@ dropNulls <- function(x) {
 
 #' Utility function to create ApexChart parameters JSON
 #'
-#' @param ax A \code{apexchart} \code{htmlwidget} object.
+#' @param ax A \code{apexcharts} \code{htmlwidget} object.
 #' @param name Slot's name to edit
 #' @param l List of arguments for the slot
 #'
-#' @return A \code{apexchart} \code{htmlwidget} object.
+#' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
 #' @noRd
 .ax_opt2 <- function(ax, name, l) {

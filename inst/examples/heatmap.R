@@ -28,7 +28,7 @@ mtcars_long <- mtcars %>%
 
 mtcars_long$value <- round(mtcars_long$value)
 
-test <- apexchart() %>% 
+test <- apexcharter() %>% 
   ax_chart(type = "heatmap") %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(lapply(
@@ -46,7 +46,7 @@ test <- apexchart() %>%
   ax_xaxis(type = "category", categories = unique(mtcars_long$variable))
 
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "heatmap") %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(l = list(
@@ -74,7 +74,7 @@ apexchart() %>%
 
 data("vaccines", package = "highcharter")
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "heatmap", animations = list(enabled = FALSE)) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series2(lapply(

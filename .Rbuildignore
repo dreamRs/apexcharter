@@ -1,3 +1,4 @@
+^data-raw$
 ^\.travis\.yml$
 ^apexcharter\.Rproj$
 ^\.Rproj\.user$

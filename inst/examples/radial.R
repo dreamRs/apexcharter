@@ -20,7 +20,7 @@ library(apexcharter)
 
 # Basic -------------------------------------------------------------------
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "radialBar") %>% 
   ax_plotOptions(
     radialBar = radialBarOpts(
@@ -35,7 +35,7 @@ apexchart() %>%
 
 # Stroked gauge -----------------------------------------------------------
 
-apexchart() %>% 
+apexcharter() %>% 
   ax_chart(type = "radialBar") %>% 
   ax_plotOptions(
     radialBar = radialBarOpts(

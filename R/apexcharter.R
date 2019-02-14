@@ -1,8 +1,8 @@
 
 #' Create a apexcharts.js widget
 #'
-#' @param ax_opts A \code{list} in JSON format with chart parameters
-#' @param data A \code{data.frame}.
+#' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
+#' @param ax_opts A \code{list} in JSON format with chart parameters.#' 
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -16,7 +16,7 @@
 #'
 #' library(apexcharter)
 #'
-#' apexchart(ax_opts = list(
+#' apexcharter(ax_opts = list(
 #'   chart = list(type = "bar"),
 #'   series = list(list(
 #'     name = "Example",
@@ -24,12 +24,12 @@
 #'   )),
 #'   xaxis = list(categories = LETTERS[1:5])
 #' ))
-apexchart <- function(ax_opts = list(), data = NULL, width = NULL, height = NULL, elementId = NULL) {
+apexcharter <- function(data = NULL, ax_opts = list(), width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x <- list(
     ax_opts = ax_opts,
-    data = data
+    data = as.data.frame(data)
   )
 
   # create widget

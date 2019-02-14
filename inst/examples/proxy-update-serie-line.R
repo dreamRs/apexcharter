@@ -23,7 +23,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   output$graph <- renderApexchart({
-    apexchart() %>% 
+    apexcharter() %>% 
       ax_chart(type = "line") %>% 
       ax_plotOptions(line = list(curve = "smooth")) %>% 
       ax_dataLabels(enabled = FALSE) %>% 

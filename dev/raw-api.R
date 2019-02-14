@@ -13,7 +13,7 @@ library(dplyr)
 data(mpg)
 dat <- count(mpg, manufacturer)
 
-apexchart(ax_opts = list(
+apexcharter(ax_opts = list(
   chart = list(type = "bar"),
   plotOptions = list(
     bar = list(
@@ -43,7 +43,7 @@ apexchart(ax_opts = list(
 
 # recreating (mostly): https://apexcharts.com/javascript-chart-demos/line-charts/data-labels/
 
-apexchart(ax_opts = list(
+apexcharter(ax_opts = list(
   chart = list(
     type = "line"
   ),
