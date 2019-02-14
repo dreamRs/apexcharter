@@ -23,3 +23,9 @@ NULL
 #' @export
 #' @rdname apexcharter-exports
 NULL
+
+#' @importFrom ggplot2 aes
+#' @name aes
+#' @export
+#' @rdname apexcharter-exports
+NULL

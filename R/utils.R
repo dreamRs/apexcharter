@@ -10,6 +10,10 @@ dropNulls <- function(x) {
   if (!is.null(x)) x else y
 }
 
+formatNoSci <- function(x) {
+  if (is.null(x)) return(NULL)
+  format(x, scientific = FALSE, digits = 15)
+}
 
 
 #' Utility function to create ApexChart parameters JSON

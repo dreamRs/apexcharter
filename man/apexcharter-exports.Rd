@@ -3,6 +3,7 @@
 \name{apexcharter-exports}
 \alias{apexcharter-exports}
 \alias{\%>\%}
+\alias{aes}
 \title{apexcharter exported operators and S3 methods}
 \description{
 The following functions are imported and then re-exported

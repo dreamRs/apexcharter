@@ -8,7 +8,6 @@
 #'  reuse \code{data} names or a character vector of new names.
 #'
 #' @export
-#' @importFrom data.table transpose
 #' @importFrom stats setNames
 #'
 parse_df <- function(data, add_names = FALSE) {
@@ -17,25 +16,33 @@ parse_df <- function(data, add_names = FALSE) {
   l <- lapply(
     X = data[],
     FUN = function(x) {
-      if (inherits(x, "Date")) {
+      if (inherits(x, "Date") & identical(add_names, FALSE)) {
         as.numeric(x) * 86400000
-      } else if (inherits(x, "POSIXt")) {
+      } else if (inherits(x, "POSIXt") & identical(add_names, FALSE)) {
         as.numeric(x)
       } else if (inherits(x, "factor")) {
         as.character(x)
       } else {
-        x
+        if (!identical(add_names, FALSE)) {
+          formatNoSci(x)
+        } else {
+          x
+        }
       }
     }
   )
-  ll <- data.table::transpose(l)
-  if (isTRUE(add_names)) {
-    ll <- lapply(ll, as.list)
-    ll <- lapply(ll, setNames, nm = names_)
-  }
-  if (is.character(add_names) & length(add_names) == length(names_)) {
-    ll <- lapply(ll, as.list)
-    ll <- lapply(ll, setNames, nm = add_names)
-  }
+  ll <- lapply(
+    X = seq_len(nrow(data)),
+    FUN = function(i) {
+      res <- lapply(l, `[[`, i)
+      if (identical(add_names, FALSE)) {
+        res <- unname(res)
+      }
+      if (is.character(add_names) & length(add_names) == length(names_)) {
+        res <- setNames(res, nm = add_names)
+      }
+      return(res)
+    }
+  )
   return(ll)
 }
