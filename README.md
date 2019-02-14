@@ -4,7 +4,11 @@
 
 [![Travis build status](https://travis-ci.org/dreamRs/apexcharter.svg?branch=master)](https://travis-ci.org/dreamRs/apexcharter)
 
-:construction: :warning: Under development !! API will change (and this doesn't work properly in RStudio viewer for now) :warning: :construction:
+:construction: :warning: Under development !! API will change :warning: :construction:
+
+:warning: Use RStudio >= 1.2 to properly display charts
+
+
 
 ## Installation
 
@@ -14,6 +18,7 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("dreamRs/apexcharter")
 ```
+
 
 ## Basic example
 
