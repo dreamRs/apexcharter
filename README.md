@@ -1,13 +1,16 @@
 # apexcharter
 
-> Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js)
+> Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js) : A modern JavaScript charting library to build interactive charts and visualizations with simple API.
 
 [![Travis build status](https://travis-ci.org/dreamRs/apexcharter.svg?branch=master)](https://travis-ci.org/dreamRs/apexcharter)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-:construction: :warning: Under development !! API will change :warning: :construction:
+:construction: Under development !! API will change :construction:
 
 :warning: Use RStudio >= 1.2 to properly display charts
 
+
+Note: Once again, development is heavily inspired by amazing [highcharter](http://jkunst.com/highcharter/).
 
 
 ## Installation
@@ -20,7 +23,34 @@ devtools::install_github("dreamRs/apexcharter")
 ```
 
 
-## Basic example
+
+## Quick Charts
+
+Use `apex` function to quickly create visualizations :
+
+
+```r
+library(apexcharter)
+
+data("mpg", package = "ggplot2")
+n_manufac <- dplyr::count(mpg, manufacturer)
+
+apex(data = n_manufac, type = "bar", mapping = aes(x = manufacturer, y = n))
+```
+![](man/figures/apex-bar.png)
+
+
+With datetime:
+
+```r
+data("economics", package = "ggplot2")
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(width = 1)
+```
+![](man/figures/apex-line.png)
+
+
+## Full API
 
 Simple bar chart :
 
