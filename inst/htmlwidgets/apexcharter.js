@@ -7,6 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var ax_opts, chart;
+    var apexchart = null;
 
     return {
 
@@ -23,9 +24,14 @@ HTMLWidgets.widget({
         ax_opts.chart.width = width;
         ax_opts.chart.height = height;
 
-        // Generate chart
-        chart = new ApexCharts(document.querySelector("#" + el.id), ax_opts);
-        chart.render();
+        // Generate or update chart
+        if (apexchart === null) {
+          apexchart = new ApexCharts(document.querySelector("#" + el.id), ax_opts);
+          apexchart.render();
+        } else {
+          apexchart.updateSeries(ax_opts.series);
+        }
+        
 
       },
       
