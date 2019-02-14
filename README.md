@@ -52,16 +52,12 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 
 ## Full API
 
-Simple bar chart :
+All methods from ApexCharts are available with function like `ax_*` compatible with pipe from `magrittr` :
 
 ```r
 library(apexcharter)
-library(ggplot2) # for data
-library(dplyr)
-library(magrittr)
-
-data(mpg)
-dat <- count(mpg, manufacturer)
+data(mpg, package = "ggplot2")
+n_manufac <- dplyr::count(mpg, manufacturer)
 
 apexcharter() %>% 
   ax_chart(type = "bar") %>% 
@@ -75,19 +71,20 @@ apexcharter() %>%
   ) %>% 
   ax_grid(
     show = TRUE,
-    position = "front"
+    position = "front",
+    borderColor = "#FFF"
   ) %>% 
   ax_series(list(
     name = "Count",
-    data = dat$n
+    data = n_manufac$n
   )) %>% 
   ax_colors("#112446") %>% 
-  ax_xaxis(categories = dat$manufacturer) %>% 
+  ax_xaxis(categories = n_manufac$manufacturer) %>% 
   ax_title(text = "Number of models") %>% 
   ax_subtitle(text = "Data from ggplot2")
 ```
 
-![alt text](img/api-bars.png)
+![](man/figures/apexcharter-full-bar.png)
 
 
 ## Raw API
