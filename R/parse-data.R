@@ -18,8 +18,8 @@ parse_df <- function(data, add_names = FALSE) {
     FUN = function(x) {
       if (inherits(x, "Date") & identical(add_names, FALSE)) {
         as.numeric(x) * 86400000
-      } else if (inherits(x, "POSIXt") & identical(add_names, FALSE)) {
-        as.numeric(x)
+      } else if (inherits(x, "POSIXt")) {
+        as.numeric(x) * 1000
       } else if (inherits(x, "factor")) {
         as.character(x)
       } else {
