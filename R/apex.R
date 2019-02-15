@@ -6,6 +6,7 @@
 #' @param type Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
 #'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
+#' @param auto_update In Shiny application, update existing chart rather than generating new one.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -15,7 +16,7 @@
 #' @importFrom rlang eval_tidy as_name
 #' @importFrom utils modifyList
 #'
-apex <- function(data, mapping, type = "column", ..., width = NULL, height = NULL, elementId = NULL) {
+apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
                             "pie", "donut", "radialBar", "radar", "scatter", "bubble", "heatmap"))
   data <- as.data.frame(data)
@@ -33,7 +34,10 @@ apex <- function(data, mapping, type = "column", ..., width = NULL, height = NUL
     )
   }
   opts <- modifyList(opts, choose_config(type, is_datetime(mapdata)))
-  apexchart(ax_opts = opts, width = width, height = height, elementId = elementId)
+  apexchart(
+    ax_opts = opts, width = width, height = height,
+    elementId = elementId, auto_update = auto_update
+  )
 }
 
 

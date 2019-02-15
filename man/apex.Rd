@@ -4,8 +4,8 @@
 \alias{apex}
 \title{Quick Apex Chart}
 \usage{
-apex(data, mapping, type = "column", ..., width = NULL,
-  height = NULL, elementId = NULL)
+apex(data, mapping, type = "column", ..., auto_update = TRUE,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
@@ -16,6 +16,8 @@ apex(data, mapping, type = "column", ..., width = NULL,
 \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
+
+\item{auto_update}{In Shiny application, update existing chart rather than generating new one.}
 
 \item{width}{A numeric input in pixels.}
 

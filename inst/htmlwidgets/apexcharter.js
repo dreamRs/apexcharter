@@ -29,7 +29,13 @@ HTMLWidgets.widget({
           apexchart = new ApexCharts(document.querySelector("#" + el.id), ax_opts);
           apexchart.render();
         } else {
-          apexchart.updateSeries(ax_opts.series);
+          if (x.auto_update) {
+            apexchart.updateSeries(ax_opts.series);
+          } else {
+            apexchart.destroy();
+            apexchart = new ApexCharts(document.querySelector("#" + el.id), ax_opts);
+            apexchart.render();
+          }
         }
         
 
