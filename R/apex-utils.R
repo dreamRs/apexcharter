@@ -384,14 +384,14 @@ ax_responsive <- function(ax, ...) {
 #' @examples
 #' 
 #' # One serie
-#' apexcharter() %>% 
+#' apexchart() %>% 
 #'   ax_series(list(
 #'     name = "rnorm",
 #'     data = rnorm(10)
 #'   ))
 #' 
 #' # Two series
-#' apexcharter() %>% 
+#' apexchart() %>% 
 #'   ax_series(
 #'     list(
 #'       name = "rnorm 1",

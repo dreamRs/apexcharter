@@ -25,7 +25,7 @@ data("economics", package = "ggplot2")
 # One serie (class Date) --------------------------------------------------
 
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "area", zoom = list(enabled = TRUE)) %>% 
   # ax_stroke(curve = "smooth") %>% 
   ax_plotOptions(line = list(curve = "smooth")) %>%
@@ -62,7 +62,7 @@ apexcharter() %>%
 
 # Two series (Date) -------------------------------------------------------
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "line", zoom = list(enabled = TRUE)) %>% 
   ax_plotOptions(line = list(curve = "smooth")) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
@@ -99,7 +99,7 @@ apexcharter() %>%
 
 # doesn't work since 2.0.0
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "area", scroller = list(enabled = TRUE)) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series(list(

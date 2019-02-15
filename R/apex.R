@@ -33,7 +33,7 @@ apex <- function(data, mapping, type = "column", ..., width = NULL, height = NUL
     )
   }
   opts <- modifyList(opts, choose_config(type, is_datetime(mapdata)))
-  apexcharter(ax_opts = opts, width = width, height = height, elementId = elementId)
+  apexchart(ax_opts = opts, width = width, height = height, elementId = elementId)
 }
 
 

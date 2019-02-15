@@ -1,8 +1,8 @@
 
 #' Create a apexcharts.js widget
 #'
-#' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
-#' @param ax_opts A \code{list} in JSON format with chart parameters.#' 
+#' @param ax_opts A \code{list} in JSON format with chart parameters.
+#' @param auto_update In Shiny application, update existing chart rather than generating new one.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -16,7 +16,7 @@
 #'
 #' library(apexcharter)
 #'
-#' apexcharter(ax_opts = list(
+#' apexchart(ax_opts = list(
 #'   chart = list(type = "bar"),
 #'   series = list(list(
 #'     name = "Example",
@@ -24,18 +24,18 @@
 #'   )),
 #'   xaxis = list(categories = LETTERS[1:5])
 #' ))
-apexcharter <- function(data = NULL, ax_opts = list(), width = NULL, height = NULL, elementId = NULL) {
+apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x <- list(
     ax_opts = ax_opts,
-    data = as.data.frame(data)
+    auto_update = auto_update
   )
 
   # create widget
   htmlwidgets::createWidget(
     name = 'apexcharter',
-    x,
+    x = x,
     width = width,
     height = height,
     package = 'apexcharter',
