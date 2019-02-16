@@ -33,7 +33,7 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
       series = make_series(mapdata, mapping, type)
     )
   }
-  opts <- modifyList(opts, choose_config(type, is_datetime(mapdata)))
+  opts <- modifyList(opts, choose_config(type, is_x_datetime(mapdata)))
   apexchart(
     ax_opts = opts, width = width, height = height,
     elementId = elementId, auto_update = auto_update
@@ -66,7 +66,7 @@ make_series <- function(mapdata, mapping, type) {
 }
 
 
-is_datetime <- function(mapdata) {
+is_x_datetime <- function(mapdata) {
   inherits(mapdata$x, what = c("Date", "POSIXt"))
 }
 list1 <- function(x) {

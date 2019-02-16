@@ -40,9 +40,11 @@ test_that("ax_opt2 works", {
   ), class = c("list", "apexcharter"))
   
   new_opts <- .ax_opt2(opts, "series", list(data = 1:3))
+  new_opts <- .ax_opt2(new_opts, "chart", list(type = "line"))
   
   expect_length(new_opts$x$ax_opts, 2)
   expect_named(new_opts$x$ax_opts, c("chart", "series"))
   expect_identical(new_opts$x$ax_opts$series$data, 1:3)
+  expect_identical(new_opts$x$ax_opts$chart$type, "line")
 })
 

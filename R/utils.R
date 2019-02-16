@@ -29,10 +29,6 @@ formatNoSci <- function(x) {
 #' @noRd
 .ax_opt <- function(ax, name, ...) {
   
-  if(!any(class(ax) %in% c("apexcharter", "apexcharter_Proxy"))){
-    stop("ax must be a apexcharter or a apexcharterProxy object")
-  }
-  
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- list(...)
   } else {

@@ -26,7 +26,7 @@ function(input, output, session) {
   
   
   output$chart <- renderApexchart({
-    apex(data = data_r(), type = "bar", mapping = aes(x = manufacturer, y = n, fill = year), auto_update = F)
+    apex(data = data_r(), type = "bar", mapping = aes(x = manufacturer, y = n, fill = year))
   })
   
 }
