@@ -58,6 +58,16 @@ apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, 
 
 
 
+library(rte.data)
+
+
+consumption <- get_consumption(type = c("REALISED", "D-1"))
+apex(data = consumption, type = "line", mapping = aes(x = start_date, y = value, fill = type))
+
+
+
+
+
 
 # Scatter & Bubble --------------------------------------------------------
 
