@@ -35,14 +35,14 @@ ax_annotations <- function(ax,
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
 #' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
-#'  \code{"histogram"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
+#'  \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param stacked Logical. Enables stacked option for axis charts. 
 #' @param stackType When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}
 #' @param animations A list of parameters.
 #' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.
 #' @param foreColor Sets the text color for the chart. Defaults to \code{#373d3f}.
 #' @param dropShadow A list of parameters. See \url{https://apexcharts.com/docs/options/chart/dropshadow/}.
-#' @param events A list of parameters. See\url{https://apexcharts.com/docs/options/chart/events/}.
+#' @param events See \code{\link{events_opts}}.
 #' @param offsetX Sets the left offset for chart.
 #' @param offsetY Sets the top offset for chart.
 #' @param selection A list of parameters.
@@ -82,10 +82,10 @@ ax_chart <- function(ax,
 #' Specific options for chart
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param bar See \code{\link{barOpts}}.
-#' @param heatmap See \code{\link{heatmapOpts}}.
-#' @param radialBar See \code{\link{radialBarOpts}}.
-#' @param pie See \code{\link{pieOpts}}.
+#' @param bar See \code{\link{bar_opts}}.
+#' @param heatmap See \code{\link{heatmap_opts}}.
+#' @param radialBar See \code{\link{radialBar_opts}}.
+#' @param pie See \code{\link{pie_opts}}.
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.

@@ -6,78 +6,53 @@
 
 
 
-#' Options for scroller
-#'
-#' @param enabled 
-#' @param height 
-#' @param track 
-#' @param thumb 
-#' @param scrollButtons 
-#' @param padding 
-#' @param offsetX 
-#' @param offsetY 
-#' @param ... Additional parameters.
-#'
-#' @noRd
-#'
-scrollerOpts <- function(enabled = NULL,
-                         height = NULL,
-                         track = NULL,
-                         thumb = NULL,
-                         scrollButtons = NULL,
-                         padding = NULL,
-                         offsetX = NULL,
-                         offsetY = NULL,
-                         ...) {
-  dropNulls(
-    list(
-      enabled = enabled,
-      height = height,
-      track = track,
-      thumb = thumb,
-      scrollButtons = scrollButtons,
-      padding = padding,
-      offsetX = offsetX,
-      offsetY = offsetY,
-      ...
-    )
-  )
-}
-
-
 #' Events options
 #'
-#' @param beforeMount JS function. Fires before the chart has been drawn on screen.
-#' @param mounted JS function. Fires after the chart has been drawn on screen.
-#' @param updated JS function. Fires when the chart has been dynamically updated either with updateOptions() or updateSeries() functions.
-#' @param clicked JS function. Fires when user clicks on any area of the chart.
-#' @param selection JS function. Fires when user selects rect using the selection tool. 
-#' @param dataPointSelection JS function. Fires when user clicks on a datapoint. 
-#' @param zoomed JS function. Fires when user zooms in/out the chart using either the selection zooming tool or zoom in/out buttons. 
-#' @param scrolled JS function. Fires when user scrolls using either the pan tool or scroller. 
+#' @param click Fires when user clicks on any area of the chart.
+#' @param beforeMount Fires before the chart has been drawn on screen.
+#' @param mounted Fires after the chart has been drawn on screen.
+#' @param updated Fires when the chart has been dynamically updated.
+#' @param legendClick Fires when user clicks on legend. 
+#' @param selection Fires when user selects rect using the selection tool. 
+#' @param dataPointSelection Fires when user clicks on a datapoint (bar/column/marker/bubble/donut-slice). 
+#' @param dataPointMouseEnter Fires when user’s mouse enter on a datapoint (bar/column/marker/bubble/donut-slice). 
+#' @param dataPointMouseLeave MouseLeave event for a datapoint (bar/column/marker/bubble/donut-slice). 
+#' @param beforeZoom This function, if defined, runs just before zooming in/out of the chart allowing you to set a custom range for zooming in/out. 
+#' @param zoomed Fires when user zooms in/out the chart using either the selection zooming tool or zoom in/out buttons. 
+#' @param scrolled Fires when user scrolls using the pan tool. 
 #' @param ... Additional parameters.
 #' 
-#' @note See \url{https://apexcharts.com/docs/options/chart/events/}.
+#' @note All arguments should be JavaScript function defined with \code{htmlwidgets::JS}.
 #'
+#' @note See \url{https://apexcharts.com/docs/options/chart/events/}.
+#' 
 #' @export
 #'
-eventsOpts <- function(beforeMount = NULL,
-                       mounted = NULL,
-                       updated = NULL,
-                       clicked = NULL,
-                       selection = NULL,
-                       dataPointSelection = NULL,
-                       zoomed = NULL,
-                       scrolled = NULL,
-                       ...) {
+events_opts <- function(click = NULL,
+                        beforeMount = NULL,
+                        mounted = NULL,
+                        updated = NULL,
+                        legendClick = NULL,
+                        selection = NULL,
+                        dataPointSelection = NULL,
+                        dataPointMouseEnter = NULL,
+                        dataPointMouseLeave = NULL,
+                        beforeZoom = NULL,
+                        zoomed = NULL,
+                        scrolled = NULL,
+                        ...) {
   dropNulls(
     list(
+      click = click,
       beforeMount = beforeMount,
       mounted = mounted,
       updated = updated,
-      clicked = clicked,
+      legendClick = legendClick,
       selection = selection,
       dataPointSelection = dataPointSelection,
+      dataPointMouseEnter = dataPointMouseEnter,
+      dataPointMouseLeave = dataPointMouseLeave,
+      beforeZoom = beforeZoom,
       zoomed = zoomed,
       scrolled = scrolled,
       ...
@@ -86,40 +61,6 @@ eventsOpts <- function(beforeMount = NULL,
 }
 
 
-#' Selection options
-#'
-#' @param enabled 
-#' @param type 
-#' @param selectedPoints 
-#' @param fill 
-#' @param stroke 
-#' @param xaxis 
-#' @param yaxis 
-#' @param ... 
-#'
-#' @noRd
-#'
-selectionOpts <- function(enabled = NULL,
-                          type = NULL,
-                          selectedPoints = NULL,
-                          fill = NULL,
-                          stroke = NULL,
-                          xaxis = NULL,
-                          yaxis = NULL,
-                          ...) {
-  dropNulls(
-    list(
-      enabled = enabled,
-      type = type,
-      selectedPoints = selectedPoints,
-      fill = fill,
-      stroke = stroke,
-      xaxis = xaxis,
-      yaxis = yaxis,
-      ...
-    )
-  )
-}
 
 
 #' Bar options
@@ -131,7 +72,7 @@ selectionOpts <- function(enabled = NULL,
 #' @param columnWidth In column charts, columnWidth is the percentage of the available width in the grid-rect. 
 #' @param barHeight In horizontal bar charts, barHeight is the percentage of the available height in the grid-rect. 
 #' @param distributed Logical. Turn this option to make the bars discrete. Each value indicates one bar per series.
-#' @param colors List.
+#' @param colors A list of parameters.
 #' @param dataLabels List with fields \code{position} (available options: \code{"top"}, \code{"center"} or \code{"bottom"})
 #' @param ... Additional parameters.
 #' 
@@ -139,14 +80,14 @@ selectionOpts <- function(enabled = NULL,
 #'
 #' @export
 #'
-barOpts <- function(horizontal = NULL,
-                    endingShape = NULL,
-                    columnWidth = NULL,
-                    barHeight = NULL,
-                    distributed = NULL,
-                    colors = NULL,
-                    dataLabels = NULL,
-                    ...) {
+bar_opts <- function(horizontal = NULL,
+                     endingShape = NULL,
+                     columnWidth = NULL,
+                     barHeight = NULL,
+                     distributed = NULL,
+                     colors = NULL,
+                     dataLabels = NULL,
+                     ...) {
   dropNulls(
     list(
       horizontal = horizontal,
@@ -176,11 +117,11 @@ barOpts <- function(horizontal = NULL,
 #'
 #' @export
 #'
-heatmapOpts <- function(radius = NULL,
-                        enableShades = NULL,
-                        shadeIntensity = NULL,
-                        colorScale = NULL,
-                        ...) {
+heatmap_opts <- function(radius = NULL,
+                         enableShades = NULL,
+                         shadeIntensity = NULL,
+                         colorScale = NULL,
+                         ...) {
   dropNulls(
     list(
       radius = radius,
@@ -212,16 +153,16 @@ heatmapOpts <- function(radius = NULL,
 #'
 #' @export
 #'
-radialBarOpts <- function(size = NULL,
-                          inverseOrder = NULL,
-                          startAngle = NULL,
-                          endAngle = NULL,
-                          offsetX = NULL,
-                          offsetY = NULL,
-                          hollow = NULL,
-                          track = NULL,
-                          dataLabels = NULL,
-                          ...) {
+radialBar_opts <- function(size = NULL,
+                           inverseOrder = NULL,
+                           startAngle = NULL,
+                           endAngle = NULL,
+                           offsetX = NULL,
+                           offsetY = NULL,
+                           hollow = NULL,
+                           track = NULL,
+                           dataLabels = NULL,
+                           ...) {
   dropNulls(
     list(
       size = size,
@@ -256,13 +197,13 @@ radialBarOpts <- function(size = NULL,
 #'
 #' @export
 #'
-pieOpts <- function(size = NULL,
-                    donut = NULL,
-                    customScale = NULL,
-                    offsetX = NULL,
-                    offsetY = NULL,
-                    dataLabels = NULL,
-                    ...) {
+pie_opts <- function(size = NULL,
+                     donut = NULL,
+                     customScale = NULL,
+                     offsetX = NULL,
+                     offsetY = NULL,
+                     dataLabels = NULL,
+                     ...) {
   dropNulls(
     list(
       size = size,

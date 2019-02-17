@@ -14,7 +14,7 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
 \item{type}{Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
-\code{"histogram"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
+\code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
 
 \item{stacked}{Logical. Enables stacked option for axis charts.}
 
@@ -28,7 +28,7 @@ ax_chart(ax, type = NULL, stacked = NULL, stackType = NULL,
 
 \item{dropShadow}{A list of parameters. See \url{https://apexcharts.com/docs/options/chart/dropshadow/}.}
 
-\item{events}{A list of parameters. See\url{https://apexcharts.com/docs/options/chart/events/}.}
+\item{events}{See \code{\link{events_opts}}.}
 
 \item{offsetX}{Sets the left offset for chart.}
 

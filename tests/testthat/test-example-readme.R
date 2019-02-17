@@ -12,7 +12,7 @@ test_that("readme exemple works", {
   
   ax <- apexchart() %>% 
     ax_chart(type = "bar") %>% 
-    ax_plotOptions(bar = barOpts(
+    ax_plotOptions(bar = bar_opts(
       horizontal = FALSE,
       endingShape = "flat",
       columnWidth = "70%",
