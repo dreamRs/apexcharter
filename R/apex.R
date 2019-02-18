@@ -13,7 +13,7 @@
 #'
 #' @export
 #' 
-#' @importFrom rlang eval_tidy as_name
+#' @importFrom rlang eval_tidy as_label
 #' @importFrom utils modifyList
 #'
 apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
@@ -21,7 +21,7 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
                             "pie", "donut", "radialBar", "radar", "scatter", "bubble", "heatmap"))
   data <- as.data.frame(data)
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  if (type %in% c("pie", "donut", "radialBar", "radar")) {
+  if (type %in% c("pie", "donut", "radialBar")) {
     opts <- list(
       chart = list(type = correct_type(type)),
       series = list1(mapdata$y),
@@ -46,18 +46,19 @@ make_series <- function(mapdata, mapping, type) {
   mapdata <- as.data.frame(mapdata)
   series_names <- "Series"
   if (!is.null(mapping$y))
-    series_names <- rlang::as_name(mapping$y)
+    series_names <- rlang::as_label(mapping$y)
   series <- list(list(
     name = series_names,
     data = parse_df(mapdata, add_names = names(mapping))
   ))
-  if ("fill" %in% names(mapping)) {
+  if (is_grouped(names(mapping))) {
+    mapdata <- rename_aes(mapdata)
     series <- lapply(
-      X = unique(mapdata$fill),
+      X = unique(mapdata$group),
       FUN = function(x) {
         list(
           name = x,
-          data = parse_df(mapdata[mapdata$fill %in% x, ], add_names = names(mapping))
+          data = parse_df(mapdata[mapdata$group %in% x, ], add_names = names(mapping))
         )
       }
     )
@@ -65,6 +66,19 @@ make_series <- function(mapdata, mapping, type) {
   series
 }
 
+is_grouped <- function(x) {
+  any(c("colour", "fill", "group") %in% x)
+}
+
+rename_aes <- function(mapping) {
+  if ("colour" %in% names(mapping)) {
+    names(mapping)[names(mapping) == "colour"] <- "group"
+  }
+  if ("fill" %in% names(mapping)) {
+    names(mapping)[names(mapping) == "fill"] <- "group"
+  }
+  mapping
+}
 
 is_x_datetime <- function(mapdata) {
   inherits(mapdata$x, what = c("Date", "POSIXt"))

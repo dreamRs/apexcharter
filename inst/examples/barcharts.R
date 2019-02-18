@@ -25,7 +25,7 @@ dat <- count(mpg, manufacturer)
 
 apexchart() %>% 
   ax_chart(type = "bar") %>% 
-  ax_plotOptions(bar = barOpts(
+  ax_plotOptions(bar = bar_opts(
     horizontal = FALSE,
     endingShape = "flat",
     columnWidth = "70%",
@@ -57,7 +57,7 @@ dat <- count(mpg, manufacturer)
 
 apexchart() %>% 
   ax_chart(type = "bar") %>% 
-  ax_plotOptions(bar = barOpts(
+  ax_plotOptions(bar = bar_opts(
     horizontal = TRUE,
     dataLabels = list(
       position = "center"
@@ -115,7 +115,7 @@ stacked <- count(mpg, manufacturer, year)
 
 apexchart() %>% 
   ax_chart(type = "bar", stacked = FALSE) %>% 
-  ax_plotOptions(bar = barOpts(
+  ax_plotOptions(bar = bar_opts(
     endingShape = "rounded"
   )) %>% 
   ax_series(

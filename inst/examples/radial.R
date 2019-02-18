@@ -23,7 +23,7 @@ library(apexcharter)
 apexchart() %>% 
   ax_chart(type = "radialBar") %>% 
   ax_plotOptions(
-    radialBar = radialBarOpts(
+    radialBar = radialBar_opts(
       hollow = list(size = "70%")
     )
   ) %>% 
@@ -38,7 +38,7 @@ apexchart() %>%
 apexchart() %>% 
   ax_chart(type = "radialBar") %>% 
   ax_plotOptions(
-    radialBar = radialBarOpts(
+    radialBar = radialBar_opts(
       startAngle = -135,
       endAngle = 135,
       dataLabels = list(
