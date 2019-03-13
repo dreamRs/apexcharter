@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3.910</span>
       </span>
     </div>
 
@@ -83,112 +83,112 @@
 <p>Htmlwidget for <a href="https://github.com/apexcharts/apexcharts.js">apexcharts.js</a> : A modern JavaScript charting library to build interactive charts and visualizations with simple API.</p>
 </blockquote>
 <p><a href="https://travis-ci.org/dreamRs/apexcharter"><img src="https://travis-ci.org/dreamRs/apexcharter.svg?branch=master" alt="Travis build status"></a> <a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></p>
-<p>🚧 Under development !! API will change 🚧</p>
-<p>⚠️ Use RStudio &gt;= 1.2 to properly display charts</p>
+<p><span class="emoji" data-emoji="construction">🚧</span> Under development !! API will change <span class="emoji" data-emoji="construction">🚧</span></p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Use RStudio &gt;= 1.2 to properly display charts</p>
 <p>Note: Once again, development is heavily inspired by amazing <a href="http://jkunst.com/highcharter/">highcharter</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"dreamRs/apexcharter"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"dreamRs/apexcharter"</span>)</a></code></pre></div>
 </div>
 <div id="quick-charts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-charts" class="anchor"></a>Quick Charts</h2>
 <p>Use <code>apex</code> function to quickly create visualizations :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"mpg"</span>, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)
-n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(mpg, manufacturer)
-
-<span class="kw"><a href="reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_manufac, <span class="dt">type =</span> <span class="st">"bar"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> manufacturer, <span class="dt">y =</span> n))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"mpg"</span>, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/tally">count</a></span>(mpg, manufacturer)</a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw"><a href="reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_manufac, <span class="dt">type =</span> <span class="st">"bar"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> manufacturer, <span class="dt">y =</span> n))</a></code></pre></div>
 <p><img src="reference/figures/apex-bar.png"></p>
 <p>With datetime:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"economics"</span>, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)
-<span class="kw"><a href="reference/apex.html">apex</a></span>(<span class="dt">data =</span> economics, <span class="dt">type =</span> <span class="st">"line"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> date, <span class="dt">y =</span> uempmed)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_stroke.html">ax_stroke</a></span>(<span class="dt">width =</span> <span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"economics"</span>, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="reference/apex.html">apex</a></span>(<span class="dt">data =</span> economics, <span class="dt">type =</span> <span class="st">"line"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> date, <span class="dt">y =</span> uempmed)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/ax_stroke.html">ax_stroke</a></span>(<span class="dt">width =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="reference/figures/apex-line.png"></p>
 </div>
 <div id="full-api" class="section level2">
 <h2 class="hasAnchor">
 <a href="#full-api" class="anchor"></a>Full API</h2>
 <p>All methods from ApexCharts are available with function like <code>ax_*</code> compatible with pipe from <code>magrittr</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(mpg, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)
-n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(mpg, manufacturer)
-
-<span class="kw"><a href="reference/apexchart.html">apexchart</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_chart.html">ax_chart</a></span>(<span class="dt">type =</span> <span class="st">"bar"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_plotOptions.html">ax_plotOptions</a></span>(<span class="dt">bar =</span> <span class="kw"><a href="reference/bar_opts.html">bar_opts</a></span>(
-    <span class="dt">horizontal =</span> <span class="ot">FALSE</span>,
-    <span class="dt">endingShape =</span> <span class="st">"flat"</span>,
-    <span class="dt">columnWidth =</span> <span class="st">"70%"</span>,
-    <span class="dt">dataLabels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">position =</span> <span class="st">"top"</span>
-    ))
-  ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_grid.html">ax_grid</a></span>(
-    <span class="dt">show =</span> <span class="ot">TRUE</span>,
-    <span class="dt">position =</span> <span class="st">"front"</span>,
-    <span class="dt">borderColor =</span> <span class="st">"#FFF"</span>
-  ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax-series.html">ax_series</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">name =</span> <span class="st">"Count"</span>,
-    <span class="dt">data =</span> n_manufac<span class="op">$</span>n
-  )) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_colors.html">ax_colors</a></span>(<span class="st">"#112446"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_xaxis.html">ax_xaxis</a></span>(<span class="dt">categories =</span> n_manufac<span class="op">$</span>manufacturer) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_title.html">ax_title</a></span>(<span class="dt">text =</span> <span class="st">"Number of models"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/ax_subtitle.html">ax_subtitle</a></span>(<span class="dt">text =</span> <span class="st">"Data from ggplot2"</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(mpg, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/tally">count</a></span>(mpg, manufacturer)</a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw"><a href="reference/apexchart.html">apexchart</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/ax_chart.html">ax_chart</a></span>(<span class="dt">type =</span> <span class="st">"bar"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw"><a href="reference/ax_plotOptions.html">ax_plotOptions</a></span>(<span class="dt">bar =</span> <span class="kw"><a href="reference/bar_opts.html">bar_opts</a></span>(</a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="dt">horizontal =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="dt">endingShape =</span> <span class="st">"flat"</span>,</a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="dt">columnWidth =</span> <span class="st">"70%"</span>,</a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="dt">dataLabels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb4-12" title="12">      <span class="dt">position =</span> <span class="st">"top"</span></a>
+<a class="sourceLine" id="cb4-13" title="13">    ))</a>
+<a class="sourceLine" id="cb4-14" title="14">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="st">  </span><span class="kw"><a href="reference/ax_grid.html">ax_grid</a></span>(</a>
+<a class="sourceLine" id="cb4-16" title="16">    <span class="dt">show =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb4-17" title="17">    <span class="dt">position =</span> <span class="st">"front"</span>,</a>
+<a class="sourceLine" id="cb4-18" title="18">    <span class="dt">borderColor =</span> <span class="st">"#FFF"</span></a>
+<a class="sourceLine" id="cb4-19" title="19">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="st">  </span><span class="kw"><a href="reference/ax-series.html">ax_series</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb4-21" title="21">    <span class="dt">name =</span> <span class="st">"Count"</span>,</a>
+<a class="sourceLine" id="cb4-22" title="22">    <span class="dt">data =</span> n_manufac<span class="op">$</span>n</a>
+<a class="sourceLine" id="cb4-23" title="23">  )) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="st">  </span><span class="kw"><a href="reference/ax_colors.html">ax_colors</a></span>(<span class="st">"#112446"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="st">  </span><span class="kw"><a href="reference/ax_xaxis.html">ax_xaxis</a></span>(<span class="dt">categories =</span> n_manufac<span class="op">$</span>manufacturer) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="st">  </span><span class="kw"><a href="reference/ax_title.html">ax_title</a></span>(<span class="dt">text =</span> <span class="st">"Number of models"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="st">  </span><span class="kw"><a href="reference/ax_subtitle.html">ax_subtitle</a></span>(<span class="dt">text =</span> <span class="st">"Data from ggplot2"</span>)</a></code></pre></div>
 <p><img src="reference/figures/apexcharter-full-bar.png"></p>
 </div>
 <div id="raw-api" class="section level2">
 <h2 class="hasAnchor">
 <a href="#raw-api" class="anchor"></a>Raw API</h2>
 <p>Pass a list of parameters to the function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/apexchart.html">apexchart</a></span>(<span class="dt">ax_opts =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-  <span class="dt">chart =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">type =</span> <span class="st">"line"</span>
-  ),
-  <span class="dt">stroke =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">curve =</span> <span class="st">"smooth"</span>
-  ),
-  <span class="dt">grid =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">borderColor =</span> <span class="st">"#e7e7e7"</span>,
-    <span class="dt">row =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">colors =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"#f3f3f3"</span>, <span class="st">"transparent"</span>),
-      <span class="dt">opacity =</span> <span class="fl">0.5</span>
-    )
-  ),
-  <span class="dt">dataLabels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">enabled =</span> <span class="ot">TRUE</span>
-  ),
-  <span class="dt">markers =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">style =</span> <span class="st">"inverted"</span>, <span class="dt">size =</span> <span class="dv">6</span>),
-  <span class="dt">series =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">name =</span> <span class="st">"High"</span>,
-      <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">28</span>, <span class="dv">29</span>, <span class="dv">33</span>, <span class="dv">36</span>, <span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">33</span>)
-    ),
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">name =</span> <span class="st">"Low"</span>,
-      <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">13</span>)
-    )
-  ),
-  <span class="dt">title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">text =</span> <span class="st">"Average High &amp; Low Temperature"</span>,
-    <span class="dt">align =</span> <span class="st">"left"</span>
-  ),
-  <span class="dt">xaxis =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">categories =</span> month.abb[<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>]
-  ),
-  <span class="dt">yaxis =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="dt">title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">text =</span> <span class="st">"Temperature"</span>),
-    <span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">formatter =</span> htmlwidgets<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"function(value) {return value + '°C';}"</span>)
-    )
-  )
-))</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="reference/apexchart.html">apexchart</a></span>(<span class="dt">ax_opts =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">chart =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="dt">type =</span> <span class="st">"line"</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  ),</a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="dt">stroke =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="dt">curve =</span> <span class="st">"smooth"</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  ),</a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="dt">grid =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-9" title="9">    <span class="dt">borderColor =</span> <span class="st">"#e7e7e7"</span>,</a>
+<a class="sourceLine" id="cb5-10" title="10">    <span class="dt">row =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-11" title="11">      <span class="dt">colors =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"#f3f3f3"</span>, <span class="st">"transparent"</span>),</a>
+<a class="sourceLine" id="cb5-12" title="12">      <span class="dt">opacity =</span> <span class="fl">0.5</span></a>
+<a class="sourceLine" id="cb5-13" title="13">    )</a>
+<a class="sourceLine" id="cb5-14" title="14">  ),</a>
+<a class="sourceLine" id="cb5-15" title="15">  <span class="dt">dataLabels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-16" title="16">    <span class="dt">enabled =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb5-17" title="17">  ),</a>
+<a class="sourceLine" id="cb5-18" title="18">  <span class="dt">markers =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">style =</span> <span class="st">"inverted"</span>, <span class="dt">size =</span> <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb5-19" title="19">  <span class="dt">series =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-20" title="20">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-21" title="21">      <span class="dt">name =</span> <span class="st">"High"</span>,</a>
+<a class="sourceLine" id="cb5-22" title="22">      <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">28</span>, <span class="dv">29</span>, <span class="dv">33</span>, <span class="dv">36</span>, <span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">33</span>)</a>
+<a class="sourceLine" id="cb5-23" title="23">    ),</a>
+<a class="sourceLine" id="cb5-24" title="24">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-25" title="25">      <span class="dt">name =</span> <span class="st">"Low"</span>,</a>
+<a class="sourceLine" id="cb5-26" title="26">      <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">13</span>)</a>
+<a class="sourceLine" id="cb5-27" title="27">    )</a>
+<a class="sourceLine" id="cb5-28" title="28">  ),</a>
+<a class="sourceLine" id="cb5-29" title="29">  <span class="dt">title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-30" title="30">    <span class="dt">text =</span> <span class="st">"Average High &amp; Low Temperature"</span>,</a>
+<a class="sourceLine" id="cb5-31" title="31">    <span class="dt">align =</span> <span class="st">"left"</span></a>
+<a class="sourceLine" id="cb5-32" title="32">  ),</a>
+<a class="sourceLine" id="cb5-33" title="33">  <span class="dt">xaxis =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-34" title="34">    <span class="dt">categories =</span> month.abb[<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>]</a>
+<a class="sourceLine" id="cb5-35" title="35">  ),</a>
+<a class="sourceLine" id="cb5-36" title="36">  <span class="dt">yaxis =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-37" title="37">    <span class="dt">title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">text =</span> <span class="st">"Temperature"</span>),</a>
+<a class="sourceLine" id="cb5-38" title="38">    <span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-39" title="39">      <span class="dt">formatter =</span> htmlwidgets<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/htmlwidgets/topics/JS">JS</a></span>(<span class="st">"function(value) {return value + '°C';}"</span>)</a>
+<a class="sourceLine" id="cb5-40" title="40">    )</a>
+<a class="sourceLine" id="cb5-41" title="41">  )</a>
+<a class="sourceLine" id="cb5-42" title="42">))</a></code></pre></div>
 <p><img src="img/raw-lines.png" alt="alt text"></p>
 </div>
 </div>
