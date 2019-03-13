@@ -4,7 +4,7 @@
 #' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
 #' @param type Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
-#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
+#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param auto_update In Shiny application, update existing chart rather than generating new one.
 #' @param width A numeric input in pixels.
@@ -18,7 +18,7 @@
 #'
 apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
-                            "pie", "donut", "radialBar", "radar", "scatter", "bubble", "heatmap"))
+                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap"))
   data <- as.data.frame(data)
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
   if (type %in% c("pie", "donut", "radialBar")) {
@@ -33,7 +33,7 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
       series = make_series(mapdata, mapping, type)
     )
   }
-  opts <- modifyList(opts, choose_config(type, is_x_datetime(mapdata)))
+  opts <- modifyList(opts, choose_config(type, mapdata))
   apexchart(
     ax_opts = opts, width = width, height = height,
     elementId = elementId, auto_update = auto_update
@@ -103,11 +103,22 @@ correct_type <- function(type) {
   }
 }
 
+range_num <- function(x) {
+  if (is.numeric(x)) {
+    range(pretty(x))
+  } else {
+    NULL
+  }
+}
+
 
 
 
 # Switch between auto configs according to type & mapping
-choose_config <- function(type, datetime) {
+choose_config <- function(type, mapdata) {
+  datetime <- is_x_datetime(mapdata)
+  range_x <- range_num(mapdata$x)
+  range_y <- range_num(mapdata$y)
   switch(
     type, 
     "bar" = config_bar(horizontal = TRUE),
@@ -115,6 +126,7 @@ choose_config <- function(type, datetime) {
     "line" = config_line(datetime = datetime),
     "area" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
+    "scatter" = config_scatter(range_x = range_x, range_y = range_y),
     list()
   )
 }
@@ -123,6 +135,7 @@ choose_config <- function(type, datetime) {
 # Config for column & bar charts
 config_bar <- function(horizontal = FALSE) {
   config <- list(
+    dataLabels = list(enabled = FALSE),
     plotOptions = list(
       bar = list(
         horizontal = horizontal
@@ -143,6 +156,7 @@ config_bar <- function(horizontal = FALSE) {
 # Config for line, spline, area, area-spline
 config_line <- function(curve = "straight", datetime = FALSE) {
   config <- list(
+    dataLabels = list(enabled = FALSE),
     stroke = list(
       curve = curve
     )
@@ -154,5 +168,18 @@ config_line <- function(curve = "straight", datetime = FALSE) {
   }
   config
 }
+
+
+config_scatter <- function(range_x, range_y) {
+  config <- list(
+    xaxis = list(
+      min = range_x[1], max = range_x[2]
+    ),
+    yaxis = list(
+      min = range_y[1], max = range_y[2]
+    )
+  )
+}
+
 
 

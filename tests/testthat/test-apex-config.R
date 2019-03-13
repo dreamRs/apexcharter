@@ -37,15 +37,19 @@ test_that("config_line works", {
 
 test_that("choose_config works", {
   
-  expect_identical(choose_config("bar"), config_bar(horizontal = TRUE))
-  expect_identical(choose_config("column"), config_bar(horizontal = FALSE))
+  mapdata <- list(
+    x = Sys.Date()
+  )
   
-  expect_identical(choose_config("line", TRUE), config_line(datetime = TRUE))
-  expect_identical(choose_config("area", TRUE), config_line(datetime = TRUE))
-  expect_identical(choose_config("spline", TRUE), config_line(curve = "smooth", datetime = TRUE))
+  expect_identical(choose_config("bar", mapdata), config_bar(horizontal = TRUE))
+  expect_identical(choose_config("column", mapdata), config_bar(horizontal = FALSE))
+  
+  expect_identical(choose_config("line", mapdata), config_line(datetime = TRUE))
+  expect_identical(choose_config("area", mapdata), config_line(datetime = TRUE))
+  expect_identical(choose_config("spline", mapdata), config_line(curve = "smooth", datetime = TRUE))
   
   
-  expect_identical(choose_config("plop"), list())
+  expect_identical(choose_config("plop", mapdata), list())
 })
 
 

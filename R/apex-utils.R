@@ -113,7 +113,11 @@ ax_plotOptions <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/colors/}
 #'
 ax_colors <- function(ax, ...) {
-  .ax_opt(ax, "colors", ...)
+  args <- list(...)
+  if (length(args) == 1) {
+    args <- as.list(args[[1]])
+  }
+  .ax_opt2(ax, "colors", l = args)
 }
 
 

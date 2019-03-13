@@ -16,8 +16,9 @@ parse_df <- function(data, add_names = FALSE) {
   l <- lapply(
     X = data[],
     FUN = function(x) {
-      if (inherits(x, "Date") & identical(add_names, FALSE)) {
-        as.numeric(x) * 86400000
+      if (inherits(x, "Date")) {
+        # as.numeric(x) * 86400000
+        format(x)
       } else if (inherits(x, "POSIXt")) {
         as.numeric(x) * 1000
       } else if (inherits(x, "factor")) {

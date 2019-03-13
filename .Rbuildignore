@@ -4,3 +4,5 @@
 ^\.Rproj\.user$
 ^dev$
 ^img$
+^_pkgdown\.yml$
+^docs$

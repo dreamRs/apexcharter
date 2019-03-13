@@ -69,7 +69,7 @@ Simple line charts can be created with (works with `character`, `Date` or `POSIX
 
 ```{r}
 data("economics")
-economics <- head(economics, 100)
+economics <- tail(economics, 100)
 
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
 ```
@@ -78,9 +78,10 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
 To represent several lines, use a `data.frame` in long format and the `group` aesthetic:
 
 ```{r}
+data("economics_long")
 economics_long <- economics_long %>% 
   group_by(variable) %>% 
-  slice(1:100)
+  slice((n()-100):n())
 
 apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable))
 ```
@@ -90,8 +91,7 @@ Create area charts with `type = "area"`:
 
 ```{r}
 apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, fill = variable)) %>% 
-  ax_chart(stacked = TRUE) %>% 
-  ax_dataLabels(enabled = FALSE)
+  ax_chart(stacked = TRUE)
 ```
 
 
@@ -109,7 +109,8 @@ apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg))
 Color points according to a third variable:
 
 ```{r}
-apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl))
+apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl)) %>%
+  ax_xaxis(tickAmount = 5)
 ```
 
 And change point size using `z` aesthetics:
@@ -196,7 +197,9 @@ txhousing2 <- txhousing %>%
   filter(city %in% head(unique(city)), year %in% c(2000, 2001)) %>% 
   rename(val_med = median)
 
-apex(data = txhousing2, type = "heatmap", mapping = aes(x = date, y = scales::rescale(val_med), group = city)) %>% 
+apex(data = txhousing2,
+     type = "heatmap", 
+     mapping = aes(x = date, y = scales::rescale(val_med), group = city)) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_colors("#008FFB")
 ```
