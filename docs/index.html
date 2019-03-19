@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3.920</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"mpg"</span>, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb2-4" title="4">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/tally">count</a></span>(mpg, manufacturer)</a>
+<a class="sourceLine" id="cb2-4" title="4">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(mpg, manufacturer)</a>
 <a class="sourceLine" id="cb2-5" title="5"></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="kw"><a href="reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_manufac, <span class="dt">type =</span> <span class="st">"bar"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> manufacturer, <span class="dt">y =</span> n))</a></code></pre></div>
 <p><img src="reference/figures/apex-bar.png"></p>
@@ -116,7 +116,7 @@
 <p>All methods from ApexCharts are available with function like <code>ax_*</code> compatible with pipe from <code>magrittr</code> :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(apexcharter)</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(mpg, <span class="dt">package =</span> <span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb4-3" title="3">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/tally">count</a></span>(mpg, manufacturer)</a>
+<a class="sourceLine" id="cb4-3" title="3">n_manufac &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(mpg, manufacturer)</a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="kw"><a href="reference/apexchart.html">apexchart</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/ax_chart.html">ax_chart</a></span>(<span class="dt">type =</span> <span class="st">"bar"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
