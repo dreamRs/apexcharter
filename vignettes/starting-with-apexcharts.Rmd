@@ -32,7 +32,7 @@ library(apexcharter)
 
 Simple bar charts can be created with:
 
-```{r}
+```{r column}
 data("mpg")
 n_manufac <- count(mpg, manufacturer)
 
@@ -41,14 +41,14 @@ apex(data = n_manufac, type = "column", mapping = aes(x = manufacturer, y = n))
 
 Flipping coordinates can be done by using `type = "bar"`:
 
-```{r}
+```{r bar}
 apex(data = n_manufac, type = "bar", mapping = aes(x = manufacturer, y = n))
 ```
 
 
 To create a dodge bar charts, use aesthetic `fill` :
 
-```{r}
+```{r dodge-bar}
 n_manufac_year <- count(mpg, manufacturer, year)
 
 apex(data = n_manufac_year, type = "column", mapping = aes(x = manufacturer, y = n, fill = year))
@@ -56,7 +56,7 @@ apex(data = n_manufac_year, type = "column", mapping = aes(x = manufacturer, y =
 
 For stacked bar charts, specify option `stacked` in `ax_chart` :
 
-```{r}
+```{r stacked-bar}
 apex(data = n_manufac_year, type = "column", mapping = aes(x = manufacturer, y = n, fill = year)) %>% 
   ax_chart(stacked = TRUE)
 ```
@@ -67,7 +67,7 @@ apex(data = n_manufac_year, type = "column", mapping = aes(x = manufacturer, y =
 
 Simple line charts can be created with (works with `character`, `Date` or `POSIXct`):
 
-```{r}
+```{r line}
 data("economics")
 economics <- tail(economics, 100)
 
@@ -77,7 +77,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
 
 To represent several lines, use a `data.frame` in long format and the `group` aesthetic:
 
-```{r}
+```{r lines}
 data("economics_long")
 economics_long <- economics_long %>% 
   group_by(variable) %>% 
@@ -89,7 +89,7 @@ apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, 
 
 Create area charts with `type = "area"`:
 
-```{r}
+```{r area}
 apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, fill = variable)) %>% 
   ax_chart(stacked = TRUE)
 ```
@@ -102,20 +102,20 @@ apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, 
 
 Simple bar charts can be created with:
 
-```{r}
+```{r scatter}
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg))
 ```
 
 Color points according to a third variable:
 
-```{r}
+```{r scatter-fill}
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl)) %>%
   ax_xaxis(tickAmount = 5)
 ```
 
 And change point size using `z` aesthetics:
 
-```{r}
+```{r bubbles}
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, z = scales::rescale(qsec)))
 ```
 
@@ -126,7 +126,7 @@ apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, z = scales:
 
 Simple pie charts can be created with:
 
-```{r}
+```{r pie}
 poll <- data.frame(
   answer = c("Yes", "No"),
   n = c(254, 238)
@@ -141,14 +141,14 @@ apex(data = poll, type = "pie", mapping = aes(x = answer, y = n))
 
 Simple radial charts can be created with (here we pass values directly in `aes`, but you can use a `data.frame`) :
 
-```{r}
+```{r radial}
 apex(data = NULL, type = "radialBar", mapping = aes(x = "My value", y = 65))
 ```
 
 
 Multi radial chart (more than one value):
 
-```{r}
+```{r radial-mult}
 fruits <- data.frame(
   name = c('Apples', 'Oranges', 'Bananas', 'Berries'),
   value = c(44, 55, 67, 83)
@@ -164,7 +164,7 @@ apex(data = fruits, type = "radialBar", mapping = aes(x = name, y = value))
 
 Simple radar charts can be created with:
 
-```{r}
+```{r radar}
 mtcars$model <- rownames(mtcars)
 
 apex(data = head(mtcars), type = "radar", mapping = aes(x = model, y = qsec))
@@ -172,7 +172,7 @@ apex(data = head(mtcars), type = "radar", mapping = aes(x = model, y = qsec))
 
 With a grouping variable:
 
-```{r}
+```{r radar-mult}
 # extremely complicated reshaping
 new_mtcars <- reshape(
   data = head(mtcars), 
@@ -192,7 +192,7 @@ apex(data = new_mtcars, type = "radar", mapping = aes(x = model, y = value, grou
 
 Create heatmap with : 
 
-```{r}
+```{r heatmap}
 txhousing2 <- txhousing %>% 
   filter(city %in% head(unique(city)), year %in% c(2000, 2001)) %>% 
   rename(val_med = median)
