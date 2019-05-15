@@ -21,7 +21,7 @@ The objective of this vignette is to show how to quickly build data visualizatio
 Data used are from `ggplot2` package, data manipulation will be done with the `dplyr` package.
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
 library(apexcharter)
