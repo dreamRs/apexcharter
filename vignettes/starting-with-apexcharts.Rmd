@@ -83,7 +83,8 @@ economics_long <- economics_long %>%
   group_by(variable) %>% 
   slice((n()-100):n())
 
-apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable))
+apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) # number of decimals to keep
 ```
 
 
@@ -91,6 +92,7 @@ Create area charts with `type = "area"`:
 
 ```{r area}
 apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, fill = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) %>% # number of decimals to keep
   ax_chart(stacked = TRUE)
 ```
 
