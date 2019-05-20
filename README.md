@@ -135,5 +135,5 @@ apexchart(ax_opts = list(
 ))
 ```
 
-![alt text](img/raw-api.png)
+![alt text](man/figures/raw-api.png)
 
