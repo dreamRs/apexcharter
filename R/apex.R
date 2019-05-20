@@ -45,20 +45,30 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
 make_series <- function(mapdata, mapping, type) {
   mapdata <- as.data.frame(mapdata)
   series_names <- "Series"
+  if (is_x_datetime(mapdata)) {
+    add_names <- FALSE
+  } else {
+    add_names <- names(mapping)
+  }
   if (!is.null(mapping$y))
     series_names <- rlang::as_label(mapping$y)
   series <- list(list(
     name = series_names,
-    data = parse_df(mapdata, add_names = names(mapping))
+    data = parse_df(mapdata, add_names = add_names)
   ))
   if (is_grouped(names(mapping))) {
     mapdata <- rename_aes(mapdata)
     series <- lapply(
       X = unique(mapdata$group),
       FUN = function(x) {
+        data <- mapdata[mapdata$group %in% x, ]
+        data <- data[, setdiff(names(data), "group"), drop = FALSE]
         list(
           name = x,
-          data = parse_df(mapdata[mapdata$group %in% x, ], add_names = names(mapping))
+          data = parse_df(
+            data = data, 
+            add_names = add_names
+          )
         )
       }
     )
