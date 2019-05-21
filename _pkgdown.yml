@@ -16,6 +16,8 @@ navbar:
     menu:
     - text: "Labs: title, subtitle & axis"
       href: articles/labs.html
+    - text: "Options & styles for lines"
+      href: articles/lines.html
   - text: News
     href: news/index.html
   right:

@@ -1,0 +1,140 @@
+---
+title: "Options & styles for lines"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lines}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(apexcharter)
+library(dplyr)
+
+# economics dataset from ggplot2
+data("economics", package = "ggplot2")
+economics <- tail(economics, 50)
+
+data("economics_long", package = "ggplot2")
+economics_long <- economics_long %>% 
+  filter(variable %in% c("pce", "pop")) %>% 
+  group_by(variable) %>% 
+  slice(tail(row_number(), 20))
+```
+
+
+
+## Type of line
+
+Classic line:
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
+```
+
+Spline curve:
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(curve = "smooth")
+```
+
+Steps chart:
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(curve = "stepline")
+```
+
+
+
+## Line appearance
+
+Color line with gradient:
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_fill(
+    type = "gradient",
+    gradient = list(
+      shade = "dark",
+      gradientToColors = list("#FDD835"),
+      shadeIntensity = 1,
+      type = "horizontal",
+      opacityFrom = 1,
+      opacityTo = 1,
+      stops = c(0, 100, 100, 100)
+    )
+  )
+```
+
+Solid area color:
+
+```{r}
+apex(data = economics, type = "area", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_fill(type = "solid", opacity = 1)
+```
+
+
+Line width:
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(width = 1)
+```
+
+
+Dotted line
+
+```{r}
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(dashArray = 6)
+```
+
+
+
+## Markers
+
+Add points to line :
+
+```{r}
+apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_markers(size = 6)
+```
+
+
+Add labels over points
+
+```{r}
+apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_markers(size = 6) %>% 
+  ax_dataLabels(enabled = TRUE)
+```
+
+
+
+## Multiple lines
+
+You can use vectors of parameters to custom series separately:
+
+```{r}
+apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) %>% 
+  ax_markers(size = c(3, 6)) %>% 
+  ax_stroke(width = c(1, 3))
+```
+
+
+```{r}
+apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) %>% 
+  ax_stroke(dashArray = c(8, 5))
+```
+
