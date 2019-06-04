@@ -94,7 +94,7 @@ Create area charts with `type = "area"`:
 apex(data = economics_long, type = "area", mapping = aes(x = date, y = value01, fill = variable)) %>% 
   ax_yaxis(decimalsInFloat = 2) %>% # number of decimals to keep
   ax_chart(stacked = TRUE) %>%
-  ax_yaxis(max = 4)
+  ax_yaxis(max = 4, tickAmount = 4)
 ```
 
 
