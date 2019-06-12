@@ -29,3 +29,9 @@ NULL
 #' @export
 #' @rdname apexcharter-exports
 NULL
+
+#' @importFrom htmlwidgets JS
+#' @name JS
+#' @export
+#' @rdname apexcharter-exports
+NULL
