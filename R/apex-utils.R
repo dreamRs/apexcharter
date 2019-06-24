@@ -1017,6 +1017,66 @@ ax_tooltip <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/xaxis/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # X axis title
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_xaxis(title = list(text = "Car's manufacturer"))
+#' 
+#' # force labels to rotate and increase height
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
+#' 
+#' # force to not rotate
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_xaxis(labels = list(rotate = 0, trim = FALSE))
+#' 
+#' 
+#' data("economics", package = "ggplot2")
+#' 
+#' # Custom crosshair
+#' apex(
+#'   data = tail(economics, 50),
+#'   mapping = aes(x = date, y = psavert),
+#'   type = "line"
+#' ) %>% 
+#'   ax_xaxis(
+#'     crosshairs = list(
+#'       opacity = 1,
+#'       width = 2,
+#'       fill = list(color = "red"),
+#'       stroke = list(width = 0)
+#'     )
+#'   )
+#' 
+#' 
+#' # Date format (zoom to see changes)
+#' apex(
+#'   data = tail(economics, 150),
+#'   mapping = aes(x = date, y = psavert),
+#'   type = "line"
+#' ) %>% 
+#'   ax_xaxis(
+#'     labels = list(
+#'       datetimeFormatter = list(
+#'         year = "yyyy-MM",
+#'         month = "yyyy-MM-dd",
+#'         day = "yyyy-MM-dd HH:mm"
+#'       )
+#'     )
+#'   )
 ax_xaxis <- function(ax,
                      type = NULL,
                      categories = NULL,
@@ -1070,6 +1130,18 @@ ax_xaxis <- function(ax,
 #'   ax_yaxis(
 #'     decimalsInFloat = 2, title = list(text = "Rescaled to [0,1]")
 #'   )
+#'   
+#' # Format tick labels
+#' temperature <- data.frame(
+#'   month = head(month.name),
+#'   tp = c(4, -2, 2, 7, 11, 14)
+#' )
+#' apex(temperature, aes(month, tp), "line") %>% 
+#'   ax_yaxis(
+#'     labels = list(
+#'       formatter = htmlwidgets::JS("function(value) {return value + '°C';}")
+#'     )
+#'   )
 ax_yaxis <- function(ax,
                      opposite = NULL,
                      tickAmount = NULL,
@@ -1091,6 +1163,7 @@ ax_yaxis <- function(ax,
 #' Theme for charts
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param mode use light or dark theme.
 #' @param palette Character. Available palettes: \code{"palette1"} to \code{"palette10"}.
 #' @param monochrome A list of parameters.
 #' @param ... Additional parameters.
@@ -1099,10 +1172,42 @@ ax_yaxis <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/theme/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Dark mode
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_theme(mode = "dark")
+#' 
+#' # Use predefined palette (1 to 10)
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = color, y = n, fill = cut)
+#' ) %>% 
+#'   ax_theme(palette = "palette2")
+#' 
+#' # monochrome palette
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = color, y = n, fill = cut)
+#' ) %>% 
+#'   ax_theme(monochrome = list(enabled = TRUE, color = "#0B6121"))
 ax_theme <- function(ax,
+                     mode = c("light", "dark"),
                      palette = NULL,
                      monochrome = NULL,
                      ...) {
-  params <- c(as.list(environment()), list(...))[-1]
+  mode <- match.arg(mode)
+  params <- c(list(
+    mode = mode,
+    palette = palette,
+    monochrome = monochrome
+  ), list(...))[-1]
   .ax_opt2(ax, "theme", l = dropNulls(params))
 }

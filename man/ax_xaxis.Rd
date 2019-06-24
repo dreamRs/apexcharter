@@ -54,3 +54,63 @@ X-axis options
 \note{
 See \url{https://apexcharts.com/docs/options/xaxis/}
 }
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# X axis title
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n)
+) \%>\% 
+  ax_xaxis(title = list(text = "Car's manufacturer"))
+
+# force labels to rotate and increase height
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n)
+) \%>\% 
+  ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
+
+# force to not rotate
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n)
+) \%>\% 
+  ax_xaxis(labels = list(rotate = 0, trim = FALSE))
+
+
+data("economics", package = "ggplot2")
+
+# Custom crosshair
+apex(
+  data = tail(economics, 50),
+  mapping = aes(x = date, y = psavert),
+  type = "line"
+) \%>\% 
+  ax_xaxis(
+    crosshairs = list(
+      opacity = 1,
+      width = 2,
+      fill = list(color = "red"),
+      stroke = list(width = 0)
+    )
+  )
+
+
+# Date format (zoom to see changes)
+apex(
+  data = tail(economics, 150),
+  mapping = aes(x = date, y = psavert),
+  type = "line"
+) \%>\% 
+  ax_xaxis(
+    labels = list(
+      datetimeFormatter = list(
+        year = "yyyy-MM",
+        month = "yyyy-MM-dd",
+        day = "yyyy-MM-dd HH:mm"
+      )
+    )
+  )
+}

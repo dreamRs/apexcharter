@@ -56,4 +56,16 @@ apex(
   ax_yaxis(
     decimalsInFloat = 2, title = list(text = "Rescaled to [0,1]")
   )
+  
+# Format tick labels
+temperature <- data.frame(
+  month = head(month.name),
+  tp = c(4, -2, 2, 7, 11, 14)
+)
+apex(temperature, aes(month, tp), "line") \%>\% 
+  ax_yaxis(
+    labels = list(
+      formatter = htmlwidgets::JS("function(value) {return value + 'Â°C';}")
+    )
+  )
 }
