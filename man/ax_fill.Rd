@@ -34,3 +34,38 @@ Fill property
 \note{
 See \url{https://apexcharts.com/docs/options/fill/}
 }
+\examples{
+library(dplyr)
+data("diamonds", package = "ggplot2")
+
+# Use a pattern to fill bars
+apex(
+  data = count(diamonds, cut, color),
+  mapping = aes(x = color, y = n, fill = cut)
+) \%>\% 
+  ax_fill(
+    type = "pattern", 
+    opacity = 1, 
+    pattern = list(
+      style = c("circles", "slantedLines", "verticalLines", "horizontalLines", "squares")
+    )
+  )
+
+
+data("economics", package = "ggplot2")
+
+# Customise gradient
+apex(
+  data = economics,
+  mapping = aes(x = date, y = psavert),
+  type = "area"
+) \%>\%
+  ax_fill(gradient = list(
+    enabled = TRUE,
+    shadeIntensity = 1,
+    inverseColors = FALSE,
+    opacityFrom = 0,
+    opacityTo = 1,
+    stops = c(0, 2000)
+  ))
+}

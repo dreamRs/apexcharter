@@ -45,3 +45,14 @@ Markers properties
 \note{
 See \url{https://apexcharts.com/docs/options/markers/}
 }
+\examples{
+data("economics", package = "ggplot2")
+
+# show points
+apex(
+  data = tail(economics, 20),
+  type = "line", 
+  mapping = aes(x = date, y = uempmed)
+) \%>\% 
+  ax_markers(size = 6) 
+}

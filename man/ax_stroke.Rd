@@ -38,3 +38,26 @@ Stroke properties
 \note{
 See \url{https://apexcharts.com/docs/options/stroke/}
 }
+\examples{
+data("economics", package = "ggplot2")
+apex(
+  data = economics,
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\%
+  ax_stroke(
+    width = 1, 
+    dashArray = 4
+  )
+
+data("economics_long", package = "ggplot2")
+apex(
+  data = economics_long,
+  mapping = aes(x = date, y = value01, group = variable),
+  type = "line"
+) \%>\%
+  ax_stroke(
+    width = c(1, 2, 3, 4, 5), 
+    dashArray = c(1, 2, 3, 4, 5)
+  )
+}

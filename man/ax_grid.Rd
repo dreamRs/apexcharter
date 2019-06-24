@@ -40,3 +40,34 @@ Add grids on chart
 \note{
 See \url{https://apexcharts.com/docs/options/grid/}
 }
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# Hide Y-axis and gridelines
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n)
+) \%>\% 
+  ax_grid(show = FALSE)
+
+# just grid lines
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n)
+) \%>\% 
+  ax_grid(yaxis = list(lines = list(show = FALSE)))
+
+
+# both x & y
+data("economics", package = "ggplot2")
+apex(
+  data = economics,
+  mapping = aes(x = date, y = psavert),
+  type = "line"
+) \%>\% 
+  ax_grid(
+    yaxis = list(lines = list(show = TRUE)),
+    xaxis = list(lines = list(show = TRUE))
+  )
+}

@@ -26,3 +26,21 @@ Charts' states
 \note{
 See \url{https://apexcharts.com/docs/options/states/}
 }
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# Inverse effect on hover
+apex(
+  data = count(mpg, manufacturer),
+  mapping = aes(x = manufacturer, y = n),
+  type = "bar"
+) \%>\% 
+  ax_states(
+    hover = list(
+      filter = list(
+        type = "darken"
+      )
+    )
+  )
+}

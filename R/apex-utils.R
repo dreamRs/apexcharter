@@ -19,7 +19,104 @@
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
-#'
+#' 
+#' @examples 
+#' data("economics", package = "ggplot2")
+#' 
+#' # Horizontal line
+#' apex(
+#'   data = tail(economics, 200),
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>% 
+#'   ax_annotations(
+#'     yaxis = list(list(
+#'       y = 11.897,
+#'       borderColor = "firebrick", 
+#'       opacity = 1,
+#'       label = list(
+#'         text = "Mean uempmed",
+#'         position = "left", 
+#'         textAnchor = "start"
+#'       )
+#'     ))
+#'   )
+#' 
+#' 
+#' # Vertical line
+#' apex(
+#'   data = tail(economics, 200),
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>% 
+#'   ax_annotations(
+#'     xaxis = list(list(
+#'       x = htmlwidgets::JS("new Date('1 Mar 2007').getTime()"),
+#'       strokeDashArray = 0, 
+#'       borderColor = "#775DD0",
+#'       label = list(
+#'         text = "A label",
+#'         borderColor = "#775DD0", 
+#'         style = list(
+#'           color = "#fff",
+#'           background = "#775DD0"
+#'         )
+#'       )
+#'     ))
+#'   )
+#' 
+#' 
+#' # Vertical range
+#' apex(
+#'   data = tail(economics, 200),
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>% 
+#'   ax_annotations(
+#'     xaxis = list(list(
+#'       x = htmlwidgets::JS("new Date('1 Jan 2009').getTime()"),
+#'       x2 = htmlwidgets::JS("new Date('1 Feb 2010').getTime()"),
+#'       fillColor = "#B3F7CA",
+#'       opacity = 0.4,
+#'       label = list(
+#'         text = "A label",
+#'         borderColor = "#B3F7CA", 
+#'         style = list(
+#'           color = "#fff",
+#'           background = "#B3F7CA"
+#'         )
+#'       )
+#'     ))
+#'   )
+#' 
+#' 
+#' # Point annotation
+#' apex(
+#'   data = tail(economics, 200),
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>% 
+#'   ax_annotations(
+#'     points = list(list(
+#'       x = htmlwidgets::JS("new Date('1 Jun 2010').getTime()"),
+#'       y = 25.2,
+#'       marker = list(
+#'         size = 8,
+#'         fillColor = "#fff",
+#'         strokeColor = "red",
+#'         radius = 2
+#'       ),
+#'       label = list(
+#'         text = "Highest",
+#'         offsetY = 0,
+#'         borderColor = "#FF4560", 
+#'         style = list(
+#'           color = "#fff",
+#'           background = "#FF4560"
+#'         )
+#'       )
+#'     ))
+#'   )
 ax_annotations <- function(ax,
                            position = NULL,
                            yaxis = NULL,
@@ -55,7 +152,31 @@ ax_annotations <- function(ax,
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
-#'
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Stack bar type
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = cut, y = n, fill = color)
+#' ) %>% 
+#'   ax_chart(stacked = TRUE)
+#' 
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = cut, y = n, fill = color)
+#' ) %>% 
+#'   ax_chart(stacked = TRUE, stackType = "100%")
+#' 
+#' 
+#' # Toolbar
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = cut, y = n, fill = color)
+#' ) %>% 
+#'   ax_chart(toolbar = list(show = FALSE))
 ax_chart <- function(ax,
                      type = NULL,
                      stacked = NULL,
@@ -90,7 +211,41 @@ ax_chart <- function(ax,
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
-#'
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Stack bar type
+#' apex(
+#'   data = count(diamonds, cut),
+#'   mapping = aes(x = cut, y = n)
+#' ) %>%
+#'   ax_plotOptions(
+#'     bar = bar_opts(endingShape = "rounded", columnWidth = "10%")
+#'   )
+#' 
+#' # Pie
+#' apex(
+#'   data = count(diamonds, cut),
+#'   mapping = aes(x = cut, y = n), 
+#'   type = "pie"
+#' ) %>%
+#'   ax_plotOptions(
+#'     pie = pie_opts(customScale = 0.5)
+#'   )
+#' 
+#' 
+#' # Radial
+#' apexchart() %>% 
+#'   ax_chart(type = "radialBar") %>% 
+#'   ax_plotOptions(
+#'     radialBar = radialBar_opts(
+#'       hollow = list(size = "70%")
+#'     )
+#'   ) %>% 
+#'   ax_series(70) %>% 
+#'   ax_labels("Indicator")
 ax_plotOptions <- function(ax,
                            bar = NULL,
                            heatmap = NULL,
@@ -111,7 +266,25 @@ ax_plotOptions <- function(ax,
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/colors/}
-#'
+#' 
+#' @examples 
+#' 
+#' library(dplyr)
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Change default color(s)
+#' apex(
+#'   data = count(diamonds, cut),
+#'   mapping = aes(x = cut, y = n)
+#' ) %>%
+#'   ax_colors("#F7D358")
+#' 
+#' 
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = cut, y = n, fill = color)
+#' ) %>%
+#'   ax_colors(scales::brewer_pal(palette = "Set2")(7))
 ax_colors <- function(ax, ...) {
   args <- list(...)
   if (length(args) == 1) {
@@ -138,7 +311,17 @@ ax_colors <- function(ax, ...) {
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/datalabels/}
-#'
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Add data labels
+#' apex(
+#'   data = count(diamonds, cut),
+#'   mapping = aes(x = cut, y = n)
+#' ) %>%
+#'   ax_dataLabels(enabled = TRUE)
 ax_dataLabels <- function(ax,
                           enabled = NULL,
                           textAnchor = NULL,
@@ -169,7 +352,41 @@ ax_dataLabels <- function(ax,
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/fill/}
-#'
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("diamonds", package = "ggplot2")
+#' 
+#' # Use a pattern to fill bars
+#' apex(
+#'   data = count(diamonds, cut, color),
+#'   mapping = aes(x = color, y = n, fill = cut)
+#' ) %>% 
+#'   ax_fill(
+#'     type = "pattern", 
+#'     opacity = 1, 
+#'     pattern = list(
+#'       style = c("circles", "slantedLines", "verticalLines", "horizontalLines", "squares")
+#'     )
+#'   )
+#' 
+#' 
+#' data("economics", package = "ggplot2")
+#' 
+#' # Customise gradient
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = psavert),
+#'   type = "area"
+#' ) %>%
+#'   ax_fill(gradient = list(
+#'     enabled = TRUE,
+#'     shadeIntensity = 1,
+#'     inverseColors = FALSE,
+#'     opacityFrom = 0,
+#'     opacityTo = 1,
+#'     stops = c(0, 2000)
+#'   ))
 ax_fill <- function(ax,
                     type = NULL,
                     colors = NULL,
@@ -202,6 +419,36 @@ ax_fill <- function(ax,
 #'
 #' @note See \url{https://apexcharts.com/docs/options/grid/}
 #' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # Hide Y-axis and gridelines
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_grid(show = FALSE)
+#' 
+#' # just grid lines
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n)
+#' ) %>% 
+#'   ax_grid(yaxis = list(lines = list(show = FALSE)))
+#' 
+#' 
+#' # both x & y
+#' data("economics", package = "ggplot2")
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = psavert),
+#'   type = "line"
+#' ) %>% 
+#'   ax_grid(
+#'     yaxis = list(lines = list(show = TRUE)),
+#'     xaxis = list(lines = list(show = TRUE))
+#'   )
 ax_grid <- function(ax,
                     show = NULL,
                     borderColor = NULL,
@@ -231,6 +478,18 @@ ax_grid <- function(ax,
 #' @name ax_labels
 #'
 #' @note See \url{https://apexcharts.com/docs/options/labels/}
+#' 
+#' @examples
+#' apexchart() %>% 
+#'   ax_chart(type = "pie") %>% 
+#'   ax_series(23, 45, 56) %>% 
+#'   ax_labels("A", "B", "C")
+#' 
+#' # same as 
+#' apexchart() %>% 
+#'   ax_chart(type = "pie") %>% 
+#'   ax_series2(c(23, 45, 56)) %>% 
+#'   ax_labels2(c("A", "B", "C"))
 ax_labels <- function(ax, ...) {
   .ax_opt(ax, "labels", ...)
 }
@@ -247,8 +506,10 @@ ax_labels2 <- function(ax, labels) {
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
 #' @param show Logical. Whether to show or hide the legend container.
 #' @param position Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.
+#' @param showForSingleSeries Show legend even if there is just 1 series.
+#' @param showForNullSeries Allows you to hide a particular legend if it’s series contains all null values.
+#' @param showForZeroSeries Allows you to hide a particular legend if it’s series contains all 0 values.
 #' @param horizontalAlign Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.
-#' @param verticalAlign Available options for vertical alignment: \code{"top"}, \code{"middle"}, \code{"bottom"}
 #' @param fontSize Sets the fontSize of legend text elements
 #' @param textAnchor The alignment of text relative to legend’s drawing position
 #' @param offsetY Sets the top offset for legend container.
@@ -272,11 +533,31 @@ ax_labels2 <- function(ax, labels) {
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/legend/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # Legend position
+#' apex(
+#'   data = count(mpg, manufacturer, year),
+#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#' ) %>% 
+#'   ax_legend(position = "right")
+#' 
+#' # hide legend
+#' apex(
+#'   data = count(mpg, manufacturer, year),
+#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#' ) %>% 
+#'   ax_legend(show = FALSE)
 ax_legend <- function(ax,
                       show = NULL,
                       position = NULL,
+                      showForSingleSeries = NULL,
+                      showForNullSeries= NULL,
+                      showForZeroSeries = NULL,
                       horizontalAlign = NULL,
-                      verticalAlign = NULL,
                       fontSize = NULL,
                       textAnchor = NULL,
                       offsetY = NULL,
@@ -316,6 +597,16 @@ ax_legend <- function(ax,
 #'
 #' @note See \url{https://apexcharts.com/docs/options/markers/}
 #' 
+#' @examples 
+#' data("economics", package = "ggplot2")
+#' 
+#' # show points
+#' apex(
+#'   data = tail(economics, 20),
+#'   type = "line", 
+#'   mapping = aes(x = date, y = uempmed)
+#' ) %>% 
+#'   ax_markers(size = 6) 
 ax_markers <- function(ax,
                        size = NULL,
                        colors = NULL,
@@ -333,7 +624,7 @@ ax_markers <- function(ax,
   .ax_opt2(ax, "markers", l = dropNulls(params))
 }
 
-#
+
 #' No data specification
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
@@ -370,6 +661,33 @@ ax_noData <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/responsive/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # Open in browser and resize window
+#' apex(
+#'   data = count(mpg, manufacturer, year),
+#'   mapping = aes(x = manufacturer, y = n, fill = year),
+#'   type = "bar"
+#' ) %>% 
+#'   ax_legend(position = "right") %>% 
+#'   ax_responsive(
+#'     list(
+#'       breakpoint = 1000,
+#'       options = list(
+#'         plotOptions = list(
+#'           bar = list(
+#'             horizontal = FALSE
+#'           )
+#'         ),
+#'         legend = list(
+#'           position = "bottom"
+#'         )
+#'       )
+#'     )
+#'   )
 ax_responsive <- function(ax, ...) {
   .ax_opt(ax, "responsive", ...)
 }
@@ -430,6 +748,24 @@ ax_series2 <- function(ax, l) {
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/states/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # Inverse effect on hover
+#' apex(
+#'   data = count(mpg, manufacturer),
+#'   mapping = aes(x = manufacturer, y = n),
+#'   type = "bar"
+#' ) %>% 
+#'   ax_states(
+#'     hover = list(
+#'       filter = list(
+#'         type = "darken"
+#'       )
+#'     )
+#'   )
 ax_states <- function(ax,
                       normal = NULL,
                       hover = NULL,
@@ -456,6 +792,17 @@ ax_states <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/title/}
+#' 
+#' @examples 
+#' data("economics", package = "ggplot2")
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>% 
+#'   ax_title(
+#'     text = "Median duration of unemployment, in weeks"
+#'   )
 ax_title <- function(ax,
                      text = NULL,
                      align = NULL,
@@ -486,6 +833,20 @@ ax_title <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/subtitle/}
+#' 
+#' @examples 
+#' data("economics", package = "ggplot2")
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>%
+#'   ax_title(
+#'     text = "Median duration of unemployment"
+#'   ) %>%
+#'   ax_subtitle(
+#'     text = "in weeks"
+#'   )
 ax_subtitle <- function(ax,
                         text = NULL,
                         align = NULL,
@@ -520,6 +881,29 @@ ax_subtitle <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/stroke/}
+#' 
+#' @examples 
+#' data("economics", package = "ggplot2")
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = uempmed),
+#'   type = "line"
+#' ) %>%
+#'   ax_stroke(
+#'     width = 1, 
+#'     dashArray = 4
+#'   )
+#' 
+#' data("economics_long", package = "ggplot2")
+#' apex(
+#'   data = economics_long,
+#'   mapping = aes(x = date, y = value01, group = variable),
+#'   type = "line"
+#' ) %>%
+#'   ax_stroke(
+#'     width = c(1, 2, 3, 4, 5), 
+#'     dashArray = c(1, 2, 3, 4, 5)
+#'   )
 ax_stroke <- function(ax,
                       show = NULL,
                       curve = NULL,
@@ -557,6 +941,35 @@ ax_stroke <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/tooltip/}
+#' 
+#' @examples 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' # Hide tooltip
+#' apex(
+#'   data = count(mpg, manufacturer, year),
+#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#' ) %>% 
+#'   ax_tooltip(enabled = FALSE)
+#' 
+#' # Share between series
+#' apex(
+#'   data = count(mpg, manufacturer, year),
+#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#' ) %>% 
+#'   ax_tooltip(shared = TRUE)
+#' 
+#' # Fixed tooltip
+#' data("economics", package = "ggplot2")
+#' apex(
+#'   data = economics,
+#'   mapping = aes(x = date, y = psavert),
+#'   type = "line"
+#' ) %>% 
+#'   ax_tooltip(
+#'     fixed = list(enabled = TRUE, position = "topLeft")
+#'   )
 ax_tooltip <- function(ax,
                        enabled = NULL,
                        shared = NULL,
@@ -646,6 +1059,17 @@ ax_xaxis <- function(ax,
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/yaxis/}
+#' 
+#' @examples 
+#' data("economics_long", package = "ggplot2")
+#' apex(
+#'   data = economics_long,
+#'   mapping = aes(x = date, y = value01, group = variable),
+#'   type = "line"
+#' ) %>%
+#'   ax_yaxis(
+#'     decimalsInFloat = 2, title = list(text = "Rescaled to [0,1]")
+#'   )
 ax_yaxis <- function(ax,
                      opposite = NULL,
                      tickAmount = NULL,

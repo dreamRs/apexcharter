@@ -26,3 +26,38 @@ A \code{apexcharts} \code{htmlwidget} object.
 \description{
 Specific options for chart
 }
+\examples{
+library(dplyr)
+data("diamonds", package = "ggplot2")
+
+# Stack bar type
+apex(
+  data = count(diamonds, cut),
+  mapping = aes(x = cut, y = n)
+) \%>\%
+  ax_plotOptions(
+    bar = bar_opts(endingShape = "rounded", columnWidth = "10\%")
+  )
+
+# Pie
+apex(
+  data = count(diamonds, cut),
+  mapping = aes(x = cut, y = n), 
+  type = "pie"
+) \%>\%
+  ax_plotOptions(
+    pie = pie_opts(customScale = 0.5)
+  )
+
+
+# Radial
+apexchart() \%>\% 
+  ax_chart(type = "radialBar") \%>\% 
+  ax_plotOptions(
+    radialBar = radialBar_opts(
+      hollow = list(size = "70\%")
+    )
+  ) \%>\% 
+  ax_series(70) \%>\% 
+  ax_labels("Indicator")
+}

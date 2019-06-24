@@ -68,7 +68,7 @@ events_opts <- function(click = NULL,
 #' Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param horizontal Logical. This option will turn a column chart into a horiontal bar chart.
-#' @param endingShape Available Options: \code{"flat"}, \code{"rounded"} or \code{"arrow"}.
+#' @param endingShape Available Options: \code{"flat"} or \code{"rounded"}.
 #' @param columnWidth In column charts, columnWidth is the percentage of the available width in the grid-rect. 
 #' @param barHeight In horizontal bar charts, barHeight is the percentage of the available height in the grid-rect. 
 #' @param distributed Logical. Turn this option to make the bars discrete. Each value indicates one bar per series.
@@ -152,7 +152,32 @@ heatmap_opts <- function(radius = NULL,
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/radialbar/}.
 #'
 #' @export
-#'
+#' 
+#' @examples 
+#' apexchart() %>% 
+#'   ax_chart(type = "radialBar") %>% 
+#'   ax_plotOptions(
+#'     radialBar = radialBar_opts(
+#'       startAngle = -135,
+#'       endAngle = 135,
+#'       dataLabels = list(
+#'         name = list(
+#'           fontSize = "16px",
+#'           # color = undefined,
+#'           offsetY = 120
+#'         ),
+#'         value = list(
+#'           offsetY = 76,
+#'           fontSize = "22px",
+#'           # color = undefined,
+#'           formatter = htmlwidgets::JS("function (val) {return val + '%';}")
+#'         )
+#'       )
+#'     )
+#'   ) %>% 
+#'   ax_stroke(dashArray = 4) %>% 
+#'   ax_series(70) %>% 
+#'   ax_labels("Indicator")
 radialBar_opts <- function(size = NULL,
                            inverseOrder = NULL,
                            startAngle = NULL,

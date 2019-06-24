@@ -30,9 +30,9 @@ head(unhcr_popstats_2017)
 
 categories_unhcr <- count(unhcr_popstats_2017, population_type, sort = TRUE)
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar") %>% 
-  ax_plotOptions(bar = barOpts(
+  ax_plotOptions(bar = bar_opts(
     horizontal = TRUE,
     dataLabels = list(
       position = "center"
@@ -67,7 +67,7 @@ refugees <- unhcr_popstats_2017 %>%
   ) 
 
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar", stacked = FALSE) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_series(
@@ -115,7 +115,7 @@ apexcharter() %>%
 
 count(unhcr_popstats_2017, continent = continent_residence, population_type, wt = value)
 
-apexcharter() %>% 
+apexchart() %>% 
   ax_chart(type = "bar", stacked = TRUE, stackType = "100%") %>% 
   ax_plotOptions(bar = barOpts(horizontal = TRUE)) %>% 
   ax_series(

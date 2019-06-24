@@ -20,3 +20,30 @@ Responsive options
 \note{
 See \url{https://apexcharts.com/docs/options/responsive/}
 }
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# Open in browser and resize window
+apex(
+  data = count(mpg, manufacturer, year),
+  mapping = aes(x = manufacturer, y = n, fill = year),
+  type = "bar"
+) \%>\% 
+  ax_legend(position = "right") \%>\% 
+  ax_responsive(
+    list(
+      breakpoint = 1000,
+      options = list(
+        plotOptions = list(
+          bar = list(
+            horizontal = FALSE
+          )
+        ),
+        legend = list(
+          position = "bottom"
+        )
+      )
+    )
+  )
+}

@@ -46,3 +46,14 @@ Y-axis options
 \note{
 See \url{https://apexcharts.com/docs/options/yaxis/}
 }
+\examples{
+data("economics_long", package = "ggplot2")
+apex(
+  data = economics_long,
+  mapping = aes(x = date, y = value01, group = variable),
+  type = "line"
+) \%>\%
+  ax_yaxis(
+    decimalsInFloat = 2, title = list(text = "Rescaled to [0,1]")
+  )
+}

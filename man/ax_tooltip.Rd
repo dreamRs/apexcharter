@@ -54,3 +54,32 @@ Tooltip options
 \note{
 See \url{https://apexcharts.com/docs/options/tooltip/}
 }
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# Hide tooltip
+apex(
+  data = count(mpg, manufacturer, year),
+  mapping = aes(x = manufacturer, y = n, fill = year)
+) \%>\% 
+  ax_tooltip(enabled = FALSE)
+
+# Share between series
+apex(
+  data = count(mpg, manufacturer, year),
+  mapping = aes(x = manufacturer, y = n, fill = year)
+) \%>\% 
+  ax_tooltip(shared = TRUE)
+
+# Fixed tooltip
+data("economics", package = "ggplot2")
+apex(
+  data = economics,
+  mapping = aes(x = date, y = psavert),
+  type = "line"
+) \%>\% 
+  ax_tooltip(
+    fixed = list(enabled = TRUE, position = "topLeft")
+  )
+}

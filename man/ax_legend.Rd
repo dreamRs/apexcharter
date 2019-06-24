@@ -4,11 +4,13 @@
 \alias{ax_legend}
 \title{Legend properties}
 \usage{
-ax_legend(ax, show = NULL, position = NULL, horizontalAlign = NULL,
-  verticalAlign = NULL, fontSize = NULL, textAnchor = NULL,
-  offsetY = NULL, offsetX = NULL, formatter = NULL, labels = NULL,
-  markers = NULL, itemMargin = NULL, containerMargin = NULL,
-  onItemClick = NULL, onItemHover = NULL, floating = NULL, ...)
+ax_legend(ax, show = NULL, position = NULL,
+  showForSingleSeries = NULL, showForNullSeries = NULL,
+  showForZeroSeries = NULL, horizontalAlign = NULL, fontSize = NULL,
+  textAnchor = NULL, offsetY = NULL, offsetX = NULL,
+  formatter = NULL, labels = NULL, markers = NULL,
+  itemMargin = NULL, containerMargin = NULL, onItemClick = NULL,
+  onItemHover = NULL, floating = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
@@ -17,9 +19,13 @@ ax_legend(ax, show = NULL, position = NULL, horizontalAlign = NULL,
 
 \item{position}{Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.}
 
-\item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
+\item{showForSingleSeries}{Show legend even if there is just 1 series.}
 
-\item{verticalAlign}{Available options for vertical alignment: \code{"top"}, \code{"middle"}, \code{"bottom"}}
+\item{showForNullSeries}{Allows you to hide a particular legend if it’s series contains all null values.}
+
+\item{showForZeroSeries}{Allows you to hide a particular legend if it’s series contains all 0 values.}
+
+\item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
 
 \item{fontSize}{Sets the fontSize of legend text elements}
 
@@ -60,4 +66,22 @@ Legend properties
 }
 \note{
 See \url{https://apexcharts.com/docs/options/legend/}
+}
+\examples{
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+# Legend position
+apex(
+  data = count(mpg, manufacturer, year),
+  mapping = aes(x = manufacturer, y = n, fill = year)
+) \%>\% 
+  ax_legend(position = "right")
+
+# hide legend
+apex(
+  data = count(mpg, manufacturer, year),
+  mapping = aes(x = manufacturer, y = n, fill = year)
+) \%>\% 
+  ax_legend(show = FALSE)
 }

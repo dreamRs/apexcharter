@@ -29,3 +29,101 @@ Annotations properties
 \note{
 See \url{https://apexcharts.com/docs/options/annotations/}.
 }
+\examples{
+data("economics", package = "ggplot2")
+
+# Horizontal line
+apex(
+  data = tail(economics, 200),
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\% 
+  ax_annotations(
+    yaxis = list(list(
+      y = 11.897,
+      borderColor = "firebrick", 
+      opacity = 1,
+      label = list(
+        text = "Mean uempmed",
+        position = "left", 
+        textAnchor = "start"
+      )
+    ))
+  )
+
+
+# Vertical line
+apex(
+  data = tail(economics, 200),
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\% 
+  ax_annotations(
+    xaxis = list(list(
+      x = htmlwidgets::JS("new Date('1 Mar 2007').getTime()"),
+      strokeDashArray = 0, 
+      borderColor = "#775DD0",
+      label = list(
+        text = "A label",
+        borderColor = "#775DD0", 
+        style = list(
+          color = "#fff",
+          background = "#775DD0"
+        )
+      )
+    ))
+  )
+
+
+# Vertical range
+apex(
+  data = tail(economics, 200),
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\% 
+  ax_annotations(
+    xaxis = list(list(
+      x = htmlwidgets::JS("new Date('1 Jan 2009').getTime()"),
+      x2 = htmlwidgets::JS("new Date('1 Feb 2010').getTime()"),
+      fillColor = "#B3F7CA",
+      opacity = 0.4,
+      label = list(
+        text = "A label",
+        borderColor = "#B3F7CA", 
+        style = list(
+          color = "#fff",
+          background = "#B3F7CA"
+        )
+      )
+    ))
+  )
+
+
+# Point annotation
+apex(
+  data = tail(economics, 200),
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\% 
+  ax_annotations(
+    points = list(list(
+      x = htmlwidgets::JS("new Date('1 Jun 2010').getTime()"),
+      y = 25.2,
+      marker = list(
+        size = 8,
+        fillColor = "#fff",
+        strokeColor = "red",
+        radius = 2
+      ),
+      label = list(
+        text = "Highest",
+        offsetY = 0,
+        borderColor = "#FF4560", 
+        style = list(
+          color = "#fff",
+          background = "#FF4560"
+        )
+      )
+    ))
+  )
+}

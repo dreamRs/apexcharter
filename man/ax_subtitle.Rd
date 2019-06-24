@@ -36,3 +36,17 @@ Chart's subtitle
 \note{
 See \url{https://apexcharts.com/docs/options/subtitle/}
 }
+\examples{
+data("economics", package = "ggplot2")
+apex(
+  data = economics,
+  mapping = aes(x = date, y = uempmed),
+  type = "line"
+) \%>\%
+  ax_title(
+    text = "Median duration of unemployment"
+  ) \%>\%
+  ax_subtitle(
+    text = "in weeks"
+  )
+}

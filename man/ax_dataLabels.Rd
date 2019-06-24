@@ -37,3 +37,14 @@ Labels on data
 \note{
 See \url{https://apexcharts.com/docs/options/datalabels/}
 }
+\examples{
+library(dplyr)
+data("diamonds", package = "ggplot2")
+
+# Add data labels
+apex(
+  data = count(diamonds, cut),
+  mapping = aes(x = cut, y = n)
+) \%>\%
+  ax_dataLabels(enabled = TRUE)
+}
