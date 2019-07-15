@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.940</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.960</span>
       </span>
     </div>
 
@@ -131,7 +131,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ax_theme</span>(<span class='no'>ax</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>monochrome</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ax_theme</span>(<span class='no'>ax</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"light"</span>, <span class='st'>"dark"</span>), <span class='kw'>palette</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>monochrome</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,6 +140,10 @@
     <tr>
       <th>ax</th>
       <td><p>A <code>apexcharts</code> <code>htmlwidget</code> object.</p></td>
+    </tr>
+    <tr>
+      <th>mode</th>
+      <td><p>use light or dark theme.</p></td>
     </tr>
     <tr>
       <th>palette</th>
@@ -163,6 +168,31 @@
     <p>See <a href='https://apexcharts.com/docs/options/theme/'>https://apexcharts.com/docs/options/theme/</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"diamonds"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+
+<span class='co'># Dark mode</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>),
+  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>)
+) <span class='kw'>%&gt;%</span>
+  <span class='fu'>ax_theme</span>(<span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"dark"</span>)
+
+<span class='co'># Use predefined palette (1 to 10)</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>color</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>cut</span>)
+) <span class='kw'>%&gt;%</span>
+  <span class='fu'>ax_theme</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"palette2"</span>)
+
+<span class='co'># monochrome palette</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>color</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>cut</span>)
+) <span class='kw'>%&gt;%</span>
+  <span class='fu'>ax_theme</span>(<span class='kw'>monochrome</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>enabled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#0B6121"</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -172,7 +202,9 @@
       <li><a href="#value">Value</a></li>
 
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

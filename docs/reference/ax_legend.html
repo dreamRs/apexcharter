@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.940</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.960</span>
       </span>
     </div>
 
@@ -131,11 +131,13 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ax_legend</span>(<span class='no'>ax</span>, <span class='kw'>show</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>horizontalAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verticalAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>textAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offsetY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offsetX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>markers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>itemMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>containerMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>onItemClick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>onItemHover</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>floating</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ax_legend</span>(<span class='no'>ax</span>, <span class='kw'>show</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>showForSingleSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>showForNullSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>showForZeroSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>horizontalAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>textAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offsetY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>offsetX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>markers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>itemMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>containerMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>onItemClick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>onItemHover</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>floating</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,12 +155,20 @@
       <td><p>Available position options for legend: <code>"top"</code>, <code>"right"</code>, <code>"bottom"</code>, <code>"left"</code>.</p></td>
     </tr>
     <tr>
-      <th>horizontalAlign</th>
-      <td><p>Available options for horizontal alignment: <code>"right"</code>, <code>"center"</code>, <code>"left"</code>.</p></td>
+      <th>showForSingleSeries</th>
+      <td><p>Show legend even if there is just 1 series.</p></td>
     </tr>
     <tr>
-      <th>verticalAlign</th>
-      <td><p>Available options for vertical alignment: <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code></p></td>
+      <th>showForNullSeries</th>
+      <td><p>Allows you to hide a particular legend if it’s series contains all null values.</p></td>
+    </tr>
+    <tr>
+      <th>showForZeroSeries</th>
+      <td><p>Allows you to hide a particular legend if it’s series contains all 0 values.</p></td>
+    </tr>
+    <tr>
+      <th>horizontalAlign</th>
+      <td><p>Available options for horizontal alignment: <code>"right"</code>, <code>"center"</code>, <code>"left"</code>.</p></td>
     </tr>
     <tr>
       <th>fontSize</th>
@@ -228,6 +238,23 @@ when hovered on legend item, it will highlight the paths of the hovered series i
     <p>See <a href='https://apexcharts.com/docs/options/legend/'>https://apexcharts.com/docs/options/legend/</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+
+<span class='co'># Legend position</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>, <span class='no'>year</span>),
+  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>year</span>)
+) <span class='kw'>%&gt;%</span>
+  <span class='fu'>ax_legend</span>(<span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>)
+
+<span class='co'># hide legend</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>, <span class='no'>year</span>),
+  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>year</span>)
+) <span class='kw'>%&gt;%</span>
+  <span class='fu'>ax_legend</span>(<span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -237,7 +264,9 @@ when hovered on legend item, it will highlight the paths of the hovered series i
       <li><a href="#value">Value</a></li>
 
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
