@@ -58,4 +58,11 @@ formatNoSci <- function(x) {
   return(ax)
 }
 
+# Get parameters from an \code{apexcharts} \code{htmlwidget} object.
+.get_ax_opt <- function(ax, name) {
+  ax$x$ax_opts[[name]]
+}
+
+
+
 

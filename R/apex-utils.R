@@ -1156,8 +1156,52 @@ ax_yaxis <- function(ax,
                      crosshairs = NULL,
                      ...) {
   params <- c(as.list(environment()), list(...))[-1]
-  .ax_opt2(ax, "yaxis", l = dropNulls(params))
+  yaxis <- .get_ax_opt(ax, "yaxis")
+  if (inherits(yaxis, "yaxis2")) {
+    yaxis[[1]] <- dropNulls(params)
+  } else {
+    yaxis <- dropNulls(params)
+    class(yaxis) <- c(class(yaxis), "yaxis1")
+  }
+  .ax_opt2(ax, "yaxis", l = yaxis)
 }
+
+
+#' Secondary Y-axis options
+#'
+#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @param ... See arguments from \code{\link{ax_yaxis}}.
+#'
+#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @examples
+#' 
+#' library(dplyr)
+#' data("economics_long", package = "ggplot2")
+#' 
+#' eco <- economics_long %>% 
+#'   filter(variable %in% c("pce", "pop")) %>% 
+#'   filter(date >= "2000-01-01")
+#' 
+#' apex(eco, aes(x = date, y = value, color = variable), type = "line") %>% 
+#'   ax_yaxis(title = list(text = "Pce")) %>% 
+#'   ax_yaxis2(opposite = TRUE, title = list(text = "Pop"))
+#'   
+ax_yaxis2 <- function(ax, ...) {
+  params <- dropNulls(list(...))
+  yaxis <- .get_ax_opt(ax, "yaxis")
+  if (inherits(yaxis, "yaxis2")) {
+    yaxis[[2]] <- params
+  } else {
+    yaxis <- list(yaxis, params)
+    class(yaxis) <- c(setdiff(class(yaxis), "yaxis1"), "yaxis2")
+    ax$x$ax_opts$yaxis <- NULL
+  }
+  .ax_opt2(ax, "yaxis", l = yaxis)
+}
+
+
 
 
 #' Theme for charts
