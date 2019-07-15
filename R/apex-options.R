@@ -67,7 +67,7 @@ events_opts <- function(click = NULL,
 #' 
 #' Use these options in \code{\link{ax_plotOptions}}.
 #'
-#' @param horizontal Logical. This option will turn a column chart into a horiontal bar chart.
+#' @param horizontal Logical. This option will turn a column chart into a horizontal bar chart.
 #' @param endingShape Available Options: \code{"flat"} or \code{"rounded"}.
 #' @param columnWidth In column charts, columnWidth is the percentage of the available width in the grid-rect. 
 #' @param barHeight In horizontal bar charts, barHeight is the percentage of the available height in the grid-rect. 

@@ -9,7 +9,7 @@ bar_opts(horizontal = NULL, endingShape = NULL, columnWidth = NULL,
   dataLabels = NULL, ...)
 }
 \arguments{
-\item{horizontal}{Logical. This option will turn a column chart into a horiontal bar chart.}
+\item{horizontal}{Logical. This option will turn a column chart into a horizontal bar chart.}
 
 \item{endingShape}{Available Options: \code{"flat"} or \code{"rounded"}.}
 
