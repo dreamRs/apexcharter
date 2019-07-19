@@ -31,3 +31,18 @@ Use these options in \code{\link{ax_plotOptions}}.
 \note{
 See \url{https://apexcharts.com/docs/options/plotoptions/bar/}.
 }
+\examples{
+
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+apex(count(mpg, manufacturer), aes(manufacturer, n)) \%>\% 
+  ax_plotOptions(
+    bar = bar_opts(
+      endingShape = "rounded",
+      columnWidth = 100,
+      distributed = TRUE
+    )
+  )
+  
+}

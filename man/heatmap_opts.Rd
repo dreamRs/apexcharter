@@ -24,3 +24,29 @@ Use these options in \code{\link{ax_plotOptions}}.
 \note{
 See \url{https://apexcharts.com/docs/options/plotoptions/heatmap/}.
 }
+\examples{
+
+df <- expand.grid(
+  month = month.name,
+  person = c("Obi-Wan", "Luke", "Anakin", "Leia")
+)
+df$value <- sample(0:1, nrow(df), TRUE)
+
+apex(
+  data = df,
+  mapping = aes(x = month, y = person, fill = value),
+  type = "heatmap"
+) \%>\% 
+  ax_plotOptions(
+    heatmap = heatmap_opts(
+      enableShades = FALSE,
+      colorScale = list(
+        ranges = list(
+          list(from = 0, to = 0.5, color = "#FF0000"),
+          list(from = 0.5, to = 1, color = "#088A08")
+        )
+      )
+    )
+  )
+  
+}

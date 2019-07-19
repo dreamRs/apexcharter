@@ -200,9 +200,11 @@ txhousing2 <- txhousing %>%
   filter(city %in% head(unique(city)), year %in% c(2000, 2001)) %>% 
   rename(val_med = median)
 
-apex(data = txhousing2,
-     type = "heatmap", 
-     mapping = aes(x = date, y = scales::rescale(val_med), group = city)) %>% 
+apex(
+  data = txhousing2,
+  type = "heatmap", 
+  mapping = aes(x = date, y = city, fill = scales::rescale(val_med))
+) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_colors("#008FFB")
 ```

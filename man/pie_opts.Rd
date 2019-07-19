@@ -10,7 +10,7 @@ pie_opts(size = NULL, donut = NULL, customScale = NULL,
 \arguments{
 \item{size}{Numeric. Custom size of the pie which will override the default size calculations.}
 
-\item{donut}{List with two fields \code{donutSize} (Donut / ring size in percentage relative to the total pie area.)
+\item{donut}{List with two fields \code{size} (Donut / ring size in percentage relative to the total pie area.)
 and \code{background} (The background color of the pie).}
 
 \item{customScale}{Numeric. Transform the scale of whole pie/donut overriding the default calculations.}
@@ -28,4 +28,16 @@ Use these options in \code{\link{ax_plotOptions}}.
 }
 \note{
 See \url{https://apexcharts.com/docs/options/plotoptions/pie/}.
+}
+\examples{
+
+library(dplyr)
+data("mpg", package = "ggplot2")
+
+apex(count(mpg, cyl), aes(cyl, n), type = "donut") \%>\%
+  ax_plotOptions(
+    pie = pie_opts(
+      donut = list(size = "90\%", background = "#BABABA")
+    )
+  )
 }

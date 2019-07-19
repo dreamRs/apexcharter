@@ -57,6 +57,9 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
                             "pie", "donut", "radialBar", "radar", "scatter", "heatmap"))
   data <- as.data.frame(data)
+  if (identical(type, "heatmap")) {
+    mapping <- rename_aes_heatmap(mapping)
+  }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
   if (type %in% c("pie", "donut", "radialBar")) {
     opts <- list(
@@ -115,6 +118,19 @@ make_series <- function(mapdata, mapping, type) {
 
 is_grouped <- function(x) {
   any(c("colour", "fill", "group") %in% x)
+}
+
+rename_aes_heatmap <- function(mapping) {
+  n_mapping <- names(mapping)
+  n_mapping[n_mapping == "y"] <- "group"
+  if ("fill" %in% n_mapping) {
+    n_mapping[n_mapping == "fill"] <- "y"
+  }
+  if ("colour" %in% n_mapping) {
+    n_mapping[n_mapping == "colour"] <- "y"
+  }
+  names(mapping) <- n_mapping
+  return(mapping)
 }
 
 rename_aes <- function(mapping) {

@@ -79,7 +79,21 @@ events_opts <- function(click = NULL,
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/bar/}.
 #'
 #' @export
-#'
+#' 
+#' @examples 
+#' 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' apex(count(mpg, manufacturer), aes(manufacturer, n)) %>% 
+#'   ax_plotOptions(
+#'     bar = bar_opts(
+#'       endingShape = "rounded",
+#'       columnWidth = 100,
+#'       distributed = TRUE
+#'     )
+#'   )
+#'   
 bar_opts <- function(horizontal = NULL,
                      endingShape = NULL,
                      columnWidth = NULL,
@@ -116,7 +130,32 @@ bar_opts <- function(horizontal = NULL,
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/heatmap/}.
 #'
 #' @export
-#'
+#' 
+#' @examples 
+#' 
+#' df <- expand.grid(
+#'   month = month.name,
+#'   person = c("Obi-Wan", "Luke", "Anakin", "Leia")
+#' )
+#' df$value <- sample(0:1, nrow(df), TRUE)
+#' 
+#' apex(
+#'   data = df,
+#'   mapping = aes(x = month, y = person, fill = value),
+#'   type = "heatmap"
+#' ) %>% 
+#'   ax_plotOptions(
+#'     heatmap = heatmap_opts(
+#'       enableShades = FALSE,
+#'       colorScale = list(
+#'         ranges = list(
+#'           list(from = 0, to = 0.5, color = "#FF0000"),
+#'           list(from = 0.5, to = 1, color = "#088A08")
+#'         )
+#'       )
+#'     )
+#'   )
+#'   
 heatmap_opts <- function(radius = NULL,
                          enableShades = NULL,
                          shadeIntensity = NULL,
@@ -210,7 +249,7 @@ radialBar_opts <- function(size = NULL,
 #' Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param size Numeric. Custom size of the pie which will override the default size calculations.
-#' @param donut List with two fields \code{donutSize} (Donut / ring size in percentage relative to the total pie area.)
+#' @param donut List with two fields \code{size} (Donut / ring size in percentage relative to the total pie area.)
 #'  and \code{background} (The background color of the pie).
 #' @param customScale Numeric. Transform the scale of whole pie/donut overriding the default calculations.
 #' @param offsetX Numeric. Sets the left offset of the whole pie area.
@@ -221,7 +260,18 @@ radialBar_opts <- function(size = NULL,
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/pie/}.
 #'
 #' @export
-#'
+#' 
+#' @examples 
+#' 
+#' library(dplyr)
+#' data("mpg", package = "ggplot2")
+#' 
+#' apex(count(mpg, cyl), aes(cyl, n), type = "donut") %>%
+#'   ax_plotOptions(
+#'     pie = pie_opts(
+#'       donut = list(size = "90%", background = "#BABABA")
+#'     )
+#'   )
 pie_opts <- function(size = NULL,
                      donut = NULL,
                      customScale = NULL,

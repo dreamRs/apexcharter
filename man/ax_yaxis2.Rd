@@ -9,7 +9,7 @@ ax_yaxis2(ax, ...)
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{...}{See arguments from \code{\link{ax_yaxis}}}
+\item{...}{See arguments from \code{\link{ax_yaxis}}.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.
