@@ -1,4 +1,4 @@
-apexcharter 0.0.4.900
+apexcharter 0.1.0
 ==================
 
 * New release:  create interactive chart with the JavaScript 'ApexCharts' library

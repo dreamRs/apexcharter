@@ -77,12 +77,23 @@ function get_widget(id){
 
 
 if (HTMLWidgets.shinyMode) {
-  // data = load
+  // update serie
   Shiny.addCustomMessageHandler('update-apexchart-series',
     function(obj) {
       var chart = get_widget(obj.id);
       if (typeof chart != 'undefined') {
-        chart.updateSeries(obj.data.newSeries, obj.data.animate);
+        chart.updateSeries([{
+          data: obj.data.newSeries
+        }], obj.data.animate);
+      }
+  });
+  
+  // update options
+  Shiny.addCustomMessageHandler('update-apexchart-options',
+    function(obj) {
+      var chart = get_widget(obj.id);
+      if (typeof chart != 'undefined') {
+        chart.updateOptions(obj.data.options);
       }
   });
 }

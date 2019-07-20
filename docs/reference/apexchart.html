@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.960</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -168,14 +168,37 @@
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>apexcharter</span>)
 
+<span class='co'># Use raw API by passing a list of</span>
+<span class='co'># parameters to the function</span>
+
 <span class='fu'>apexchart</span>(<span class='kw'>ax_opts</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-  <span class='kw'>chart</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bar"</span>),
+  <span class='kw'>chart</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bar"</span>
+  ),
   <span class='kw'>series</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
     <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Example"</span>,
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>5</span>)
   )),
-  <span class='kw'>xaxis</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>categories</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>5</span>])
-))</div></pre>
+  <span class='kw'>xaxis</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>categories</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>5</span>]
+  )
+))
+
+
+<span class='co'># Or use apexchart() to initialize the chart</span>
+<span class='co'># before passing parameters</span>
+
+<span class='fu'>apexchart</span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='ax_chart.html'>ax_chart</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bar"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='ax-series.html'>ax_series</a></span>(
+    <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+      <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Example"</span>,
+      <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>5</span>)
+    )
+  ) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='ax_xaxis.html'>ax_xaxis</a></span>(
+    <span class='kw'>categories</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>5</span>]
+  )</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

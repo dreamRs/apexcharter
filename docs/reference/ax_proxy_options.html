@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proxy for updating series. — ax_proxy_series • apexcharter</title>
+<title>Proxy for updating options — ax_proxy_options • apexcharter</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Proxy for updating series. — ax_proxy_series" />
+<meta property="og:title" content="Proxy for updating options — ax_proxy_options" />
 
-<meta property="og:description" content="Allows you to update the series array overriding the existing one." />
+<meta property="og:description" content="Allows you to update the configuration object." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,18 +120,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Proxy for updating series.</h1>
+    <h1>Proxy for updating options</h1>
     <small class="dont-index">Source: <a href='https://github.com/dreamRs/apexcharter/blob/master/R/proxy.R'><code>R/proxy.R</code></a></small>
-    <div class="hidden name"><code>ax_proxy_series.Rd</code></div>
+    <div class="hidden name"><code>ax_proxy_options.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows you to update the series array overriding the existing one.</p>
+    <p>Allows you to update the configuration object.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ax_proxy_series</span>(<span class='no'>proxy</span>, <span class='no'>newSeries</span>, <span class='kw'>animate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>ax_proxy_options</span>(<span class='no'>proxy</span>, <span class='no'>options</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,12 +141,8 @@
       <td><p>A <code>apexchartProxy</code> <code>htmlwidget</code> object.</p></td>
     </tr>
     <tr>
-      <th>newSeries</th>
-      <td><p>The series array to override the existing one.</p></td>
-    </tr>
-    <tr>
-      <th>animate</th>
-      <td><p>Should the chart animate on re-rendering.</p></td>
+      <th>options</th>
+      <td><p>New options to set.</p></td>
     </tr>
     </table>
     
@@ -160,50 +156,44 @@
     <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidRow</a></span>(
       <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/column'>column</a></span>(
         <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>8</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-        <span class='no'>tags</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/builder'>h2</a></span>(<span class='st'>"Real time chart"</span>),
-        <span class='fu'><a href='apexcharter-shiny.html'>apexchartOutput</a></span>(<span class='kw'>outputId</span> <span class='kw'>=</span> <span class='st'>"chart"</span>)
+        <span class='no'>tags</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/builder'>h2</a></span>(<span class='st'>"Update options"</span>),
+        <span class='fu'><a href='apexcharter-shiny.html'>apexchartOutput</a></span>(<span class='kw'>outputId</span> <span class='kw'>=</span> <span class='st'>"chart"</span>),
+        <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/checkboxInput'>checkboxInput</a></span>(
+          <span class='kw'>inputId</span> <span class='kw'>=</span> <span class='st'>"show_label_xaxis"</span>,
+          <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Show x-axis labels"</span>
+        ),
+        <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/textInput'>textInput</a></span>(
+          <span class='kw'>inputId</span> <span class='kw'>=</span> <span class='st'>"yaxis_title"</span>,
+          <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Y-axis title"</span>
+        )
       )
     )
   )
-
   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
 
-    <span class='no'>rv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/reactiveValues'>reactiveValues</a></span>()
-    <span class='no'>rv</span>$<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
-      <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>() + <span class='fl'>1</span>:<span class='fl'>20</span>,
-      <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>10</span>:<span class='fl'>90</span>, <span class='fl'>20</span>, <span class='fl'>TRUE</span>)
-    )
-
-    <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observe'>observe</a></span>({
-      <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/invalidateLater'>invalidateLater</a></span>(<span class='fl'>1000</span>, <span class='no'>session</span>)
-      <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/isolate'>isolate</a></span>(<span class='no'>rv</span>$<span class='no'>df</span>)
-      <span class='co'># Append new line of data</span>
-      <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(
-        <span class='no'>df</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
-          <span class='kw'>date</span> <span class='kw'>=</span> <span class='no'>df</span>$<span class='no'>date</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>df</span>$<span class='no'>date</span>)] + <span class='fl'>1</span>,
-          <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>10</span>:<span class='fl'>90</span>, <span class='fl'>1</span>, <span class='fl'>TRUE</span>)
-        )
-      )
-      <span class='no'>rv</span>$<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span>
-    })
-
     <span class='no'>output</span>$<span class='no'>chart</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='apexcharter-shiny.html'>renderApexchart</a></span>({
-      <span class='co'># Generate chart once</span>
-      <span class='fu'><a href='apex.html'>apex</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/isolate'>isolate</a></span>(<span class='no'>rv</span>$<span class='no'>df</span>), <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>date</span>, <span class='no'>values</span>), <span class='st'>"spline"</span>) <span class='kw'>%&gt;%</span>
+      <span class='fu'><a href='apexchart.html'>apexchart</a></span>() <span class='kw'>%&gt;%</span>
+        <span class='fu'><a href='ax_chart.html'>ax_chart</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bar"</span>) <span class='kw'>%&gt;%</span>
+        <span class='fu'><a href='ax-series.html'>ax_series</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+          <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Example"</span>,
+          <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>23</span>, <span class='fl'>43</span>, <span class='fl'>76</span>, <span class='fl'>31</span>)
+        )) <span class='kw'>%&gt;%</span>
         <span class='fu'><a href='ax_xaxis.html'>ax_xaxis</a></span>(
-          <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>10</span> * <span class='fl'>24</span> * <span class='fl'>60</span> * <span class='fl'>60</span> * <span class='fl'>1000</span>
-          <span class='co'># Fixed range for x-axis : 10 days</span>
-          <span class='co'># days*hours*minutes*seconds*milliseconds</span>
+          <span class='kw'>categories</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Label A"</span>, <span class='st'>"Label B"</span>,
+                         <span class='st'>"Label C"</span>, <span class='st'>"Label D"</span>)
         )
     })
 
     <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observe'>observe</a></span>({
-      <span class='co'># Update chart to add new data</span>
       <span class='fu'><a href='apexchartProxy.html'>apexchartProxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
-        <span class='fu'>ax_proxy_series</span>(
-          <span class='fu'><a href='parse_df.html'>parse_df</a></span>(<span class='no'>rv</span>$<span class='no'>df</span>),
-          <span class='no'>T</span>
-        )
+        <span class='fu'>ax_proxy_options</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+          <span class='kw'>xaxis</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+            <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>show</span> <span class='kw'>=</span> <span class='no'>input</span>$<span class='no'>show_label_xaxis</span>)
+          ),
+          <span class='kw'>yaxis</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+            <span class='kw'>title</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>input</span>$<span class='no'>yaxis_title</span>)
+          )
+        ))
     })
 
   }

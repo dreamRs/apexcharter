@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.960</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -177,6 +177,19 @@
     <p>See <a href='https://apexcharts.com/docs/options/plotoptions/bar/'>https://apexcharts.com/docs/options/plotoptions/bar/</a>.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>), <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>manufacturer</span>, <span class='no'>n</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='ax_plotOptions.html'>ax_plotOptions</a></span>(
+    <span class='kw'>bar</span> <span class='kw'>=</span> <span class='fu'>bar_opts</span>(
+      <span class='kw'>endingShape</span> <span class='kw'>=</span> <span class='st'>"rounded"</span>,
+      <span class='kw'>columnWidth</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+      <span class='kw'>distributed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+    )
+  )</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -184,7 +197,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
