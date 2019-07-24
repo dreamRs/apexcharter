@@ -23,11 +23,61 @@
 #' @param ... Additional parameters.
 #' 
 #' @note All arguments should be JavaScript function defined with \code{htmlwidgets::JS}.
+#' 
+#' @return A \code{list} of options that can be used in \code{\link{ax_chart}}.
 #'
 #' @note See \url{https://apexcharts.com/docs/options/chart/events/}.
 #' 
 #' @export
-#'
+#' 
+#' @examples 
+#' 
+#' if (interactive()) {
+#'   library(shiny)
+#'   
+#'   ui <- fluidPage(
+#'     fluidRow(
+#'       column(
+#'         width = 8, offset = 2,
+#'         tags$h2("Apexchart in Shiny"),
+#'         apexchartOutput("chart"),
+#'         verbatimTextOutput(outputId = "res_click")
+#'       )
+#'     )
+#'   )
+#'   
+#'   server <- function(input, output, session) {
+#'     
+#'     output$chart <- renderApexchart({
+#'       apexchart() %>%
+#'         ax_chart(
+#'           type = "bar",
+#'           events = events_opts(
+#'             dataPointSelection = JS(
+#'               "function(event, chartContext, config) {
+#'                Shiny.setInputValue('click', config.selectedDataPoints)
+#'               }"
+#'             ) 
+#'           )
+#'         ) %>%
+#'         ax_series(
+#'           list(
+#'             name = "Example",
+#'             data = sample(1:100, 5)
+#'           )
+#'         ) %>%
+#'         ax_xaxis(
+#'           categories = LETTERS[1:5]
+#'         )
+#'     })
+#'     
+#'     output$res_click <- renderPrint({
+#'       input$click
+#'     })
+#'   }
+#'   
+#'   shinyApp(ui, server)
+#' }
 events_opts <- function(click = NULL,
                         beforeMount = NULL,
                         mounted = NULL,
@@ -63,9 +113,9 @@ events_opts <- function(click = NULL,
 
 
 
-#' Bar options
+#' @title Bar options
 #' 
-#' Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param horizontal Logical. This option will turn a column chart into a horizontal bar chart.
 #' @param endingShape Available Options: \code{"flat"} or \code{"rounded"}.
@@ -77,6 +127,8 @@ events_opts <- function(click = NULL,
 #' @param ... Additional parameters.
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/bar/}.
+#' 
+#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
 #'
 #' @export
 #' 
@@ -117,9 +169,9 @@ bar_opts <- function(horizontal = NULL,
 }
 
 
-#' Heatmap options
+#' @title Heatmap options
 #' 
-#' Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param radius Numeric. Radius of the rectangle inside heatmap.
 #' @param enableShades Logical. Enable different shades of color depending on the value
@@ -128,6 +180,8 @@ bar_opts <- function(horizontal = NULL,
 #' @param ... Additional parameters.
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/heatmap/}.
+#' 
+#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
 #'
 #' @export
 #' 
@@ -173,9 +227,9 @@ heatmap_opts <- function(radius = NULL,
 }
 
 
-#' Radial bar options
+#' @title Radial bar options
 #' 
-#' Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param size Numeric. Manual size of the radialBars instead of calculating automatically from default height / width.
 #' @param inverseOrder Logical. Whether to make the first value of series innermost or outermost.
@@ -189,6 +243,8 @@ heatmap_opts <- function(radius = NULL,
 #' @param ... Additional parameters.
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/radialbar/}.
+#' 
+#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
 #'
 #' @export
 #' 
@@ -244,9 +300,9 @@ radialBar_opts <- function(size = NULL,
 }
 
 
-#' Pie options
+#' @title Pie options
 #' 
-#' Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in \code{\link{ax_plotOptions}}.
 #'
 #' @param size Numeric. Custom size of the pie which will override the default size calculations.
 #' @param donut List with two fields \code{size} (Donut / ring size in percentage relative to the total pie area.)
@@ -258,6 +314,8 @@ radialBar_opts <- function(size = NULL,
 #' @param ... Additional parameters.
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/pie/}.
+#' 
+#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
 #'
 #' @export
 #' 

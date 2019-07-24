@@ -2,7 +2,7 @@
 % Please edit documentation in R/apex.R
 \name{apex}
 \alias{apex}
-\title{Quick Apex Chart}
+\title{Quick ApexChart}
 \usage{
 apex(data, mapping, type = "column", ..., auto_update = TRUE,
   width = NULL, height = NULL, elementId = NULL)
@@ -25,8 +25,11 @@ apex(data, mapping, type = "column", ..., auto_update = TRUE,
 
 \item{elementId}{Use an explicit element ID for the widget.}
 }
+\value{
+A \code{apexcharts} \code{htmlwidget} object.
+}
 \description{
-Quick Apex Chart
+Initialize a chart with three main parameters : data, mapping and type of chart.
 }
 \examples{
 library(dplyr)

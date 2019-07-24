@@ -23,6 +23,9 @@ and \code{background} (The background color of the pie).}
 
 \item{...}{Additional parameters.}
 }
+\value{
+A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+}
 \description{
 Use these options in \code{\link{ax_plotOptions}}.
 }

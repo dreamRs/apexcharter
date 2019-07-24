@@ -1,5 +1,7 @@
 
-#' Quick Apex Chart
+#' @title Quick ApexChart
+#' 
+#' @description Initialize a chart with three main parameters : data, mapping and type of chart.
 #'
 #' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
@@ -10,6 +12,8 @@
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
+#' 
+#' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
 #' @export
 #' 

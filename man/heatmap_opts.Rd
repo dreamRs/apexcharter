@@ -18,6 +18,9 @@ heatmap_opts(radius = NULL, enableShades = NULL,
 
 \item{...}{Additional parameters.}
 }
+\value{
+A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+}
 \description{
 Use these options in \code{\link{ax_plotOptions}}.
 }

@@ -24,6 +24,9 @@ string and have \code{'px'} appended.}
 \item{quoted}{Is \code{expr} a quoted expression (with \code{quote()})? This
 is useful if you want to save an expression in a variable.}
 }
+\value{
+An Apexchart output that can be included in the application UI.
+}
 \description{
 Output and render functions for using apexcharter within Shiny
 applications and interactive Rmd documents.

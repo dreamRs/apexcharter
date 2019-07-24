@@ -80,9 +80,9 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
   )
 }
 
-#' Shiny bindings for apexcharter
+#' @title Shiny bindings for apexcharter
 #'
-#' Output and render functions for using apexcharter within Shiny
+#' @description Output and render functions for using apexcharter within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
@@ -93,6 +93,8 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
+#'   
+#' @return An Apexchart output that can be included in the application UI.
 #'
 #' @name apexcharter-shiny
 #'

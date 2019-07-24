@@ -37,6 +37,9 @@ events_opts(click = NULL, beforeMount = NULL, mounted = NULL,
 
 \item{...}{Additional parameters.}
 }
+\value{
+A \code{list} of options that can be used in \code{\link{ax_chart}}.
+}
 \description{
 Events options
 }
@@ -44,4 +47,53 @@ Events options
 All arguments should be JavaScript function defined with \code{htmlwidgets::JS}.
 
 See \url{https://apexcharts.com/docs/options/chart/events/}.
+}
+\examples{
+
+if (interactive()) {
+  library(shiny)
+  
+  ui <- fluidPage(
+    fluidRow(
+      column(
+        width = 8, offset = 2,
+        tags$h2("Apexchart in Shiny"),
+        apexchartOutput("chart"),
+        verbatimTextOutput(outputId = "res_click")
+      )
+    )
+  )
+  
+  server <- function(input, output, session) {
+    
+    output$chart <- renderApexchart({
+      apexchart() \%>\%
+        ax_chart(
+          type = "bar",
+          events = events_opts(
+            dataPointSelection = JS(
+              "function(event, chartContext, config) {
+               Shiny.setInputValue('click', config.selectedDataPoints)
+              }"
+            ) 
+          )
+        ) \%>\%
+        ax_series(
+          list(
+            name = "Example",
+            data = sample(1:100, 5)
+          )
+        ) \%>\%
+        ax_xaxis(
+          categories = LETTERS[1:5]
+        )
+    })
+    
+    output$res_click <- renderPrint({
+      input$click
+    })
+  }
+  
+  shinyApp(ui, server)
+}
 }

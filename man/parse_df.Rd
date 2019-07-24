@@ -12,6 +12,22 @@ parse_df(data, add_names = FALSE)
 \item{add_names}{Use names of columns in output. Can be logical to
 reuse \code{data} names or a character vector of new names.}
 }
+\value{
+A \code{list} that can be used to specify data in \code{\link{ax_series}} for example.
+}
 \description{
 Convert data to a format suitable for ApexCharts.js
+}
+\examples{
+
+# All iris dataset
+parse_df(iris)
+
+# Keep variables names
+parse_df(iris[, 1:2], add_names = TRUE)
+
+# Use custom names
+
+parse_df(iris[, 1:2], add_names = c("x", "y"))
+
 }

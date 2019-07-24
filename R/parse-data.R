@@ -6,9 +6,23 @@
 #' @param data A \code{data.frame} or an object coercible to \code{data.frame}.
 #' @param add_names Use names of columns in output. Can be logical to
 #'  reuse \code{data} names or a character vector of new names.
+#'  
+#' @return A \code{list} that can be used to specify data in \code{\link{ax_series}} for example.
 #'
 #' @export
 #' @importFrom stats setNames
+#' 
+#' @examples 
+#' 
+#' # All iris dataset
+#' parse_df(iris)
+#' 
+#' # Keep variables names
+#' parse_df(iris[, 1:2], add_names = TRUE)
+#' 
+#' # Use custom names
+#' 
+#' parse_df(iris[, 1:2], add_names = c("x", "y"))
 #'
 parse_df <- function(data, add_names = FALSE) {
   data <- as.data.frame(data)
