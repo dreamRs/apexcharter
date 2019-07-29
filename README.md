@@ -15,7 +15,13 @@ Note: Once again, development is heavily inspired by amazing [highcharter](http:
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+Install from CRAN with:
+
+```r
+install.packages("apexcharter")
+```
+
+Or install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
