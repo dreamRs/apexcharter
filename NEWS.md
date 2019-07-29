@@ -1,5 +1,5 @@
-apexcharter 0.1.0
+apexcharter 0.1.1
 ==================
 
-* New release:  create interactive chart with the JavaScript 'ApexCharts' library
+* First CRAN release: create interactive chart with the JavaScript 'ApexCharts' library. Types of graphics available : bars, columns, splines, lines, scatter, pie, donuts, heatmap, gauge.
 
