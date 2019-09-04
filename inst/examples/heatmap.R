@@ -86,39 +86,58 @@ apexchart() %>%
       )
     }
   )) %>% 
-  # ax_colors("#008FFB") %>% 
+  ax_legend(
+    formatter = JS(
+      "function(seriesName, opts) {
+      if (seriesName == 'Missing') return null; else return seriesName;
+      }"
+    )
+  ) %>% 
+  # ax_colors("#008FFB") %>%
   ax_plotOptions(
-    heatmap = heatmapOpts(
+    heatmap = heatmap_opts(
+      radius = 0,
+      enableShades = FALSE,
       colorScale = list(
         ranges = list(
           list(
             from = 0,
+            to = 0.001,
+            name = "Missing",
+            color = "#FFF"
+          ),
+          list(
+            from = 0.001,
             to = 4,
             name = "low",
-            color = "#000004"
+            # color = "#000004"
+            color = "#FDE725"
           ),
           list(
             from = 4,
             to = 70,
             name = "mid-low",
-            color = "#781C6D"
+            # color = "#781C6D",
+            color = "#35B779"
           ),
           list(
             from = 70,
             to = 290,
             name = "mid-high",
-            color = "#ED6925"
+            # color = "#ED6925",
+            color = "#31688E"
           ),
           list(
             from = 290,
             to = 3000,
             name = "high",
-            color = "#FCFFA4"
+            # color = "#FCFFA4",
+            color = "#440154"
           )
         )
       )
     )
-  ) %>% 
+  ) %>%
   ax_xaxis(type = "category", categories = unique(vaccines$year))
 
 
