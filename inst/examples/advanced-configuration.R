@@ -13,7 +13,7 @@ library(dplyr)
 data("mpg", package = "ggplot2")
 
 count(mpg, class) %>% 
-  mutate(pct=n/sum(n)) %>% 
+  mutate(pct = n/sum(n)) %>% 
   apex(mapping = aes(class, pct), type = "column") %>% 
   ax_colors("#617a89") %>% 
   ax_labs(
@@ -23,9 +23,18 @@ count(mpg, class) %>%
   ax_yaxis(
     title = list(text = "Weight (tons)"),
     labels = list(
-      formatter = JS("function(value) {return Math.round(value * 100) + '%';}")
+      formatter = JS(
+        "function(value) {return Math.round(value * 100) + '%';}"
+      )
     ), 
     tickAmount = 6
+  ) %>% 
+  ax_tooltip(
+    y = list(
+      title = list(
+        formatter = JS("function() {return 'Percentage';}")
+      )
+    )
   ) %>% 
   ax_xaxis(
     title = list(text = "Fuel efficiency (mpg)")
@@ -55,19 +64,19 @@ economics_long %>%
   apex(aes(date, value, group = variable), type = "line") %>% 
   ax_legend(position = "bottom") %>% 
   ax_stroke(width = 1) %>% 
+  ax_colors("firebrick", "forestgreen") %>% 
   ax_yaxis(
     min = 0, max = 30,
     tickAmount = 6,
     labels = list(
       formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
-    ),
-    title = list(text = "Personal savings rate")
+    )
   ) %>% 
   ax_xaxis(type = "datetime", labels = list(format = "d MMM yy")) %>% 
   ax_tooltip(x = list(format = "dd MMM yyyy")) %>% 
   ax_labs(
     title = "US economic time series",
-    subtitle = "Data from {ggplot2}"
+    subtitle = "economics dataset from {ggplot2}"
   ) %>% 
   ax_title(
     style = list(fontSize = "22px")
@@ -233,7 +242,7 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
   ) %>% 
   ax_labs(
     title = "Infectious Diseases and Vaccines",
-    subtitle = "Data from {highcharter}"
+    subtitle = "vaccines dataset from {highcharter}"
   ) %>% 
   ax_title(
     style = list(fontSize = "22px")
