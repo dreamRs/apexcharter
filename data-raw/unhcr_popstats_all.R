@@ -163,6 +163,22 @@ unhcr_popstats <- merge(
 
 
 
+
+# Timeserie by continent --------------------------------------------------
+
+unhcr_ts <- unhcr_popstats[!is.na(continent_origin), list(
+  n = sum(value, na.rm = TRUE)
+), by = list(year, population_type, continent_origin)]
+
+setorder(unhcr_ts, continent_origin, population_type, year)
+unhcr_ts <- as.data.frame(unhcr_ts)
+
+usethis::use_data(unhcr_ts, overwrite = TRUE)
+
+
+
+
+
 # Use data 2017 -----------------------------------------------------------
 
 
