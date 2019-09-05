@@ -53,30 +53,46 @@ count(mpg, class) %>%
 
 # Line --------------------------------------------------------------------
 
-data("economics_long", package = "ggplot2")
 
-economics_long %>% 
-  filter(variable %in% c("psavert", "uempmed")) %>% 
-  mutate(variable = case_when(
-    variable == "psavert" ~ "Personal savings rate",
-    variable == "uempmed" ~ "Median duration of unemployment (in weeks)"
-  )) %>% 
-  apex(aes(date, value, group = variable), type = "line") %>% 
+data("unhcr_ts")
+
+unhcr_ts %>% 
+  filter(population_type == "Refugees (incl. refugee-like situations)") %>% 
+  mutate(date = as.Date(paste0(year, "-01-01"))) %>% 
+  apex(aes(date, n, group = continent_origin), type = "line") %>% 
   ax_legend(position = "bottom") %>% 
-  ax_stroke(width = 1) %>% 
-  ax_colors("firebrick", "forestgreen") %>% 
+  ax_stroke(width = 2) %>% 
+  ax_colors("#440154", "#414487", "#2A788E", "#22A884", "#7AD151", 
+            "#FDE725") %>%
   ax_yaxis(
-    min = 0, max = 30,
-    tickAmount = 6,
     labels = list(
-      formatter = htmlwidgets::JS("function(val) {return val.toFixed(0);}")
+      formatter = htmlwidgets::JS("function(val) {return (val/1e6).toFixed(0);}")
+    ),
+    title = list(text = "Number of refugees (in million)")
+  ) %>% 
+  ax_xaxis(type = "datetime", labels = list(format = "yyyy")) %>% 
+  ax_annotations(
+    points = list(
+      list(
+        x = JS("new Date('1994').getTime()"),
+        y = 6935296,
+        label = list(text = "Great Lakes refugee crisis", offsetY = 0),
+        marker = list(size = 6)
+      )
     )
   ) %>% 
-  ax_xaxis(type = "datetime", labels = list(format = "d MMM yy")) %>% 
-  ax_tooltip(x = list(format = "dd MMM yyyy")) %>% 
+  ax_tooltip(
+    x = list(format = "yyyy"),
+    y = list(
+      formatter = JS(
+        # thousand separator in javascript
+        "function(value) {return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");}"
+      )
+    )
+  ) %>% 
   ax_labs(
-    title = "US economic time series",
-    subtitle = "economics dataset from {ggplot2}"
+    title = "Continent of origin for refugees population",
+    subtitle = "Data from the UN Refugee Agency"
   ) %>% 
   ax_title(
     style = list(fontSize = "22px")
@@ -98,16 +114,24 @@ gapminder %>%
   filter(year == 2007) %>% 
   mutate(
     gdpPercap = log(gdpPercap),
-    pop = sqrt(pop/pi)/1500
+    pop = sqrt(pop / pi) / 1500
   ) %>% 
   apex(mapping = aes(gdpPercap, lifeExp, z = pop, group = continent, label = country), type = "scatter") %>% 
   ax_chart(zoom = list(
     enabled = TRUE, type = "xy"
   )) %>% 
-  ax_yaxis(decimalsInFloat = 0, axisBorder = list(show = TRUE), axisTicks = list(show = TRUE)) %>% 
-  ax_xaxis(tickAmount = 8, tooltip = list(enabled = FALSE)) %>% 
+  ax_yaxis(
+    decimalsInFloat = 0, 
+    axisBorder = list(show = TRUE),
+    axisTicks = list(show = TRUE),
+    title = list(text = "life expectancy at birth (in years)")
+  ) %>% 
+  ax_xaxis(
+    tickAmount = 8, tooltip = list(enabled = FALSE),
+    title = list(text = "GDP per capita (log-scale)")
+  ) %>% 
   ax_grid(xaxis = list(lines = list(show = TRUE))) %>% 
-  ax_legend(position = "right") %>% 
+  ax_legend(position = "right", offsetY = 70) %>% 
   ax_markers(hover = list(sizeOffset = 0, size = 25)) %>% 
   ax_tooltip(custom = JS(paste(
     "function({ series, seriesIndex, dataPointIndex, w }) {",
@@ -153,7 +177,17 @@ gapminder %>%
     "'</div>'",
     ");",
     "}", sep = "\n"
-  )))
+  ))) %>% 
+  ax_labs(
+    title = "Life expectancy, GDP and population",
+    subtitle = "gapminder dataset from {gapminder}"
+  ) %>% 
+  ax_title(
+    style = list(fontSize = "22px")
+  ) %>% 
+  ax_subtitle(
+    style = list(fontSize = "16px", color = "#BDBDBD")
+  )
 
 
 
