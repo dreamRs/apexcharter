@@ -18,6 +18,8 @@ navbar:
       href: articles/labs.html
     - text: "Options & styles for lines"
       href: articles/lines.html
+    - text: "Advanced configuration"
+      href: articles/advanced-configuration.html
   - text: News
     href: news/index.html
   right:
