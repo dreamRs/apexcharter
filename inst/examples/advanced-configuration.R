@@ -15,11 +15,7 @@ data("mpg", package = "ggplot2")
 count(mpg, class) %>% 
   mutate(pct = n/sum(n)) %>% 
   apex(mapping = aes(class, pct), type = "column") %>% 
-  ax_colors("#617a89") %>% 
-  ax_labs(
-    title = "Seminal ggplot2 column chart example with percents",
-    subtitle = "Example taken from {hrbrthemes} readme"
-  ) %>% 
+  ax_colors("#617a89")%>% 
   ax_yaxis(
     title = list(text = "Weight (tons)"),
     labels = list(
@@ -29,6 +25,9 @@ count(mpg, class) %>%
     ), 
     tickAmount = 6
   ) %>% 
+  ax_xaxis(
+    title = list(text = "Fuel efficiency (mpg)")
+  ) %>% 
   ax_tooltip(
     y = list(
       title = list(
@@ -36,9 +35,10 @@ count(mpg, class) %>%
       )
     )
   ) %>% 
-  ax_xaxis(
-    title = list(text = "Fuel efficiency (mpg)")
-  ) %>% 
+  ax_labs(
+    title = "Seminal ggplot2 column chart example with percents",
+    subtitle = "Example taken from {hrbrthemes} readme"
+  )  %>% 
   ax_title(
     style = list(fontSize = "22px")
   ) %>% 
@@ -62,15 +62,24 @@ unhcr_ts %>%
   apex(aes(date, n, group = continent_origin), type = "line") %>% 
   ax_legend(position = "bottom") %>% 
   ax_stroke(width = 2) %>% 
-  ax_colors("#440154", "#414487", "#2A788E", "#22A884", "#7AD151", 
-            "#FDE725") %>%
+  ax_colors("#440154", "#414487", "#2A788E",
+            "#22A884", "#7AD151", "#FDE725") %>%
   ax_yaxis(
     labels = list(
-      formatter = htmlwidgets::JS("function(val) {return (val/1e6).toFixed(0);}")
+      formatter = JS("function(val) {return (val/1e6).toFixed(0);}")
     ),
     title = list(text = "Number of refugees (in million)")
   ) %>% 
-  ax_xaxis(type = "datetime", labels = list(format = "yyyy")) %>% 
+  ax_xaxis(labels = list(format = "yyyy")) %>% 
+  ax_tooltip(
+    x = list(format = "yyyy"),
+    y = list(
+      formatter = JS(
+        # thousand separator in javascript
+        "function(value) {return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");}"
+      )
+    )
+  ) %>% 
   ax_annotations(
     points = list(
       list(
@@ -78,15 +87,6 @@ unhcr_ts %>%
         y = 6935296,
         label = list(text = "Great Lakes refugee crisis", offsetY = 0),
         marker = list(size = 6)
-      )
-    )
-  ) %>% 
-  ax_tooltip(
-    x = list(format = "yyyy"),
-    y = list(
-      formatter = JS(
-        # thousand separator in javascript
-        "function(value) {return value.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");}"
       )
     )
   ) %>% 
@@ -109,7 +109,6 @@ unhcr_ts %>%
 
 data("gapminder", package = "gapminder")
 
-
 gapminder %>% 
   filter(year == 2007) %>% 
   mutate(
@@ -127,7 +126,11 @@ gapminder %>%
     title = list(text = "life expectancy at birth (in years)")
   ) %>% 
   ax_xaxis(
-    tickAmount = 8, tooltip = list(enabled = FALSE),
+    tickAmount = 8,
+    labels = list(
+      formatter = JS("function(val) {return val.toFixed(2);}")
+    ),
+    tooltip = list(enabled = FALSE),
     title = list(text = "GDP per capita (log-scale)")
   ) %>% 
   ax_grid(xaxis = list(lines = list(show = TRUE))) %>% 
@@ -202,13 +205,6 @@ data("vaccines", package = "highcharter")
 apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>% 
   ax_chart(animations = list(enabled = FALSE)) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
-  ax_legend(
-    formatter = JS(
-      "function(seriesName, opts) {
-      if (seriesName == 'Missing') return null; else return seriesName;
-      }"
-    )
-  ) %>% 
   ax_stroke(width = 0) %>% 
   ax_plotOptions(
     heatmap = heatmap_opts(
@@ -254,6 +250,19 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
       )
     )
   ) %>% 
+  ax_legend(
+    formatter = JS(
+      "function(seriesName, opts) {
+      if (seriesName == 'Missing') return null; else return seriesName;
+      }"
+    )
+  ) %>% 
+  ax_yaxis(
+    labels = list(
+      style = list(fontSize = "8px"),
+      offsetY = -20
+    )
+  ) %>% 
   ax_annotations(
     xaxis = list(
       list(
@@ -264,7 +273,6 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
         fillColor = "firebrick",
         label = list(
           borderColor = "firebrick",
-         
           style = list(color = "#FFF", background = "firebrick"),
           text = "Vaccine Intoduced", 
           orientation = "horizontal",
