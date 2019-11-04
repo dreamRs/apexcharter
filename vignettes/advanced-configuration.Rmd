@@ -698,7 +698,7 @@ heatmap <- heatmap %>%
         label = list(
           borderColor = "firebrick",
           style = list(color = "#FFF", background = "firebrick"),
-          text = "Vaccine Intoduced", 
+          text = "Vaccine Introduced", 
           orientation = "horizontal",
           position = "bottom",
           offsetY = 10
@@ -808,7 +808,7 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
         label = list(
           borderColor = "firebrick",
           style = list(color = "#FFF", background = "firebrick"),
-          text = "Vaccine Intoduced", 
+          text = "Vaccine Introduced", 
           orientation = "horizontal",
           position = "bottom",
           offsetY = 10
