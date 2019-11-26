@@ -32,9 +32,9 @@ Output and render functions for using apexcharter within Shiny
 applications and interactive Rmd documents.
 }
 \examples{
-
 if (interactive()) {
   library(shiny)
+  library(apexcharter)
   
   ui <- fluidPage(
     fluidRow(

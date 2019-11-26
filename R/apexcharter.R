@@ -12,42 +12,7 @@
 #'
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #'
-#' @examples
-#'
-#' library(apexcharter)
-#' 
-#' # Use raw API by passing a list of
-#' # parameters to the function
-#' 
-#' apexchart(ax_opts = list(
-#'   chart = list(
-#'     type = "bar"
-#'   ),
-#'   series = list(list(
-#'     name = "Example",
-#'     data = sample(1:100, 5)
-#'   )),
-#'   xaxis = list(
-#'     categories = LETTERS[1:5]
-#'   )
-#' ))
-#' 
-#' 
-#' # Or use apexchart() to initialize the chart
-#' # before passing parameters
-#' 
-#' apexchart() %>% 
-#'   ax_chart(type = "bar") %>% 
-#'   ax_series(
-#'     list(
-#'       name = "Example",
-#'       data = sample(1:100, 5)
-#'     )
-#'   ) %>% 
-#'   ax_xaxis(
-#'     categories = LETTERS[1:5]
-#'   )
-#'   
+#' @example examples/apexchart.R
 apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
@@ -102,43 +67,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
 #'
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' 
-#' @examples 
-#' 
-#' if (interactive()) {
-#'   library(shiny)
-#'   
-#'   ui <- fluidPage(
-#'     fluidRow(
-#'       column(
-#'         width = 8, offset = 2,
-#'         tags$h2("Apexchart in Shiny"),
-#'         actionButton("redraw", "Redraw chart"),
-#'         apexchartOutput("chart")
-#'       )
-#'     )
-#'   )
-#'   
-#'   server <- function(input, output, session) {
-#'     
-#'     output$chart <- renderApexchart({
-#'       input$redraw
-#'       apexchart() %>%
-#'         ax_chart(type = "bar") %>%
-#'         ax_series(
-#'           list(
-#'             name = "Example",
-#'             data = sample(1:100, 5)
-#'           )
-#'         ) %>%
-#'         ax_xaxis(
-#'           categories = LETTERS[1:5]
-#'         )
-#'     })
-#'     
-#'   }
-#'   
-#'   shinyApp(ui, server)
-#' }
+#' @example examples/apexcharter-shiny.R
 apexchartOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'apexcharter', width, height, package = 'apexcharter')
 }

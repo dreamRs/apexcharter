@@ -40,8 +40,9 @@ A \code{apexcharts} \code{htmlwidget} object.
 Initialize a chart with three main parameters : data, mapping and type of chart.
 }
 \examples{
+library(ggplot2)
 library(dplyr)
-
+library(apexcharter)
 
 # make a barchart with a frequency table
 data("mpg", package = "ggplot2")
@@ -66,7 +67,6 @@ apex(
   type = "line"
 ) \%>\% 
   ax_stroke(width = 1)
-
 
 
 # with group variable
