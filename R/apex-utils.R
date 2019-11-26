@@ -280,11 +280,12 @@ ax_plotOptions <- function(ax,
 #'   ax_colors("#F7D358")
 #' 
 #' 
+#' library(scales)
 #' apex(
 #'   data = count(diamonds, cut, color),
 #'   mapping = aes(x = cut, y = n, fill = color)
 #' ) %>%
-#'   ax_colors(scales::brewer_pal(palette = "Set2")(7))
+#'   ax_colors(brewer_pal(palette = "Set2")(7))
 ax_colors <- function(ax, ...) {
   args <- list(...)
   if (length(args) == 1) {

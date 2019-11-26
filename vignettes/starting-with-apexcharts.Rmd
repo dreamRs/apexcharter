@@ -23,6 +23,7 @@ Data used are from `ggplot2` package, data manipulation will be done with the `d
 
 ```{r message=FALSE, warning=FALSE}
 library(ggplot2)
+library(scales)
 library(dplyr)
 library(apexcharter)
 ```
