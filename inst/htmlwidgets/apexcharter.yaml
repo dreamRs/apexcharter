@@ -3,7 +3,7 @@ dependencies:
     version: 3.10.1
     src: htmlwidgets/lib/apexcharts-3.10
     script: apexcharts.min.js
-  - name: numeral
-    version: 2.0.6
-    src: htmlwidgets/lib/numeral
-    script: numeral.min.js
+  - name: d3-format
+    version: 1.4.2
+    src: htmlwidgets/lib/d3-format
+    script: d3-format.min.js

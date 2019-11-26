@@ -1,3 +1,11 @@
+apexcharter 0.1.3
+==================
+
+* Upgraded ApexCharts.js to 3.10.1
+* New function `format_num()` to format labels on y-axis for example.
+
+
+
 apexcharter 0.1.2
 ==================
 
