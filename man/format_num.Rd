@@ -4,11 +4,15 @@
 \alias{format_num}
 \title{Format numbers (with D3)}
 \usage{
-format_num(format, locale = "en-US")
+format_num(format, prefix = "", suffix = "", locale = "en-US")
 }
 \arguments{
 \item{format}{Format for numbers, currency, percentage, e.g. \code{".0\%"} for rounded percentage.
 See online documentation : \url{https://github.com/d3/d3-format}.}
+
+\item{prefix}{Character string to append before formatd value.}
+
+\item{suffix}{Character string to append after formatd value.}
 
 \item{locale}{Localization to use, for exemple \code{"fr-FR"} for french,
 see possible values here: \url{https://github.com/d3/d3-format/tree/master/locale}.}
@@ -60,16 +64,24 @@ apex(dat, aes(labels, values), "column") \%>\%
     formatter = format_num("$,.2f")
   ))
 
-
 # Change locale
 apex(dat, aes(labels, values), "column") \%>\% 
   ax_yaxis(labels = list(
-    formatter = format_num("$,.2f", "fr-FR")
+    formatter = format_num("$,.2f", locale = "fr-FR")
   ))
 
 
 
+# Customize tooltip value
+# Use SI prefix
+dat <- data.frame(
+  labels = c("apex", "charts"),
+  values = c(1e4, 2e4)
+)
 
-
+apex(dat, aes(labels, values), "column") \%>\% 
+  ax_tooltip(y = list(
+    formatter = format_num(",", suffix = " GW/h")
+  ))
 
 }
