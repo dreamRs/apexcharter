@@ -2,15 +2,16 @@
 
 > Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js) : A modern JavaScript charting library to build interactive charts and visualizations with simple API.
 
+<!-- badges: start -->
 [![version](http://www.r-pkg.org/badges/version/apexcharter)](https://CRAN.R-project.org/package=apexcharter)
+[![cran checks](https://cranchecks.info/badges/worst/apexcharter)](https://cranchecks.info/pkgs/apexcharter)
 [![Travis build status](https://travis-ci.org/dreamRs/apexcharter.svg?branch=master)](https://travis-ci.org/dreamRs/apexcharter)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+<!-- badges: end -->
 
 
 :warning: Use RStudio >= 1.2 to properly display charts
 
-
-Note: Once again, development is heavily inspired by amazing [highcharter](http://jkunst.com/highcharter/).
 
 
 ## Installation
