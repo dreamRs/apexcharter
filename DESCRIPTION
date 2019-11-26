@@ -28,6 +28,6 @@ Suggests:
     gapminder,
     highcharter
 RoxygenNote: 7.0.1
-URL: https://github.com/dreamRs/apexcharter
+URL: https://github.com/dreamRs/apexcharter, https://dreamrs.github.io/apexcharter
 BugReports: https://github.com/dreamRs/apexcharter/issues
 VignetteBuilder: knitr
