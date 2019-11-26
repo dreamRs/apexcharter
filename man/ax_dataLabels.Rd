@@ -4,9 +4,17 @@
 \alias{ax_dataLabels}
 \title{Labels on data}
 \usage{
-ax_dataLabels(ax, enabled = NULL, textAnchor = NULL, offsetX = NULL,
-  offsetY = NULL, style = NULL, dropShadow = NULL,
-  formatter = NULL, ...)
+ax_dataLabels(
+  ax,
+  enabled = NULL,
+  textAnchor = NULL,
+  offsetX = NULL,
+  offsetY = NULL,
+  style = NULL,
+  dropShadow = NULL,
+  formatter = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

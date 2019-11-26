@@ -4,10 +4,21 @@
 \alias{ax_markers}
 \title{Markers properties}
 \usage{
-ax_markers(ax, size = NULL, colors = NULL, strokeColor = NULL,
-  strokeWidth = NULL, strokeOpacity = NULL, fillOpacity = NULL,
-  shape = NULL, radius = NULL, offsetX = NULL, offsetY = NULL,
-  hover = NULL, ...)
+ax_markers(
+  ax,
+  size = NULL,
+  colors = NULL,
+  strokeColor = NULL,
+  strokeWidth = NULL,
+  strokeOpacity = NULL,
+  fillOpacity = NULL,
+  shape = NULL,
+  radius = NULL,
+  offsetX = NULL,
+  offsetY = NULL,
+  hover = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

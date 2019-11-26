@@ -4,13 +4,28 @@
 \alias{ax_legend}
 \title{Legend properties}
 \usage{
-ax_legend(ax, show = NULL, position = NULL,
-  showForSingleSeries = NULL, showForNullSeries = NULL,
-  showForZeroSeries = NULL, horizontalAlign = NULL, fontSize = NULL,
-  textAnchor = NULL, offsetY = NULL, offsetX = NULL,
-  formatter = NULL, labels = NULL, markers = NULL,
-  itemMargin = NULL, containerMargin = NULL, onItemClick = NULL,
-  onItemHover = NULL, floating = NULL, ...)
+ax_legend(
+  ax,
+  show = NULL,
+  position = NULL,
+  showForSingleSeries = NULL,
+  showForNullSeries = NULL,
+  showForZeroSeries = NULL,
+  horizontalAlign = NULL,
+  fontSize = NULL,
+  textAnchor = NULL,
+  offsetY = NULL,
+  offsetX = NULL,
+  formatter = NULL,
+  labels = NULL,
+  markers = NULL,
+  itemMargin = NULL,
+  containerMargin = NULL,
+  onItemClick = NULL,
+  onItemHover = NULL,
+  floating = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

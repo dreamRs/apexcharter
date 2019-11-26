@@ -4,8 +4,16 @@
 \alias{ax_fill}
 \title{Fill property}
 \usage{
-ax_fill(ax, type = NULL, colors = NULL, opacity = NULL,
-  gradient = NULL, image = NULL, pattern = NULL, ...)
+ax_fill(
+  ax,
+  type = NULL,
+  colors = NULL,
+  opacity = NULL,
+  gradient = NULL,
+  image = NULL,
+  pattern = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

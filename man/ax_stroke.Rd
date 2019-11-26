@@ -4,8 +4,16 @@
 \alias{ax_stroke}
 \title{Stroke properties}
 \usage{
-ax_stroke(ax, show = NULL, curve = NULL, lineCap = NULL,
-  width = NULL, colors = NULL, dashArray = NULL, ...)
+ax_stroke(
+  ax,
+  show = NULL,
+  curve = NULL,
+  lineCap = NULL,
+  width = NULL,
+  colors = NULL,
+  dashArray = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

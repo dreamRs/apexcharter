@@ -4,11 +4,24 @@
 \alias{ax_xaxis}
 \title{X-axis options}
 \usage{
-ax_xaxis(ax, type = NULL, categories = NULL, labels = NULL,
-  axisBorder = NULL, axisTicks = NULL, tickAmount = NULL,
-  min = NULL, max = NULL, range = NULL, floating = NULL,
-  position = NULL, title = NULL, crosshairs = NULL, tooltip = NULL,
-  ...)
+ax_xaxis(
+  ax,
+  type = NULL,
+  categories = NULL,
+  labels = NULL,
+  axisBorder = NULL,
+  axisTicks = NULL,
+  tickAmount = NULL,
+  min = NULL,
+  max = NULL,
+  range = NULL,
+  floating = NULL,
+  position = NULL,
+  title = NULL,
+  crosshairs = NULL,
+  tooltip = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

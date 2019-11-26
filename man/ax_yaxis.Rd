@@ -4,10 +4,21 @@
 \alias{ax_yaxis}
 \title{Y-axis options}
 \usage{
-ax_yaxis(ax, opposite = NULL, tickAmount = NULL, max = NULL,
-  min = NULL, floating = NULL, labels = NULL, axisBorder = NULL,
-  axisTicks = NULL, title = NULL, tooltip = NULL,
-  crosshairs = NULL, ...)
+ax_yaxis(
+  ax,
+  opposite = NULL,
+  tickAmount = NULL,
+  max = NULL,
+  min = NULL,
+  floating = NULL,
+  labels = NULL,
+  axisBorder = NULL,
+  axisTicks = NULL,
+  title = NULL,
+  tooltip = NULL,
+  crosshairs = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

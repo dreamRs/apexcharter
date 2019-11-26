@@ -4,9 +4,16 @@
 \alias{bar_opts}
 \title{Bar options}
 \usage{
-bar_opts(horizontal = NULL, endingShape = NULL, columnWidth = NULL,
-  barHeight = NULL, distributed = NULL, colors = NULL,
-  dataLabels = NULL, ...)
+bar_opts(
+  horizontal = NULL,
+  endingShape = NULL,
+  columnWidth = NULL,
+  barHeight = NULL,
+  distributed = NULL,
+  colors = NULL,
+  dataLabels = NULL,
+  ...
+)
 }
 \arguments{
 \item{horizontal}{Logical. This option will turn a column chart into a horizontal bar chart.}

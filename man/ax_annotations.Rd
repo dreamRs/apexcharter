@@ -4,8 +4,14 @@
 \alias{ax_annotations}
 \title{Annotations properties}
 \usage{
-ax_annotations(ax, position = NULL, yaxis = NULL, xaxis = NULL,
-  points = NULL, ...)
+ax_annotations(
+  ax,
+  position = NULL,
+  yaxis = NULL,
+  xaxis = NULL,
+  points = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

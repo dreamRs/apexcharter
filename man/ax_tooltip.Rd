@@ -4,11 +4,25 @@
 \alias{ax_tooltip}
 \title{Tooltip options}
 \usage{
-ax_tooltip(ax, enabled = NULL, shared = NULL, followCursor = NULL,
-  intersect = NULL, inverseOrder = NULL, custom = NULL,
-  fillSeriesColor = NULL, onDatasetHover = NULL, theme = NULL,
-  x = NULL, y = NULL, z = NULL, marker = NULL, items = NULL,
-  fixed = NULL, ...)
+ax_tooltip(
+  ax,
+  enabled = NULL,
+  shared = NULL,
+  followCursor = NULL,
+  intersect = NULL,
+  inverseOrder = NULL,
+  custom = NULL,
+  fillSeriesColor = NULL,
+  onDatasetHover = NULL,
+  theme = NULL,
+  x = NULL,
+  y = NULL,
+  z = NULL,
+  marker = NULL,
+  items = NULL,
+  fixed = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

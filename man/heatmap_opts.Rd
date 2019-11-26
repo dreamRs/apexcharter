@@ -4,8 +4,13 @@
 \alias{heatmap_opts}
 \title{Heatmap options}
 \usage{
-heatmap_opts(radius = NULL, enableShades = NULL,
-  shadeIntensity = NULL, colorScale = NULL, ...)
+heatmap_opts(
+  radius = NULL,
+  enableShades = NULL,
+  shadeIntensity = NULL,
+  colorScale = NULL,
+  ...
+)
 }
 \arguments{
 \item{radius}{Numeric. Radius of the rectangle inside heatmap.}

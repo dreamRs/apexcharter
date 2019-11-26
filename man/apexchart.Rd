@@ -4,8 +4,13 @@
 \alias{apexchart}
 \title{Create a apexcharts.js widget}
 \usage{
-apexchart(ax_opts = list(), auto_update = TRUE, width = NULL,
-  height = NULL, elementId = NULL)
+apexchart(
+  ax_opts = list(),
+  auto_update = TRUE,
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
 }
 \arguments{
 \item{ax_opts}{A \code{list} in JSON format with chart parameters.}

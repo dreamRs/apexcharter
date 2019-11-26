@@ -4,9 +4,19 @@
 \alias{ax_grid}
 \title{Add grids on chart}
 \usage{
-ax_grid(ax, show = NULL, borderColor = NULL, strokeDashArray = NULL,
-  position = NULL, xaxis = NULL, yaxis = NULL, row = NULL,
-  column = NULL, padding = NULL, ...)
+ax_grid(
+  ax,
+  show = NULL,
+  borderColor = NULL,
+  strokeDashArray = NULL,
+  position = NULL,
+  xaxis = NULL,
+  yaxis = NULL,
+  row = NULL,
+  column = NULL,
+  padding = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

@@ -4,8 +4,7 @@
 \alias{ax_theme}
 \title{Theme for charts}
 \usage{
-ax_theme(ax, mode = c("light", "dark"), palette = NULL,
-  monochrome = NULL, ...)
+ax_theme(ax, mode = c("light", "dark"), palette = NULL, monochrome = NULL, ...)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

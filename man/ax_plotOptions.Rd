@@ -4,8 +4,14 @@
 \alias{ax_plotOptions}
 \title{Specific options for chart}
 \usage{
-ax_plotOptions(ax, bar = NULL, heatmap = NULL, radialBar = NULL,
-  pie = NULL, ...)
+ax_plotOptions(
+  ax,
+  bar = NULL,
+  heatmap = NULL,
+  radialBar = NULL,
+  pie = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

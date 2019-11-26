@@ -4,9 +4,18 @@
 \alias{radialBar_opts}
 \title{Radial bar options}
 \usage{
-radialBar_opts(size = NULL, inverseOrder = NULL, startAngle = NULL,
-  endAngle = NULL, offsetX = NULL, offsetY = NULL, hollow = NULL,
-  track = NULL, dataLabels = NULL, ...)
+radialBar_opts(
+  size = NULL,
+  inverseOrder = NULL,
+  startAngle = NULL,
+  endAngle = NULL,
+  offsetX = NULL,
+  offsetY = NULL,
+  hollow = NULL,
+  track = NULL,
+  dataLabels = NULL,
+  ...
+)
 }
 \arguments{
 \item{size}{Numeric. Manual size of the radialBars instead of calculating automatically from default height / width.}

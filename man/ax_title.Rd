@@ -4,9 +4,17 @@
 \alias{ax_title}
 \title{Chart's title}
 \usage{
-ax_title(ax, text = NULL, align = NULL, margin = NULL,
-  offsetX = NULL, offsetY = NULL, floating = NULL, style = NULL,
-  ...)
+ax_title(
+  ax,
+  text = NULL,
+  align = NULL,
+  margin = NULL,
+  offsetX = NULL,
+  offsetY = NULL,
+  floating = NULL,
+  style = NULL,
+  ...
+)
 }
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}

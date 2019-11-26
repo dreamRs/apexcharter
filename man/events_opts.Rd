@@ -4,11 +4,21 @@
 \alias{events_opts}
 \title{Events options}
 \usage{
-events_opts(click = NULL, beforeMount = NULL, mounted = NULL,
-  updated = NULL, legendClick = NULL, selection = NULL,
-  dataPointSelection = NULL, dataPointMouseEnter = NULL,
-  dataPointMouseLeave = NULL, beforeZoom = NULL, zoomed = NULL,
-  scrolled = NULL, ...)
+events_opts(
+  click = NULL,
+  beforeMount = NULL,
+  mounted = NULL,
+  updated = NULL,
+  legendClick = NULL,
+  selection = NULL,
+  dataPointSelection = NULL,
+  dataPointMouseEnter = NULL,
+  dataPointMouseLeave = NULL,
+  beforeZoom = NULL,
+  zoomed = NULL,
+  scrolled = NULL,
+  ...
+)
 }
 \arguments{
 \item{click}{Fires when user clicks on any area of the chart.}
