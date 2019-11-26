@@ -134,7 +134,12 @@ ax_annotations <- function(ax,
 #' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
 #'  \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param stacked Logical. Enables stacked option for axis charts. 
-#' @param stackType When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}
+#' @param stackType When stacked, should the stacking be percentage based or normal stacking.
+#'  Available options: \code{"normal"} or \code{"100\%"}.
+#' @param defaultLocale Locale to use : \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fr"},
+#'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"pt-br"}, 
+#'  \code{"ru"}, \code{"tr"}, \code{"ua"}.
+#' @param locales Array of custom localizations paremeters.
 #' @param animations A list of parameters.
 #' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.
 #' @param foreColor Sets the text color for the chart. Defaults to \code{#373d3f}.
@@ -153,34 +158,14 @@ ax_annotations <- function(ax,
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
-#' @examples 
-#' library(dplyr)
-#' data("diamonds", package = "ggplot2")
-#' 
-#' # Stack bar type
-#' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = cut, y = n, fill = color)
-#' ) %>% 
-#'   ax_chart(stacked = TRUE)
-#' 
-#' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = cut, y = n, fill = color)
-#' ) %>% 
-#'   ax_chart(stacked = TRUE, stackType = "100%")
-#' 
-#' 
-#' # Toolbar
-#' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = cut, y = n, fill = color)
-#' ) %>% 
-#'   ax_chart(toolbar = list(show = FALSE))
+#' @example examples/ax_chart.R
+#' @example examples/localization.R
 ax_chart <- function(ax,
                      type = NULL,
                      stacked = NULL,
                      stackType = NULL,
+                     defaultLocale = NULL,
+                     locales = NULL,
                      animations = NULL,
                      background = NULL,
                      foreColor = NULL,

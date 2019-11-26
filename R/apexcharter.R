@@ -14,7 +14,7 @@
 #'
 #' @example examples/apexchart.R
 apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
-
+  
   # forward options using x
   x <- list(
     ax_opts = ax_opts,
@@ -29,6 +29,24 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
     height = height,
     package = 'apexcharter',
     elementId = elementId,
+    preRenderHook = function(widget) {
+      if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
+        defaultLocale <- widget$x$ax_opts$chart$defaultLocale
+        defaultLocale <- match.arg(
+          arg = defaultLocale,
+          choices = c("de", "el", "en", "es", "fr", "hi", "hr", "hy", "id", "it", 
+                      "ko.js", "pt-br", "ru", "tr", "ua")
+        )
+        if (!is.null(widget$x$ax_opts$chart$locales)) {
+          warning("defaultLocale is used but will be ignored since a custom array for locales is provided.")
+        } else {
+          path <- system.file(file.path("htmlwidgets/lib/apexcharts-locales", paste0(defaultLocale, ".json")), package = "apexcharter")
+          locale <- jsonlite::fromJSON(txt = path)
+          widget$x$ax_opts$chart$locales <- list(locale)
+        }
+      }
+      widget
+    },
     sizingPolicy = htmlwidgets::sizingPolicy(
       defaultWidth = "100%",
       defaultHeight = "100%",

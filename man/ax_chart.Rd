@@ -9,6 +9,8 @@ ax_chart(
   type = NULL,
   stacked = NULL,
   stackType = NULL,
+  defaultLocale = NULL,
+  locales = NULL,
   animations = NULL,
   background = NULL,
   foreColor = NULL,
@@ -33,7 +35,14 @@ ax_chart(
 
 \item{stacked}{Logical. Enables stacked option for axis charts.}
 
-\item{stackType}{When stacked, should the stacking be percentage based or normal stacking. Available options: \code{"normal"} or \code{"100\%"}}
+\item{stackType}{When stacked, should the stacking be percentage based or normal stacking.
+Available options: \code{"normal"} or \code{"100\%"}.}
+
+\item{defaultLocale}{Locale to use : \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fr"},
+\code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"pt-br"}, 
+\code{"ru"}, \code{"tr"}, \code{"ua"}.}
+
+\item{locales}{Array of custom localizations paremeters.}
 
 \item{animations}{A list of parameters.}
 
@@ -77,13 +86,13 @@ data("diamonds", package = "ggplot2")
 apex(
   data = count(diamonds, cut, color),
   mapping = aes(x = cut, y = n, fill = color)
-) \%>\% 
+) \%>\%
   ax_chart(stacked = TRUE)
 
 apex(
   data = count(diamonds, cut, color),
   mapping = aes(x = cut, y = n, fill = color)
-) \%>\% 
+) \%>\%
   ax_chart(stacked = TRUE, stackType = "100\%")
 
 
@@ -91,6 +100,39 @@ apex(
 apex(
   data = count(diamonds, cut, color),
   mapping = aes(x = cut, y = n, fill = color)
-) \%>\% 
+) \%>\%
   ax_chart(toolbar = list(show = FALSE))
+
+  
+  
+# Use included localization config
+dat <- data.frame(
+  x = Sys.Date() + 1:20,
+  y = sample.int(20, 20)
+)
+
+# French
+apex(dat, aes(x, y), "line") \%>\% 
+  ax_chart(defaultLocale = "fr")
+
+# Italian
+apex(dat, aes(x, y), "line") \%>\% 
+  ax_chart(defaultLocale = "it")
+
+
+
+# Custom config
+apex(dat, aes(x, y), "line") \%>\% 
+  ax_chart(locales = list(
+    list(
+      name = "en", # override en locale
+      options = list(
+        toolbar = list(
+          exportToSVG = "GET SVG",
+          exportToPNG = "GET PNG"
+        )
+      )
+    )
+  ))
+
 }
