@@ -15,7 +15,7 @@
     \item{\code{continent_origin}}{Continent of residence of population}
   }}
 \source{
-UNHCR (The UN Refugee Agency) (\url{http://popstats.unhcr.org/en/overview})
+UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
 }
 \usage{
 unhcr_popstats_2017

@@ -3,9 +3,9 @@
 #'
 #' @param format Format for numbers, currency, percentage, e.g. \code{".0\%"} for rounded percentage.
 #'  See online documentation : \url{https://github.com/d3/d3-format}.
-#' @param prefix Character string to append before formatd value.
-#' @param suffix Character string to append after formatd value.
-#' @param locale Localization to use, for exemple \code{"fr-FR"} for french,
+#' @param prefix Character string to append before formatted value.
+#' @param suffix Character string to append after formatted value.
+#' @param locale Localization to use, for example \code{"fr-FR"} for french,
 #'  see possible values here: \url{https://github.com/d3/d3-format/tree/master/locale}.
 #'
 #' @return a \code{JS} function

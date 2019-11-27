@@ -13,12 +13,12 @@
     \item{\code{n}}{Number of people concerned.}
   }}
 \source{
-UNHCR (The UN Refugee Agency) (\url{http://popstats.unhcr.org/en/overview})
+UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
 }
 \usage{
 unhcr_ts
 }
 \description{
-The dataset contains data about UNHCR's populations of concern summarised by continent of orginin.
+The dataset contains data about UNHCR's populations of concern summarised by continent of origin.
 }
 \keyword{datasets}

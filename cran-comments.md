@@ -7,10 +7,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* This is a new release.
-
-Update JavaScript library.
-Fix issue with sizing in Shiny.
+* New features and updated javascript dependencies
 
 Thank you!
 

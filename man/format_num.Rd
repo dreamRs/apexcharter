@@ -10,11 +10,11 @@ format_num(format, prefix = "", suffix = "", locale = "en-US")
 \item{format}{Format for numbers, currency, percentage, e.g. \code{".0\%"} for rounded percentage.
 See online documentation : \url{https://github.com/d3/d3-format}.}
 
-\item{prefix}{Character string to append before formatd value.}
+\item{prefix}{Character string to append before formatted value.}
 
-\item{suffix}{Character string to append after formatd value.}
+\item{suffix}{Character string to append after formatted value.}
 
-\item{locale}{Localization to use, for exemple \code{"fr-FR"} for french,
+\item{locale}{Localization to use, for example \code{"fr-FR"} for french,
 see possible values here: \url{https://github.com/d3/d3-format/tree/master/locale}.}
 }
 \value{

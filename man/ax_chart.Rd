@@ -42,7 +42,7 @@ Available options: \code{"normal"} or \code{"100\%"}.}
 \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"pt-br"}, 
 \code{"ru"}, \code{"tr"}, \code{"ua"}.}
 
-\item{locales}{Array of custom localizations paremeters.}
+\item{locales}{Array of custom locales parameters.}
 
 \item{animations}{A list of parameters.}
 

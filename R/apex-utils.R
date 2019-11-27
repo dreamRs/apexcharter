@@ -139,7 +139,7 @@ ax_annotations <- function(ax,
 #' @param defaultLocale Locale to use : \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fr"},
 #'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"pt-br"}, 
 #'  \code{"ru"}, \code{"tr"}, \code{"ua"}.
-#' @param locales Array of custom localizations paremeters.
+#' @param locales Array of custom locales parameters.
 #' @param animations A list of parameters.
 #' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.
 #' @param foreColor Sets the text color for the chart. Defaults to \code{#373d3f}.

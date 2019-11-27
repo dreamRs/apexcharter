@@ -29,7 +29,7 @@ Here some advanced configuration examples to use the full potential of [ApexChar
 This example is taken from [{hrbrthemes}](https://github.com/hrbrmstr/hrbrthemes) readme, it use `mpg` dataset from [{ggplot2}](https://github.com/tidyverse/ggplot2).
 
 
-Tranform data and initialize the chart :
+Transform data and initialize the chart :
 
 ```{r}
 data("mpg", package = "ggplot2")
@@ -155,9 +155,9 @@ count(mpg, class) %>%
 
 # Lines 
 
-Dataset used is from the UNHCR (The UN Refugee Agency) and contains data about UNHCR's populations of concern summarised by continent of orginin.
+Dataset used is from the UNHCR (The UN Refugee Agency) and contains data about UNHCR's populations of concern summarised by continent of origin.
 
-Tranform data and initialize the chart :
+Transform data and initialize the chart :
 
 ```{r}
 data("unhcr_ts")
@@ -324,7 +324,7 @@ unhcr_ts %>%
 
 Dataset used is from [{gapminder}](https://github.com/jennybc/gapminder).
 
-Tranform data and initialize the chart :
+Transform data and initialize the chart :
 
 ```{r}
 data("gapminder", package = "gapminder")
@@ -368,7 +368,7 @@ scatter <- scatter %>%
   )
 ```
 
-Configuration for x-axis, hide the tooltip displayed on the axis itself (not the main tooltip), dispaly two decimals in the labels (useful when zooming, since values are logarithm there's a lot of decimals) :
+Configuration for x-axis, hide the tooltip displayed on the axis itself (not the main tooltip), display two decimals in the labels (useful when zooming, since values are logarithm there's a lot of decimals) :
 
 ```{r}
 scatter <- scatter %>% 
@@ -404,7 +404,7 @@ scatter <- scatter %>%
   ax_markers(hover = list(sizeOffset = 0, size = 25))
 ```
 
-Add a custom tooltip with an HTML string, data used in aesthetic can be accessed in JavaScrip with `w.config.series[seriesIndex].data[dataPointIndex].x` (x is the variable `gdpPercap`), or `w.config.series[seriesIndex].data[dataPointIndex].label` (the country), it's possible to use custom aesthetics to include more data in the chart configuration script.
+Add a custom tooltip with an HTML string, data used in aesthetic can be accessed in JavaScript with `w.config.series[seriesIndex].data[dataPointIndex].x` (x is the variable `gdpPercap`), or `w.config.series[seriesIndex].data[dataPointIndex].label` (the country), it's possible to use custom aesthetics to include more data in the chart configuration script.
 
 ```{r}
 scatter <- scatter %>% 
@@ -574,7 +574,7 @@ gapminder %>%
 
 # Heatmap
 
-This is an adaption of this fancy [{highcharter} example](http://jkunst.com/highcharter/showcase.html), based from this  [WSJ visualisation](http://graphics.wsj.com/infectious-diseases-and-vaccines/).
+This is an adaption of this fancy [{highcharter} example](http://jkunst.com/highcharter/showcase.html), based from this  [WSJ visualization](http://graphics.wsj.com/infectious-diseases-and-vaccines/).
 
 
 ```{r}
@@ -683,7 +683,7 @@ heatmap <- heatmap %>%
   )
 ```
 
-Add a vertical line to identify the year when the vaccine was intrtoduced : 
+Add a vertical line to identify the year when the vaccine was introduced : 
 
 ```{r}
 heatmap <- heatmap %>% 
