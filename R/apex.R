@@ -23,7 +23,8 @@
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
-                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap"))
+                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
+                            "rangeBar"))
   data <- as.data.frame(data)
   if (identical(type, "heatmap")) {
     mapping <- rename_aes_heatmap(mapping)
