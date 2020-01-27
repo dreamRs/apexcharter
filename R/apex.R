@@ -205,6 +205,7 @@ config_line <- function(curve = "straight", datetime = FALSE) {
 config_scatter <- function(range_x, range_y) {
   config <- list(
     xaxis = list(
+      type = "numeric",
       min = range_x[1], max = range_x[2]
     ),
     yaxis = list(
