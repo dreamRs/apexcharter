@@ -113,8 +113,7 @@ apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg))
 Color points according to a third variable:
 
 ```{r scatter-fill}
-apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl)) %>%
-  ax_xaxis(tickAmount = 5)
+apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl))
 ```
 
 And change point size using `z` aesthetics:
