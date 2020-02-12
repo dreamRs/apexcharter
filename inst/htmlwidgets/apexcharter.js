@@ -33,9 +33,13 @@ HTMLWidgets.widget({
           apexchart.render();
         } else {
           if (x.auto_update) {
-            apexchart.updateSeries(ax_opts.series);
-            if (x.update_options) {
-              apexchart.updateOptions(ax_opts, true);
+            apexchart.updateSeries(ax_opts.series, x.auto_update.series_animate);
+            if (x.auto_update.update_options) {
+              apexchart.updateOptions(
+                ax_opts, 
+                x.auto_update.options_redrawPaths, 
+                x.auto_update.options_animate
+              );
             }
           } else {
             apexchart.destroy();

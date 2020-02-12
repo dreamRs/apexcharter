@@ -10,7 +10,6 @@ apex(
   type = "column",
   ...,
   auto_update = TRUE,
-  update_options = FALSE,
   serie_name = NULL,
   width = NULL,
   height = NULL,
@@ -32,10 +31,8 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
 \item{auto_update}{In Shiny application, update existing chart
-rather than generating new one.}
-
-\item{update_options}{In Shiny application, update or not global options
-for chart. Applicable only if \code{auto_update} is \code{TRUE}.}
+rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
+use \code{\link{config_update}} for more control.}
 
 \item{serie_name}{Name for the serie displayed in tooltip,
 only used for single serie.}

@@ -3,9 +3,8 @@
 #'
 #' @param ax_opts A \code{list} in JSON format with chart parameters.
 #' @param auto_update In Shiny application, update existing chart
-#'  rather than generating new one.
-#' @param update_options In Shiny application, update or not global options
-#'  for chart. Applicable only if \code{auto_update} is \code{TRUE}.
+#'  rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
+#'  use \code{\link{config_update}} for more control.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -16,12 +15,15 @@
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #'
 #' @example examples/apexchart.R
-apexchart <- function(ax_opts = list(), auto_update = TRUE, update_options = FALSE, width = NULL, height = NULL, elementId = NULL) {
+apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
+  
+  if (isTRUE(auto_update)) {
+    auto_update <- config_update()
+  }
   
   x <- list(
     ax_opts = ax_opts,
-    auto_update = isTRUE(auto_update),
-    update_options = isTRUE(update_options)
+    auto_update = auto_update
   )
 
   # create widget
@@ -65,6 +67,32 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, update_options = FAL
     )
   )
 }
+
+
+
+#' Configuration for auto update
+#'
+#' @param series_animate Should the chart animate on re-rendering.
+#' @param update_options Update or not global options for chart.
+#' @param options_animate Should the chart animate on re-rendering.
+#' @param options_redrawPaths When the chart is re-rendered,
+#'  should it draw from the existing paths or completely redraw 
+#'  the chart paths from the beginning. By default, the chart 
+#'  is re-rendered from the existing paths 
+#' 
+#' @export
+config_update <- function(series_animate = TRUE, 
+                          update_options = FALSE, 
+                          options_animate = TRUE, 
+                          options_redrawPaths = FALSE) {
+  list(
+    series_animate = series_animate, 
+    update_options = update_options, 
+    options_animate = options_animate, 
+    options_redrawPaths = options_redrawPaths
+  )
+}
+
 
 #' @title Shiny bindings for apexcharter
 #'

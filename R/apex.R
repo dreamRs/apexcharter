@@ -14,9 +14,8 @@
 #'  \code{"timeline"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param auto_update In Shiny application, update existing chart
-#'  rather than generating new one.
-#' @param update_options In Shiny application, update or not global options
-#'  for chart. Applicable only if \code{auto_update} is \code{TRUE}.
+#'  rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
+#'  use \code{\link{config_update}} for more control.
 #' @param serie_name Name for the serie displayed in tooltip,
 #'  only used for single serie.
 #' @param width A numeric input in pixels.
@@ -32,7 +31,7 @@
 #'
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., 
-                 auto_update = TRUE, update_options = FALSE, 
+                 auto_update = TRUE,
                  serie_name = NULL,
                  width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(
@@ -65,8 +64,7 @@ apex <- function(data, mapping, type = "column", ...,
     ax_opts = opts, 
     width = width, height = height,
     elementId = elementId, 
-    auto_update = auto_update,
-    update_options = update_options
+    auto_update = auto_update
   )
 }
 

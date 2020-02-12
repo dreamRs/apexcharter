@@ -7,7 +7,6 @@
 apexchart(
   ax_opts = list(),
   auto_update = TRUE,
-  update_options = FALSE,
   width = NULL,
   height = NULL,
   elementId = NULL
@@ -17,10 +16,8 @@ apexchart(
 \item{ax_opts}{A \code{list} in JSON format with chart parameters.}
 
 \item{auto_update}{In Shiny application, update existing chart
-rather than generating new one.}
-
-\item{update_options}{In Shiny application, update or not global options
-for chart. Applicable only if \code{auto_update} is \code{TRUE}.}
+rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
+use \code{\link{config_update}} for more control.}
 
 \item{width}{A numeric input in pixels.}
 
