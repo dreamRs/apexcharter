@@ -668,7 +668,8 @@ heatmap <- heatmap %>%
       "function(seriesName, opts) {
       if (seriesName == 'Missing') return null; else return seriesName;
       }"
-    )
+    ),
+    itemMargin = list(vertical = 5)
   )
 ```
 
@@ -701,7 +702,7 @@ heatmap <- heatmap %>%
           text = "Vaccine Introduced", 
           orientation = "horizontal",
           position = "bottom",
-          offsetY = 10
+          offsetY = 0
         )
       )
     )
@@ -789,7 +790,8 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
       "function(seriesName, opts) {
       if (seriesName == 'Missing') return null; else return seriesName;
       }"
-    )
+    ),
+    itemMargin = list(vertical = 5)
   ) %>% 
   ax_yaxis(
     labels = list(
@@ -811,7 +813,7 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
           text = "Vaccine Introduced", 
           orientation = "horizontal",
           position = "bottom",
-          offsetY = 10
+          offsetY = 0
         )
       )
     )

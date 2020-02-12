@@ -23,7 +23,8 @@
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
-                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap"))
+                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
+                            "rangeBar"))
   data <- as.data.frame(data)
   if (identical(type, "heatmap")) {
     mapping <- rename_aes_heatmap(mapping)
@@ -210,6 +211,7 @@ config_line <- function(curve = "straight", datetime = FALSE) {
 config_scatter <- function(range_x, range_y) {
   config <- list(
     xaxis = list(
+      type = "numeric",
       min = range_x[1], max = range_x[2]
     ),
     yaxis = list(
