@@ -62,3 +62,52 @@ parse_df <- function(data, add_names = FALSE) {
   )
   return(ll)
 }
+
+
+
+#' @importFrom htmlwidgets JS
+js_date <- function(x) {
+  JS(sprintf("new Date('%s').getTime()", x))
+}
+
+parse_timeline_data <- function(.list) {
+  if (is.null(.list$group)) {
+    lapply(
+      X = seq_len(length(.list[[1]])),
+      FUN = function(i) {
+        val <- lapply(.list, `[[`, i)
+        l <- list(
+          x = val$x,
+          y = list(
+            js_date(val$start),
+            js_date(val$end)
+          )
+        )
+        if (!is.null(val$fill)) {
+          l$fillColor <- val$fill
+        }
+        l
+      }
+    )
+  } else {
+    grouped <- as.data.frame(.list, stringsAsFactors = FALSE)
+    grouped$group <- NULL
+    grouped <- split(
+      x = grouped,
+      f = .list$group
+    )
+    grouped <- lapply(grouped, as.list)
+    lapply(
+      X = names(grouped),
+      FUN = function(name) {
+        list(
+          name = name,
+          data = parse_timeline_data(grouped[[name]])
+        )
+      }
+    )
+  }
+}
+
+
+

@@ -11,6 +11,7 @@ apex(
   ...,
   auto_update = TRUE,
   update_options = FALSE,
+  serie_name = NULL,
   width = NULL,
   height = NULL,
   elementId = NULL
@@ -25,7 +26,8 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \item{type}{Specify the chart type. Available Options:
 \code{"column"}, \code{"bar"}, \code{"line"},
 \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
-\code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.}
+\code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
+\code{"timeline"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
@@ -34,6 +36,9 @@ rather than generating new one.}
 
 \item{update_options}{In Shiny application, update or not global options
 for chart. Applicable only if \code{auto_update} is \code{TRUE}.}
+
+\item{serie_name}{Name for the serie displayed in tooltip,
+only used for single serie.}
 
 \item{width}{A numeric input in pixels.}
 

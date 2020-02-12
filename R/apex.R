@@ -10,12 +10,15 @@
 #' @param type Specify the chart type. Available Options:
 #'  \code{"column"}, \code{"bar"}, \code{"line"},
 #'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
-#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.
+#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
+#'  \code{"timeline"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param auto_update In Shiny application, update existing chart
 #'  rather than generating new one.
 #' @param update_options In Shiny application, update or not global options
 #'  for chart. Applicable only if \code{auto_update} is \code{TRUE}.
+#' @param serie_name Name for the serie displayed in tooltip,
+#'  only used for single serie.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -30,10 +33,16 @@
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., 
                  auto_update = TRUE, update_options = FALSE, 
+                 serie_name = NULL,
                  width = NULL, height = NULL, elementId = NULL) {
-  type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
-                            "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
-                            "rangeBar"))
+  type <- match.arg(
+    arg = type, 
+    choices = c(
+      "column", "bar", "line", "area", "spline", "area-spline",
+      "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
+      "timeline"
+    )
+  )
   data <- as.data.frame(data)
   if (identical(type, "heatmap")) {
     mapping <- rename_aes_heatmap(mapping)
@@ -48,7 +57,7 @@ apex <- function(data, mapping, type = "column", ...,
   } else {
     opts <- list(
       chart = list(type = correct_type(type)),
-      series = make_series(mapdata, mapping, type)
+      series = make_series(mapdata, mapping, type, serie_name)
     )
   }
   opts <- modifyList(opts, choose_config(type, mapdata))
@@ -63,42 +72,49 @@ apex <- function(data, mapping, type = "column", ...,
 
 
 # Construct series
-make_series <- function(mapdata, mapping, type) {
-  mapdata <- as.data.frame(mapdata)
-  series_names <- "Series"
-  x_order <- unique(mapdata$x)
-  if (is_x_datetime(mapdata)) {
-    add_names <- FALSE
+make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
+  if (identical(type, "timeline")) {
+    if (!all(c("x", "start", "end") %in% names(mapping)))
+      stop("For timeline charts 'x', 'start', and 'end' aesthetice must be provided.", call. = FALSE)
+    if (is.null(mapdata$group))
+      mapdata$group <- serie_name %||% rlang::as_label(mapping$x)
+    series <- parse_timeline_data(mapdata)
   } else {
-    add_names <- names(mapping)
-  }
-  if (!is.null(mapping$y))
-    series_names <- rlang::as_label(mapping$y)
-  series <- list(list(
-    name = series_names,
-    data = parse_df(mapdata, add_names = add_names)
-  ))
-  if (is_grouped(names(mapping))) {
-    mapdata <- rename_aes(mapdata)
-    len_grp <- tapply(mapdata$group, mapdata$group, length)
-    if (length(unique(len_grp)) > 1) {
-      warning("apex: all groups must have same length! Use can use `tidyr::complete` for this.")
+    mapdata <- as.data.frame(mapdata)
+    x_order <- unique(mapdata$x)
+    if (is_x_datetime(mapdata)) {
+      add_names <- FALSE
+    } else {
+      add_names <- names(mapping)
     }
-    series <- lapply(
-      X = unique(mapdata$group),
-      FUN = function(x) {
-        data <- mapdata[mapdata$group %in% x, ]
-        data <- data[, setdiff(names(data), "group"), drop = FALSE]
-        data <- data[match(x = x_order, table = data$x, nomatch = 0L), , drop = FALSE]
-        list(
-          name = x,
-          data = parse_df(
-            data = data, 
-            add_names = add_names
-          )
-        )
+    if (is.null(serie_name) & !is.null(mapping$y))
+      serie_name <- rlang::as_label(mapping$y)
+    series <- list(list(
+      name = serie_name,
+      data = parse_df(mapdata, add_names = add_names)
+    ))
+    if (is_grouped(names(mapping))) {
+      mapdata <- rename_aes(mapdata)
+      len_grp <- tapply(mapdata$group, mapdata$group, length)
+      if (length(unique(len_grp)) > 1) {
+        warning("apex: all groups must have same length! Use can use `tidyr::complete` for this.")
       }
-    )
+      series <- lapply(
+        X = unique(mapdata$group),
+        FUN = function(x) {
+          data <- mapdata[mapdata$group %in% x, ]
+          data <- data[, setdiff(names(data), "group"), drop = FALSE]
+          data <- data[match(x = x_order, table = data$x, nomatch = 0L), , drop = FALSE]
+          list(
+            name = x,
+            data = parse_df(
+              data = data, 
+              add_names = add_names
+            )
+          )
+        }
+      )
+    }
   }
   series
 }
@@ -148,6 +164,8 @@ correct_type <- function(type) {
     "bar"
   } else if (identical(type, "spline")) {
     "line"
+  } else if (identical(type, "timeline")) {
+    "rangeBar"
   } else {
     type
   }
@@ -177,6 +195,7 @@ choose_config <- function(type, mapdata) {
     "area" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
     "scatter" = config_scatter(range_x = range_x, range_y = range_y),
+    "timeline" = config_timeline(),
     list()
   )
 }
@@ -232,5 +251,16 @@ config_scatter <- function(range_x, range_y) {
   )
 }
 
-
+config_timeline <- function() {
+  list(
+    plotOptions = list(
+      bar = list(
+        horizontal = TRUE
+      )
+    ),
+    xaxis = list(
+      type = "datetime"
+    )
+  )
+}
 
