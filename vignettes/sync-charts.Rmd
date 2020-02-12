@@ -1,0 +1,47 @@
+---
+title: "Syncing charts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Syncing charts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(apexcharter)
+data("economics", package = "ggplot2")
+economics <- tail(economics, 150)
+```
+
+
+With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a group and id to each charts. This works in Shiny and Markdown. Here a basic example :
+
+```{r example-1, eval=FALSE}
+apex(
+  data = economics, 
+  mapping = aes(x = date, y = pce),
+  type = "line"
+) %>% 
+  ax_stroke(width = 2) %>% 
+  ax_chart(group = "economics", id = "pce")
+
+apex(
+  data = economics, 
+  mapping = aes(x = date, y = psavert),
+  type = "line"
+) %>% 
+  ax_stroke(width = 2) %>% 
+  ax_chart(group = "economics", id = "psavert")
+```
+
+
+```{r run-example-1, echo=FALSE, ref.label="example-1"}
+
+```
