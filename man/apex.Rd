@@ -10,22 +10,30 @@ apex(
   type = "column",
   ...,
   auto_update = TRUE,
+  update_options = FALSE,
   width = NULL,
   height = NULL,
   elementId = NULL
 )
 }
 \arguments{
-\item{data}{Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
+\item{data}{Default dataset to use for chart. If not already
+a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 
 \item{mapping}{Default list of aesthetic mappings to use for chart}
 
-\item{type}{Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
-\code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.}
+\item{type}{Specify the chart type. Available Options:
+\code{"column"}, \code{"bar"}, \code{"line"},
+\code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
+\code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
-\item{auto_update}{In Shiny application, update existing chart rather than generating new one.}
+\item{auto_update}{In Shiny application, update existing chart
+rather than generating new one.}
+
+\item{update_options}{In Shiny application, update or not global options
+for chart. Applicable only if \code{auto_update} is \code{TRUE}.}
 
 \item{width}{A numeric input in pixels.}
 
@@ -37,7 +45,8 @@ apex(
 A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
-Initialize a chart with three main parameters : data, mapping and type of chart.
+Initialize a chart with three main parameters :
+ data, mapping and type of chart.
 }
 \examples{
 library(ggplot2)

@@ -1,14 +1,21 @@
 
 #' @title Quick ApexChart
 #' 
-#' @description Initialize a chart with three main parameters : data, mapping and type of chart.
+#' @description Initialize a chart with three main parameters :
+#'  data, mapping and type of chart.
 #'
-#' @param data Default dataset to use for chart. If not already a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
+#' @param data Default dataset to use for chart. If not already
+#'  a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
-#' @param type Specify the chart type. Available Options: \code{"column"}, \code{"bar"}, \code{"line"},
-#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.
+#' @param type Specify the chart type. Available Options:
+#'  \code{"column"}, \code{"bar"}, \code{"line"},
+#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
+#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
-#' @param auto_update In Shiny application, update existing chart rather than generating new one.
+#' @param auto_update In Shiny application, update existing chart
+#'  rather than generating new one.
+#' @param update_options In Shiny application, update or not global options
+#'  for chart. Applicable only if \code{auto_update} is \code{TRUE}.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -21,7 +28,9 @@
 #' @importFrom utils modifyList
 #'
 #' @example examples/apex.R
-apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
+apex <- function(data, mapping, type = "column", ..., 
+                 auto_update = TRUE, update_options = FALSE, 
+                 width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(type, c("column", "bar", "line", "area", "spline", "area-spline",
                             "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
                             "rangeBar"))
@@ -44,8 +53,11 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
   }
   opts <- modifyList(opts, choose_config(type, mapdata))
   apexchart(
-    ax_opts = opts, width = width, height = height,
-    elementId = elementId, auto_update = auto_update
+    ax_opts = opts, 
+    width = width, height = height,
+    elementId = elementId, 
+    auto_update = auto_update,
+    update_options = update_options
   )
 }
 

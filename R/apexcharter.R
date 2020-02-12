@@ -1,8 +1,11 @@
 
-#' Create a apexcharts.js widget
+#' Create an apexcharts.js widget
 #'
 #' @param ax_opts A \code{list} in JSON format with chart parameters.
-#' @param auto_update In Shiny application, update existing chart rather than generating new one.
+#' @param auto_update In Shiny application, update existing chart
+#'  rather than generating new one.
+#' @param update_options In Shiny application, update or not global options
+#'  for chart. Applicable only if \code{auto_update} is \code{TRUE}.
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
@@ -13,21 +16,21 @@
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #'
 #' @example examples/apexchart.R
-apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
+apexchart <- function(ax_opts = list(), auto_update = TRUE, update_options = FALSE, width = NULL, height = NULL, elementId = NULL) {
   
-  # forward options using x
   x <- list(
     ax_opts = ax_opts,
-    auto_update = auto_update
+    auto_update = isTRUE(auto_update),
+    update_options = isTRUE(update_options)
   )
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'apexcharter',
+    name = "apexcharter",
     x = x,
     width = width,
     height = height,
-    package = 'apexcharter',
+    package = "apexcharter",
     elementId = elementId,
     preRenderHook = function(widget) {
       if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
@@ -86,8 +89,8 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' 
 #' @example examples/apexcharter-shiny.R
-apexchartOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'apexcharter', width, height, package = 'apexcharter')
+apexchartOutput <- function(outputId, width = "100%", height = "400px"){
+  htmlwidgets::shinyWidgetOutput(outputId, "apexcharter", width, height, package = "apexcharter")
 }
 
 #' @rdname apexcharter-shiny

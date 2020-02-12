@@ -1,3 +1,10 @@
+apexcharter 0.1.4
+==================
+
+* Upgraded ApexCharts.js to 3.15.5
+* Fixed a bug in grouped bar charts with different levels in groups.
+
+
 apexcharter 0.1.3
 ==================
 
