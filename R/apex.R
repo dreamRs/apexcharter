@@ -54,6 +54,7 @@ apex <- function(data, mapping, type = "column", ..., auto_update = TRUE, width 
 make_series <- function(mapdata, mapping, type) {
   mapdata <- as.data.frame(mapdata)
   series_names <- "Series"
+  x_order <- unique(mapdata$x)
   if (is_x_datetime(mapdata)) {
     add_names <- FALSE
   } else {
@@ -67,11 +68,16 @@ make_series <- function(mapdata, mapping, type) {
   ))
   if (is_grouped(names(mapping))) {
     mapdata <- rename_aes(mapdata)
+    len_grp <- tapply(mapdata$group, mapdata$group, length)
+    if (length(unique(len_grp)) > 1) {
+      warning("apex: all groups must have same length! Use can use `tidyr::complete` for this.")
+    }
     series <- lapply(
       X = unique(mapdata$group),
       FUN = function(x) {
         data <- mapdata[mapdata$group %in% x, ]
         data <- data[, setdiff(names(data), "group"), drop = FALSE]
+        data <- data[match(x = x_order, table = data$x, nomatch = 0L), , drop = FALSE]
         list(
           name = x,
           data = parse_df(
