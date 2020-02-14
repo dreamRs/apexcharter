@@ -1,10 +1,6 @@
 ---
 title: "Advanced configuration examples"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Advanced configuration examples}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_document
 ---
 
 ```{r, include = FALSE}
