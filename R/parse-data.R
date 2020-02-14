@@ -32,7 +32,8 @@ parse_df <- function(data, add_names = FALSE) {
     FUN = function(x) {
       if (inherits(x, "Date")) {
         # as.numeric(x) * 86400000
-        format(x)
+        # format(x)
+        js_date(x)
       } else if (inherits(x, "POSIXt")) {
         as.numeric(x) * 1000
       } else if (inherits(x, "factor")) {
@@ -67,7 +68,7 @@ parse_df <- function(data, add_names = FALSE) {
 
 #' @importFrom htmlwidgets JS
 js_date <- function(x) {
-  JS(sprintf("new Date('%s').getTime()", x))
+  lapply(sprintf("new Date('%s').getTime()", x), JS)
 }
 
 parse_timeline_data <- function(.list) {
@@ -78,10 +79,7 @@ parse_timeline_data <- function(.list) {
         val <- lapply(.list, `[[`, i)
         l <- list(
           x = val$x,
-          y = list(
-            js_date(val$start),
-            js_date(val$end)
-          )
+          y = js_date(c(val$start, val$end))
         )
         if (!is.null(val$fill)) {
           l$fillColor <- val$fill
