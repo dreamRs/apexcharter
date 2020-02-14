@@ -19,12 +19,12 @@ Imports:
     magrittr,
     rlang,
     ggplot2,
-    scales,
     jsonlite
 Suggests: 
     testthat,
     dplyr,
     knitr,
+    scales,
     rmarkdown,
     shiny,
     gapminder,

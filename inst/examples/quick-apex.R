@@ -170,8 +170,3 @@ apex(data = txhousing2, type = "heatmap", mapping = aes(x = date, y = scales::re
 
 
 
-quote(scales::rescale(volume))
-
-as_name(quote(scales::rescale(volume)))
-
-
