@@ -98,7 +98,7 @@ apexchart() %>%
 
 Pass a list of parameters to the function:
 
-``` r
+```r
 apexchart(ax_opts = list(
   chart = list(
     type = "line"
@@ -137,11 +137,11 @@ apexchart(ax_opts = list(
   yaxis = list(
     title = list(text = "Temperature"),
     labels = list(
-      formatter = htmlwidgets::JS("function(value) {return value + '°C';}")
+      formatter = htmlwidgets::JS("function(value) {return value + '\u00b0CC';}")
     )
   )
 ))
 ```
 
-![alt text](man/figures/raw-api.png)
+![](man/figures/raw-api.png)
 

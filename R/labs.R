@@ -16,12 +16,12 @@
 #'   tmin = c(3, 3, 5, 7, 11, 14, 16, 16, 13, 10, 6, 3)
 #' )
 #' 
-#' apex(meteo_paris, type = "column", aes(x = month, y = tmin)) %>% 
+#' apex(meteo_paris, type = "column", aes(x = month, y = tmin)) %>%
 #'   ax_labs(
 #'     title = "Average minimal temperature in Paris",
 #'     subtitle = "Data from NOAA",
-#'     x = "Month", 
-#'     y = "Temperature (°C)"
+#'     x = "Month",
+#'     y = "Temperature (\u00b0C)"
 #'   )
 ax_labs <- function(ax, title = NULL, subtitle = NULL, x = NULL, y = NULL) {
   if (!is.null(title)) {

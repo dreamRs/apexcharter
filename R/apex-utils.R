@@ -245,7 +245,7 @@ ax_plotOptions <- function(ax,
 #' Colors
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
-#' @param ... Colors for the chart’s series. When all colors are used, it starts from the beginning.
+#' @param ... Colors for the chart's series. When all colors are used, it starts from the beginning.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
@@ -284,7 +284,7 @@ ax_colors <- function(ax, ...) {
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
 #' @param enabled To determine whether to show dataLabels or not.
-#' @param textAnchor The alignment of text relative to dataLabel’s drawing position.
+#' @param textAnchor The alignment of text relative to dataLabel's drawing position.
 #'  Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.
 #' @param offsetX Sets the left offset for dataLabels.
 #' @param offsetY Sets the top offset for dataLabels.
@@ -493,11 +493,11 @@ ax_labels2 <- function(ax, labels) {
 #' @param show Logical. Whether to show or hide the legend container.
 #' @param position Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.
 #' @param showForSingleSeries Show legend even if there is just 1 series.
-#' @param showForNullSeries Allows you to hide a particular legend if it’s series contains all null values.
-#' @param showForZeroSeries Allows you to hide a particular legend if it’s series contains all 0 values.
+#' @param showForNullSeries Allows you to hide a particular legend if it's series contains all null values.
+#' @param showForZeroSeries Allows you to hide a particular legend if it's series contains all 0 values.
 #' @param horizontalAlign Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.
 #' @param fontSize Sets the fontSize of legend text elements
-#' @param textAnchor The alignment of text relative to legend’s drawing position
+#' @param textAnchor The alignment of text relative to legend's drawing position
 #' @param offsetY Sets the top offset for legend container.
 #' @param offsetX Sets the left offset for legend container.
 #' @param formatter JS function. A custom formatter function to append additional text to the legend series names.
@@ -908,7 +908,7 @@ ax_stroke <- function(ax,
 #' @param ax A \code{apexcharts} \code{htmlwidget} object. 
 #' @param enabled Logical. Show tooltip when user hovers over chart area.
 #' @param shared Logical. When having multiple series, show a shared tooltip.
-#' @param followCursor Logical. Follow user’s cursor position instead of putting tooltip on actual data points.
+#' @param followCursor Logical. Follow user's cursor position instead of putting tooltip on actual data points.
 #' @param intersect Logical. Show tooltip only when user hovers exactly over datapoint.
 #' @param inverseOrder Logical. In multiple series, when having shared tooltip, inverse the order of series (for better comparison in stacked charts).
 #' @param custom JS function. Draw a custom html tooltip instead of the default one based on the values provided in the function arguments. 

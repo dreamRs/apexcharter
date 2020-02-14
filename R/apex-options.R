@@ -15,7 +15,7 @@
 #' @param legendClick Fires when user clicks on legend. 
 #' @param selection Fires when user selects rect using the selection tool. 
 #' @param dataPointSelection Fires when user clicks on a datapoint (bar/column/marker/bubble/donut-slice). 
-#' @param dataPointMouseEnter Fires when user’s mouse enter on a datapoint (bar/column/marker/bubble/donut-slice). 
+#' @param dataPointMouseEnter Fires when user's mouse enter on a datapoint (bar/column/marker/bubble/donut-slice). 
 #' @param dataPointMouseLeave MouseLeave event for a datapoint (bar/column/marker/bubble/donut-slice). 
 #' @param beforeZoom This function, if defined, runs just before zooming in/out of the chart allowing you to set a custom range for zooming in/out. 
 #' @param zoomed Fires when user zooms in/out the chart using either the selection zooming tool or zoom in/out buttons. 

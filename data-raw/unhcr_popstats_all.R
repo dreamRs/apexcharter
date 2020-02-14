@@ -171,6 +171,13 @@ unhcr_ts <- unhcr_popstats[!is.na(continent_origin), list(
 ), by = list(year, population_type, continent_origin)]
 
 setorder(unhcr_ts, continent_origin, population_type, year)
+
+
+
+unhcr_ts[, population_type := stringi::stri_trans_general(str = population_type, id = "ASCII-Latin")]
+unhcr_ts[, continent_origin := stringi::stri_trans_general(str = continent_origin, id = "ASCII-Latin")]
+
+
 unhcr_ts <- as.data.frame(unhcr_ts)
 
 usethis::use_data(unhcr_ts, overwrite = TRUE)
@@ -190,12 +197,18 @@ unhcr_popstats[, country_origin := stringi::stri_trans_general(str = country_ori
 
 
 unhcr_popstats_2017 <- unhcr_popstats[year == 2017, -c("year")]
+
+# head(unhcr_popstats_2017)
+
+# utils::promptData(object = unhcr_popstats_2017, filename = "tmp.Rd")
+
+unhcr_popstats_2017[, country_origin := stringi::stri_trans_general(str = country_origin, id = "ASCII-Latin")]
+unhcr_popstats_2017[, country_residence := stringi::stri_trans_general(str = country_residence, id = "ASCII-Latin")]
+unhcr_popstats_2017[, population_type := stringi::stri_trans_general(str = population_type, id = "ASCII-Latin")]
+unhcr_popstats_2017[, continent_residence := stringi::stri_trans_general(str = continent_residence, id = "ASCII-Latin")]
+unhcr_popstats_2017[, continent_origin := stringi::stri_trans_general(str = continent_origin, id = "ASCII-Latin")]
+
 unhcr_popstats_2017 <- as.data.frame(unhcr_popstats_2017)
-head(unhcr_popstats_2017)
-
-utils::promptData(object = unhcr_popstats_2017, filename = "tmp.Rd")
-
-
 usethis::use_data(unhcr_popstats_2017, overwrite = TRUE)
 
 
