@@ -3,28 +3,6 @@ template:
   params:
     bootswatch: flatly
     
-navbar:
-  type: default
-  left:
-  - icon: fa-home fa-lg
-    href: index.html
-  - text: Get started
-    href: articles/starting-with-apexcharts.html
-  - text: Reference
-    href: reference/index.html
-  - text: Articles
-    menu:
-    - text: "Labs: title, subtitle & axis"
-      href: articles/labs.html
-    - text: "Options & styles for lines"
-      href: articles/lines.html
-    - text: "Advanced configuration"
-      href: articles/advanced-configuration.html
-  - text: News
-    href: news/index.html
-  right:
-  - icon: fa-github fa-lg
-    href: https://github.com/dreamRs/apexcharter
 
 authors:
   Victor Perrier:
