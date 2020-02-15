@@ -2,8 +2,9 @@ pandoc: 2.7.2
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  advanced-configuration: advanced-configuration.html
+  apexcharter: apexcharter.html
+  advanced-configuration: articles/advanced-configuration.html
   labs: labs.html
   lines: lines.html
-  starting-with-apexcharts: starting-with-apexcharts.html
+  sync-charts: sync-charts.html
 

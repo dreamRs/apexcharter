@@ -30,7 +30,14 @@ apex(
   type = "line"
 ) %>% 
   ax_stroke(width = 2) %>% 
-  ax_chart(group = "economics", id = "pce")
+  ax_chart(
+    group = "economics", id = "pce" # <- define common group and unique id
+  ) %>% 
+  ax_yaxis(
+    labels = list(
+      minWidth = 15
+    )
+  )
 
 apex(
   data = economics, 
@@ -38,7 +45,14 @@ apex(
   type = "line"
 ) %>% 
   ax_stroke(width = 2) %>% 
-  ax_chart(group = "economics", id = "psavert")
+  ax_chart(
+    group = "economics", id = "psavert" # <- define common group and unique id
+  ) %>% 
+  ax_yaxis(
+    labels = list(
+      minWidth = 15
+    )
+  )
 ```
 
 
