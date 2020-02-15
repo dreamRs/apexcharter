@@ -36,15 +36,15 @@ ax_legend(
 
 \item{showForSingleSeries}{Show legend even if there is just 1 series.}
 
-\item{showForNullSeries}{Allows you to hide a particular legend if it’s series contains all null values.}
+\item{showForNullSeries}{Allows you to hide a particular legend if it's series contains all null values.}
 
-\item{showForZeroSeries}{Allows you to hide a particular legend if it’s series contains all 0 values.}
+\item{showForZeroSeries}{Allows you to hide a particular legend if it's series contains all 0 values.}
 
 \item{horizontalAlign}{Available options for horizontal alignment: \code{"right"}, \code{"center"}, \code{"left"}.}
 
 \item{fontSize}{Sets the fontSize of legend text elements}
 
-\item{textAnchor}{The alignment of text relative to legend’s drawing position}
+\item{textAnchor}{The alignment of text relative to legend's drawing position}
 
 \item{offsetY}{Sets the top offset for legend container.}
 

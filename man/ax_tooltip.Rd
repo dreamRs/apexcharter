@@ -31,7 +31,7 @@ ax_tooltip(
 
 \item{shared}{Logical. When having multiple series, show a shared tooltip.}
 
-\item{followCursor}{Logical. Follow user’s cursor position instead of putting tooltip on actual data points.}
+\item{followCursor}{Logical. Follow user's cursor position instead of putting tooltip on actual data points.}
 
 \item{intersect}{Logical. Show tooltip only when user hovers exactly over datapoint.}
 

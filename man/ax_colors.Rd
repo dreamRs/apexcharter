@@ -9,7 +9,7 @@ ax_colors(ax, ...)
 \arguments{
 \item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
 
-\item{...}{Colors for the chart’s series. When all colors are used, it starts from the beginning.}
+\item{...}{Colors for the chart's series. When all colors are used, it starts from the beginning.}
 }
 \value{
 A \code{apexcharts} \code{htmlwidget} object.

@@ -21,7 +21,7 @@ ax_dataLabels(
 
 \item{enabled}{To determine whether to show dataLabels or not.}
 
-\item{textAnchor}{The alignment of text relative to dataLabel’s drawing position.
+\item{textAnchor}{The alignment of text relative to dataLabel's drawing position.
 Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.}
 
 \item{offsetX}{Sets the left offset for dataLabels.}

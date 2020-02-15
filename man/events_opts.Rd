@@ -35,7 +35,7 @@ events_opts(
 
 \item{dataPointSelection}{Fires when user clicks on a datapoint (bar/column/marker/bubble/donut-slice).}
 
-\item{dataPointMouseEnter}{Fires when user’s mouse enter on a datapoint (bar/column/marker/bubble/donut-slice).}
+\item{dataPointMouseEnter}{Fires when user's mouse enter on a datapoint (bar/column/marker/bubble/donut-slice).}
 
 \item{dataPointMouseLeave}{MouseLeave event for a datapoint (bar/column/marker/bubble/donut-slice).}
 
