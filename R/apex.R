@@ -46,6 +46,9 @@ apex <- function(data, mapping, type = "column", ...,
   if (identical(type, "heatmap")) {
     mapping <- rename_aes_heatmap(mapping)
   }
+  if (identical(type, "scatter") & is_sized(mapping)) {
+    type <- "bubble"
+  }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
   if (type %in% c("pie", "donut", "radialBar")) {
     opts <- list(
@@ -91,7 +94,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
       name = serie_name,
       data = parse_df(mapdata, add_names = add_names)
     ))
-    if (is_grouped(names(mapping))) {
+    if (is_grouped(mapping)) {
       mapdata <- rename_aes(mapdata)
       len_grp <- tapply(mapdata$group, mapdata$group, length)
       if (length(unique(len_grp)) > 1) {
@@ -118,8 +121,13 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
 }
 
 is_grouped <- function(x) {
-  any(c("colour", "fill", "group") %in% x)
+  any(c("colour", "fill", "group") %in% names(x))
 }
+
+is_sized <- function(x) {
+  any(c("size", "z") %in% names(x))
+}
+
 
 rename_aes_heatmap <- function(mapping) {
   n_mapping <- names(mapping)
@@ -140,6 +148,9 @@ rename_aes <- function(mapping) {
   }
   if ("fill" %in% names(mapping)) {
     names(mapping)[names(mapping) == "fill"] <- "group"
+  }
+  if ("size" %in% names(mapping)) {
+    names(mapping)[names(mapping) == "size"] <- "z"
   }
   mapping
 }
@@ -193,6 +204,7 @@ choose_config <- function(type, mapdata) {
     "area" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
     "scatter" = config_scatter(range_x = range_x, range_y = range_y),
+    "bubble" = config_scatter(range_x = range_x, range_y = range_y),
     "timeline" = config_timeline(),
     list()
   )
@@ -239,6 +251,7 @@ config_line <- function(curve = "straight", datetime = FALSE) {
 
 config_scatter <- function(range_x, range_y) {
   config <- list(
+    dataLabels = list(enabled = FALSE),
     xaxis = list(
       type = "numeric",
       min = range_x[1], max = range_x[2]
