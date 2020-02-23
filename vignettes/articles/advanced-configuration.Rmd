@@ -53,7 +53,8 @@ bars <- bars %>%
         "function(value) {return Math.round(value * 100) + '%';}"
       )
     ), 
-    tickAmount = 6
+    tickAmount = 6,
+    max = 0.3
   )
 ```
 
@@ -119,7 +120,8 @@ count(mpg, class) %>%
         "function(value) {return Math.round(value * 100) + '%';}"
       )
     ), 
-    tickAmount = 6
+    tickAmount = 6,
+    max = 0.3
   ) %>% 
   ax_xaxis(
     title = list(text = "Fuel efficiency (mpg)")
@@ -393,12 +395,6 @@ scatter <- scatter %>%
   ax_legend(position = "right", offsetY = 70)
 ```
 
-Adjust the effect when hovering points :
-
-```{r}
-scatter <- scatter %>% 
-  ax_markers(hover = list(sizeOffset = 0, size = 25))
-```
 
 Add a custom tooltip with an HTML string, data used in aesthetic can be accessed in JavaScript with `w.config.series[seriesIndex].data[dataPointIndex].x` (x is the variable `gdpPercap`), or `w.config.series[seriesIndex].data[dataPointIndex].label` (the country), it's possible to use custom aesthetics to include more data in the chart configuration script.
 
@@ -505,7 +501,6 @@ gapminder %>%
   ) %>% 
   ax_grid(xaxis = list(lines = list(show = TRUE))) %>% 
   ax_legend(position = "right", offsetY = 70) %>% 
-  ax_markers(hover = list(sizeOffset = 0, size = 25)) %>% 
   ax_tooltip(custom = JS(paste(
     "function({ series, seriesIndex, dataPointIndex, w }) {",
     "console.log(w); return (",
