@@ -1,8 +1,6 @@
 
 template:
-  params:
-    bootswatch: flatly
-    
+  package: dreamRs
 
 authors:
   Victor Perrier:

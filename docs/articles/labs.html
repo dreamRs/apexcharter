@@ -6,8 +6,51 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Labs: title, subtitle &amp; axis • apexcharter</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../css/theme.css" rel="stylesheet">
+<!-- Font --><link href="../css/montserrat.css" rel="stylesheet">
+<style>body {font-family: 'Montserrat', sans-serif;}</style>
+<!-- Particles --><script src="../js/particles.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .contents {
+    opacity: 1;
+    background-color: #FFF;
+    z-index: 1;
+  }
+
+  #sidebar {
+    opacity: 1;
+    background-color: #FFF;
+    z-index: 1;
+  }
+
+  footer {
+    z-index: 1;
+  }
+
+  #particles {
+    position: fixed;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+  .background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+</style>
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Labs: title, subtitle &amp; axis">
@@ -18,7 +61,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body id="body">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -29,7 +72,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
+      <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
+        <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;"><a class="navbar-link" href="../index.html">apexcharter</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.920</span>
+      </span>
+      <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.920</span>
       </span>
@@ -115,16 +162,16 @@
 <a href="#chart-title" class="anchor"></a>Chart title</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_title.html">ax_title</a></span>(<span class="dt">text =</span> <span class="st">"Cut distribution"</span>)</a></code></pre></div>
-<div id="htmlwidget-ec8f72ad44260de22f90" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ec8f72ad44260de22f90">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>You can set some options, for example:</p>
+<div id="htmlwidget-247ff59e7a80e024c63e" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-247ff59e7a80e024c63e">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>You can set some options, for example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_title.html">ax_title</a></span>(</a>
 <a class="sourceLine" id="cb3-3" title="3">    <span class="dt">text =</span> <span class="st">"Cut distribution"</span>, </a>
 <a class="sourceLine" id="cb3-4" title="4">    <span class="dt">align =</span> <span class="st">"center"</span>,</a>
 <a class="sourceLine" id="cb3-5" title="5">    <span class="dt">style =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">fontSize =</span> <span class="st">"22px"</span>)</a>
 <a class="sourceLine" id="cb3-6" title="6">  )</a></code></pre></div>
-<div id="htmlwidget-488d945dcbf819995150" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-488d945dcbf819995150">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution","align":"center","style":{"fontSize":"22px"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>Full list of parameters is available here : <a href="https://apexcharts.com/docs/options/title/" class="uri">https://apexcharts.com/docs/options/title/</a></p>
+<div id="htmlwidget-338654737220bad6110d" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-338654737220bad6110d">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution","align":"center","style":{"fontSize":"22px"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>Full list of parameters is available here : <a href="https://apexcharts.com/docs/options/title/" class="uri">https://apexcharts.com/docs/options/title/</a></p>
 </div>
 <div id="chart-subtitle" class="section level2">
 <h2 class="hasAnchor">
@@ -132,8 +179,8 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_title.html">ax_title</a></span>(<span class="dt">text =</span> <span class="st">"Cut distribution"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/ax_subtitle.html">ax_subtitle</a></span>(<span class="dt">text =</span> <span class="st">"Data from ggplot2"</span>)</a></code></pre></div>
-<div id="htmlwidget-cf5229884a0c50db6d8f" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cf5229884a0c50db6d8f">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution"},"subtitle":{"text":"Data from ggplot2"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>With same options than for title:</p>
+<div id="htmlwidget-199435728a6dedaf3e7d" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-199435728a6dedaf3e7d">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution"},"subtitle":{"text":"Data from ggplot2"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>With same options than for title:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_title.html">ax_title</a></span>(</a>
 <a class="sourceLine" id="cb5-3" title="3">    <span class="dt">text =</span> <span class="st">"Cut distribution"</span>, </a>
@@ -145,8 +192,8 @@
 <a class="sourceLine" id="cb5-9" title="9">    <span class="dt">align =</span> <span class="st">"center"</span>,</a>
 <a class="sourceLine" id="cb5-10" title="10">    <span class="dt">style =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">fontSize =</span> <span class="st">"16px"</span>, <span class="dt">color =</span> <span class="st">"#BDBDBD"</span>)</a>
 <a class="sourceLine" id="cb5-11" title="11">  )</a></code></pre></div>
-<div id="htmlwidget-d7fa7b6467d016f90b59" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d7fa7b6467d016f90b59">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution","align":"center","style":{"fontSize":"22px"}},"subtitle":{"text":"Data from ggplot2","align":"center","style":{"fontSize":"16px","color":"#BDBDBD"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>Full list of parameters is available here : <a href="https://apexcharts.com/docs/options/subtitle/" class="uri">https://apexcharts.com/docs/options/subtitle/</a></p>
+<div id="htmlwidget-45cd3ea5c0a1eb5b83c8" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-45cd3ea5c0a1eb5b83c8">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"title":{"text":"Cut distribution","align":"center","style":{"fontSize":"22px"}},"subtitle":{"text":"Data from ggplot2","align":"center","style":{"fontSize":"16px","color":"#BDBDBD"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>Full list of parameters is available here : <a href="https://apexcharts.com/docs/options/subtitle/" class="uri">https://apexcharts.com/docs/options/subtitle/</a></p>
 </div>
 <div id="axis-title" class="section level2">
 <h2 class="hasAnchor">
@@ -154,8 +201,8 @@
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_yaxis.html">ax_yaxis</a></span>(<span class="dt">title =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">text =</span> <span class="st">"Count"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/ax_xaxis.html">ax_xaxis</a></span>(<span class="dt">title =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">text =</span> <span class="st">"Cut"</span>))</a></code></pre></div>
-<div id="htmlwidget-e951f2535a3e394d93c3" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e951f2535a3e394d93c3">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"yaxis":{"title":{"text":"Count"}},"xaxis":{"title":{"text":"Cut"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>With some options:</p>
+<div id="htmlwidget-5959a39ebb1d9ed06c42" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5959a39ebb1d9ed06c42">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"yaxis":{"title":{"text":"Count"}},"xaxis":{"title":{"text":"Cut"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script><p>With some options:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/apex.html">apex</a></span>(<span class="dt">data =</span> n_cut, <span class="dt">type =</span> <span class="st">"column"</span>, <span class="dt">mapping =</span> <span class="kw"><a href="../reference/apexcharter-exports.html">aes</a></span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/ax_yaxis.html">ax_yaxis</a></span>(<span class="dt">title =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb7-3" title="3">    <span class="dt">text =</span> <span class="st">"Count"</span>,</a>
@@ -165,8 +212,8 @@
 <a class="sourceLine" id="cb7-7" title="7">    <span class="dt">text =</span> <span class="st">"Cut"</span>, </a>
 <a class="sourceLine" id="cb7-8" title="8">    <span class="dt">style =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">fontSize =</span> <span class="st">"14px"</span>, <span class="dt">color =</span> <span class="st">"#BDBDBD"</span>)</a>
 <a class="sourceLine" id="cb7-9" title="9">  ))</a></code></pre></div>
-<div id="htmlwidget-e0ae90658bba364c9c4d" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e0ae90658bba364c9c4d">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"yaxis":{"title":{"text":"Count","style":{"fontSize":"14px","color":"#BDBDBD"}}},"xaxis":{"title":{"text":"Cut","style":{"fontSize":"14px","color":"#BDBDBD"}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bb0ee95484f2af21aa0b" style="width:100%;height:350px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb0ee95484f2af21aa0b">{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"n","data":[{"x":"Fair","y":1610},{"x":"Good","y":4906},{"x":"Very Good","y":12082},{"x":"Premium","y":13791},{"x":"Ideal","y":21551}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false}},"yaxis":{"title":{"text":"Count","style":{"fontSize":"14px","color":"#BDBDBD"}}},"xaxis":{"title":{"text":"Cut","style":{"fontSize":"14px","color":"#BDBDBD"}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":false}},"evals":[],"jsHooks":[]}</script>
 </div>
   </div>
 
@@ -201,5 +248,13 @@
   
 
 
-  </body>
+  <div id="particles"></div>
+
+  <script>
+    window.onload = function() {
+      var config = {"particles":{"number":{"value":100,"density":{"enable":true,"value_area":800}},"color":{"value":"#112446"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.8,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#112446","opacity":0.6,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true}},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}},"retina_detect":true} ;
+      particlesJS("particles", config);
+    };
+  </script>
+</body>
 </html>
