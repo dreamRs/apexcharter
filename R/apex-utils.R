@@ -136,9 +136,9 @@ ax_annotations <- function(ax,
 #' @param stacked Logical. Enables stacked option for axis charts. 
 #' @param stackType When stacked, should the stacking be percentage based or normal stacking.
 #'  Available options: \code{"normal"} or \code{"100\%"}.
-#' @param defaultLocale Locale to use : \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fr"},
-#'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"pt-br"}, 
-#'  \code{"ru"}, \code{"tr"}, \code{"ua"}.
+#' @param defaultLocale Locale to use : \code{"ca"}, \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"},
+#'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"nl"}, \code{"pt-br"}, 
+#'  \code{"ru"}, \code{"se"}, \code{"tr"}, \code{"ua"}.
 #' @param locales Array of custom locales parameters.
 #' @param animations A list of parameters.
 #' @param background Background color for the chart area. If you want to set background with css, use \code{.apexcharts-canvas} to set it.

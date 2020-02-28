@@ -660,7 +660,7 @@ heatmap <- heatmap %>%
       if (seriesName == 'Missing') return null; else return seriesName;
       }"
     ),
-    itemMargin = list(vertical = 5)
+    offsetY = -15
   )
 ```
 
@@ -782,7 +782,7 @@ apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>%
       if (seriesName == 'Missing') return null; else return seriesName;
       }"
     ),
-    itemMargin = list(vertical = 5)
+    offsetY = -15
   ) %>% 
   ax_yaxis(
     labels = list(
