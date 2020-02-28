@@ -39,8 +39,8 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
         defaultLocale <- widget$x$ax_opts$chart$defaultLocale
         defaultLocale <- match.arg(
           arg = defaultLocale,
-          choices = c("de", "el", "en", "es", "fr", "hi", "hr", "hy", "id", "it", 
-                      "ko.js", "pt-br", "ru", "tr", "ua")
+          choices = c("ca", "de", "el", "en", "es", "fi", "fr", "hi", "hr", "hy", 
+                      "id", "it", "ko", "nl", "pt-br", "ru", "se", "tr", "ua")
         )
         if (!is.null(widget$x$ax_opts$chart$locales)) {
           warning("defaultLocale is used but will be ignored since a custom array for locales is provided.")
