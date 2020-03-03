@@ -1,3 +1,7 @@
+
+# Localization ---------------------------------
+
+
 # Use included localization config
 dat <- data.frame(
   x = Sys.Date() + 1:20,
@@ -18,7 +22,7 @@ apex(dat, aes(x, y), "line") %>%
 apex(dat, aes(x, y), "line") %>% 
   ax_chart(locales = list(
     list(
-      name = "en", # override en locale
+      name = "en", # override 'en' locale
       options = list(
         toolbar = list(
           exportToSVG = "GET SVG",

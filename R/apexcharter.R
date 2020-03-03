@@ -20,7 +20,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
   if (isTRUE(auto_update)) {
     auto_update <- config_update()
   }
-  
+
   x <- list(
     ax_opts = ax_opts,
     auto_update = auto_update
@@ -34,24 +34,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
     height = height,
     package = "apexcharter",
     elementId = elementId,
-    preRenderHook = function(widget) {
-      if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
-        defaultLocale <- widget$x$ax_opts$chart$defaultLocale
-        defaultLocale <- match.arg(
-          arg = defaultLocale,
-          choices = c("ca", "de", "el", "en", "es", "fi", "fr", "hi", "hr", "hy", 
-                      "id", "it", "ko", "nl", "pt-br", "ru", "se", "tr", "ua")
-        )
-        if (!is.null(widget$x$ax_opts$chart$locales)) {
-          warning("defaultLocale is used but will be ignored since a custom array for locales is provided.")
-        } else {
-          path <- system.file(file.path("htmlwidgets/lib/apexcharts-locales", paste0(defaultLocale, ".json")), package = "apexcharter")
-          locale <- jsonlite::fromJSON(txt = path)
-          widget$x$ax_opts$chart$locales <- list(locale)
-        }
-      }
-      widget
-    },
+    preRenderHook = add_locale,
     sizingPolicy = htmlwidgets::sizingPolicy(
       defaultWidth = "100%",
       defaultHeight = "100%",
@@ -63,10 +46,37 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
       browser.fill = TRUE,
       viewer.suppress = FALSE,
       browser.external = TRUE,
-      padding = 20
+      padding = 0
     )
   )
 }
+
+
+add_locale <- function(widget) {
+  if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
+    defaultLocale <- widget$x$ax_opts$chart$defaultLocale
+    defaultLocale <- match.arg(
+      arg = defaultLocale,
+      choices = c("ca", "de", "el", "en", "es", "fi", "fr", "hi", "hr", "hy",
+                  "id", "it", "ko", "nl", "pt-br", "ru", "se", "tr", "ua")
+    )
+    if (!is.null(widget$x$ax_opts$chart$locales)) {
+      warning(
+        "defaultLocale is used but will be ignored since",
+        " a custom array for locales is provided."
+      )
+    } else {
+      path <- system.file(
+        file.path("htmlwidgets/lib/apexcharts-locales", paste0(defaultLocale, ".json")),
+        package = "apexcharter"
+      )
+      locale <- jsonlite::fromJSON(txt = path)
+      widget$x$ax_opts$chart$locales <- list(locale)
+    }
+  }
+  widget
+}
+
 
 
 
