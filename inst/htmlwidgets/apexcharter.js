@@ -18,13 +18,31 @@ HTMLWidgets.widget({
         ax_opts = x.ax_opts;
 
         // Sizing
-        if (typeof ax_opts.chart === 'undefined') {
+        if (typeof ax_opts.chart === "undefined") {
           ax_opts.chart = {};
         }
         ax_opts.chart.width = width;
         ax_opts.chart.height = height;
-        if (!ax_opts.chart.hasOwnProperty('parentHeightOffset')) {
+        if (!ax_opts.chart.hasOwnProperty("parentHeightOffset")) {
           ax_opts.chart.parentHeightOffset = 0;
+        }
+        
+        if (x.hasOwnProperty("input") & HTMLWidgets.shinyMode) {
+          if (!ax_opts.hasOwnProperty("chart")) {
+            ax_opts.chart = {};
+          }
+          if (!ax_opts.chart.hasOwnProperty("events")) {
+            ax_opts.chart.events = {};
+          }
+          if (x.input.hasOwnProperty("category")) {
+            ax_opts.chart.events.dataPointSelection = function(event, chartContext, opts) {
+              console.log(opts);
+              Shiny.setInputValue(
+                x.input.category.inputId, 
+                opts.w.config.series[opts.seriesIndex].data[opts.selectedDataPoints[0]].x
+              );
+            };
+          }
         }
 
         // Generate or update chart
