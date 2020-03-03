@@ -137,7 +137,7 @@ apexchart(ax_opts = list(
   yaxis = list(
     title = list(text = "Temperature"),
     labels = list(
-      formatter = htmlwidgets::JS("function(value) {return value + '\u00b0CC';}")
+      formatter = htmlwidgets::JS("function(value) {return value + '\u00b0C';}")
     )
   )
 ))

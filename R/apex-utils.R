@@ -1125,7 +1125,7 @@ ax_xaxis <- function(ax,
 #' apex(temperature, aes(month, tp), "line") %>% 
 #'   ax_yaxis(
 #'     labels = list(
-#'       formatter = htmlwidgets::JS("function(value) {return value + '°C';}")
+#'       formatter = htmlwidgets::JS("function(value) {return value + '\u00b0C';}")
 #'     )
 #'   )
 ax_yaxis <- function(ax,

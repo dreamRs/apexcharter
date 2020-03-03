@@ -76,7 +76,7 @@ temperature <- data.frame(
 apex(temperature, aes(month, tp), "line") \%>\% 
   ax_yaxis(
     labels = list(
-      formatter = htmlwidgets::JS("function(value) {return value + 'Â°C';}")
+      formatter = htmlwidgets::JS("function(value) {return value + '\u00b0C';}")
     )
   )
 }
