@@ -1,0 +1,84 @@
+---
+title: "Shiny integration"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{shiny-integration}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  eval = FALSE
+)
+```
+
+```{r setup}
+library(apexcharter)
+```
+
+## Charts in Shiny
+
+### Create and update (or destroy and re-create)
+
+When a graph has been generated in Shiny, if the values change (via a reactive function), the graph is *not regenerated*, only the data is *updated*. If you have changed specific options in the graphic (such as maximum y axis value, chart's title, ...) these will not be updated. This behavior can be controlled with `auto_update` argument (available in `apexchart()` and `apex()`) :
+
+By default, `auto_update` is `TRUE` :
+
+```{r}
+apex(..., auto_update = TRUE)
+```
+
+If you want to re-create the whole chart, set the option to `FALSE`:
+
+```{r}
+apex(..., auto_update = FALSE)
+```
+
+You can also use `config_update()` to specify what to update : 
+
+```{r}
+apex(..., auto_update = config_update(update_options = TRUE))
+```
+
+
+### Proxy 
+
+A proxy is also implemented to update charts manually in oberserver. You can update data:
+
+```{r}
+output$my_chart <- renderApexchart({
+  apex(data = isolate(data_reactive()), ..., auto_update = FALSE)
+})
+
+observeEvent(input$update, {
+  apexchartProxy("my_chart") %>% 
+    ax_proxy_series(data_reactive())
+})
+```
+
+Be sure to use `shiny::isolate()` to block any reactivity in `renderApexchart` function and to set `auto_update` to FALSE te prevevnt updating twice.
+Then you can use in an observe function (or any reactive function) `apexchartProxy()` with the output id to get the chart instance and `ax_proxy_series()` to update data.
+
+If you want to update chart's options, use : 
+
+```{r}
+observeEvent(input$update, {
+  apexchartProxy("my_chart") %>% 
+    ax_proxy_options(list(
+      title = list(
+        text = "New title"
+      ),
+      xaxis = list(
+        max = NEW_VALUE
+      )
+    ))
+})
+```
+
+
+
+
+
