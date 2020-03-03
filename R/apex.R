@@ -81,7 +81,9 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
       mapdata$group <- serie_name %||% rlang::as_label(mapping$x)
     series <- parse_timeline_data(mapdata)
   } else {
-    mapdata <- as.data.frame(mapdata)
+    mapdata <- as.data.frame(mapdata, stringsAsFactors = FALSE)
+    if (is.character(mapdata$x))
+      mapdata$x[is.na(mapdata$x)] <- "NA"
     x_order <- unique(mapdata$x)
     if (is_x_datetime(mapdata)) {
       add_names <- FALSE
@@ -98,7 +100,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
       mapdata <- rename_aes(mapdata)
       len_grp <- tapply(mapdata$group, mapdata$group, length)
       if (length(unique(len_grp)) > 1) {
-        warning("apex: all groups must have same length! Use can use `tidyr::complete` for this.")
+        warning("apex: all groups must have same length! You can use `tidyr::complete` for this.")
       }
       series <- lapply(
         X = unique(mapdata$group),
@@ -237,7 +239,8 @@ config_line <- function(curve = "straight", datetime = FALSE) {
   config <- list(
     dataLabels = list(enabled = FALSE),
     stroke = list(
-      curve = curve
+      curve = curve,
+      width = 2
     )
   )
   if (isTRUE(datetime)) {
