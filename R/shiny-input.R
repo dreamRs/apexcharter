@@ -1,5 +1,11 @@
 
-#' Retrieve category (x-axis) in Shiny
+#' @title Retrieve click information in Shiny
+#' 
+#' @description According to type of chart, different values are retrieved:
+#'  * **bar and column:** retrieve category (x-axis).
+#'  * **pie and donut:** retrieve label.
+#'  * **time-series:** retrieve x-axis value, you have to display markers
+#'   with size > 0 and set tooltip's options `intersect = TRUE` and `shared = FALSE`.
 #'
 #' @param ax An \code{apexcharts} \code{htmlwidget} object. 
 #' @param inputId The id that will be used server-side for retrieveng category.
@@ -9,7 +15,7 @@
 #' @export
 #'
 #' @examples
-set_input_category <- function(ax, inputId, multiple = FALSE) {
+set_input_click <- function(ax, inputId, multiple = FALSE) {
   if (isTRUE(multiple)) {
     ax <- ax_states(ax, active = list(
       allowMultipleDataPointsSelection = TRUE

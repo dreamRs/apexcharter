@@ -21,13 +21,13 @@ ax_stroke(
 \item{show}{Logical. To show or hide path-stroke / line}
 
 \item{curve}{In line / area charts, whether to draw smooth lines or straight lines.
-Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline) 
+Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline)
 and \code{"straight"} (connect the points in straight lines.).}
 
 \item{lineCap}{For setting the starting and ending points of stroke. Available Options:
 \code{"butt"} (ends the stroke with a 90-degree angle), \code{"square"}
- (similar to butt except that it extends the stroke beyond the length of the path) 
- and \code{"round"} (ends the path-stroke with a radius that smooths out the start and end points)}
+(similar to butt except that it extends the stroke beyond the length of the path)
+and \code{"round"} (ends the path-stroke with a radius that smooths out the start and end points)}
 
 \item{width}{Sets the width of border for svg path.}
 

@@ -46,7 +46,13 @@ HTMLWidgets.widget({
               } else {
                 var data = opts.w.config.series[opts.seriesIndex].data;
                 selected = opts.selectedDataPoints[0].map(function(index) {
-                  return data[index].x;
+                  var val = data[index];
+                  if (val.hasOwnProperty("x")) {
+                    val = val.x;
+                  } else {
+                    val = val[0];
+                  }
+                  return val;
                 });
               }
               Shiny.setInputValue(

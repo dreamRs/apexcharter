@@ -25,7 +25,7 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \item{type}{Specify the chart type. Available Options:
 \code{"column"}, \code{"bar"}, \code{"line"},
 \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
-\code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
+\code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"},
 \code{"timeline"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
@@ -48,7 +48,7 @@ A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Initialize a chart with three main parameters :
- data, mapping and type of chart.
+data, mapping and type of chart.
 }
 \examples{
 library(ggplot2)
