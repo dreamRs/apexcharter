@@ -16,7 +16,7 @@ set_input_click(
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
 
-\item{inputId}{The id that will be used server-side for retrieveng category.}
+\item{inputId}{The id that will be used server-side for retrieving click.}
 
 \item{multiple}{Allow multiple selection: \code{TRUE} or \code{FALSE} (default).}
 
@@ -36,5 +36,6 @@ According to type of chart, different values are retrieved:
 \item \strong{pie and donut:} retrieve label.
 \item \strong{time-series:} retrieve x-axis value, you have to display markers
 with size > 0 and set tooltip's options \code{intersect = TRUE} and \code{shared = FALSE}.
+\item \strong{scatter:} retrieve coordinates.
 }
 }

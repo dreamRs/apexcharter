@@ -53,6 +53,18 @@ HTMLWidgets.widget({
               Shiny.setInputValue(x.input.category.inputId, selected);
             };
           }
+          if (x.input.hasOwnProperty("zoom")) {
+            ax_opts.chart.events.zoomed = function(chartContext, xaxis, yaxis) {
+              var id = x.input.zoom.inputId;
+              if (chartContext.w.config.xaxis.type == "datetime") {
+                id = id + ":apex_datetime";
+              }
+              Shiny.setInputValue(id, {
+                x: getXaxis(xaxis),
+                y: getYaxis(xaxis)
+              });
+            };
+          }
         }
 
         // Generate or update chart
@@ -153,6 +165,34 @@ function getSelection(opts, serieIndex) {
     };
   }
   return selected;
+}
+
+function getYaxis(axis) {
+  var yzoom = { min: null, max: null };
+  if (typeof axis.yaxis != "undefined") {
+    var y_axis = axis.yaxis[0];
+    if (y_axis.hasOwnProperty("min") && typeof y_axis.min != "undefined") {
+      yzoom.min = y_axis.min;
+    }
+    if (y_axis.hasOwnProperty("max") && typeof y_axis.max != "undefined") {
+      yzoom.max = y_axis.max;
+    }
+  }
+  return yzoom;
+}
+
+function getXaxis(axis) {
+  var xzoom = { min: null, max: null };
+  if (typeof axis.xaxis != "undefined") {
+    var x_axis = axis.xaxis;
+    if (x_axis.hasOwnProperty("min") && typeof x_axis.min != "undefined") {
+      xzoom.min = x_axis.min;
+    }
+    if (x_axis.hasOwnProperty("max") && typeof x_axis.max != "undefined") {
+      xzoom.max = x_axis.max;
+    }
+  }
+  return xzoom;
 }
 
 if (HTMLWidgets.shinyMode) {

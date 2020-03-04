@@ -72,7 +72,7 @@ apex(
   type = "line"
 ) %>% 
   ax_chart(
-    id = "target-chart",
+    id = "target-chart", # <-- define target id here
     toolbar = list(
       autoSelected = "pan",
       show = FALSE
@@ -87,11 +87,12 @@ apex(
 ) %>% 
   ax_chart(
     brush = list(
-      target = "target-chart",
+      target = "target-chart", # <-- use target id here
       enabled = TRUE
     ),
+    offsetY = -20,
     selection = list(
-      enabled = TRUE,
+      enabled = TRUE, # <-- enable selection and define starting range
       xaxis = list(
         min = format_date(economics$date[1]),
         max = format_date(economics$date[100])
