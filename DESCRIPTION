@@ -19,14 +19,14 @@ Imports:
     magrittr,
     rlang,
     ggplot2,
-    jsonlite
+    jsonlite,
+    shiny (>= 1.1.0)
 Suggests: 
     testthat,
     dplyr,
     knitr,
     scales,
     rmarkdown,
-    shiny,
     gapminder,
     highcharter
 RoxygenNote: 7.0.2

@@ -12,14 +12,19 @@
 #' @param multiple Allow multiple selection: \code{TRUE} or \code{FALSE} (default).
 #' @param effect_type Type of effect for selected element, default is to use lightly darken color.
 #' @param effect_value A larger value intensifies the select effect, accept value between 0 and 1.
+#' @param session The Shiny session.
+#' 
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
+#' 
+#' @importFrom shiny getDefaultReactiveDomain
 #'
 #' @examples
 set_input_click <- function(ax, inputId, multiple = FALSE,
                             effect_type = c("darken", "lighten", "none"), 
-                            effect_value = 0.35) {
+                            effect_value = 0.35, 
+                            session = shiny::getDefaultReactiveDomain()) {
   effect_type <- match.arg(effect_type)
   ax <- ax_states(ax, active = list(
     allowMultipleDataPointsSelection = isTRUE(multiple),
@@ -29,7 +34,7 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
     )
   ))
   ax$x$input$category <- list(
-    inputId = inputId
+    inputId = session$ns(inputId)
   )
   ax
 }

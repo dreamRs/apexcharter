@@ -9,7 +9,8 @@ set_input_click(
   inputId,
   multiple = FALSE,
   effect_type = c("darken", "lighten", "none"),
-  effect_value = 0.35
+  effect_value = 0.35,
+  session = shiny::getDefaultReactiveDomain()
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ set_input_click(
 \item{effect_type}{Type of effect for selected element, default is to use lightly darken color.}
 
 \item{effect_value}{A larger value intensifies the select effect, accept value between 0 and 1.}
+
+\item{session}{The Shiny session.}
 }
 \value{
 An \code{apexcharts} \code{htmlwidget} object.

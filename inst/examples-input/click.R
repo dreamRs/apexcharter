@@ -6,16 +6,22 @@ ui <- fluidPage(
   tags$h2("Retrieve click information"),
   fluidRow(
     column(
-      width = 6,
+      width = 4,
       tags$b("Single selection"),
-      apexchartOutput("chart1"),
-      verbatimTextOutput("result1")
+      apexchartOutput("bar1"),
+      verbatimTextOutput("clickbar1")
     ),
     column(
-      width = 6,
+      width = 4,
       tags$b("Multiple selection"),
-      apexchartOutput("chart2"),
-      verbatimTextOutput("result2")
+      apexchartOutput("bar2"),
+      verbatimTextOutput("clickbar2")
+    ),
+    column(
+      width = 4,
+      tags$b("Several series"),
+      apexchartOutput("bar3"),
+      verbatimTextOutput("clickbar3")
     )
   ),
   fluidRow(
@@ -32,12 +38,28 @@ ui <- fluidPage(
       apexchartOutput("chart4"),
       verbatimTextOutput("result4")
     )
-  )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      tags$b("Scatter exemple"),
+      apexchartOutput("chart5"),
+      verbatimTextOutput("result5")
+    ),
+    column(
+      width = 6,
+      tags$b("Bubble + color exemple"),
+      apexchartOutput("chart6"),
+      verbatimTextOutput("result6")
+    )
+  ),
+  tags$br()
 )
 
 server <- function(input, output, session) {
   
-  output$chart1 <- renderApexchart({
+  # Bar single ----
+  output$bar1 <- renderApexchart({
     data.frame(
       month = month.abb,
       value = sample(1:100, 12)
@@ -45,11 +67,12 @@ server <- function(input, output, session) {
       apex(aes(month, value)) %>% 
       set_input_click("month_click")
   })
-  output$result1 <- renderPrint({
+  output$clickbar1 <- renderPrint({
     input$month_click
   })
   
-  output$chart2 <- renderApexchart({
+  # Bar multiple ----
+  output$bar2 <- renderApexchart({
     data.frame(
       month = month.abb,
       value = sample(1:100, 12)
@@ -61,10 +84,27 @@ server <- function(input, output, session) {
         effect_value = 0.1
       )
   })
-  output$result2 <- renderPrint({
+  output$clickbar2 <- renderPrint({
     input$month_click_mult
   })
   
+  # Bar several series ----
+  output$bar3 <- renderApexchart({
+    data.frame(
+      month = rep(month.abb, 2),
+      value = sample(1:100, 24),
+      year = rep(c("Y-1", "Y"), each = 12)
+    ) %>% 
+      apex(aes(month, value, fill = year)) %>% 
+      set_input_click(
+        "month_click_series"
+      )
+  })
+  output$clickbar3 <- renderPrint({
+    input$month_click_series
+  })
+  
+  # Pie ----
   output$chart3 <- renderApexchart({
     data.frame(
       answer = c("Yes", "No"),
@@ -77,6 +117,7 @@ server <- function(input, output, session) {
     input$click_pie
   })
   
+  # Time-serie ----
   output$chart4 <- renderApexchart({
     data.frame(
       date = seq(as.Date("1960-01-01"), length.out = 24, by = "month"),
@@ -91,6 +132,26 @@ server <- function(input, output, session) {
     input$click_time
   })
   
+  # Scatter ----
+  output$chart5 <- renderApexchart({
+    apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg)) %>% 
+      set_input_click("click_scatter", multiple = TRUE)
+  })
+  output$result5 <- renderPrint({
+    input$click_scatter
+  })
+  
+  # Bubble + color ----
+  output$chart6 <- renderApexchart({
+    apex(
+      data = iris, type = "scatter", 
+      aes(Sepal.Length, Sepal.Width, color = Species, size = Petal.Length)
+    ) %>% 
+      set_input_click("click_bubble", multiple = TRUE)
+  })
+  output$result6 <- renderPrint({
+    input$click_bubble
+  })
 }
 
 shinyApp(ui, server)
