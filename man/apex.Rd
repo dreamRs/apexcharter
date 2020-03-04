@@ -22,7 +22,7 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 
 \item{mapping}{Default list of aesthetic mappings to use for chart}
 
-\item{type}{Specify the chart type. Available Options:
+\item{type}{Specify the chart type. Available options:
 \code{"column"}, \code{"bar"}, \code{"line"},
 \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
 \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"},

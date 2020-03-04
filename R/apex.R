@@ -7,7 +7,7 @@
 #' @param data Default dataset to use for chart. If not already
 #'  a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
-#' @param type Specify the chart type. Available Options:
+#' @param type Specify the chart type. Available options:
 #'  \code{"column"}, \code{"bar"}, \code{"line"},
 #'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
 #'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
@@ -261,6 +261,13 @@ config_scatter <- function(range_x, range_y) {
     ),
     yaxis = list(
       min = range_y[1], max = range_y[2]
+    ),
+    grid = list(
+      xaxis = list(
+        lines = list(
+          show = TRUE
+        )
+      )
     )
   )
 }
