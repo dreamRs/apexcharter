@@ -38,3 +38,26 @@ check_locale <- function(x) {
   }
 }
 
+
+
+
+#' Format date in JS
+#'
+#' @param x Date to use in JavaScript
+#'
+#' @return a JavaScript string
+#' @export
+#'
+format_date <- function(x) {
+  stopifnot(length(x) == 1)
+  JS(sprintf("new Date('%s').getTime()", x))
+}
+
+
+
+
+
+
+
+
+
