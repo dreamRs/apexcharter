@@ -4,12 +4,14 @@
 \alias{set_input_category}
 \title{Retrieve category (x-axis) in Shiny}
 \usage{
-set_input_category(ax, inputId)
+set_input_category(ax, inputId, multiple = FALSE)
 }
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
 
 \item{inputId}{The id that will be used server-side for retrieveng category.}
+
+\item{multiple}{Allow multiple selection: \code{TRUE} or \code{FALSE} (default).}
 }
 \value{
 An \code{apexcharts} \code{htmlwidget} object.
