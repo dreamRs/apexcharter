@@ -17,6 +17,17 @@ ui <- fluidPage(
       apexchartOutput("chart2"),
       verbatimTextOutput("result2")
     )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      tags$b("Pie selection"),
+      apexchartOutput("chart3"),
+      verbatimTextOutput("result3")
+    ),
+    column(
+      width = 6
+    )
   )
 )
 
@@ -44,6 +55,18 @@ server <- function(input, output, session) {
   })
   output$result2 <- renderPrint({
     input$month_click_mult
+  })
+  
+  output$chart3 <- renderApexchart({
+    data.frame(
+      answer = c("Yes", "No"),
+      n = c(254, 238)
+    ) %>% 
+      apex(type = "pie", mapping = aes(x = answer, y = n)) %>% 
+      set_input_category("click_pie")
+  })
+  output$result3 <- renderPrint({
+    input$click_pie
   })
   
 }

@@ -36,10 +36,19 @@ HTMLWidgets.widget({
           }
           if (x.input.hasOwnProperty("category")) {
             ax_opts.chart.events.dataPointSelection = function(event, chartContext, opts) {
-              var data = opts.w.config.series[opts.seriesIndex].data;
-              var selected = opts.selectedDataPoints[0].map(function(index) {
-                return data[index].x;
-              });
+              var typeLabels = ["pie", "radialBar", "donut"];
+              var selected;
+              if (typeLabels.indexOf(opts.w.config.chart.type) > -1) {
+                var labels = opts.w.config.labels;
+                selected = opts.selectedDataPoints[0].map(function(index) {
+                  return labels[index];
+                });
+              } else {
+                var data = opts.w.config.series[opts.seriesIndex].data;
+                selected = opts.selectedDataPoints[0].map(function(index) {
+                  return data[index].x;
+                });
+              }
               Shiny.setInputValue(
                 x.input.category.inputId, 
                 selected
