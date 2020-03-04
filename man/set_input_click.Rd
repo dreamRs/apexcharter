@@ -4,7 +4,13 @@
 \alias{set_input_click}
 \title{Retrieve click information in Shiny}
 \usage{
-set_input_click(ax, inputId, multiple = FALSE)
+set_input_click(
+  ax,
+  inputId,
+  multiple = FALSE,
+  effect_type = c("darken", "lighten", "none"),
+  effect_value = 0.35
+)
 }
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
@@ -12,6 +18,10 @@ set_input_click(ax, inputId, multiple = FALSE)
 \item{inputId}{The id that will be used server-side for retrieveng category.}
 
 \item{multiple}{Allow multiple selection: \code{TRUE} or \code{FALSE} (default).}
+
+\item{effect_type}{Type of effect for selected element, default is to use lightly darken color.}
+
+\item{effect_value}{A larger value intensifies the select effect, accept value between 0 and 1.}
 }
 \value{
 An \code{apexcharts} \code{htmlwidget} object.

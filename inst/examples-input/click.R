@@ -55,7 +55,11 @@ server <- function(input, output, session) {
       value = sample(1:100, 12)
     ) %>% 
       apex(aes(month, value)) %>% 
-      set_input_click("month_click_mult", multiple = TRUE)
+      set_input_click(
+        "month_click_mult", 
+        multiple = TRUE, 
+        effect_value = 0.1
+      )
   })
   output$result2 <- renderPrint({
     input$month_click_mult

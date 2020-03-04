@@ -10,17 +10,24 @@
 #' @param ax An \code{apexcharts} \code{htmlwidget} object. 
 #' @param inputId The id that will be used server-side for retrieveng category.
 #' @param multiple Allow multiple selection: \code{TRUE} or \code{FALSE} (default).
+#' @param effect_type Type of effect for selected element, default is to use lightly darken color.
+#' @param effect_value A larger value intensifies the select effect, accept value between 0 and 1.
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @examples
-set_input_click <- function(ax, inputId, multiple = FALSE) {
-  if (isTRUE(multiple)) {
-    ax <- ax_states(ax, active = list(
-      allowMultipleDataPointsSelection = TRUE
-    ))
-  }
+set_input_click <- function(ax, inputId, multiple = FALSE,
+                            effect_type = c("darken", "lighten", "none"), 
+                            effect_value = 0.35) {
+  effect_type <- match.arg(effect_type)
+  ax <- ax_states(ax, active = list(
+    allowMultipleDataPointsSelection = isTRUE(multiple),
+    filter = list(
+      type = effect_type,
+      value = effect_value
+    )
+  ))
   ax$x$input$category <- list(
     inputId = inputId
   )
