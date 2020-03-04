@@ -35,27 +35,39 @@ HTMLWidgets.widget({
               chartContext,
               opts
             ) {
-              var select = {};
-              for (var i = 0; i < opts.selectedDataPoints.length; i++) {
-                if (typeof opts.selectedDataPoints[i] === "undefined") {
-                  continue;
+              var options = opts;
+              var nonEmpty = opts.selectedDataPoints.filter(function (el) {
+                return el !== null && el.length > 0;
+              });
+              //console.log(chartContext);
+              if (nonEmpty.length > 0) {
+                var select = {};
+                for (var i = 0; i < opts.selectedDataPoints.length; i++) {
+                  if (typeof opts.selectedDataPoints[i] === "undefined") {
+                    continue;
+                  }
+                  var selection = getSelection(options, i);
+                  if (selection !== null) {
+                    if (opts.w.config.series[i].hasOwnProperty("name")) {
+                      var name = opts.w.config.series[i].name;
+                      select[name] = selection;
+                    } else {
+                      select[i] = selection;
+                    }
+                  }
                 }
-                if (opts.w.config.series[i].hasOwnProperty("name")) {
-                  var name = opts.w.config.series[i].name;
-                  select[name] = getSelection(opts, i);
-                } else {
-                  select[i] = getSelection(opts, i);
+                if (is_single(options)) {
+                  select = select[Object.keys(select)[0]];
                 }
+                Shiny.setInputValue(x.shinyEvents.click.inputId, select);
+              } else {
+                Shiny.setInputValue(x.shinyEvents.click.inputId, null);
               }
-              if (is_single(opts)) {
-                select = select[Object.keys(select)[0]];
-              }
-              Shiny.setInputValue(x.shinyEvents.click.inputId, select);
             };
           }
-          if (x.shinyEvents.hasOwnProperty("zoom")) {
+          if (x.shinyEvents.hasOwnProperty("zoomed")) {
             ax_opts.chart.events.zoomed = function(chartContext, xaxis, yaxis) {
-              var id = x.shinyEvents.zoom.inputId;
+              var id = x.shinyEvents.zoomed.inputId;
               if (chartContext.w.config.xaxis.type == "datetime") {
                 id = id + ":apex_datetime";
               }
@@ -123,28 +135,27 @@ function get_widget(id) {
   return widgetObj;
 }
 
-function is_single(opts) {
+function is_single(options) {
   var typeLabels = ["pie", "radialBar", "donut"];
-  var lab = typeLabels.indexOf(opts.w.config.chart.type) > -1;
-  var single = opts.w.config.series.length == 1;
+  var lab = typeLabels.indexOf(options.w.config.chart.type) > -1;
+  var single = options.w.config.series.length == 1;
   return lab | single;
 }
 
-function getSelection(opts, serieIndex) {
+function getSelection(options, serieIndex) {
   var typeLabels = ["pie", "radialBar", "donut"];
   var typeXY = ["scatter", "bubble"];
   var selected;
-  if (typeLabels.indexOf(opts.w.config.chart.type) > -1) {
-    var labels = opts.w.config.labels;
-    selected = opts.selectedDataPoints[serieIndex].map(function(index) {
+  if (typeLabels.indexOf(options.w.config.chart.type) > -1) {
+    var labels = options.w.config.labels;
+    selected = options.selectedDataPoints[serieIndex].map(function(index) {
       return labels[index];
     });
   } else {
-    var data = opts.w.config.series[serieIndex].data;
-    console.log(opts.selectedDataPoints);
-    selected = opts.selectedDataPoints[serieIndex].map(function(index) {
+    var data = options.w.config.series[serieIndex].data;
+    selected = options.selectedDataPoints[serieIndex].map(function(index) {
       var val = data[index];
-      if (typeXY.indexOf(opts.w.config.chart.type) < 0) {
+      if (typeXY.indexOf(options.w.config.chart.type) < 0) {
         if (val.hasOwnProperty("x")) {
           val = val.x;
         } else {
@@ -154,7 +165,8 @@ function getSelection(opts, serieIndex) {
       return val;
     });
   }
-  if (typeXY.indexOf(opts.w.config.chart.type) > -1) {
+  console.log(selected);
+  if (typeXY.indexOf(options.w.config.chart.type) > -1) {
     selected = {
       x: selected.map(function(obj) {
         return obj.x;
@@ -163,6 +175,9 @@ function getSelection(opts, serieIndex) {
         return obj.y;
       })
     };
+  }
+  if (typeof selected == "undefined") {
+    selected = null;
   }
   return selected;
 }
