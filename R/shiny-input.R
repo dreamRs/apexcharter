@@ -34,7 +34,7 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
       value = effect_value
     )
   ))
-  ax$x$input$category <- list(
+  ax$x$shinyEvents$click <- list(
     inputId = session$ns(inputId)
   )
   ax
@@ -56,7 +56,7 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
 #' @examples
 set_input_zoom <- function(ax, inputId,
                            session = shiny::getDefaultReactiveDomain()) {
-  ax$x$input$zoom <- list(
+  ax$x$shinyEvents$zoom <- list(
     inputId = session$ns(inputId)
   )
   ax

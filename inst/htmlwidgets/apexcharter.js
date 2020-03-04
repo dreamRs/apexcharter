@@ -22,40 +22,40 @@ HTMLWidgets.widget({
           ax_opts.chart.parentHeightOffset = 0;
         }
 
-        if (x.hasOwnProperty("input") & HTMLWidgets.shinyMode) {
+        if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
           if (!ax_opts.hasOwnProperty("chart")) {
             ax_opts.chart = {};
           }
           if (!ax_opts.chart.hasOwnProperty("events")) {
             ax_opts.chart.events = {};
           }
-          if (x.input.hasOwnProperty("category")) {
+          if (x.shinyEvents.hasOwnProperty("click")) {
             ax_opts.chart.events.dataPointSelection = function(
               event,
               chartContext,
               opts
             ) {
-              var selected = {};
+              var select = {};
               for (var i = 0; i < opts.selectedDataPoints.length; i++) {
                 if (typeof opts.selectedDataPoints[i] === "undefined") {
                   continue;
                 }
                 if (opts.w.config.series[i].hasOwnProperty("name")) {
                   var name = opts.w.config.series[i].name;
-                  selected[name] = getSelection(opts, i);
+                  select[name] = getSelection(opts, i);
                 } else {
-                  selected[i] = getSelection(opts, i);
+                  select[i] = getSelection(opts, i);
                 }
               }
               if (is_single(opts)) {
-                selected = selected[Object.keys(selected)[0]];
+                select = select[Object.keys(select)[0]];
               }
-              Shiny.setInputValue(x.input.category.inputId, selected);
+              Shiny.setInputValue(x.shinyEvents.click.inputId, select);
             };
           }
-          if (x.input.hasOwnProperty("zoom")) {
+          if (x.shinyEvents.hasOwnProperty("zoom")) {
             ax_opts.chart.events.zoomed = function(chartContext, xaxis, yaxis) {
-              var id = x.input.zoom.inputId;
+              var id = x.shinyEvents.zoom.inputId;
               if (chartContext.w.config.xaxis.type == "datetime") {
                 id = id + ":apex_datetime";
               }
@@ -141,7 +141,7 @@ function getSelection(opts, serieIndex) {
     });
   } else {
     var data = opts.w.config.series[serieIndex].data;
-    //console.log(opts.selectedDataPoints);
+    console.log(opts.selectedDataPoints);
     selected = opts.selectedDataPoints[serieIndex].map(function(index) {
       var val = data[index];
       if (typeXY.indexOf(opts.w.config.chart.type) < 0) {
