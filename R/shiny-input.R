@@ -56,7 +56,7 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
 #' @examples
 set_input_zoom <- function(ax, inputId,
                            session = shiny::getDefaultReactiveDomain()) {
-  ax$x$shinyEvents$zoom <- list(
+  ax$x$shinyEvents$zoomed <- list(
     inputId = session$ns(inputId)
   )
   ax

@@ -1,6 +1,6 @@
 dependencies:
   - name: apexcharts
-    version: 3.16.0
+    version: 3.16.1
     src: htmlwidgets/lib/apexcharts-3.16
     script: apexcharts.min.js
   - name: d3-format

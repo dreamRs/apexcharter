@@ -53,6 +53,17 @@ ui <- fluidPage(
       verbatimTextOutput("result6")
     )
   ),
+  fluidRow(
+    column(
+      width = 6,
+      tags$b("Heatmap exemple"),
+      apexchartOutput("chart7"),
+      verbatimTextOutput("result7")
+    ),
+    column(
+      width = 6
+    )
+  ),
   tags$br()
 )
 
@@ -152,6 +163,26 @@ server <- function(input, output, session) {
   output$result6 <- renderPrint({
     input$click_bubble
   })
+  
+  # heatmap ----
+  output$chart7 <- renderApexchart({
+    data.frame(
+      month = rep(month.abb, times = 5),
+      city = rep(c("Paris", "Marseille", "Lyon", "Lille", "Nantes"), each = 12),
+      value = sample(1:100, 5*12, TRUE)
+    ) %>% 
+      apex(
+        type = "heatmap", 
+        mapping = aes(x = month, y = city, fill = value)
+      ) %>% 
+      ax_dataLabels(enabled = FALSE) %>% 
+      ax_colors("#008FFB") %>% 
+      set_input_click("click_heatmap")
+  })
+  output$result7 <- renderPrint({
+    input$click_heatmap
+  })
+  
 }
 
 shinyApp(ui, server)

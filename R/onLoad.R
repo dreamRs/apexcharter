@@ -1,6 +1,19 @@
 
 #' @importFrom shiny registerInputHandler
 .onLoad <- function(...) {
+  shiny::registerInputHandler("apex_click", function(data, ...) {
+    if (is.null(data)) {
+      NULL
+    } else {
+      n <- names(data)
+      if (!is.null(n) && all(nzchar(n))) {
+        data <- lapply(data, unlist)
+      } else {
+        data <- unlist(data)
+      }
+      data
+    }
+  })
   shiny::registerInputHandler("apex_datetime", function(data, ...) {
     if (is.null(data)) {
       NULL

@@ -36,10 +36,10 @@ HTMLWidgets.widget({
               opts
             ) {
               var options = opts;
-              var nonEmpty = opts.selectedDataPoints.filter(function (el) {
+              var nonEmpty = opts.selectedDataPoints.filter(function(el) {
                 return el !== null && el.length > 0;
               });
-              //console.log(chartContext);
+              console.log(chartContext);
               if (nonEmpty.length > 0) {
                 var select = {};
                 for (var i = 0; i < opts.selectedDataPoints.length; i++) {
@@ -59,7 +59,10 @@ HTMLWidgets.widget({
                 if (is_single(options)) {
                   select = select[Object.keys(select)[0]];
                 }
-                Shiny.setInputValue(x.shinyEvents.click.inputId, select);
+                Shiny.setInputValue(
+                  x.shinyEvents.click.inputId + ":apex_click",
+                  select
+                );
               } else {
                 Shiny.setInputValue(x.shinyEvents.click.inputId, null);
               }
@@ -68,7 +71,7 @@ HTMLWidgets.widget({
           if (x.shinyEvents.hasOwnProperty("zoomed")) {
             ax_opts.chart.events.zoomed = function(chartContext, xaxis, yaxis) {
               var id = x.shinyEvents.zoomed.inputId;
-              if (chartContext.w.config.xaxis.type == "datetime") {
+              if (is_datetime(chartContext)) {
                 id = id + ":apex_datetime";
               }
               Shiny.setInputValue(id, {
@@ -142,6 +145,19 @@ function is_single(options) {
   return lab | single;
 }
 
+function is_datetime(chartContext) {
+  if (
+    chartContext.hasOwnProperty("w") &&
+    chartContext.w.hasOwnProperty("config") &&
+    chartContext.w.config.hasOwnProperty("xaxis") &&
+    chartContext.w.config.xaxis.hasOwnProperty("type")
+  ) {
+    return chartContext.w.config.xaxis.type == "datetime";
+  } else {
+    return false;
+  }
+}
+
 function getSelection(options, serieIndex) {
   var typeLabels = ["pie", "radialBar", "donut"];
   var typeXY = ["scatter", "bubble"];
@@ -165,7 +181,7 @@ function getSelection(options, serieIndex) {
       return val;
     });
   }
-  console.log(selected);
+  //console.log(selected);
   if (typeXY.indexOf(options.w.config.chart.type) > -1) {
     selected = {
       x: selected.map(function(obj) {
