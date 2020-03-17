@@ -13,13 +13,14 @@ knitr::opts_chunk$set(
   comment = "#>", 
   eval = FALSE
 )
+library(apexcharter)
 ```
 
 ```{r setup}
 library(apexcharter)
 ```
 
-## Charts in Shiny
+## Charts
 
 ### Create and update (or destroy and re-create)
 
@@ -80,5 +81,93 @@ observeEvent(input$update, {
 
 
 
+## Interactions
 
+### Click
+
+Click on a chart to select a data point and retrieve value server side with `set_input_click()` :
+
+```{r, eval=TRUE}
+data.frame(
+  month = month.abb,
+  value = sample(1:100, 12)
+) %>% 
+  apex(aes(month, value), height = "250px") %>% 
+  ax_title("Click a bar:") %>% 
+  set_input_click("month_click")
+```
+
+Value server-side will be available through `input$month_click`.
+
+Depending on the type of graphic, you can retrieve :
+
+ * **bar and column:** category (x-axis).
+ * **pie and donut:** label.
+ * **time-series:** retrieve x-axis value, you have to display markers
+  with size > 0 and set tooltip's options `intersect = TRUE` and `shared = FALSE`.
+ * **scatter:** retrieve XY coordinates.
+
+
+
+Multiple slection is possible and you can change the darken effect of selected bars :
+
+
+```{r, eval=TRUE}
+data.frame(
+  month = month.abb,
+  value = sample(1:100, 12)
+) %>% 
+  apex(aes(month, value), height = "250px") %>% 
+  ax_title("Click several bars:") %>% 
+  set_input_click(
+    inputId = "month_click", 
+    multiple = TRUE, 
+    effect_value = 0.1
+  )
+```
+
+
+
+More examples are available with:
+
+```{r}
+run_input_demo("click")
+```
+
+
+
+
+### Zoom
+
+Retrieve the coordinates of the axes when the graph is zoomed in:
+
+```{r, eval=TRUE}
+data("economics", package = "ggplot2")
+apex(economics, aes(date, psavert), type = "line", height = "250px") %>% 
+  set_input_zoom("zoom_ts")
+```
+
+Value server-side will be available through `input$zoom_ts` unde the form :
+
+```{r, echo=FALSE, eval=TRUE}
+list(
+  x = list(
+    min = "1981-10-24 15:41:16 UTC",
+    max = "1992-01-24 06:40:22 UTC"
+  ),
+  y = list(
+    min = NULL,
+    max = NULL
+  )
+)
+```
+
+Here values for `y` are `NULL` because zoom is only possible on x-axis, but for a scatter chart for example you can zoom on both axis.
+
+
+More examples are available with:
+
+```{r}
+run_input_demo("zoom")
+```
 
