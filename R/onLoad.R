@@ -7,7 +7,17 @@
     } else {
       n <- names(data)
       if (!is.null(n) && all(nzchar(n))) {
-        data <- lapply(data, unlist)
+        data <- lapply(
+          X = data, 
+          FUN = function(x) {
+            n <- names(x)
+            if (!is.null(n) && all(nzchar(n))) {
+              lapply(x, unlist)
+            } else {
+              unlist(x)
+            }
+          }
+        )
       } else {
         data <- unlist(data)
       }

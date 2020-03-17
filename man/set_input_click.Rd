@@ -36,6 +36,13 @@ According to type of chart, different values are retrieved:
 \item \strong{pie and donut:} retrieve label.
 \item \strong{time-series:} retrieve x-axis value, you have to display markers
 with size > 0 and set tooltip's options \code{intersect = TRUE} and \code{shared = FALSE}.
-\item \strong{scatter:} retrieve coordinates.
+\item \strong{scatter:} retrieve XY coordinates.
+}
+}
+\examples{
+if (interactive()) {
+
+  run_input_demo("click")
+
 }
 }

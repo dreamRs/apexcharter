@@ -46,7 +46,7 @@ HTMLWidgets.widget({
                   if (typeof opts.selectedDataPoints[i] === "undefined") {
                     continue;
                   }
-                  var selection = getSelection(options, i);
+                  var selection = getSelection(chartContext, options.selectedDataPoints, i);
                   if (selection !== null) {
                     if (opts.w.config.series[i].hasOwnProperty("name")) {
                       var name = opts.w.config.series[i].name;
@@ -158,20 +158,20 @@ function is_datetime(chartContext) {
   }
 }
 
-function getSelection(options, serieIndex) {
+function getSelection(chartContext, selectedDataPoints, serieIndex) {
   var typeLabels = ["pie", "radialBar", "donut"];
   var typeXY = ["scatter", "bubble"];
   var selected;
-  if (typeLabels.indexOf(options.w.config.chart.type) > -1) {
-    var labels = options.w.config.labels;
-    selected = options.selectedDataPoints[serieIndex].map(function(index) {
+  if (typeLabels.indexOf(chartContext.opts.chart.type) > -1) {
+    var labels = chartContext.opts.labels;
+    selected = selectedDataPoints[serieIndex].map(function(index) {
       return labels[index];
     });
   } else {
-    var data = options.w.config.series[serieIndex].data;
-    selected = options.selectedDataPoints[serieIndex].map(function(index) {
+    var data = chartContext.opts.series[serieIndex].data;
+    selected = selectedDataPoints[serieIndex].map(function(index) {
       var val = data[index];
-      if (typeXY.indexOf(options.w.config.chart.type) < 0) {
+      if (typeXY.indexOf(chartContext.opts.chart.type) < 0) {
         if (val.hasOwnProperty("x")) {
           val = val.x;
         } else {
@@ -182,7 +182,7 @@ function getSelection(options, serieIndex) {
     });
   }
   //console.log(selected);
-  if (typeXY.indexOf(options.w.config.chart.type) > -1) {
+  if (typeXY.indexOf(chartContext.opts.chart.type) > -1) {
     selected = {
       x: selected.map(function(obj) {
         return obj.x;

@@ -6,7 +6,7 @@
 #'  * **pie and donut:** retrieve label.
 #'  * **time-series:** retrieve x-axis value, you have to display markers
 #'   with size > 0 and set tooltip's options `intersect = TRUE` and `shared = FALSE`.
-#'  * **scatter:** retrieve coordinates.
+#'  * **scatter:** retrieve XY coordinates.
 #'
 #' @param ax An \code{apexcharts} \code{htmlwidget} object. 
 #' @param inputId The id that will be used server-side for retrieving click.
@@ -22,11 +22,18 @@
 #' @importFrom shiny getDefaultReactiveDomain
 #'
 #' @examples
+#' if (interactive()) {
+#' 
+#'   run_input_demo("click")
+#' 
+#' }
 set_input_click <- function(ax, inputId, multiple = FALSE,
                             effect_type = c("darken", "lighten", "none"), 
                             effect_value = 0.35, 
                             session = shiny::getDefaultReactiveDomain()) {
   effect_type <- match.arg(effect_type)
+  if (is.null(session))
+    session <- list(ns = identity)
   ax <- ax_states(ax, active = list(
     allowMultipleDataPointsSelection = isTRUE(multiple),
     filter = list(
@@ -52,14 +59,54 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
+#' 
+#' @importFrom shiny getDefaultReactiveDomain
 #'
 #' @examples
+#' if (interactive()) {
+#' 
+#'   run_input_demo("zoom")
+#' 
+#' }
 set_input_zoom <- function(ax, inputId,
                            session = shiny::getDefaultReactiveDomain()) {
+  if (is.null(session))
+    session <- list(ns = identity)
   ax$x$shinyEvents$zoomed <- list(
     inputId = session$ns(inputId)
   )
   ax
 }
+
+
+
+
+
+
+
+#' Run Shiny input events examples
+#'
+#' @param example NAme of the example.
+#'
+#' @export
+#'
+#' @examples
+#' if (interactive()) {
+#' 
+#'   run_input_demo()
+#' 
+#' }
+run_input_demo <- function(example = c("click", "zoom")) {
+  example <- match.arg(example)
+  shiny::shinyAppFile(
+    appFile = system.file("examples-input", example, "app.R", package = "apexcharter"),
+    options = list("display.mode" = "showcase")
+  )
+}
+
+
+
+
+
 
 

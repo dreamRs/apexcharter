@@ -19,3 +19,10 @@ An \code{apexcharts} \code{htmlwidget} object.
 \description{
 Retrieve zoom information in Shiny
 }
+\examples{
+if (interactive()) {
+
+  run_input_demo("zoom")
+
+}
+}
