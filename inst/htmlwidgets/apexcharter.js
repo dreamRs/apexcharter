@@ -61,7 +61,7 @@ HTMLWidgets.widget({
                 }
                 Shiny.setInputValue(
                   x.shinyEvents.click.inputId + ":apex_click",
-                  select
+                  {value: select, datetime: is_datetime(chartContext)}
                 );
               } else {
                 Shiny.setInputValue(x.shinyEvents.click.inputId, null);

@@ -16,6 +16,8 @@ formatNoSci <- function(x) {
 
 
 ununlist <- function(x) {
+  if (is.null(x))
+    return(x)
   n <- names(x)
   if (!is.null(n) && all(nzchar(n))) {
     lapply(x, ununlist)

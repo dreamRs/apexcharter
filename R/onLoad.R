@@ -5,7 +5,15 @@
     if (is.null(data)) {
       NULL
     } else {
-      ununlist(data)
+      value <- ununlist(data$value)
+      if (isTRUE(data$datetime)) {
+        if (is.list(value)) {
+          value <- rapply(value, to_posix, how = "replace")
+        } else {
+          value <- to_posix(value)
+        }
+      }
+      return(value)
     }
   })
   shiny::registerInputHandler("apex_datetime", function(data, ...) {
