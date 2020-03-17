@@ -146,7 +146,7 @@ server <- function(input, output, session) {
   # Scatter ----
   output$chart5 <- renderApexchart({
     apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg)) %>% 
-      set_input_click("click_scatter", multiple = FALSE)
+      set_input_click("click_scatter")
   })
   output$result5 <- renderPrint({
     input$click_scatter

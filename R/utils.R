@@ -15,6 +15,25 @@ formatNoSci <- function(x) {
 }
 
 
+ununlist <- function(x) {
+  n <- names(x)
+  if (!is.null(n) && all(nzchar(n))) {
+    lapply(x, ununlist)
+  } else {
+    unlist(x)
+  }
+}
+
+
+to_posix <- function(x) {
+  if (!is.null(x)) {
+    x <- as.POSIXct(x/1000, origin = "1970-01-01", tz = "UTC")
+  }
+  x
+}
+
+
+
 #' Utility function to create ApexChart parameters JSON
 #'
 #' @param ax A \code{apexcharts} \code{htmlwidget} object.
