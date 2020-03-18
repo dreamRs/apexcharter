@@ -80,6 +80,24 @@ HTMLWidgets.widget({
               });
             };
           }
+          if (x.shinyEvents.hasOwnProperty("selection")) {
+            ax_opts.chart.events.selection = function(chartContext, xaxis, yaxis) {
+              console.log(xaxis);
+              var id = x.shinyEvents.selection.inputId;
+              if (is_datetime(chartContext)) {
+                id = id + ":apex_datetime";
+              }
+              var selectionValue;
+              if (x.shinyEvents.selection.type == "x") {
+                selectionValue = {x: xaxis.xaxis};
+              } else if (x.shinyEvents.selection.type == "xy") {
+                selectionValue = {x: xaxis.xaxis, y: xaxis.yaxis};
+              } else if (x.shinyEvents.selection.type == "y") {
+                selectionValue = {y: xaxis.yaxis};
+              }
+              Shiny.setInputValue(id, selectionValue);
+            };
+          }
         }
 
         // Generate or update chart
@@ -200,7 +218,7 @@ function getSelection(chartContext, selectedDataPoints, serieIndex) {
 
 function getYaxis(axis) {
   var yzoom = { min: null, max: null };
-  if (typeof axis.yaxis != "undefined") {
+  if (typeof axis.yaxis != "undefined" && axis.yaxis !== null && axis.yaxis.length > 0) {
     var y_axis = axis.yaxis[0];
     if (y_axis.hasOwnProperty("min") && typeof y_axis.min != "undefined") {
       yzoom.min = y_axis.min;

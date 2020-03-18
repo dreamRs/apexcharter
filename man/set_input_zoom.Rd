@@ -9,7 +9,7 @@ set_input_zoom(ax, inputId, session = shiny::getDefaultReactiveDomain())
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
 
-\item{inputId}{The id that will be used server-side for retrieving click.}
+\item{inputId}{The id that will be used server-side for retrieving zoom.}
 
 \item{session}{The Shiny session.}
 }
@@ -18,6 +18,9 @@ An \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
 Retrieve zoom information in Shiny
+}
+\note{
+If x-axis is of type datetime, value retrieved is of class \code{POSIXct}.
 }
 \examples{
 if (interactive()) {

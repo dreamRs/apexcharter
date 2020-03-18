@@ -4,10 +4,10 @@
 \alias{run_input_demo}
 \title{Run Shiny input events examples}
 \usage{
-run_input_demo(example = c("click", "zoom"))
+run_input_demo(example = c("click", "zoom", "selection"))
 }
 \arguments{
-\item{example}{NAme of the example.}
+\item{example}{Name of the example.}
 }
 \description{
 Run Shiny input events examples
@@ -15,7 +15,9 @@ Run Shiny input events examples
 \examples{
 if (interactive()) {
 
-  run_input_demo()
+  run_input_demo("click")
+  run_input_demo("zoom")
+  run_input_demo("selection")
 
 }
 }

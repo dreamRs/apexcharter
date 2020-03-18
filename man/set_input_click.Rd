@@ -39,7 +39,23 @@ with size > 0 and set tooltip's options \code{intersect = TRUE} and \code{shared
 \item \strong{scatter:} retrieve XY coordinates.
 }
 }
+\note{
+If x-axis is of type datetime, value retrieved is of class \code{POSIXct}.
+}
 \examples{
+
+library(apexcharter)
+
+# Not in Shiny but you can still click on bars
+data.frame(
+  month = month.abb,
+  value = sample(1:100, 12)
+) \%>\% 
+  apex(aes(month, value)) \%>\% 
+  set_input_click("month_click", multiple = TRUE)
+
+
+# Interactive examples:
 if (interactive()) {
 
   run_input_demo("click")
