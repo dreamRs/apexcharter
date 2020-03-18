@@ -41,7 +41,6 @@ server <- function(input, output, session) {
   
   output$chart2 <- renderApexchart({
     apex(iris, aes(Sepal.Length, Sepal.Width), type = "scatter") %>% 
-      ax_chart(zoom = list(type = "xy")) %>% 
       set_input_selection("selection_scatter", type = "xy")
   })
   output$result2 <- renderPrint({
