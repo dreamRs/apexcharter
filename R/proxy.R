@@ -10,6 +10,8 @@
 #'   default value will suffice 
 #'
 #' @export
+#' 
+#' @importFrom shiny getDefaultReactiveDomain
 #'
 apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
   

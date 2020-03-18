@@ -19,8 +19,8 @@ config_update(
 \item{options_animate}{Should the chart animate on re-rendering.}
 
 \item{options_redrawPaths}{When the chart is re-rendered,
-should it draw from the existing paths or completely redraw 
-the chart paths from the beginning. By default, the chart 
+should it draw from the existing paths or completely redraw
+the chart paths from the beginning. By default, the chart
 is re-rendered from the existing paths}
 }
 \description{

@@ -39,7 +39,7 @@ ax_chart(
 Available options: \code{"normal"} or \code{"100\%"}.}
 
 \item{defaultLocale}{Locale to use : \code{"ca"}, \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"},
-\code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"nl"}, \code{"pt-br"}, 
+\code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"nl"}, \code{"pt-br"},
 \code{"ru"}, \code{"se"}, \code{"tr"}, \code{"ua"}.}
 
 \item{locales}{Array of custom locales parameters.}
