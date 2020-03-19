@@ -1,44 +1,33 @@
-context("test-apex-utils")
-
-test_that("is_x_datetime works", {
-  expect_true(is_x_datetime(list(x = Sys.Date())))
-  expect_true(is_x_datetime(list(x = Sys.time())))
-  expect_false(is_x_datetime(list(x = letters)))
-})
+context("apex-utils")
 
 
-test_that("list1 works", {
-  expect_is(list1(1), "list")
-  expect_is(list1(1:2), "integer")
-  expect_length(list1(1:2), 2)
-})
+test_that("all apex utilities works", {
+  
+  ax_utils <- c("ax_annotations", "ax_chart", "ax_colors", "ax_dataLabels", 
+                "ax_fill", "ax_grid", "ax_labels", "ax_labels2", "ax_legend", 
+                "ax_markers", "ax_noData", "ax_plotOptions", "ax_responsive", 
+                "ax_series", "ax_series2", "ax_states", "ax_stroke", "ax_subtitle", 
+                "ax_theme", "ax_title", "ax_tooltip", "ax_xaxis", "ax_yaxis", 
+                "ax_yaxis2")
+  
+  lapply(
+    X = ax_utils,
+    FUN = function(fun) {
+      ax_fun <- get(fun)
+      
+      if (grepl("2$", fun)) {
+        ax <- apexchart() %>% 
+          ax_fun("ARG")
+      } else {
+        ax <- apexchart() %>% 
+          ax_fun()
+      }
+      
+      expect_is(ax, "apexcharter")
+      
+    }
+  )
 
-
-test_that("correct_type works", {
-  expect_identical(correct_type("bar"), "bar")
-  expect_identical(correct_type("column"), "bar")
-  expect_identical(correct_type("line"), "line")
-  expect_identical(correct_type("spline"), "line")
-  expect_identical(correct_type("pie"), "pie")
-})
-
-
-test_that("make_series works", {
-  serie <- make_series(iris, aes(x = Sepal.Length, y = Sepal.Width))
-  expect_is(serie, "list")
-  expect_length(serie, 1)
-  expect_length(serie[[1]], 2)
-  expect_named(serie[[1]], c("name", "data"))
-})
-
-test_that("make_series works with group", {
-  mapping <- aes(x = Sepal.Length, y = Sepal.Width, fill = Species)
-  mapdata <- lapply(mapping, rlang::eval_tidy, data = iris)
-  serie <- make_series(mapdata, mapping)
-  expect_is(serie, "list")
-  expect_length(serie, 3)
-  expect_length(serie[[1]], 2)
-  expect_named(serie[[1]], c("name", "data"))
 })
 
 

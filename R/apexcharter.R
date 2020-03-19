@@ -34,7 +34,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
     height = height,
     package = "apexcharter",
     elementId = elementId,
-    preRenderHook = add_locale,
+    preRenderHook = add_locale_apex,
     sizingPolicy = htmlwidgets::sizingPolicy(
       defaultWidth = "100%",
       defaultHeight = "100%",
@@ -51,8 +51,8 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
   )
 }
 
-
-add_locale <- function(widget) {
+#' @importFrom jsonlite fromJSON
+add_locale_apex <- function(widget) {
   if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
     defaultLocale <- widget$x$ax_opts$chart$defaultLocale
     defaultLocale <- match.arg(
@@ -76,7 +76,6 @@ add_locale <- function(widget) {
   }
   widget
 }
-
 
 
 

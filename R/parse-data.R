@@ -78,7 +78,7 @@ parse_timeline_data <- function(.list) {
       FUN = function(i) {
         val <- lapply(.list, `[[`, i)
         l <- list(
-          x = val$x,
+          x = as.character(val$x),
           y = js_date(c(val$start, val$end))
         )
         if (!is.null(val$fill)) {

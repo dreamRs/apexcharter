@@ -1,4 +1,4 @@
-context("test-parse_df")
+context("parse-data")
 
 test_that("parse_df works", {
   
@@ -51,5 +51,34 @@ test_that("parse_df works with Date/POSIXt", {
   expect_is(res[[1]][[1]], "JS_EVAL")
   expect_is(res[[1]][[2]], "numeric")
 })
+
+
+
+
+test_that("parse_timeline_data work", {
+  
+  timeline1 <- data.frame(
+    x = LETTERS,
+    start = Sys.Date() + 1:26,
+    end = Sys.Date() + 10 + 1:26
+  )
+  t1 <- parse_timeline_data(timeline1)
+  
+  expect_is(t1, "list")
+  expect_length(t1, 26)
+  
+  timeline2 <- data.frame(
+    x = LETTERS,
+    start = Sys.Date() + 1:26,
+    end = Sys.Date() + 10 + 1:26,
+    group = rep(c("gr1", "gr2"), each = 13)
+  )
+  t2 <- parse_timeline_data(timeline2)
+  
+  expect_is(t2, "list")
+  expect_length(t2, 2)
+  expect_length(t2[[1]]$data, 13)
+})
+
 
 

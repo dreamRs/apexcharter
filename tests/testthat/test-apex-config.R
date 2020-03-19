@@ -33,12 +33,30 @@ test_that("config_line works", {
 })
 
 
+test_that("config_scatter works", {
+  
+  scatter <- config_scatter(NULL, NULL)
+  
+  expect_is(scatter, "list")
+  expect_identical(scatter$xaxis$type, "numeric")
+})
+
+
+test_that("config_timeline works", {
+  
+  timeline <- config_timeline()
+  
+  expect_is(timeline, "list")
+  expect_identical(timeline$xaxis$type, "datetime")
+})
+
 
 
 test_that("choose_config works", {
   
   mapdata <- list(
-    x = Sys.Date()
+    x = c(Sys.Date(), Sys.Date() + 10),
+    y = c(1, 10)
   )
   
   expect_identical(choose_config("bar", mapdata), config_bar(horizontal = TRUE))
@@ -48,6 +66,10 @@ test_that("choose_config works", {
   expect_identical(choose_config("area", mapdata), config_line(datetime = TRUE))
   expect_identical(choose_config("spline", mapdata), config_line(curve = "smooth", datetime = TRUE))
   
+  expect_identical(choose_config("scatter", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y)))
+  expect_identical(choose_config("bubble", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y)))
+  
+  expect_identical(choose_config("timeline", mapdata), config_timeline())
   
   expect_identical(choose_config("plop", mapdata), list())
 })
