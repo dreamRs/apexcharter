@@ -49,9 +49,7 @@ bars <- bars %>%
   ax_yaxis(
     title = list(text = "Weight (tons)"),
     labels = list(
-      formatter = JS(
-        "function(value) {return Math.round(value * 100) + '%';}"
-      )
+      formatter = format_num(".0%")
     ), 
     tickAmount = 6,
     max = 0.3
@@ -116,9 +114,7 @@ count(mpg, class) %>%
   ax_yaxis(
     title = list(text = "Weight (tons)"),
     labels = list(
-      formatter = JS(
-        "function(value) {return Math.round(value * 100) + '%';}"
-      )
+      formatter = format_num(".0%")
     ), 
     tickAmount = 6,
     max = 0.3
