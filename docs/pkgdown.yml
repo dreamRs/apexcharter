@@ -6,5 +6,6 @@ articles:
   advanced-configuration: articles/advanced-configuration.html
   labs: labs.html
   lines: lines.html
+  shiny-integration: shiny-integration.html
   sync-charts: sync-charts.html
 
