@@ -4,14 +4,16 @@
 \name{unhcr_ts}
 \alias{unhcr_ts}
 \title{UNHCR data by continent of origin}
-\format{A data frame with 913 observations on the following 4 variables.
+\format{
+A data frame with 913 observations on the following 4 variables.
 \describe{
 \item{\code{year}}{Year concerned.}
 \item{\code{population_type}}{Populations of concern : Refugees, Asylum-seekers, Internally displaced persons (IDPs), Returned refugees,
 Returned IDPs, Stateless persons, Others of concern.}
 \item{\code{continent_origin}}{Continent of residence of population.}
 \item{\code{n}}{Number of people concerned.}
-}}
+}
+}
 \source{
 UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
 }

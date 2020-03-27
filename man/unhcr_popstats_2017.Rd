@@ -4,7 +4,8 @@
 \name{unhcr_popstats_2017}
 \alias{unhcr_popstats_2017}
 \title{UNHCR data for 2017}
-\format{A data frame with 11237 observations on the following 6 variables.
+\format{
+A data frame with 11237 observations on the following 6 variables.
 \describe{
 \item{\code{country_origin}}{Country of origin of population}
 \item{\code{country_residence}}{Country / territory of asylum/residence of population}
@@ -13,7 +14,8 @@ Returned IDPs, Stateless persons, Others of concern.}
 \item{\code{value}}{Number of people concerned}
 \item{\code{continent_residence}}{Continent of origin of population}
 \item{\code{continent_origin}}{Continent of residence of population}
-}}
+}
+}
 \source{
 UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
 }

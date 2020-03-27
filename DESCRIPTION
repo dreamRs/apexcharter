@@ -29,7 +29,7 @@ Suggests:
     rmarkdown,
     gapminder,
     highcharter
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/dreamRs/apexcharter, https://dreamrs.github.io/apexcharter
 BugReports: https://github.com/dreamRs/apexcharter/issues
