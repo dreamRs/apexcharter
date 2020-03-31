@@ -1,7 +1,7 @@
 apexcharter 0.1.4
 ==================
 
-* Upgraded ApexCharts.js to 3.17.0
+* Upgraded ApexCharts.js to 3.17.1
 * Fixed a bug in grouped bar charts with different levels in groups.
 * New vignette to explain how to sync charts.
 * New vignette to show shiny usage.
