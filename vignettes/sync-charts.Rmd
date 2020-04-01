@@ -22,7 +22,7 @@ data("economics", package = "ggplot2")
 
 ## Sync charts
 
-With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a group and id to each charts. This works in Shiny and Markdown. Here a basic example :
+With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a group and id to each charts. This works in Shiny and Markdown. Here an example where we create two charts, tooltip will be displayed on both charts when you hover one, and if you zoom on one, the other one will be synced :
 
 ```{r example-1, eval=FALSE}
 apex(
@@ -32,11 +32,6 @@ apex(
 ) %>% 
   ax_chart(
     group = "economics", id = "pce" # <- define common group and unique id
-  ) %>% 
-  ax_yaxis(
-    labels = list(
-      minWidth = 15
-    )
   )
 
 apex(
@@ -46,11 +41,6 @@ apex(
 ) %>% 
   ax_chart(
     group = "economics", id = "psavert" # <- define common group and unique id
-  ) %>% 
-  ax_yaxis(
-    labels = list(
-      minWidth = 15
-    )
   )
 ```
 
@@ -63,7 +53,7 @@ apex(
 
 ## Brush chart
 
-Create a brush chart to navigate into a synced chart.
+Create a brush chart to navigate into a synced chart : use the chart below to navigate in the chart above.
 
 ```{r example-2, eval=FALSE}
 apex(
