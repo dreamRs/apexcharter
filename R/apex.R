@@ -63,12 +63,19 @@ apex <- function(data, mapping, type = "column", ...,
     )
   }
   opts <- modifyList(opts, choose_config(type, mapdata))
-  apexchart(
+  ax <- apexchart(
     ax_opts = opts, 
     width = width, height = height,
     elementId = elementId, 
     auto_update = auto_update
   )
+  if (inherits(mapdata$x, c("character", "Date", "POSIXt", "numeric", "integer"))) {
+    ax$x$xaxis <- list(
+      min = min(mapdata$x, na.rm = TRUE),
+      max = max(mapdata$x, na.rm = TRUE)
+    )
+  }
+  return(ax)
 }
 
 
