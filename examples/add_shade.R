@@ -13,7 +13,20 @@ apex(consumption, aes(date, value, group = type), "spline") %>%
 
 # or use a vector
 apex(consumption, aes(date, value, group = type), "spline") %>% 
-  add_shade(from = c("2020-01-06", "2020-02-04"), to = c("2020-01-20", "2020-02-10"))
+  add_shade(
+    from = c("2020-01-06", "2020-02-04"),
+    to = c("2020-01-20", "2020-02-10")
+  )
+
+# add other options
+apex(consumption, aes(date, value, group = type), "spline") %>% 
+  add_shade(
+    from = "2020-01-06", to = "2020-01-20",
+    color = "firebrick",
+    label = list(
+      text = "something happened"
+    )
+  )
 
 
 # automatically add shadow on week-ends

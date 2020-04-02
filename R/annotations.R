@@ -1,7 +1,7 @@
 
 #' @title Add a shaded area to a chart
 #' 
-#' @description \code{add_shade()} allow to add a shadow area on specified range,
+#' @description \code{add_shade()} allow to add a shaded area on specified range,
 #'  \code{add_shade_weekend()} add a shadow on every week-end.
 #'
 #' @param ax An \code{apexcharts} \code{htmlwidget} object. 

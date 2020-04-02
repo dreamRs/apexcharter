@@ -28,7 +28,7 @@ add_shade_weekend(ax, color = "#848484", opacity = 0.2, ...)
 An \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
-\code{add_shade()} allow to add a shadow area on specified range,
+\code{add_shade()} allow to add a shaded area on specified range,
 \code{add_shade_weekend()} add a shadow on every week-end.
 }
 \note{
@@ -51,7 +51,20 @@ apex(consumption, aes(date, value, group = type), "spline") \%>\%
 
 # or use a vector
 apex(consumption, aes(date, value, group = type), "spline") \%>\% 
-  add_shade(from = c("2020-01-06", "2020-02-04"), to = c("2020-01-20", "2020-02-10"))
+  add_shade(
+    from = c("2020-01-06", "2020-02-04"),
+    to = c("2020-01-20", "2020-02-10")
+  )
+
+# add other options
+apex(consumption, aes(date, value, group = type), "spline") \%>\% 
+  add_shade(
+    from = "2020-01-06", to = "2020-01-20",
+    color = "firebrick",
+    label = list(
+      text = "something happened"
+    )
+  )
 
 
 # automatically add shadow on week-ends
