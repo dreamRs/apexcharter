@@ -5,7 +5,7 @@
 \alias{unhcr_popstats_2017}
 \title{UNHCR data for 2017}
 \format{
-A data frame with 11237 observations on the following 6 variables.
+A data frame with 11237 observations and the following 6 variables:
 \describe{
 \item{\code{country_origin}}{Country of origin of population}
 \item{\code{country_residence}}{Country / territory of asylum/residence of population}

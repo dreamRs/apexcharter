@@ -5,7 +5,7 @@
 \alias{unhcr_ts}
 \title{UNHCR data by continent of origin}
 \format{
-A data frame with 913 observations on the following 4 variables.
+A data frame with 913 observations and the following 4 variables:
 \describe{
 \item{\code{year}}{Year concerned.}
 \item{\code{population_type}}{Populations of concern : Refugees, Asylum-seekers, Internally displaced persons (IDPs), Returned refugees,
