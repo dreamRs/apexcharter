@@ -5,9 +5,9 @@
 \title{Label for annotations}
 \usage{
 label(
+  text = NULL,
   borderColor = NULL,
   borderWidth = NULL,
-  text = NULL,
   textAnchor = NULL,
   position = NULL,
   offsetX = NULL,
@@ -18,15 +18,15 @@ label(
   fontWeight = NULL,
   fontFamily = NULL,
   cssClass = NULL,
-  padding = NULL
+  padding = c(2, 5, 2, 5)
 )
 }
 \arguments{
-\item{borderColor}{Border Color for the label.}
+\item{text}{Text for the annotation label.}
+
+\item{borderColor}{Border color for the label.}
 
 \item{borderWidth}{Border width for the label.}
-
-\item{text}{Text for tha annotation label.}
 
 \item{textAnchor}{The alignment of text relative to label’s drawing position.}
 

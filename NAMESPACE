@@ -2,6 +2,7 @@
 
 export("%>%")
 export(JS)
+export(add_event)
 export(add_shade)
 export(add_shade_weekend)
 export(aes)
