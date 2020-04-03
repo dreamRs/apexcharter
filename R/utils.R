@@ -1,6 +1,13 @@
 
+null_or_empty <- function(x) {
+  is.null(x) || length(x) == 0
+}
 
-# dropNulls
+
+dropNullsOrEmpty <- function(x) {
+  x[!vapply(x, null_or_empty, FUN.VALUE = logical(1))]
+}
+
 dropNulls <- function(x) {
   x[!vapply(x, is.null, FUN.VALUE = logical(1))]
 }

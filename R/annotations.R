@@ -1,4 +1,75 @@
 
+add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
+                           as_date = FALSE, ...) {
+  type_annotation <- match.arg(type_annotation)
+  config <- dropNullsOrEmpty(list(...))
+  if (identical(type_annotation, "yaxis")) {
+    len <- length(config$y)
+  } else {
+    len <- length(config$x)
+  }
+  config <- rapply(
+    object = config, 
+    f = rep_len, 
+    length.out = len, 
+    how = "replace"
+  )
+  extract <- function(el, position) {
+    `[`(el, position)
+  }
+  annotations <- lapply(
+    X = seq_len(len),
+    FUN = function(i) {
+      this <- rapply(
+        object = config, 
+        f = extract,
+        position = i, 
+        how = "list"
+      )
+      if (isTRUE(as_date)) {
+        this$x <- format_date(this$x)
+        this$x2 <- format_date(this$x2)
+      }
+      this
+    }
+  )
+  if (identical(type_annotation, "xaxis")) {
+    if (!is.null(ax$x$ax_opts$annotations$xaxis)) {
+      annotations <- c(annotations, ax$x$ax_opts$annotations$xaxis)
+      ax$x$ax_opts$annotations$xaxis <- NULL
+    }
+    ax <- ax_annotations(
+      ax = ax,
+      position = "back",
+      xaxis = annotations
+    )
+  } else if (identical(type_annotation, "yaxis")) {
+    if (!is.null(ax$x$ax_opts$annotations$yaxis)) {
+      annotations <- c(annotations, ax$x$ax_opts$annotations$yaxis)
+      ax$x$ax_opts$annotations$yaxis <- NULL
+    }
+    ax <- ax_annotations(
+      ax = ax,
+      position = "back",
+      yaxis = annotations
+    )
+  } else if (identical(type_annotation, "points")) {
+    if (!is.null(ax$x$ax_opts$annotations$points)) {
+      annotations <- c(annotations, ax$x$ax_opts$annotations$points)
+      ax$x$ax_opts$annotations$points <- NULL
+    }
+    ax <- ax_annotations(
+      ax = ax,
+      position = "back",
+      points = annotations
+    )
+  }
+  return(ax)
+}
+
+
+
+
 
 #' Label for annotations
 #'
@@ -86,46 +157,16 @@ add_shade <- function(ax, from, to, color = "#848484", opacity = 0.2, label = NU
   if (length(from) != length(to)) {
     stop("In add_shade: from and to must be of same length!", call. = FALSE)
   }
-  len <- length(from)
-  config <- list(
+  add_annotation(
+    ax = ax, 
+    type_annotation = "xaxis", 
+    as_date = TRUE, 
     x = from,
     x2 = to,
     fillColor = color,
     opacity = opacity,
     label = label,
     ...
-  )
-  config <- rapply(
-    object = config, 
-    f = rep_len, 
-    length.out = len, 
-    how = "replace"
-  )
-  extract <- function(el, position) {
-    `[`(el, position)
-  }
-  xaxis <- lapply(
-    X = seq_len(len),
-    FUN = function(i) {
-      this <- rapply(
-        object = config, 
-        f = extract,
-        position = i, 
-        how = "list"
-      )
-      this$x <- format_date(this$x)
-      this$x2 <- format_date(this$x2)
-      this
-    }
-  )
-  if (!is.null(ax$x$ax_opts$annotations$xaxis)) {
-    xaxis <- c(xaxis, ax$x$ax_opts$annotations$xaxis)
-    ax$x$ax_opts$annotations$xaxis <- NULL
-  }
-  ax_annotations(
-    ax = ax,
-    position = "back",
-    xaxis = xaxis
   )
 }
 
