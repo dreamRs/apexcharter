@@ -1,4 +1,64 @@
 
+
+#' Label for annotations
+#'
+#' @param borderColor Border Color for the label.
+#' @param borderWidth Border width for the label.
+#' @param text Text for tha annotation label.
+#' @param textAnchor The alignment of text relative to label’s drawing position.
+#' @param position Available options: left or right.
+#' @param offsetX Sets the left offset for annotation label.
+#' @param offsetY Sets the top offset for annotation label.
+#' @param background Background Color for the annotation label.
+#' @param color ForeColor for the annotation label.
+#' @param fontSize FontSize for the annotation label.
+#' @param fontWeight Font-weight for the annotation label.
+#' @param fontFamily Font-family for the annotation label.
+#' @param cssClass A custom Css Class to give to the annotation label elements.
+#' @param padding Padding for the label: top, right, bottom, left.
+#'
+#' @return A \code{list} that can be used in \code{\link{add_shade}}.
+#' @export
+#'
+label <- function(borderColor = NULL,
+                  borderWidth = NULL,
+                  text = NULL,
+                  textAnchor = NULL,
+                  position = NULL,
+                  offsetX = NULL,
+                  offsetY = NULL,
+                  background = NULL,
+                  color = NULL,
+                  fontSize = NULL,
+                  fontWeight = NULL,
+                  fontFamily = NULL,
+                  cssClass = NULL,
+                  padding = NULL) {
+  dropNulls(list(
+    borderColor = borderColor,
+    borderWidth = borderWidth,
+    text = text,
+    textAnchor = textAnchor,
+    position = position,
+    offsetX = offsetX,
+    offsetY = offsetY,
+    style = dropNulls(list(
+      background = background,
+      color = color,
+      fontSize = fontSize,
+      fontWeight = fontWeight,
+      fontFamily = fontFamily,
+      padding = list(
+        top = padding[1],
+        right = padding[2],
+        bottom = padding[3],
+        left = padding[4]
+      )
+    ))
+  ))
+}
+
+
 #' @title Add a shaded area to a chart
 #' 
 #' @description \code{add_shade()} allow to add a shaded area on specified range,
@@ -9,6 +69,7 @@
 #' @param to Vector of position to end shadow.
 #' @param color Color of the shadow.
 #' @param opacity Opacity of the shadow.
+#' @param label Add a label to the shade, see \code{\link{label}}.
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'  
@@ -21,7 +82,7 @@
 #' @name add-shade
 #'
 #' @example examples/add_shade.R
-add_shade <- function(ax, from, to, color = "#848484", opacity = 0.2, ...) {
+add_shade <- function(ax, from, to, color = "#848484", opacity = 0.2, label = NULL, ...) {
   if (length(from) != length(to)) {
     stop("In add_shade: from and to must be of same length!", call. = FALSE)
   }
@@ -31,6 +92,7 @@ add_shade <- function(ax, from, to, color = "#848484", opacity = 0.2, ...) {
     x2 = to,
     fillColor = color,
     opacity = opacity,
+    label = label,
     ...
   )
   config <- rapply(
@@ -71,7 +133,7 @@ add_shade <- function(ax, from, to, color = "#848484", opacity = 0.2, ...) {
 
 #' @export
 #' @rdname add-shade
-add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, ...) {
+add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL, ...) {
   if (is.null(ax$x$xaxis)) {
     stop("add_shade_weekend can only be used with apex().", call. = FALSE)
   }
@@ -93,6 +155,7 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, ...) {
       to = paste(format(sun, format = "%Y-%m-%d"), time),
       color = color,
       opacity = opacity,
+      label = label,
       ...
     )
   }

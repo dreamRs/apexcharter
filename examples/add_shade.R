@@ -23,8 +23,12 @@ apex(consumption, aes(date, value, group = type), "spline") %>%
   add_shade(
     from = "2020-01-06", to = "2020-01-20",
     color = "firebrick",
-    label = list(
-      text = "something happened"
+    label = label(
+      text = "something happened",
+      background = "firebrick",
+      color = "white", 
+      fontWeight = "bold",
+      padding = c(3, 5, 3, 5)
     )
   )
 

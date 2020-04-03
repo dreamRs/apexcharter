@@ -6,9 +6,9 @@
 \alias{add_shade_weekend}
 \title{Add a shaded area to a chart}
 \usage{
-add_shade(ax, from, to, color = "#848484", opacity = 0.2, ...)
+add_shade(ax, from, to, color = "#848484", opacity = 0.2, label = NULL, ...)
 
-add_shade_weekend(ax, color = "#848484", opacity = 0.2, ...)
+add_shade_weekend(ax, color = "#848484", opacity = 0.2, label = NULL, ...)
 }
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
@@ -20,6 +20,8 @@ add_shade_weekend(ax, color = "#848484", opacity = 0.2, ...)
 \item{color}{Color of the shadow.}
 
 \item{opacity}{Opacity of the shadow.}
+
+\item{label}{Add a label to the shade, see \code{\link{label}}.}
 
 \item{...}{Additional arguments, see
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}
@@ -61,8 +63,12 @@ apex(consumption, aes(date, value, group = type), "spline") \%>\%
   add_shade(
     from = "2020-01-06", to = "2020-01-20",
     color = "firebrick",
-    label = list(
-      text = "something happened"
+    label = label(
+      text = "something happened",
+      background = "firebrick",
+      color = "white", 
+      fontWeight = "bold",
+      padding = c(3, 5, 3, 5)
     )
   )
 
