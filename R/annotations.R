@@ -6,6 +6,9 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
   if (!is.null(config$label) && is.character(config$label)) {
     config$label <- list(text = config$label)
   }
+  if (!is.null(config$marker) && is.numeric(config$marker)) {
+    config$marker <- list(size = config$marker)
+  }
   if (identical(type_annotation, "yaxis")) {
     len <- length(config$y)
   } else {
@@ -131,6 +134,44 @@ label <- function(text = NULL,
         left = padding[4]
       )
     ))
+  ))
+}
+
+
+#' Marker for annotations
+#'
+#' @param size Size of the marker.
+#' @param fillColor Fill Color of the marker point.
+#' @param strokeColor Stroke Color of the marker point.
+#' @param strokeWidth Stroke Size of the marker point.
+#' @param shape Shape of the marker: \code{"circle"} or \code{"square"}.
+#' @param radius Radius of the marker (applies to square shape).
+#' @param OffsetX Sets the left offset of the marker.
+#' @param OffsetY Sets the top offset of the marker.
+#' @param cssClass Additional CSS classes to append to the marker.
+#'
+#' @return A \code{list} that can be used in \code{\link{add_point}}.
+#' @noRd
+#'
+marker <- function(size = NULL,
+                   fillColor = NULL,
+                   strokeColor = NULL,
+                   strokeWidth = NULL,
+                   shape = NULL,
+                   radius = NULL,
+                   OffsetX = NULL,
+                   OffsetY = NULL,
+                   cssClass = NULL) {
+  dropNulls(list(
+    size = size,
+    fillColor = fillColor,
+    strokeColor = strokeColor,
+    strokeWidth = strokeWidth,
+    shape = shape,
+    radius = radius,
+    OffsetX = OffsetX,
+    OffsetY = OffsetY,
+    cssClass = cssClass
   ))
 }
 
@@ -300,3 +341,49 @@ add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
 
 
 
+#' Add an annotation point
+#'
+#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @param x Coordinate(s) on the x-axis.
+#' @param y Coordinate(s) on the y-axis.
+#' @param size Size of the marker.
+#' @param color Stroke Color of the marker point.
+#' @param fill Fill Color of the marker point.
+#' @param width Stroke Size of the marker point.
+#' @param shape Shape of the marker: \code{"circle"} or \code{"square"}.
+#' @param radius Radius of the marker (applies to square shape).
+#' @param label Add a label to the shade, use a \code{character}
+#'  or see \code{\link{label}} for more controls.
+#' @param ... Additional arguments, see
+#'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
+#'
+#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#' @export
+#'
+#' @example examples/add_point.R
+add_point <- function(ax, x, y,
+                      size = 5,
+                      color = "#000",
+                      fill = "#FFF",
+                      width = 2,
+                      shape = "circle", 
+                      radius = 2, 
+                      label = NULL, ...) {
+  add_annotation(
+    ax = ax, 
+    type_annotation = "points", 
+    position = "front",
+    as_date = FALSE, 
+    x = x, y = y,
+    marker = marker(
+      size = size, 
+      fillColor = fill,
+      strokeColor = color, 
+      strokeWidth = width, 
+      shape = shape, 
+      radius = radius
+    ),
+    label = label,
+    ...
+  )
+}
