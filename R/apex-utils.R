@@ -1157,19 +1157,7 @@ ax_yaxis <- function(ax,
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
-#' @examples
-#' 
-#' library(dplyr)
-#' data("economics_long", package = "ggplot2")
-#' 
-#' eco <- economics_long %>% 
-#'   filter(variable %in% c("pce", "pop")) %>% 
-#'   filter(date >= "2000-01-01")
-#' 
-#' apex(eco, aes(x = date, y = value, color = variable), type = "line") %>% 
-#'   ax_yaxis(title = list(text = "Pce")) %>% 
-#'   ax_yaxis2(opposite = TRUE, title = list(text = "Pop"))
-#'   
+#' @example examples/ax_yaxis2.R 
 ax_yaxis2 <- function(ax, ...) {
   params <- dropNulls(list(...))
   yaxis <- .get_ax_opt(ax, "yaxis")
@@ -1234,6 +1222,6 @@ ax_theme <- function(ax,
     mode = mode,
     palette = palette,
     monochrome = monochrome
-  ), list(...))[-1]
+  ), list(...))
   .ax_opt2(ax, "theme", l = dropNulls(params))
 }

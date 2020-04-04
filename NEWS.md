@@ -1,3 +1,19 @@
+apexcharter 0.1.5
+==================
+
+## New functions
+
+* `add_shade()`, `add_shade_weekend()`, `add_event()` to add annotations on timeries charts.
+* `add_hline()`, `add_vline()`, `add_point()` to add annotations on charts.
+* `set_tooltip_fixed()` to fix tooltip in specific position.
+
+## Bugfixes
+
+* Dark mode wasn't activated properly in `ax_theme()`.
+
+
+
+
 apexcharter 0.1.4
 ==================
 

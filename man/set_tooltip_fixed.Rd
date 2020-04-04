@@ -38,5 +38,4 @@ apex(
   type = "line"
 ) \%>\% 
   set_tooltip_fixed()
-
 }
