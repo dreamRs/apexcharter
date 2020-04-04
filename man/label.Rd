@@ -28,7 +28,7 @@ label(
 
 \item{borderWidth}{Border width for the label.}
 
-\item{textAnchor}{The alignment of text relative to label’s drawing position.}
+\item{textAnchor}{The alignment of text relative to label's drawing position.}
 
 \item{position}{Available options: left or right.}
 

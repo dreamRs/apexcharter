@@ -4,7 +4,7 @@
 \alias{add_event}
 \title{Add an event to a chart}
 \usage{
-add_event(ax, when, color = "#E41A1C", strokeDashArray = 4, label = NULL, ...)
+add_event(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...)
 }
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
@@ -13,10 +13,12 @@ add_event(ax, when, color = "#E41A1C", strokeDashArray = 4, label = NULL, ...)
 
 \item{color}{Color of the line.}
 
-\item{strokeDashArray}{Creates dashes in borders of SVG path.
-A higher number creates more space between dashes in the border.}
+\item{dash}{Creates dashes in borders of SVG path.
+A higher number creates more space between dashes in the border.
+Use \code{0} for plain line.}
 
-\item{label}{Add a label to the shade, see \code{\link{label}}.}
+\item{label}{Add a label to the shade, use a \code{character}
+or see \code{\link{label}} for more controls.}
 
 \item{...}{Additional arguments, see
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}

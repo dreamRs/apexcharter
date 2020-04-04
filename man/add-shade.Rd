@@ -21,7 +21,8 @@ add_shade_weekend(ax, color = "#848484", opacity = 0.2, label = NULL, ...)
 
 \item{opacity}{Opacity of the shadow.}
 
-\item{label}{Add a label to the shade, see \code{\link{label}}.}
+\item{label}{Add a label to the shade, use a \code{character}
+or see \code{\link{label}} for more controls.}
 
 \item{...}{Additional arguments, see
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}
@@ -58,7 +59,15 @@ apex(consumption, aes(date, value, group = type), "spline") \%>\%
     to = c("2020-01-20", "2020-02-10")
   )
 
-# add other options
+
+# Add a label
+apex(consumption, aes(date, value, group = type), "spline") \%>\% 
+  add_shade(
+    from = "2020-01-06", to = "2020-01-20",
+    label = "interesting period"
+  )
+
+# add label with more options
 apex(consumption, aes(date, value, group = type), "spline") \%>\% 
   add_shade(
     from = "2020-01-06", to = "2020-01-20",

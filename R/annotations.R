@@ -1,8 +1,11 @@
 
 add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
-                           as_date = FALSE, ...) {
+                           as_date = FALSE, position = "back", ...) {
   type_annotation <- match.arg(type_annotation)
   config <- dropNullsOrEmpty(list(...))
+  if (!is.null(config$label) && is.character(config$label)) {
+    config$label <- list(text = config$label)
+  }
   if (identical(type_annotation, "yaxis")) {
     len <- length(config$y)
   } else {
@@ -14,8 +17,8 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
     length.out = len, 
     how = "replace"
   )
-  extract <- function(el, position) {
-    `[`(el, position)
+  extract <- function(el, index) {
+    `[`(el, index)
   }
   annotations <- lapply(
     X = seq_len(len),
@@ -23,7 +26,7 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
       this <- rapply(
         object = config, 
         f = extract,
-        position = i, 
+        index = i, 
         how = "list"
       )
       if (isTRUE(as_date)) {
@@ -52,7 +55,7 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
     }
     ax <- ax_annotations(
       ax = ax,
-      position = "back",
+      position = position,
       yaxis = annotations
     )
   } else if (identical(type_annotation, "points")) {
@@ -78,7 +81,7 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
 #' @param text Text for the annotation label.
 #' @param borderColor Border color for the label.
 #' @param borderWidth Border width for the label.
-#' @param textAnchor The alignment of text relative to label’s drawing position.
+#' @param textAnchor The alignment of text relative to label's drawing position.
 #' @param position Available options: left or right.
 #' @param offsetX Sets the left offset for annotation label.
 #' @param offsetY Sets the top offset for annotation label.
@@ -142,7 +145,8 @@ label <- function(text = NULL,
 #' @param to Vector of position to end shadow.
 #' @param color Color of the shadow.
 #' @param opacity Opacity of the shadow.
-#' @param label Add a label to the shade, see \code{\link{label}}.
+#' @param label Add a label to the shade, use a \code{character}
+#'  or see \code{\link{label}} for more controls.
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'  
@@ -216,9 +220,11 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL
 #' @param ax An \code{apexcharts} \code{htmlwidget} object. 
 #' @param when Vector of position to place the event.
 #' @param color Color of the line.
-#' @param strokeDashArray Creates dashes in borders of SVG path.
-#'  A higher number creates more space between dashes in the border.
-#' @param label Add a label to the shade, see \code{\link{label}}.
+#' @param dash Creates dashes in borders of SVG path.
+#'  A higher number creates more space between dashes in the border. 
+#'  Use \code{0} for plain line.
+#' @param label Add a label to the shade, use a \code{character}
+#'  or see \code{\link{label}} for more controls.
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'
@@ -226,14 +232,14 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL
 #' @export
 #'
 #' @example examples/add_event.R
-add_event <- function(ax, when, color = "#E41A1C", strokeDashArray = 4, label = NULL, ...) {
+add_event <- function(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...) {
   add_annotation(
     ax = ax, 
     type_annotation = "xaxis", 
     as_date = TRUE, 
     x = when,
     borderColor = color,
-    strokeDashArray = strokeDashArray,
+    strokeDashArray = dash,
     label = label,
     ...
   )
@@ -244,8 +250,53 @@ add_event <- function(ax, when, color = "#E41A1C", strokeDashArray = 4, label = 
 
 
 
-
-
+#' Add horizontal or vertical line
+#'
+#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @param value Vector of position for the line(s).
+#' @param color Color(s) of the line(s). 
+#' @param dash Creates dashes in borders of SVG path.
+#'  A higher number creates more space between dashes in the border. 
+#'  Use \code{0} for plain line.
+#' @param label Add a label to the shade, use a \code{character}
+#'  or see \code{\link{label}} for more controls.
+#' @param ... Additional arguments, see
+#'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
+#'
+#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#' @export
+#' 
+#' @name add-lines
+#'
+#' @example examples/add-lines.R
+add_hline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
+  add_annotation(
+    ax = ax, 
+    type_annotation = "yaxis", 
+    position = "front",
+    as_date = FALSE, 
+    y = value,
+    borderColor = color,
+    strokeDashArray = dash,
+    label = label,
+    ...
+  )
+}
+#' @export
+#' @rdname add-lines
+add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
+  add_annotation(
+    ax = ax, 
+    type_annotation = "xaxis", 
+    position = "front",
+    as_date = FALSE, 
+    x = value,
+    borderColor = color,
+    strokeDashArray = dash,
+    label = label,
+    ...
+  )
+}
 
 
 
