@@ -1,6 +1,9 @@
 apexcharter 0.1.5
 ==================
 
+* Updated ApexCharts.js to 3.18.1
+
+
 ## New functions
 
 * `add_shade()`, `add_shade_weekend()`, `add_event()` to add annotations on timeries charts.
@@ -9,7 +12,7 @@ apexcharter 0.1.5
 
 ## Bugfixes
 
-* Dark mode wasn't activated properly in `ax_theme()`.
+* Dark ond yaxis examplemode wasn't activated properly in `ax_theme()`.
 
 
 
