@@ -22,32 +22,36 @@ data("economics", package = "ggplot2")
 
 ## Sync charts
 
-With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a group and id to each charts. This works in Shiny and Markdown. Here an example where we create two charts, tooltip will be displayed on both charts when you hover one, and if you zoom on one, the other one will be synced :
+With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a common id in `synchronize` argument. This works in Shiny and Markdown. Here an example where we create two charts, tooltip will be displayed on both charts when you hover one, and if you zoom on one, the other one will be synced :
 
 ```{r example-1, eval=FALSE}
 apex(
   data = tail(economics, 150), 
   mapping = aes(x = date, y = pce),
-  type = "line"
-) %>% 
-  ax_chart(
-    group = "economics", id = "pce" # <- define common group and unique id
-  )
+  type = "line", 
+  synchronize = "economics"
+)
 
 apex(
   data = tail(economics, 150), 
   mapping = aes(x = date, y = psavert),
-  type = "line"
-) %>% 
-  ax_chart(
-    group = "economics", id = "psavert" # <- define common group and unique id
-  )
+  type = "line", 
+  synchronize = "economics"
+)
 ```
 
 
 ```{r run-example-1, echo=FALSE, ref.label="example-1"}
 
 ```
+
+
+For an example in Shiny, you can run:
+
+```{r shiny-example, eval=FALSE}
+run_sync_demo()
+```
+
 
 
 

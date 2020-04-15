@@ -132,6 +132,9 @@ HTMLWidgets.widget({
         }
         axOpts.chart.width = width;
         axOpts.chart.height = height;
+        if (!axOpts.chart.hasOwnProperty("id")) {
+          axOpts.chart.id = el.id;
+        }
         if (!axOpts.chart.hasOwnProperty("parentHeightOffset")) {
           axOpts.chart.parentHeightOffset = 0;
         }

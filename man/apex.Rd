@@ -10,6 +10,7 @@ apex(
   type = "column",
   ...,
   auto_update = TRUE,
+  synchronize = NULL,
   serie_name = NULL,
   width = NULL,
   height = NULL,
@@ -33,6 +34,8 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \item{auto_update}{In Shiny application, update existing chart
 rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
 use \code{\link{config_update}} for more control.}
+
+\item{synchronize}{Give a common id to charts to synchronize them (tooltip and zoom).}
 
 \item{serie_name}{Name for the serie displayed in tooltip,
 only used for single serie.}

@@ -2,6 +2,7 @@ apexcharter 0.1.5
 ==================
 
 * Updated ApexCharts.js to 3.18.1
+* `apex()` has a new argument `synchronize` to easily synchronize charts together.
 
 
 ## New functions

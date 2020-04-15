@@ -16,6 +16,7 @@
 #' @param auto_update In Shiny application, update existing chart
 #'  rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
 #'  use \code{\link{config_update}} for more control.
+#' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
 #'  only used for single serie.
 #' @param width A numeric input in pixels.
@@ -32,6 +33,7 @@
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., 
                  auto_update = TRUE,
+                 synchronize = NULL,
                  serie_name = NULL,
                  width = NULL, height = NULL, elementId = NULL) {
   type <- match.arg(
@@ -58,9 +60,15 @@ apex <- function(data, mapping, type = "column", ...,
     )
   } else {
     opts <- list(
-      chart = list(type = correct_type(type)),
+      chart = dropNulls(list(
+        type = correct_type(type), 
+        group = synchronize
+      )),
       series = make_series(mapdata, mapping, type, serie_name)
     )
+  }
+  if (!is.null(synchronize)) {
+    opts$yaxis$labels$minWidth <- 15
   }
   opts <- modifyList(opts, choose_config(type, mapdata))
   ax <- apexchart(
