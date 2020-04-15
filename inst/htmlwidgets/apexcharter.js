@@ -245,10 +245,13 @@ HTMLWidgets.widget({
             apexchart.updateSeries(axOpts.series, x.auto_update.series_animate);
             if (x.auto_update.update_options) {
               delete axOpts.series;
+              delete axOpts.chart.width;
+              delete axOpts.chart.height;
               apexchart.updateOptions(
                 axOpts,
                 x.auto_update.options_redrawPaths,
-                x.auto_update.options_animate
+                x.auto_update.options_animate,
+                x.auto_update.update_synced_charts
               );
             }
           } else {

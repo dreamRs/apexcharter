@@ -88,17 +88,21 @@ add_locale_apex <- function(widget) {
 #'  should it draw from the existing paths or completely redraw 
 #'  the chart paths from the beginning. By default, the chart 
 #'  is re-rendered from the existing paths.
+#' @param update_synced_charts All the charts in a group should
+#'  also update when one chart in a group is updated.
 #' 
 #' @export
 config_update <- function(series_animate = TRUE, 
                           update_options = FALSE, 
                           options_animate = TRUE, 
-                          options_redrawPaths = TRUE) {
+                          options_redrawPaths = TRUE,
+                          update_synced_charts = FALSE) {
   list(
     series_animate = series_animate, 
     update_options = update_options, 
     options_animate = options_animate, 
-    options_redrawPaths = options_redrawPaths
+    options_redrawPaths = options_redrawPaths,
+    update_synced_charts = update_synced_charts
   )
 }
 

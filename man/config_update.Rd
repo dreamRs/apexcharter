@@ -8,7 +8,8 @@ config_update(
   series_animate = TRUE,
   update_options = FALSE,
   options_animate = TRUE,
-  options_redrawPaths = TRUE
+  options_redrawPaths = TRUE,
+  update_synced_charts = FALSE
 )
 }
 \arguments{
@@ -21,7 +22,10 @@ config_update(
 \item{options_redrawPaths}{When the chart is re-rendered,
 should it draw from the existing paths or completely redraw
 the chart paths from the beginning. By default, the chart
-is re-rendered from the existing paths}
+is re-rendered from the existing paths.}
+
+\item{update_synced_charts}{All the charts in a group should
+also update when one chart in a group is updated.}
 }
 \description{
 Configuration for auto update
