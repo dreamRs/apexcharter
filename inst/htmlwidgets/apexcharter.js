@@ -135,6 +135,21 @@ HTMLWidgets.widget({
         if (!axOpts.chart.hasOwnProperty("parentHeightOffset")) {
           axOpts.chart.parentHeightOffset = 0;
         }
+        
+        // added events to remove minheight container
+        if (!axOpts.chart.hasOwnProperty("events")) {
+          axOpts.chart.events = {};
+        }
+        if (!axOpts.chart.events.hasOwnProperty("mounted")) {
+          axOpts.chart.events.mounted = function(chartContext, config) {
+            el.style.minHeight = 0;
+          };
+        }
+        if (!axOpts.chart.events.hasOwnProperty("updated")) {
+          axOpts.chart.events.updated = function(chartContext, config) {
+            el.style.minHeight = 0;
+          };
+        }
 
         if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
           if (!axOpts.hasOwnProperty("chart")) {
@@ -226,8 +241,10 @@ HTMLWidgets.widget({
           apexchart.render();
         } else {
           if (x.auto_update) {
+            //console.log(x.auto_update);
             apexchart.updateSeries(axOpts.series, x.auto_update.series_animate);
             if (x.auto_update.update_options) {
+              delete axOpts.series;
               apexchart.updateOptions(
                 axOpts,
                 x.auto_update.options_redrawPaths,

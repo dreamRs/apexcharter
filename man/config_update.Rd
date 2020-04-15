@@ -8,7 +8,7 @@ config_update(
   series_animate = TRUE,
   update_options = FALSE,
   options_animate = TRUE,
-  options_redrawPaths = FALSE
+  options_redrawPaths = TRUE
 )
 }
 \arguments{

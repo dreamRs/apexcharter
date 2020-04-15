@@ -87,13 +87,13 @@ add_locale_apex <- function(widget) {
 #' @param options_redrawPaths When the chart is re-rendered,
 #'  should it draw from the existing paths or completely redraw 
 #'  the chart paths from the beginning. By default, the chart 
-#'  is re-rendered from the existing paths 
+#'  is re-rendered from the existing paths.
 #' 
 #' @export
 config_update <- function(series_animate = TRUE, 
                           update_options = FALSE, 
                           options_animate = TRUE, 
-                          options_redrawPaths = FALSE) {
+                          options_redrawPaths = TRUE) {
   list(
     series_animate = series_animate, 
     update_options = update_options, 
