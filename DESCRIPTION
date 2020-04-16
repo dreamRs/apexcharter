@@ -26,9 +26,7 @@ Suggests:
     dplyr,
     knitr,
     scales,
-    rmarkdown,
-    gapminder,
-    highcharter
+    rmarkdown
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/dreamRs/apexcharter, https://dreamrs.github.io/apexcharter
