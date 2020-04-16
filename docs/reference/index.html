@@ -119,11 +119,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.920</span>
       </span>
     </div>
 
@@ -161,6 +161,9 @@
       <a href="../articles/shiny-integration.html">Shiny integration</a>
     </li>
     <li>
+      <a href="../articles/spark-box.html">Spark boxes</a>
+    </li>
+    <li>
       <a href="../articles/sync-charts.html">Syncing charts</a>
     </li>
   </ul>
@@ -171,7 +174,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dreamRs/apexcharter">
+  <a href="https://github.com/dreamRs/apexcharter/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -200,293 +203,13 @@
       <col class="title" />
     </colgroup>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="apex.html">apex()</a></code> </p>
-        </td>
-        <td><p>Quick ApexChart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="apexchart.html">apexchart()</a></code> </p>
-        </td>
-        <td><p>Create an apexcharts.js widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="apexcharter-exports.html">apexcharter-exports</a></code> </p>
-        </td>
-        <td><p>apexcharter exported operators and S3 methods</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="apexcharter-package.html">apexcharter-package</a></code> </p>
-        </td>
-        <td><p>An <code>htmlwidget</code> interface to the
-ApexCharts javascript chart library</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="apexcharter-shiny.html">apexchartOutput()</a></code> <code><a href="apexcharter-shiny.html">renderApexchart()</a></code> </p>
-        </td>
-        <td><p>Shiny bindings for apexcharter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="apexchartProxy.html">apexchartProxy()</a></code> </p>
-        </td>
-        <td><p>Proxy for <code>apexchart</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax-series.html">ax_series()</a></code> <code><a href="ax-series.html">ax_series2()</a></code> </p>
-        </td>
-        <td><p>Add data to a chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_annotations.html">ax_annotations()</a></code> </p>
-        </td>
-        <td><p>Annotations properties</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_chart.html">ax_chart()</a></code> </p>
-        </td>
-        <td><p>Chart parameters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_colors.html">ax_colors()</a></code> </p>
-        </td>
-        <td><p>Colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_dataLabels.html">ax_dataLabels()</a></code> </p>
-        </td>
-        <td><p>Labels on data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_fill.html">ax_fill()</a></code> </p>
-        </td>
-        <td><p>Fill property</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_grid.html">ax_grid()</a></code> </p>
-        </td>
-        <td><p>Add grids on chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_labels.html">ax_labels()</a></code> <code><a href="ax_labels.html">ax_labels2()</a></code> </p>
-        </td>
-        <td><p>Alternative axis labels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_labs.html">ax_labs()</a></code> </p>
-        </td>
-        <td><p>Modify axis, legend, and chart labels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_legend.html">ax_legend()</a></code> </p>
-        </td>
-        <td><p>Legend properties</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_markers.html">ax_markers()</a></code> </p>
-        </td>
-        <td><p>Markers properties</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_plotOptions.html">ax_plotOptions()</a></code> </p>
-        </td>
-        <td><p>Specific options for chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_proxy_options.html">ax_proxy_options()</a></code> </p>
-        </td>
-        <td><p>Proxy for updating options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_proxy_series.html">ax_proxy_series()</a></code> </p>
-        </td>
-        <td><p>Proxy for updating series.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_responsive.html">ax_responsive()</a></code> </p>
-        </td>
-        <td><p>Responsive options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_states.html">ax_states()</a></code> </p>
-        </td>
-        <td><p>Charts' states</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_stroke.html">ax_stroke()</a></code> </p>
-        </td>
-        <td><p>Stroke properties</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_subtitle.html">ax_subtitle()</a></code> </p>
-        </td>
-        <td><p>Chart's subtitle</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_theme.html">ax_theme()</a></code> </p>
-        </td>
-        <td><p>Theme for charts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_title.html">ax_title()</a></code> </p>
-        </td>
-        <td><p>Chart's title</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_tooltip.html">ax_tooltip()</a></code> </p>
-        </td>
-        <td><p>Tooltip options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_xaxis.html">ax_xaxis()</a></code> </p>
-        </td>
-        <td><p>X-axis options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_yaxis.html">ax_yaxis()</a></code> </p>
-        </td>
-        <td><p>Y-axis options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ax_yaxis2.html">ax_yaxis2()</a></code> </p>
-        </td>
-        <td><p>Secondary Y-axis options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bar_opts.html">bar_opts()</a></code> </p>
-        </td>
-        <td><p>Bar options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="config_update.html">config_update()</a></code> </p>
-        </td>
-        <td><p>Configuration for auto update</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="events_opts.html">events_opts()</a></code> </p>
-        </td>
-        <td><p>Events options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_date.html">format_date()</a></code> </p>
-        </td>
-        <td><p>Format date in JS</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format_num.html">format_num()</a></code> </p>
-        </td>
-        <td><p>Format numbers (with D3)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="heatmap_opts.html">heatmap_opts()</a></code> </p>
-        </td>
-        <td><p>Heatmap options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="parse_df.html">parse_df()</a></code> </p>
-        </td>
-        <td><p>Convert a <code>data.frame</code> to a <code>list</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pie_opts.html">pie_opts()</a></code> </p>
-        </td>
-        <td><p>Pie options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radialBar_opts.html">radialBar_opts()</a></code> </p>
-        </td>
-        <td><p>Radial bar options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="run_input_demo.html">run_input_demo()</a></code> </p>
-        </td>
-        <td><p>Run Shiny input events examples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_input_click.html">set_input_click()</a></code> </p>
-        </td>
-        <td><p>Retrieve click information in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_input_selection.html">set_input_selection()</a></code> </p>
-        </td>
-        <td><p>Retrieve selection information in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_input_zoom.html">set_input_zoom()</a></code> </p>
-        </td>
-        <td><p>Retrieve zoom information in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="unhcr_popstats_2017.html">unhcr_popstats_2017</a></code> </p>
-        </td>
-        <td><p>UNHCR data for 2017</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="unhcr_ts.html">unhcr_ts</a></code> </p>
-        </td>
-        <td><p>UNHCR data by continent of origin</p></td>
-      </tr>
-    </tbody>
+    
     </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
     </ul>
   </div>
 </div>
@@ -498,7 +221,7 @@ ApexCharts javascript chart library</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
