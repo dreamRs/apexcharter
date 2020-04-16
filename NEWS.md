@@ -13,7 +13,7 @@ apexcharter 0.1.5
 
 ## Bugfixes
 
-* Dark ond yaxis examplemode wasn't activated properly in `ax_theme()`.
+* Dark mode wasn't activated properly in `ax_theme()`.
 
 
 

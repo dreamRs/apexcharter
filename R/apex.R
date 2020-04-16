@@ -35,7 +35,9 @@ apex <- function(data, mapping, type = "column", ...,
                  auto_update = TRUE,
                  synchronize = NULL,
                  serie_name = NULL,
-                 width = NULL, height = NULL, elementId = NULL) {
+                 width = NULL,
+                 height = NULL, 
+                 elementId = NULL) {
   type <- match.arg(
     arg = type, 
     choices = c(

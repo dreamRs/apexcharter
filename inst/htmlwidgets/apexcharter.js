@@ -125,6 +125,13 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Global options
         axOpts = x.ax_opts;
+        
+        if (x.sparkbox) {
+          el.style.padding = "3px 0 0 0";
+          el.style.boxShadow = "0px 1px 22px -12px #607D8B";
+          el.style.background = x.sparkbox.background;
+          el.classList.add("apexcharter-spark-box");
+        }
 
         // Sizing
         if (typeof axOpts.chart === "undefined") {

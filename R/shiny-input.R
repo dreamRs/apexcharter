@@ -216,3 +216,22 @@ run_sync_demo <- function() {
 }
 
 
+#' Run Shiny spark boxes example
+#'
+#' @export
+#' 
+#' @importFrom shiny shinyAppFile
+#'
+#' @examples
+#' if (interactive()) {
+#' 
+#'   run_sparkbox_demo()
+#' 
+#' }
+run_sparkbox_demo <- function() {
+  shiny::shinyAppFile(
+    appFile = system.file("example-spark", "app.R", package = "apexcharter"),
+    options = list("display.mode" = "showcase")
+  )
+}
+

@@ -23,7 +23,8 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
 
   x <- list(
     ax_opts = ax_opts,
-    auto_update = auto_update
+    auto_update = auto_update,
+    sparkbox = FALSE
   )
 
   # create widget
