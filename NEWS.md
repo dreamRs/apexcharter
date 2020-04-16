@@ -7,6 +7,7 @@ apexcharter 0.1.5
 
 ## New functions
 
+* `spark_box` to create boxes with sparkline, see corresponding vignette for more details.
 * `add_shade()`, `add_shade_weekend()`, `add_event()` to add annotations on timeries charts.
 * `add_hline()`, `add_vline()`, `add_point()` to add annotations on charts.
 * `set_tooltip_fixed()` to fix tooltip in specific position.
