@@ -9,3 +9,4 @@
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^examples$
+^\.github$

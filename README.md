@@ -7,6 +7,7 @@
 [![cran checks](https://cranchecks.info/badges/worst/apexcharter)](https://cranchecks.info/pkgs/apexcharter)
 [![Travis build status](https://travis-ci.org/dreamRs/apexcharter.svg?branch=master)](https://travis-ci.org/dreamRs/apexcharter)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![R build status](https://github.com/dreamRs/apexcharter/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/apexcharter/actions)
 <!-- badges: end -->
 
 
