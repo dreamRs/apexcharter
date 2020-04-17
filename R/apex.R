@@ -240,7 +240,8 @@ config_bar <- function(horizontal = FALSE, datetime = FALSE) {
       )
     ),
     tooltip = list(
-      shared = TRUE
+      shared = TRUE, 
+      followCursor = TRUE
     )
   )
   if (isTRUE(horizontal)) {

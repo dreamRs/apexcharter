@@ -350,3 +350,42 @@ pie_opts <- function(size = NULL,
   )
 }
 
+
+
+#' @title Bubble options
+#' 
+#' @description Use these options in \code{\link{ax_plotOptions}}.
+#'
+#' @param minBubbleRadius Minimum radius size of a bubble.
+#'  If a bubble value is too small to be displayed, this size will be used.
+#' @param maxBubbleRadius Maximum radius size of a bubble.
+#'  If a bubble value is too large to cover the chart, this size will be used.
+#' @param ... Additional parameters.
+#' 
+#' @note See \url{https://apexcharts.com/docs/options/plotoptions/bubble/}.
+#'
+#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @export
+#'
+#' @examples
+#' apex(
+#'   data = mtcars, 
+#'   type = "scatter", 
+#'   mapping = aes(x = wt, y = mpg, z = qsec)
+#' ) %>% 
+#'   ax_plotOptions(
+#'     bubble = bubble_opts(
+#'       minBubbleRadius = 1,
+#'       maxBubbleRadius = 20
+#'     )
+#'   )
+bubble_opts <- function(minBubbleRadius, maxBubbleRadius, ...) {
+  dropNulls(
+    list(
+      minBubbleRadius = minBubbleRadius,
+      maxBubbleRadius = maxBubbleRadius,
+      ...
+    )
+  )
+}
+

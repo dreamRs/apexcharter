@@ -188,6 +188,7 @@ ax_chart <- function(ax,
 #' @param heatmap See \code{\link{heatmap_opts}}.
 #' @param radialBar See \code{\link{radialBar_opts}}.
 #' @param pie See \code{\link{pie_opts}}.
+#' @param bubble See \code{\link{bubble_opts}}.
 #' @param ... Additional parameters.
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
@@ -232,6 +233,7 @@ ax_plotOptions <- function(ax,
                            heatmap = NULL,
                            radialBar = NULL,
                            pie = NULL,
+                           bubble = NULL,
                            ...) {
   params <- c(as.list(environment()), list(...))[-1]
   .ax_opt2(ax, "plotOptions", l = dropNulls(params))

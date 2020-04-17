@@ -10,6 +10,7 @@ ax_plotOptions(
   heatmap = NULL,
   radialBar = NULL,
   pie = NULL,
+  bubble = NULL,
   ...
 )
 }
@@ -23,6 +24,8 @@ ax_plotOptions(
 \item{radialBar}{See \code{\link{radialBar_opts}}.}
 
 \item{pie}{See \code{\link{pie_opts}}.}
+
+\item{bubble}{See \code{\link{bubble_opts}}.}
 
 \item{...}{Additional parameters.}
 }
