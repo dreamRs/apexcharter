@@ -8,7 +8,7 @@
 #' @param color Color of the chart.
 #' @param background Background color of the box.
 #' @param type Type of chart, currently type supported are :
-#'  \code{"area"} (default), \code{"line"}, \code{"spline"}.
+#'  \code{"area"} (default), \code{"line"}, \code{"spline"}, \code{"column"}.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param title_style,subtitle_style A \code{list} of named attributes to style
 #'  the title / subtitle, possible values are \code{fontSize}, 
@@ -29,7 +29,7 @@
 #' @example examples/spark_box.R
 spark_box <- function(data, title = NULL, subtitle = NULL, 
                       color = "#2E93fA", background = "#FFF",
-                      type = c("area", "line", "spline"),
+                      type = c("area", "line", "spline", "column"),
                       synchronize = NULL,
                       title_style = NULL, 
                       subtitle_style = NULL,
