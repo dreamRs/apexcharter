@@ -218,12 +218,12 @@ choose_config <- function(type, mapdata) {
   switch(
     type, 
     "bar" = config_bar(horizontal = TRUE),
-    "column" = config_bar(horizontal = FALSE),
+    "column" = config_bar(horizontal = FALSE, datetime = datetime),
     "line" = config_line(datetime = datetime),
     "area" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
-    "scatter" = config_scatter(range_x = range_x, range_y = range_y),
-    "bubble" = config_scatter(range_x = range_x, range_y = range_y),
+    "scatter" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
+    "bubble" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "timeline" = config_timeline(),
     list()
   )
@@ -231,13 +231,16 @@ choose_config <- function(type, mapdata) {
 
 
 # Config for column & bar charts
-config_bar <- function(horizontal = FALSE) {
+config_bar <- function(horizontal = FALSE, datetime = FALSE) {
   config <- list(
     dataLabels = list(enabled = FALSE),
     plotOptions = list(
       bar = list(
         horizontal = horizontal
       )
+    ),
+    tooltip = list(
+      shared = TRUE
     )
   )
   if (isTRUE(horizontal)) {
@@ -247,6 +250,9 @@ config_bar <- function(horizontal = FALSE) {
         xaxis = list(lines = list(show = TRUE))
       )
     ))
+  }
+  if (isTRUE(datetime)) {
+    config$xaxis$type <- "datetime"
   }
   config
 }
@@ -269,15 +275,23 @@ config_line <- function(curve = "straight", datetime = FALSE) {
 }
 
 
-config_scatter <- function(range_x, range_y) {
+config_scatter <- function(range_x, range_y, datetime = FALSE) {
   config <- list(
     dataLabels = list(enabled = FALSE),
     xaxis = list(
       type = "numeric",
-      min = range_x[1], max = range_x[2]
+      min = range_x[1], max = range_x[2],
+      crosshairs = list(
+        show = TRUE,
+        stroke = list(dashArray = 0)
+      )
     ),
     yaxis = list(
-      min = range_y[1], max = range_y[2]
+      min = range_y[1], max = range_y[2],
+      decimalsInFloat = 3,
+      tooltip = list(
+        enabled = TRUE
+      )
     ),
     grid = list(
       xaxis = list(
@@ -287,6 +301,10 @@ config_scatter <- function(range_x, range_y) {
       )
     )
   )
+  if (isTRUE(datetime)) {
+    config$xaxis$type <- "datetime"
+  }
+  config
 }
 
 config_timeline <- function() {

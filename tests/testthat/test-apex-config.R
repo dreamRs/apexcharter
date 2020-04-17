@@ -60,14 +60,14 @@ test_that("choose_config works", {
   )
   
   expect_identical(choose_config("bar", mapdata), config_bar(horizontal = TRUE))
-  expect_identical(choose_config("column", mapdata), config_bar(horizontal = FALSE))
+  expect_identical(choose_config("column", mapdata), config_bar(horizontal = FALSE, datetime = TRUE))
   
   expect_identical(choose_config("line", mapdata), config_line(datetime = TRUE))
   expect_identical(choose_config("area", mapdata), config_line(datetime = TRUE))
   expect_identical(choose_config("spline", mapdata), config_line(curve = "smooth", datetime = TRUE))
   
-  expect_identical(choose_config("scatter", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y)))
-  expect_identical(choose_config("bubble", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y)))
+  expect_identical(choose_config("scatter", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y), datetime = TRUE))
+  expect_identical(choose_config("bubble", mapdata), config_scatter(range_num(mapdata$x), range_num(mapdata$y), datetime = TRUE))
   
   expect_identical(choose_config("timeline", mapdata), config_timeline())
   
