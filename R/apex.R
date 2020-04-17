@@ -8,8 +8,10 @@
 #'  a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
 #' @param type Specify the chart type. Available options:
-#'  \code{"column"}, \code{"bar"}, \code{"line"},
-#'  \code{"area"}, \code{"spline"}, \code{"pie"}, \code{"donut"},
+#'  \code{"column"}, \code{"bar"}, 
+#'  \code{"line"}, \code{"step"}, \code{"spline"},
+#'  \code{"area"}, \code{"area-step"}, \code{"area-spline"}, 
+#'  \code{"pie"}, \code{"donut"},
 #'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
 #'  \code{"timeline"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
@@ -41,8 +43,10 @@ apex <- function(data, mapping, type = "column", ...,
   type <- match.arg(
     arg = type, 
     choices = c(
-      "column", "bar", "line", "area", "spline", "area-spline",
-      "pie", "donut", "radialBar", "radar", "scatter", "heatmap",
+      "column", "bar", "line", "area", "spline", "step", 
+      "area-spline", "area-step",
+      "pie", "donut", "radialBar", "radar", 
+      "scatter", "heatmap",
       "timeline"
     )
   )
@@ -75,7 +79,8 @@ apex <- function(data, mapping, type = "column", ...,
   opts <- modifyList(opts, choose_config(type, mapdata))
   ax <- apexchart(
     ax_opts = opts, 
-    width = width, height = height,
+    width = width, 
+    height = height,
     elementId = elementId, 
     auto_update = auto_update
   )
@@ -190,8 +195,10 @@ list1 <- function(x) {
 correct_type <- function(type) {
   if (identical(type, "column")) {
     "bar"
-  } else if (identical(type, "spline")) {
+  } else if (isTRUE(type %in% c("spline", "step"))) {
     "line"
+  } else if (isTRUE(type %in% c("area-spline", "area-step"))) {
+    "area"
   } else if (identical(type, "timeline")) {
     "rangeBar"
   } else {
@@ -222,6 +229,9 @@ choose_config <- function(type, mapdata) {
     "line" = config_line(datetime = datetime),
     "area" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
+    "step" = config_line(curve = "stepline", datetime = datetime),
+    "area-spline" = config_line(curve = "smooth", datetime = datetime),
+    "area-step" = config_line(curve = "stepline", datetime = datetime),
     "scatter" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "bubble" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "timeline" = config_timeline(),
