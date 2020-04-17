@@ -10,7 +10,7 @@ spark_box(
   subtitle = NULL,
   color = "#2E93fA",
   background = "#FFF",
-  type = c("area", "line", "spline"),
+  type = c("area", "line", "spline", "column"),
   synchronize = NULL,
   title_style = NULL,
   subtitle_style = NULL,
@@ -32,7 +32,7 @@ first is mapped to x-axis, second to y-axis.}
 \item{background}{Background color of the box.}
 
 \item{type}{Type of chart, currently type supported are :
-\code{"area"} (default), \code{"line"}, \code{"spline"}.}
+\code{"area"} (default), \code{"line"}, \code{"spline"}, \code{"column"}.}
 
 \item{synchronize}{Give a common id to charts to synchronize them (tooltip and zoom).}
 

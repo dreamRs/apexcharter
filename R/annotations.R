@@ -287,6 +287,44 @@ add_event <- function(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...) 
 }
 
 
+#' Add an event marker to a chart
+#'
+#' @param when Vector of position to place the event.
+#' @inheritParams add_point
+#'
+#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#' @export
+#'
+#' @example examples/add_event_marker.R
+add_event_marker <- function(ax, when, y,
+                             size = 5,
+                             color = "#000",
+                             fill = "#FFF",
+                             width = 2,
+                             shape = "circle", 
+                             radius = 2, 
+                             label = NULL, ...) {
+  add_annotation(
+    ax = ax, 
+    type_annotation = "points", 
+    position = "front",
+    as_date = TRUE, 
+    x = when, y = y,
+    marker = marker(
+      size = size, 
+      fillColor = fill,
+      strokeColor = color, 
+      strokeWidth = width, 
+      shape = shape, 
+      radius = radius
+    ),
+    label = label,
+    ...
+  )
+}
+
+
+
 
 
 

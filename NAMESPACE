@@ -3,6 +3,7 @@
 export("%>%")
 export(JS)
 export(add_event)
+export(add_event_marker)
 export(add_hline)
 export(add_point)
 export(add_shade)
