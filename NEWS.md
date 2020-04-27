@@ -3,6 +3,7 @@ apexcharter 0.1.5
 
 * Updated ApexCharts.js to 3.18.1
 * `apex()` has a new argument `synchronize` to easily synchronize charts together.
+* `apex()` has new charts type: area-spline, area-step and step.
 
 
 ## New functions
@@ -14,6 +15,7 @@ apexcharter 0.1.5
 
 ## Bugfixes
 
+* Xaxis datetime now display properly with columns and bars.
 * Dark mode wasn't activated properly in `ax_theme()`.
 
 

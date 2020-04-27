@@ -58,8 +58,9 @@ add_locale_apex <- function(widget) {
     defaultLocale <- widget$x$ax_opts$chart$defaultLocale
     defaultLocale <- match.arg(
       arg = defaultLocale,
-      choices = c("ca", "de", "el", "en", "es", "fi", "fr", "hi", "hr", "hy",
-                  "id", "it", "ko", "nl", "pt-br", "ru", "se", "tr", "ua")
+      choices = c("ca", "cs", "de", "el", "en", "es", "fi", "fr", "he", "hi", 
+                  "hr", "hy", "id", "it", "ko", "lt", "nb", "nl", "pl", "pt-br", 
+                  "pt", "ru", "se", "sk", "sl", "th", "tr", "ua")
     )
     if (!is.null(widget$x$ax_opts$chart$locales)) {
       warning(
