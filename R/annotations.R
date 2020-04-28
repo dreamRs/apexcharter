@@ -48,7 +48,7 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
     }
     ax <- ax_annotations(
       ax = ax,
-      position = "back",
+      position = position,
       xaxis = annotations
     )
   } else if (identical(type_annotation, "yaxis")) {
@@ -68,7 +68,7 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
     }
     ax <- ax_annotations(
       ax = ax,
-      position = "back",
+      position = position,
       points = annotations
     )
   }

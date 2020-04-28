@@ -38,9 +38,12 @@ ax_chart(
 \item{stackType}{When stacked, should the stacking be percentage based or normal stacking.
 Available options: \code{"normal"} or \code{"100\%"}.}
 
-\item{defaultLocale}{Locale to use : \code{"ca"}, \code{"de"}, \code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"},
-\code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, \code{"nl"}, \code{"pt-br"},
-\code{"ru"}, \code{"se"}, \code{"tr"}, \code{"ua"}.}
+\item{defaultLocale}{Locale to use : \code{"ca"}, \code{"cs"}, \code{"de"},
+\code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"}, \code{"he"},
+\code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"},
+\code{"lt"}, \code{"nb"}, \code{"nl"}, \code{"pl"}, \code{"pt-br"}, \code{"pt"},
+\code{"ru"}, \code{"se"}, \code{"sk"}, \code{"sl"}, \code{"th"}, \code{"tr"},
+\code{"ua"}.}
 
 \item{locales}{Array of custom locales parameters.}
 
