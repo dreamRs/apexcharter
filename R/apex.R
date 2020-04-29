@@ -77,6 +77,10 @@ apex <- function(data, mapping, type = "column", ...,
     opts$yaxis$labels$minWidth <- 15
   }
   opts <- modifyList(opts, choose_config(type, mapdata))
+  if (isTRUE(getOption("apex.axis.light", default = TRUE))) {
+    opts$yaxis$labels$style$colors <- "#848484"
+    opts$xaxis$labels$style$colors <- "#848484"
+  }
   ax <- apexchart(
     ax_opts = opts, 
     width = width, 
@@ -96,7 +100,7 @@ apex <- function(data, mapping, type = "column", ...,
 
 # Construct series
 make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
-  if (identical(type, "timeline")) {
+  if (identical(type, "rangeBar")) {
     if (!all(c("x", "start", "end") %in% names(mapping)))
       stop("For timeline charts 'x', 'start', and 'end' aesthetice must be provided.", call. = FALSE)
     if (is.null(mapdata$group))
@@ -114,14 +118,15 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
     }
     if (is.null(serie_name) & !is.null(mapping$y))
       serie_name <- rlang::as_label(mapping$y)
-    series <- list(list(
+    series <- list(dropNulls(list(
       name = serie_name,
+      type = multi_type(type),
       data = parse_df(mapdata, add_names = add_names)
-    ))
+    )))
     if (is_grouped(mapping)) {
       mapdata <- rename_aes(mapdata)
       len_grp <- tapply(mapdata$group, mapdata$group, length)
-      if (length(unique(len_grp)) > 1) {
+      if (length(unique(len_grp)) > 1 & !isTRUE(type %in% c("scatter", "bubble"))) {
         warning("apex: all groups must have same length! You can use `tidyr::complete` for this.")
       }
       series <- lapply(
@@ -130,13 +135,14 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
           data <- mapdata[mapdata$group %in% x, ]
           data <- data[, setdiff(names(data), "group"), drop = FALSE]
           data <- data[match(x = x_order, table = data$x, nomatch = 0L), , drop = FALSE]
-          list(
+          dropNulls(list(
             name = x,
+            type = multi_type(type),
             data = parse_df(
               data = data, 
               add_names = add_names
             )
-          )
+          ))
         }
       )
     }
@@ -203,6 +209,17 @@ correct_type <- function(type) {
     "rangeBar"
   } else {
     type
+  }
+}
+
+multi_type <- function(x) {
+  multis <- c("column", "area", "line", 
+              "spline", "step", "scatter", 
+              "bubble")
+  if (isTRUE(x %in% multis)) {
+    x
+  } else {
+    NULL
   }
 }
 

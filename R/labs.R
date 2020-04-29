@@ -41,13 +41,13 @@ ax_labs <- function(ax, title = NULL, subtitle = NULL, x = NULL, y = NULL) {
   if (!is.null(x)) {
     ax <- ax_xaxis(
       ax = ax,
-      title = list(text = x, style = list(fontWeight = 600, fontSize = "14px"))
+      title = list(text = x, style = list(fontWeight = 400, fontSize = "14px"))
     )
   } 
   if (!is.null(y)) {
     ax <- ax_yaxis(
       ax = ax, 
-      title = list(text = y, style = list(fontWeight = 600, fontSize = "14px"))
+      title = list(text = y, style = list(fontWeight = 400, fontSize = "14px"))
     )
   }
   ax
