@@ -217,7 +217,7 @@ multi_type <- function(x) {
               "spline", "step", "scatter", 
               "bubble")
   if (isTRUE(x %in% multis)) {
-    x
+    correct_type(x)
   } else {
     NULL
   }
@@ -292,6 +292,9 @@ config_line <- function(curve = "straight", datetime = FALSE) {
     stroke = list(
       curve = curve,
       width = 2
+    ), 
+    yaxis = list(
+      decimalsInFloat = 2
     )
   )
   if (isTRUE(datetime)) {
