@@ -25,16 +25,30 @@
 #'   )
 ax_labs <- function(ax, title = NULL, subtitle = NULL, x = NULL, y = NULL) {
   if (!is.null(title)) {
-    ax <- ax_title(ax = ax, text = title)
+    ax <- ax_title(
+      ax = ax, 
+      text = title, 
+      style = list(fontWeight = 700, fontSize = "16px")
+    )
   }
   if (!is.null(subtitle)) {
-    ax <- ax_subtitle(ax = ax, text = subtitle)
+    ax <- ax_subtitle(
+      ax = ax,
+      text = subtitle, 
+      style = list(fontWeight = 400, fontSize = "14px")
+    )
   }
   if (!is.null(x)) {
-    ax <- ax_xaxis(ax = ax, title = list(text = x))
+    ax <- ax_xaxis(
+      ax = ax,
+      title = list(text = x, style = list(fontWeight = 600, fontSize = "14px"))
+    )
   } 
   if (!is.null(y)) {
-    ax <- ax_yaxis(ax = ax, title = list(text = y))
+    ax <- ax_yaxis(
+      ax = ax, 
+      title = list(text = y, style = list(fontWeight = 600, fontSize = "14px"))
+    )
   }
   ax
 }
