@@ -1,8 +1,8 @@
 ---
-title: "Options & styles for lines"
+title: "Chart options"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{lines}
+  %\VignetteIndexEntry{chart-options}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,11 +14,120 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+## Title, subtitle and axis titles
+
+Packages and data used below:
+
 ```{r message=FALSE, warning=FALSE}
 library(apexcharter)
 library(dplyr)
 
-# economics dataset from ggplot2
+data("diamonds", package = "ggplot2")
+n_cut <- count(diamonds, cut)
+```
+
+
+### Labs
+
+You can set title, subtitle and axis' titles at once with `ax_labs()`:
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>%
+  ax_labs(
+    title = "Cut distribution",
+    subtitle = "Data from ggplot2",
+    x = "Cut",
+    y = "Count"
+  )
+```
+
+If you more control (font size, alignment, ...), you can use `ax_title()`, `ax_subtitle()`, `ax_xaxis()` and `ax_yaxis()`, as described below.
+
+
+
+### Title
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_title(text = "Cut distribution")
+```
+
+You can set some options, for example:
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_title(
+    text = "Cut distribution", 
+    align = "center",
+    style = list(fontSize = "22px", fontWeight = 700)
+  )
+```
+
+
+Full list of parameters is available here : https://apexcharts.com/docs/options/title/
+
+
+### Subtitle
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_title(text = "Cut distribution") %>% 
+  ax_subtitle(text = "Data from ggplot2")
+```
+
+With same options than for title:
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_title(
+    text = "Cut distribution", 
+    align = "center",
+    style = list(fontSize = "22px", fontWeight = 700)
+  ) %>% 
+  ax_subtitle(
+    text = "Data from ggplot2", 
+    align = "center",
+    style = list(fontSize = "16px", fontWeight = 400, color = "#BDBDBD")
+  )
+```
+
+Full list of parameters is available here : https://apexcharts.com/docs/options/subtitle/
+
+
+### Axis title
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_yaxis(title = list(text = "Count")) %>% 
+  ax_xaxis(title = list(text = "Cut"))
+```
+
+With some options:
+
+```{r}
+apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+  ax_yaxis(title = list(
+    text = "Count",
+    style = list(fontSize = "14px", color = "#BDBDBD")
+  )) %>% 
+  ax_xaxis(title = list(
+    text = "Cut", 
+    style = list(fontSize = "14px", color = "#BDBDBD")
+  ))
+```
+
+
+
+
+
+## Lines
+
+```{r message=FALSE, warning=FALSE}
+library(apexcharter)
+library(dplyr)
+
+## economics dataset from ggplot2
 data("economics", package = "ggplot2")
 economics <- tail(economics, 50)
 
@@ -30,8 +139,7 @@ economics_long <- economics_long %>%
 ```
 
 
-
-## Type of line
+### Type of line
 
 Classic line:
 
@@ -55,7 +163,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 
 
 
-## Line appearance
+### Line appearance
 
 Color line with gradient:
 
@@ -100,7 +208,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 
 
 
-## Markers
+### Markers
 
 Add points to line :
 
@@ -120,7 +228,7 @@ apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uemp
 
 
 
-## Multiple lines
+### Multiple lines
 
 You can use vectors of parameters to custom series separately:
 
