@@ -10,19 +10,49 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
 <!-- Bootstrap -->
 <link href="../css/theme.css" rel="stylesheet">
+<style>
+  #pkgdown-sidebar {
+    z-index: 100;
+    background: #FFF;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
 
 <!-- Font -->
 <link href="../css/montserrat.css" rel="stylesheet">
 <style>body {font-family: 'Montserrat', sans-serif;}</style>
 
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
+<!-- Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
+
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+
+<!-- pkgdown -->
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
+
+
 <!-- Particles -->
 <script src="../js/particles.min.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <style>
   html,
@@ -121,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.940</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.940</span>
       </span>
     </div>
 
@@ -154,10 +184,7 @@
       <a href="../articles/articles/advanced-configuration.html">Advanced configuration examples</a>
     </li>
     <li>
-      <a href="../articles/labs.html">Labs: title, subtitle &amp; axis</a>
-    </li>
-    <li>
-      <a href="../articles/lines.html">Options &amp; styles for lines</a>
+      <a href="../articles/chart-options.html">Chart options</a>
     </li>
     <li>
       <a href="../articles/shiny-integration.html">Shiny integration</a>
@@ -209,7 +236,7 @@
   <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#2E93fA"</span>,
   <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"#FFF"</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"area"</span>, <span class='st'>"line"</span>, <span class='st'>"spline"</span>),
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"area"</span>, <span class='st'>"line"</span>, <span class='st'>"spline"</span>, <span class='st'>"column"</span>),
   <span class='kw'>synchronize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>title_style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>subtitle_style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -245,7 +272,7 @@ first is mapped to x-axis, second to y-axis.</p></td>
     <tr>
       <th>type</th>
       <td><p>Type of chart, currently type supported are :
-<code>"area"</code> (default), <code>"line"</code>, <code>"spline"</code>.</p></td>
+<code>"area"</code> (default), <code>"line"</code>, <code>"spline"</code>, <code>"column"</code>.</p></td>
     </tr>
     <tr>
       <th>synchronize</th>
@@ -316,7 +343,7 @@ Boxes have CSS class <code>"apexcharter-spark-box"</code> if you need more styli
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
