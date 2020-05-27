@@ -88,7 +88,7 @@ apex <- function(data, mapping, type = "column", ...,
     elementId = elementId, 
     auto_update = auto_update
   )
-  if (inherits(mapdata$x, c("character", "Date", "POSIXt", "numeric", "integer"))) {
+  if (inherits(mapdata$x, c("character", "Date", "POSIXt", "numeric", "integer")) & length(mapdata$x) > 0) {
     ax$x$xaxis <- list(
       min = min(mapdata$x, na.rm = TRUE),
       max = max(mapdata$x, na.rm = TRUE)
@@ -224,7 +224,7 @@ multi_type <- function(x) {
 }
 
 range_num <- function(x) {
-  if (is.numeric(x)) {
+  if (is.numeric(x) & length(x) > 0) {
     range(pretty(x))
   } else {
     NULL
@@ -311,14 +311,16 @@ config_scatter <- function(range_x, range_y, datetime = FALSE) {
     dataLabels = list(enabled = FALSE),
     xaxis = list(
       type = "numeric",
-      min = range_x[1], max = range_x[2],
+      min = range_x[1], 
+      max = range_x[2],
       crosshairs = list(
         show = TRUE,
         stroke = list(dashArray = 0)
       )
     ),
     yaxis = list(
-      min = range_y[1], max = range_y[2],
+      min = range_y[1], 
+      max = range_y[2],
       decimalsInFloat = 3,
       tooltip = list(
         enabled = TRUE
