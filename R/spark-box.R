@@ -27,8 +27,11 @@
 #' @importFrom ggplot2 aes
 #'
 #' @example examples/spark_box.R
-spark_box <- function(data, title = NULL, subtitle = NULL, 
-                      color = "#2E93fA", background = "#FFF",
+spark_box <- function(data, 
+                      title = NULL,
+                      subtitle = NULL, 
+                      color = "#2E93fA", 
+                      background = "#FFF",
                       type = c("area", "line", "spline", "column"),
                       synchronize = NULL,
                       title_style = NULL, 
@@ -53,6 +56,7 @@ spark_box <- function(data, title = NULL, subtitle = NULL,
     sparkline = list(enabled = TRUE),
     group = synchronize
   )
+  spark <- ax_yaxis(spark, show = FALSE)
   spark <- ax_colors(spark, color)
   if (!is.null(title)) {
     if (is.null(title_style))
