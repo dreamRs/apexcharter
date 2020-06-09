@@ -113,6 +113,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
     x_order <- unique(mapdata$x)
     if (is_x_datetime(mapdata)) {
       add_names <- FALSE
+      x_order <- sort(x_order)
     } else {
       add_names <- names(mapping)
     }
