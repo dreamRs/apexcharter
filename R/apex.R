@@ -47,7 +47,7 @@ apex <- function(data, mapping, type = "column", ...,
       "area-spline", "area-step",
       "pie", "donut", "radialBar", "radar", 
       "scatter", "heatmap",
-      "timeline"
+      "timeline", "candlestick"
     )
   )
   data <- as.data.frame(data)
@@ -100,9 +100,16 @@ apex <- function(data, mapping, type = "column", ...,
 
 # Construct series
 make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
-  if (identical(type, "rangeBar")) {
+  if (identical(type, "candlestick")) {
+    if (!all(c("x", "open", "high", "low", "close") %in% names(mapping)))
+      stop("For candlestick charts 'x', 'open', 'high', 'low', and 'close' aesthetics must be provided.", call. = FALSE)
+    if (!is.null(mapdata$group))
+      warning("'group' aesthetic in candlestick chart is not supported", call. = FALSE)
+    mapdata$group <- NULL
+    series <- parse_candlestick_data(mapdata)
+  } else if (identical(type, "rangeBar")) {
     if (!all(c("x", "start", "end") %in% names(mapping)))
-      stop("For timeline charts 'x', 'start', and 'end' aesthetice must be provided.", call. = FALSE)
+      stop("For timeline charts 'x', 'start', and 'end' aesthetics must be provided.", call. = FALSE)
     if (is.null(mapdata$group))
       mapdata$group <- serie_name %||% rlang::as_label(mapping$x)
     series <- parse_timeline_data(mapdata)
@@ -253,6 +260,7 @@ choose_config <- function(type, mapdata) {
     "scatter" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "bubble" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "timeline" = config_timeline(),
+    "candlestick" = config_candlestick(),
     list()
   )
 }
@@ -348,6 +356,14 @@ config_timeline <- function() {
         horizontal = TRUE
       )
     ),
+    xaxis = list(
+      type = "datetime"
+    )
+  )
+}
+
+config_candlestick <- function() {
+  list(
     xaxis = list(
       type = "datetime"
     )

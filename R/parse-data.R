@@ -68,6 +68,8 @@ parse_df <- function(data, add_names = FALSE) {
 
 #' @importFrom htmlwidgets JS
 js_date <- function(x) {
+  if (inherits(x, "POSIXt"))
+    x <- format(x, format = "%Y-%m-%d %H:%M:%S")
   lapply(sprintf("new Date('%s').getTime()", x), JS)
 }
 
@@ -108,4 +110,18 @@ parse_timeline_data <- function(.list) {
 }
 
 
+parse_candlestick_data <- function(.list) {
+  list(list(
+    data = lapply(
+      X = seq_len(length(.list[[1]])),
+      FUN = function(i) {
+        val <- lapply(.list, `[[`, i)
+        list(
+          x = js_date(val$x)[[1]],
+          y = c(val$open, val$high, val$low, val$close)
+        )
+      }
+    )
+  ))
+}
 
