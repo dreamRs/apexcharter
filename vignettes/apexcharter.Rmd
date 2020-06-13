@@ -210,4 +210,18 @@ apex(
 ```
 
 
+## Candlestick
+
+Create a candlestick chart with:
+
+```{r}
+apex(
+  candles, 
+  aes(x = datetime, open = open, close = close, low = low, high = high),
+  type = "candlestick"
+)
+```
+
+
+
 
