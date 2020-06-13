@@ -47,4 +47,18 @@
 "consumption"
 
 
+#' Candlestick demo data
+#'
+#'
+#' @format A data frame with 60 observations and the following 5 variables:
+#'   \describe{
+#'     \item{\code{datetime}}{Timestamp.}
+#'     \item{\code{open}}{Open value.}    
+#'     \item{\code{high}}{Highest value.}
+#'     \item{\code{low}}{Lowest value.}
+#'     \item{\code{close}}{Close value.}
+#'   }
+#' @source Apexcharts (\url{https://apexcharts.com/javascript-chart-demos/candlestick-charts/basic/})
+"candles"
+
 

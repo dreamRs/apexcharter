@@ -32,5 +32,6 @@ cdle
 
 apex(cdle, aes(x = datetime, open = open, close = close, low = low, high = high), type = "candlestick")
 
+candles <- as.data.frame(cdle)
 
-
+usethis::use_data(candles, overwrite = TRUE)
