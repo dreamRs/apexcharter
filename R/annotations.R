@@ -345,7 +345,7 @@ add_event_marker <- function(ax, when, y,
 #' @return An \code{apexcharts} \code{htmlwidget} object. 
 #' @export
 #' 
-#' @name add-lines
+#' @name add-vh-lines
 #'
 #' @example examples/add-lines.R
 add_hline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
@@ -362,7 +362,7 @@ add_hline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
   )
 }
 #' @export
-#' @rdname add-lines
+#' @rdname add-vh-lines
 add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
   add_annotation(
     ax = ax, 

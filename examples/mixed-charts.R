@@ -33,6 +33,25 @@ apex(cars, aes(speed, dist), type = "scatter") %>%
   add_line(aes(x, y), data = lowess(cars), serie_name = "lowess")
 
 
+# or directly
+apex(cars, aes(speed, dist), type = "scatter") %>% 
+  add_smooth_line()
+
+apex(cars, aes(speed, dist), type = "scatter") %>% 
+  add_smooth_line(model = "loess", span = 1)
+
+apex(cars, aes(speed, dist), type = "scatter") %>% 
+  add_smooth_line(model = "loess", degree = 1)
+
+
+apex(cars, aes(speed, dist), type = "scatter") %>% 
+  add_smooth_line(formula = y ~ poly(x, 2))
+
+apex(cars, aes(speed, dist), type = "scatter") %>% 
+  add_smooth_line(model = "lm", serie_name = "lm") %>% 
+  add_smooth_line(model = "loess", serie_name = "loess")
+
+
 
 
 
