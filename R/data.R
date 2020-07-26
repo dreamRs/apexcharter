@@ -62,3 +62,16 @@
 "candles"
 
 
+#' @title Paris Climate
+#' 
+#' @description Average temperature and precipitation in Paris for the period 1971-2000.
+#'
+#'
+#' @format A data frame with 12 observations and the following 3 variables:
+#'   \describe{
+#'     \item{\code{month}}{Month}
+#'     \item{\code{temperature}}{Temperature (in degree celsius).}    
+#'     \item{\code{precipitation}}{Precipitation (in mm).}
+#'   }
+#' @source Wikipedia (\url{https://fr.wikipedia.org/wiki/Climat_de_Paris})
+"climate_paris"
