@@ -1,0 +1,12 @@
+name: example-brush-proxy
+title: example-brush-proxy
+username:
+account: dreamrs
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2608382
+bundleId: 3430958
+url: https://dreamrs.shinyapps.io/example-brush-proxy/
+when: 1595597401.31657
+asMultiple: FALSE
+asStatic: FALSE
