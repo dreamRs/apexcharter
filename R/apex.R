@@ -94,6 +94,8 @@ apex <- function(data, mapping, type = "column", ...,
       max = max(mapdata$x, na.rm = TRUE)
     )
   }
+  ax$x$data <- data
+  class(ax) <- c(class(ax), "apex")
   return(ax)
 }
 
