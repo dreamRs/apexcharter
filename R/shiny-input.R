@@ -169,6 +169,35 @@ set_input_selection <- function(ax, inputId, type = c("x", "xy", "y"),
 
 
 
+#' Retrieve chart's base64 dataURI.
+#'
+#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @param inputId The id that will be used server-side for retrieving data.
+#' @param session The Shiny session.
+#'
+#' @return An \code{apexcharts} \code{htmlwidget} object.
+#' @export
+#'
+#' @example examples/export-2.R
+set_input_export <- function(ax, inputId,
+                             session = shiny::getDefaultReactiveDomain()) {
+  if (is.null(session))
+    session <- list(ns = identity)
+  ax$x$shinyEvents$export <- list(
+    inputId = session$ns(inputId)
+  )
+  ax
+}
+
+
+
+
+
+
+# Demo --------------------------------------------------------------------
+
+
+
 #' Run Shiny input events examples
 #'
 #' @param example Name of the example.

@@ -110,6 +110,18 @@ function getXaxis(axis) {
   return xzoom;
 }
 
+function exportChart(x, chart) {
+  if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
+    if (x.shinyEvents.hasOwnProperty("export")) {
+      setTimeout(function() {
+        chart.dataURI().then(function(imgURI) {
+          Shiny.setInputValue(x.shinyEvents.export.inputId, imgURI);
+        });
+      }, 1000);
+    }
+  }
+}
+
 /// Widget
 
 HTMLWidgets.widget({
@@ -125,7 +137,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Global options
         axOpts = x.ax_opts;
-        
+
         if (x.sparkbox) {
           el.style.background = x.sparkbox.background;
           el.classList.add("apexcharter-spark-box");
@@ -143,7 +155,7 @@ HTMLWidgets.widget({
         if (!axOpts.chart.hasOwnProperty("parentHeightOffset")) {
           axOpts.chart.parentHeightOffset = 0;
         }
-        
+
         // added events to remove minheight container
         if (!axOpts.chart.hasOwnProperty("events")) {
           axOpts.chart.events = {};
@@ -246,26 +258,38 @@ HTMLWidgets.widget({
         // Generate or update chart
         if (apexchart === null) {
           apexchart = new ApexCharts(el, axOpts);
-          apexchart.render();
+          apexchart.render().then(function() {
+            exportChart(x, apexchart);
+          });
         } else {
           if (x.auto_update) {
             //console.log(x.auto_update);
-            apexchart.updateSeries(axOpts.series, x.auto_update.series_animate);
+            apexchart
+              .updateSeries(axOpts.series, x.auto_update.series_animate)
+              .then(function(chart) {
+                exportChart(x, chart);
+              });
             if (x.auto_update.update_options) {
               delete axOpts.series;
               delete axOpts.chart.width;
               delete axOpts.chart.height;
-              apexchart.updateOptions(
-                axOpts,
-                x.auto_update.options_redrawPaths,
-                x.auto_update.options_animate,
-                x.auto_update.update_synced_charts
-              );
+              apexchart
+                .updateOptions(
+                  axOpts,
+                  x.auto_update.options_redrawPaths,
+                  x.auto_update.options_animate,
+                  x.auto_update.update_synced_charts
+                )
+                .then(function(a, b) {
+                  exportChart(x, chart);
+                });
             }
           } else {
             apexchart.destroy();
             apexchart = new ApexCharts(el, axOpts);
-            apexchart.render();
+            apexchart.render().then(function() {
+              exportChart(x, apexchart);
+            });
           }
         }
       },
