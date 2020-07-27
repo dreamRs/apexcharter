@@ -1,3 +1,12 @@
+apexcharter 0.1.6
+==================
+
+* Updated ApexCharts.js to 3.19.3
+* New functions `add_line()` and `add_smooth_line()` to add simple or trend line on charts (scatter & bars).
+* New Shiny input: export, to retrieve chart's base64 dataURI.
+
+
+
 apexcharter 0.1.5
 ==================
 
