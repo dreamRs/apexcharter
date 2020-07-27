@@ -180,12 +180,12 @@ set_input_selection <- function(ax, inputId, type = c("x", "xy", "y"),
 #' @examples
 #' if (interactive()) {
 #' 
-#'   run_input_demo("click")
-#'   run_input_demo("zoom")
-#'   run_input_demo("selection")
+#'   run_demo_input("click")
+#'   run_demo_input("zoom")
+#'   run_demo_input("selection")
 #' 
 #' }
-run_input_demo <- function(example = c("click", "zoom", "selection")) {
+run_demo_input <- function(example = c("click", "zoom", "selection")) {
   example <- match.arg(example)
   shiny::shinyAppFile(
     appFile = system.file("examples-input", example, "app.R", package = "apexcharter"),
@@ -205,10 +205,10 @@ run_input_demo <- function(example = c("click", "zoom", "selection")) {
 #' @examples
 #' if (interactive()) {
 #' 
-#'   run_sync_demo()
+#'   run_demo_sync()
 #' 
 #' }
-run_sync_demo <- function() {
+run_demo_sync <- function() {
   shiny::shinyAppFile(
     appFile = system.file("example-sync", "app.R", package = "apexcharter"),
     options = list("display.mode" = "showcase")
@@ -228,7 +228,7 @@ run_sync_demo <- function() {
 #'   run_sparkbox_demo()
 #' 
 #' }
-run_sparkbox_demo <- function() {
+run_demo_sparkbox <- function() {
   shiny::shinyAppFile(
     appFile = system.file("example-spark", "app.R", package = "apexcharter"),
     options = list("display.mode" = "showcase")
