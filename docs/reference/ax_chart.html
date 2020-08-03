@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
       </span>
     </div>
 
@@ -356,20 +356,20 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
 <span class='co'>##  Stack bar type</span>
 <span class='co'># default is dodge</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
 )
 
 <span class='co'># stack</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
 ) <span class='kw'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(<span class='kw'>stacked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># stack filled</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
 ) <span class='kw'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(<span class='kw'>stacked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stackType</span> <span class='kw'>=</span> <span class='st'>"100%"</span>)
@@ -381,7 +381,7 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
 
 <span class='co'># Hide the toolbar</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
 ) <span class='kw'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(<span class='kw'>toolbar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
