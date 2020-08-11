@@ -31,6 +31,7 @@
 #' 
 #' @importFrom rlang eval_tidy as_label
 #' @importFrom utils modifyList
+#' @importFrom stats complete.cases
 #'
 #' @example examples/apex.R
 apex <- function(data, mapping, type = "column", ..., 
@@ -43,11 +44,16 @@ apex <- function(data, mapping, type = "column", ...,
   type <- match.arg(
     arg = type, 
     choices = c(
-      "column", "bar", "line", "area", "spline", "step", 
-      "area-spline", "area-step",
-      "pie", "donut", "radialBar", "radar", 
-      "scatter", "heatmap",
-      "timeline", "candlestick"
+      "column", "bar", 
+      "line", "spline", "step", 
+      "area", "area-spline", "area-step",
+      "pie", "donut", 
+      "radialBar",
+      "radar", 
+      "scatter", "bubble", 
+      "heatmap",
+      "timeline",
+      "candlestick"
     )
   )
   data <- as.data.frame(data)
@@ -118,6 +124,14 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
     series <- parse_timeline_data(mapdata)
   } else {
     mapdata <- as.data.frame(mapdata, stringsAsFactors = FALSE)
+    if (isTRUE(type %in% c("scatter", "bubble"))) {
+      complete <- complete.cases(mapdata[c("x", "y")])
+      n_missing <- sum(!complete)
+      if (n_missing > 0) {
+        mapdata <- mapdata[complete, ]
+        warning(sprintf("apex: Removed %s rows containing missing values", n_missing), call. = FALSE)
+      }
+    }
     if (is.character(mapdata$x))
       mapdata$x[is.na(mapdata$x)] <- "NA"
     x_order <- unique(mapdata$x)
