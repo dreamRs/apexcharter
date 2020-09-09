@@ -10,3 +10,4 @@
 ^CRAN-RELEASE$
 ^examples$
 ^\.github$
+^LICENSE\.md$

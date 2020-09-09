@@ -1,6 +1,6 @@
 # apexcharter
 
-> Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js) : A modern JavaScript charting library to build interactive charts and visualizations with simple API. See the [online demo](https://dreamrs.github.io/apexcharter) for examples.
+> Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js) : A modern JavaScript charting library to build interactive charts and visualizations with simple API. See the [online demo](https://dreamrs.github.io/apexcharter/) for examples.
 
 <!-- badges: start -->
 [![version](http://www.r-pkg.org/badges/version/apexcharter)](https://CRAN.R-project.org/package=apexcharter)
