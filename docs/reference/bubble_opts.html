@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -230,7 +230,7 @@
     <p>Use these options in <code><a href='ax_plotOptions.html'>ax_plotOptions</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bubble_opts</span>(<span class='no'>minBubbleRadius</span>, <span class='no'>maxBubbleRadius</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>bubble_opts</span>(<span class='kw'>minBubbleRadius</span>, <span class='kw'>maxBubbleRadius</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -260,16 +260,17 @@ If a bubble value is too large to cover the chart, this size will be used.</p></
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"scatter"</span>,
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>wt</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>mpg</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='no'>qsec</span>)
-) <span class='kw'>%&gt;%</span>
+  data = <span class='kw'>mtcars</span>, 
+  type = <span class='st'>"scatter"</span>, 
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>wt</span>, y = <span class='kw'>mpg</span>, z = <span class='kw'>qsec</span>)
+) <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='ax_plotOptions.html'>ax_plotOptions</a></span>(
-    <span class='kw'>bubble</span> <span class='kw'>=</span> <span class='fu'>bubble_opts</span>(
-      <span class='kw'>minBubbleRadius</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-      <span class='kw'>maxBubbleRadius</span> <span class='kw'>=</span> <span class='fl'>20</span>
+    bubble = <span class='fu'>bubble_opts</span>(
+      minBubbleRadius = <span class='fl'>1</span>,
+      maxBubbleRadius = <span class='fl'>20</span>
     )
-  )</div></pre>
+  )
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -290,7 +291,7 @@ If a bubble value is too large to cover the chart, this size will be used.</p></
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -230,7 +230,7 @@
     <p>Responsive options</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ax_responsive</span>(<span class='no'>ax</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ax_responsive</span>(<span class='kw'>ax</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -253,31 +253,32 @@
     <p>See <a href='https://apexcharts.com/docs/options/responsive/'>https://apexcharts.com/docs/options/responsive/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, package = <span class='st'>"ggplot2"</span>)
 
 <span class='co'># Open in browser and resize window</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>, <span class='no'>year</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>year</span>),
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bar"</span>
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_legend.html'>ax_legend</a></span>(<span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>) <span class='kw'>%&gt;%</span>
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>, <span class='kw'>year</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>manufacturer</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>year</span>),
+  type = <span class='st'>"bar"</span>
+) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_legend.html'>ax_legend</a></span>(position = <span class='st'>"right"</span>) <span class='op'>%&gt;%</span> 
   <span class='fu'>ax_responsive</span>(
     <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-      <span class='kw'>breakpoint</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-      <span class='kw'>options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        <span class='kw'>plotOptions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-          <span class='kw'>bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-            <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+      breakpoint = <span class='fl'>1000</span>,
+      options = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        plotOptions = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+          bar = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+            horizontal = <span class='fl'>FALSE</span>
           )
         ),
-        <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-          <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"bottom"</span>
+        legend = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+          position = <span class='st'>"bottom"</span>
         )
       )
     )
-  )</div></pre>
+  )
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -298,7 +299,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

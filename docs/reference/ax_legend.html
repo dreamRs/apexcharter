@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -231,26 +231,26 @@
     </div>
 
     <pre class="usage"><span class='fu'>ax_legend</span>(
-  <span class='no'>ax</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>showForSingleSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>showForNullSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>showForZeroSeries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>horizontalAlign</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fontSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>textAnchor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offsetY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offsetX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>markers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>itemMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>containerMargin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>onItemClick</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>onItemHover</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>floating</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  <span class='kw'>ax</span>,
+  show = <span class='kw'>NULL</span>,
+  position = <span class='kw'>NULL</span>,
+  showForSingleSeries = <span class='kw'>NULL</span>,
+  showForNullSeries = <span class='kw'>NULL</span>,
+  showForZeroSeries = <span class='kw'>NULL</span>,
+  horizontalAlign = <span class='kw'>NULL</span>,
+  fontSize = <span class='kw'>NULL</span>,
+  textAnchor = <span class='kw'>NULL</span>,
+  offsetY = <span class='kw'>NULL</span>,
+  offsetX = <span class='kw'>NULL</span>,
+  formatter = <span class='kw'>NULL</span>,
+  labels = <span class='kw'>NULL</span>,
+  markers = <span class='kw'>NULL</span>,
+  itemMargin = <span class='kw'>NULL</span>,
+  containerMargin = <span class='kw'>NULL</span>,
+  onItemClick = <span class='kw'>NULL</span>,
+  onItemHover = <span class='kw'>NULL</span>,
+  floating = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -351,22 +351,23 @@ when hovered on legend item, it will highlight the paths of the hovered series i
     <p>See <a href='https://apexcharts.com/docs/options/legend/'>https://apexcharts.com/docs/options/legend/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, package = <span class='st'>"ggplot2"</span>)
 
 <span class='co'># Legend position</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>, <span class='no'>year</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>year</span>)
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_legend</span>(<span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>)
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>, <span class='kw'>year</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>manufacturer</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>year</span>)
+) <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_legend</span>(position = <span class='st'>"right"</span>)
 
 <span class='co'># hide legend</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>, <span class='no'>year</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>year</span>)
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_legend</span>(<span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div></pre>
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>, <span class='kw'>year</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>manufacturer</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>year</span>)
+) <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_legend</span>(show = <span class='fl'>FALSE</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -387,7 +388,7 @@ when hovered on legend item, it will highlight the paths of the hovered series i
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

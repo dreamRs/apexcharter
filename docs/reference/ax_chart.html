@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -231,26 +231,26 @@
     </div>
 
     <pre class="usage"><span class='fu'>ax_chart</span>(
-  <span class='no'>ax</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stacked</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stackType</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>defaultLocale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>locales</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>animations</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>foreColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dropShadow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>events</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offsetX</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>offsetY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>selection</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sparkline</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>toolbar</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  <span class='kw'>ax</span>,
+  type = <span class='kw'>NULL</span>,
+  stacked = <span class='kw'>NULL</span>,
+  stackType = <span class='kw'>NULL</span>,
+  defaultLocale = <span class='kw'>NULL</span>,
+  locales = <span class='kw'>NULL</span>,
+  animations = <span class='kw'>NULL</span>,
+  background = <span class='kw'>NULL</span>,
+  foreColor = <span class='kw'>NULL</span>,
+  dropShadow = <span class='kw'>NULL</span>,
+  events = <span class='kw'>NULL</span>,
+  offsetX = <span class='kw'>NULL</span>,
+  offsetY = <span class='kw'>NULL</span>,
+  selection = <span class='kw'>NULL</span>,
+  sparkline = <span class='kw'>NULL</span>,
+  toolbar = <span class='kw'>NULL</span>,
+  zoom = <span class='kw'>NULL</span>,
+  width = <span class='kw'>NULL</span>,
+  height = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -350,29 +350,29 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
     <p>A <code>apexcharts</code> <code>htmlwidget</code> object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"diamonds"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"diamonds"</span>, package = <span class='st'>"ggplot2"</span>)
 
 <span class='co'>##  Stack bar type</span>
 <span class='co'># default is dodge</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>diamonds</span>, <span class='kw'>cut</span>, <span class='kw'>color</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>cut</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>color</span>)
 )
 
 <span class='co'># stack</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>stacked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>diamonds</span>, <span class='kw'>cut</span>, <span class='kw'>color</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>cut</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>color</span>)
+) <span class='op'>%&gt;%</span>
+  <span class='fu'>ax_chart</span>(stacked = <span class='fl'>TRUE</span>)
 
 <span class='co'># stack filled</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>stacked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stackType</span> <span class='kw'>=</span> <span class='st'>"100%"</span>)
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>diamonds</span>, <span class='kw'>cut</span>, <span class='kw'>color</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>cut</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>color</span>)
+) <span class='op'>%&gt;%</span>
+  <span class='fu'>ax_chart</span>(stacked = <span class='fl'>TRUE</span>, stackType = <span class='st'>"100%"</span>)
 
 
 
@@ -381,20 +381,20 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
 
 <span class='co'># Hide the toolbar</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>diamonds</span>, <span class='no'>cut</span>, <span class='no'>color</span>),
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cut</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>color</span>)
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>toolbar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
+  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>diamonds</span>, <span class='kw'>cut</span>, <span class='kw'>color</span>),
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>cut</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>color</span>)
+) <span class='op'>%&gt;%</span>
+  <span class='fu'>ax_chart</span>(toolbar = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(show = <span class='fl'>FALSE</span>))
 
 <span class='co'># Hide download buttons</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"economics"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"economics"</span>, package = <span class='st'>"ggplot2"</span>)
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>economics</span>,
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>date</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pce</span>),
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"line"</span>
-) <span class='kw'>%&gt;%</span>
+  data = <span class='kw'>economics</span>,
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>date</span>, y = <span class='kw'>pce</span>), 
+  type = <span class='st'>"line"</span>
+) <span class='op'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(
-    <span class='kw'>toolbar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>tools</span><span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))
+    toolbar = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(tools= <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(download = <span class='fl'>FALSE</span>))
   )
 
 
@@ -403,57 +403,59 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
 
 <span class='co'># Disable</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>economics</span>,
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>date</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pce</span>),
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"line"</span>
-) <span class='kw'>%&gt;%</span>
+  data = <span class='kw'>economics</span>,
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>date</span>, y = <span class='kw'>pce</span>), 
+  type = <span class='st'>"line"</span>
+) <span class='op'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(
-    <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>enabled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    zoom = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(enabled = <span class='fl'>FALSE</span>)
   )
 
 
 <span class='co'># Auto-scale Y axis</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>economics</span>,
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>date</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pce</span>),
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"line"</span>
-) <span class='kw'>%&gt;%</span>
+  data = <span class='kw'>economics</span>,
+  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>date</span>, y = <span class='kw'>pce</span>), 
+  type = <span class='st'>"line"</span>
+) <span class='op'>%&gt;%</span>
   <span class='fu'>ax_chart</span>(
-    <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>autoScaleYaxis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    zoom = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(autoScaleYaxis = <span class='fl'>TRUE</span>)
   )
 
 <span class='co'># Localization ---------------------------------</span>
 
 
 <span class='co'># Use included localization config</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() + <span class='fl'>1</span>:<span class='fl'>20</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample.int</a></span>(<span class='fl'>20</span>, <span class='fl'>20</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  x = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>+</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,
+  y = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample.int</a></span>(<span class='fl'>20</span>, <span class='fl'>20</span>)
 )
 
 <span class='co'># French</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='st'>"line"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>defaultLocale</span> <span class='kw'>=</span> <span class='st'>"fr"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>), <span class='st'>"line"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_chart</span>(defaultLocale = <span class='st'>"fr"</span>)
 
 <span class='co'># Italian</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='st'>"line"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>defaultLocale</span> <span class='kw'>=</span> <span class='st'>"it"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>), <span class='st'>"line"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_chart</span>(defaultLocale = <span class='st'>"it"</span>)
 
 
 
 <span class='co'># Custom config</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='st'>"line"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>ax_chart</span>(<span class='kw'>locales</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>), <span class='st'>"line"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_chart</span>(locales = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
     <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-      <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"en"</span>, <span class='co'># override 'en' locale</span>
-      <span class='kw'>options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        <span class='kw'>toolbar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-          <span class='kw'>exportToSVG</span> <span class='kw'>=</span> <span class='st'>"GET SVG"</span>,
-          <span class='kw'>exportToPNG</span> <span class='kw'>=</span> <span class='st'>"GET PNG"</span>
+      name = <span class='st'>"en"</span>, <span class='co'># override 'en' locale</span>
+      options = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        toolbar = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+          exportToSVG = <span class='st'>"GET SVG"</span>,
+          exportToPNG = <span class='st'>"GET PNG"</span>
         )
       )
     )
-  ))</div></pre>
+  ))
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -473,7 +475,7 @@ Available options: <code>"normal"</code> or <code>"100%"</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

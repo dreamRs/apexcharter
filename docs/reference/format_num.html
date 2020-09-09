@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -230,7 +230,7 @@
     <p>Format numbers (with D3)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>format_num</span>(<span class='no'>format</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='st'>"en-US"</span>)</pre>
+    <pre class="usage"><span class='fu'>format_num</span>(<span class='kw'>format</span>, prefix = <span class='st'>""</span>, suffix = <span class='st'>""</span>, locale = <span class='st'>"en-US"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -261,64 +261,66 @@ see possible values here: <a href='https://github.com/d3/d3-format/tree/master/l
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use SI prefix</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e4</span>, <span class='fl'>2e4</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
+  values = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e4</span>, <span class='fl'>2e4</span>)
 )
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>"~s"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(labels = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>"~s"</span>)
   ))
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span> * <span class='fl'>100</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>"~s"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span> <span class='op'>*</span> <span class='fl'>100</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(labels = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>"~s"</span>)
   ))
 
 
 <span class='co'># Percentage</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.45</span>, <span class='fl'>0.55</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
+  values = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.45</span>, <span class='fl'>0.55</span>)
 )
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>".0%"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(labels = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>".0%"</span>)
   ))
 
 
 <span class='co'># Currency</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>570</span>, <span class='fl'>1170</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
+  values = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>570</span>, <span class='fl'>1170</span>)
 )
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>"$,.2f"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(labels = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>"$,.2f"</span>)
   ))
 
 <span class='co'># Change locale</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>"$,.2f"</span>, <span class='kw'>locale</span> <span class='kw'>=</span> <span class='st'>"fr-FR"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(labels = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>"$,.2f"</span>, locale = <span class='st'>"fr-FR"</span>)
   ))
 
 
 
 <span class='co'># Customize tooltip value</span>
 <span class='co'># Use SI prefix</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e4</span>, <span class='fl'>2e4</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apex"</span>, <span class='st'>"charts"</span>),
+  values = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e4</span>, <span class='fl'>2e4</span>)
 )
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='no'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>labels</span>, <span class='no'>values</span>), <span class='st'>"column"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='ax_tooltip.html'>ax_tooltip</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='fu'>format_num</span>(<span class='st'>","</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" GW/h"</span>)
-  ))</div></pre>
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>dat</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>labels</span>, <span class='kw'>values</span>), <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_tooltip.html'>ax_tooltip</a></span>(y = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    formatter = <span class='fu'>format_num</span>(<span class='st'>","</span>, suffix = <span class='st'>" GW/h"</span>)
+  ))
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -338,7 +340,7 @@ see possible values here: <a href='https://github.com/d3/d3-format/tree/master/l
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -230,9 +230,9 @@
     <p>Add horizontal or vertical line</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_hline</span>(<span class='no'>ax</span>, <span class='no'>value</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#000"</span>, <span class='kw'>dash</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>add_hline</span>(<span class='kw'>ax</span>, <span class='kw'>value</span>, color = <span class='st'>"#000"</span>, dash = <span class='fl'>0</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
 
-<span class='fu'>add_vline</span>(<span class='no'>ax</span>, <span class='no'>value</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#000"</span>, <span class='kw'>dash</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>add_vline</span>(<span class='kw'>ax</span>, <span class='kw'>value</span>, color = <span class='st'>"#000"</span>, dash = <span class='fl'>0</span>, label = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -273,40 +273,41 @@ or see <code><a href='label.html'>label</a></code> for more controls.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>apexcharter</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/dreamRs/apexcharter'>apexcharter</a></span>)
 
 <span class='co'># On a column chart</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>unhcr_popstats_2017</span>$<span class='no'>continent_residence</span>),
-  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>Var1</span>, <span class='no'>Freq</span>),
+  data = <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>unhcr_popstats_2017</span><span class='op'>$</span><span class='kw'>continent_residence</span>),
+  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>Var1</span>, <span class='kw'>Freq</span>),
   <span class='st'>"column"</span>
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_hline</span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>2100</span>)
+) <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_hline</span>(value = <span class='fl'>2100</span>)
 
 
 <span class='co'># On a scatter chart</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>Sepal.Length</span>, <span class='no'>Sepal.Width</span>),
+  data = <span class='kw'>iris</span>,
+  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>Sepal.Length</span>, <span class='kw'>Sepal.Width</span>),
   <span class='st'>"scatter"</span>
-) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_hline</span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>iris</span>$<span class='no'>Sepal.Width</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'>add_vline</span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>))
+) <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_hline</span>(value = <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Width</span>)) <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_vline</span>(value = <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Length</span>))
 
 <span class='co'># With labels</span>
 <span class='fu'><a href='apex.html'>apex</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>Sepal.Length</span>, <span class='no'>Sepal.Width</span>),
+  data = <span class='kw'>iris</span>,
+  <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>Sepal.Length</span>, <span class='kw'>Sepal.Width</span>),
   <span class='st'>"scatter"</span>
-) <span class='kw'>%&gt;%</span>
+) <span class='op'>%&gt;%</span> 
   <span class='fu'>add_hline</span>(
-    <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>iris</span>$<span class='no'>Sepal.Width</span>),
-    <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Mean of Sepal.Width"</span>
-  ) <span class='kw'>%&gt;%</span>
+    value = <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Width</span>),
+    label = <span class='st'>"Mean of Sepal.Width"</span>
+  ) <span class='op'>%&gt;%</span> 
   <span class='fu'>add_vline</span>(
-    <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>),
-    <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Mean of Sepal.Length"</span>
-  )</div></pre>
+    value = <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Length</span>),
+    label = <span class='st'>"Mean of Sepal.Length"</span>
+  )
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -326,7 +327,7 @@ or see <code><a href='label.html'>label</a></code> for more controls.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

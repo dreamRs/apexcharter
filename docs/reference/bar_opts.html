@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.910</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
       </span>
     </div>
 
@@ -231,14 +231,14 @@
     </div>
 
     <pre class="usage"><span class='fu'>bar_opts</span>(
-  <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>endingShape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>columnWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>barHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>distributed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dataLabels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+  horizontal = <span class='kw'>NULL</span>,
+  endingShape = <span class='kw'>NULL</span>,
+  columnWidth = <span class='kw'>NULL</span>,
+  barHeight = <span class='kw'>NULL</span>,
+  distributed = <span class='kw'>NULL</span>,
+  colors = <span class='kw'>NULL</span>,
+  dataLabels = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -287,17 +287,19 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, package = <span class='st'>"ggplot2"</span>)
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>mpg</span>, <span class='no'>manufacturer</span>), <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='no'>manufacturer</span>, <span class='no'>n</span>)) <span class='kw'>%&gt;%</span>
+<span class='fu'><a href='apex.html'>apex</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>), <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>manufacturer</span>, <span class='kw'>n</span>)) <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='ax_plotOptions.html'>ax_plotOptions</a></span>(
-    <span class='kw'>bar</span> <span class='kw'>=</span> <span class='fu'>bar_opts</span>(
-      <span class='kw'>endingShape</span> <span class='kw'>=</span> <span class='st'>"rounded"</span>,
-      <span class='kw'>columnWidth</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-      <span class='kw'>distributed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+    bar = <span class='fu'>bar_opts</span>(
+      endingShape = <span class='st'>"rounded"</span>,
+      columnWidth = <span class='fl'>100</span>,
+      distributed = <span class='fl'>TRUE</span>
     )
-  )</div></pre>
+  )
+  
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -318,7 +320,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
