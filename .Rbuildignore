@@ -3,7 +3,7 @@
 ^apexcharter\.Rproj$
 ^\.Rproj\.user$
 ^dev$
-^img$
+^revdep
 ^_pkgdown\.yml$
 ^docs$
 ^cran-comments\.md$
