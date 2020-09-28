@@ -52,6 +52,7 @@ apex <- function(data, mapping, type = "column", ...,
       "radar", 
       "scatter", "bubble", 
       "heatmap",
+      "treemap",
       "timeline",
       "candlestick"
     )

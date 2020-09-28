@@ -1,3 +1,11 @@
+apexcharter 0.1.7
+==================
+
+* Updated ApexCharts.js to 3.21.0
+* New chart type: treemap, see vignette for example.
+
+
+
 apexcharter 0.1.6
 ==================
 

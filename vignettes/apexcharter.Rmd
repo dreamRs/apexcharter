@@ -193,7 +193,7 @@ apex(data = new_mtcars, type = "radar", mapping = aes(x = model, y = value, grou
 
 ## Heatmap
 
-Create heatmap with : 
+Create a heatmap with : 
 
 ```{r heatmap}
 txhousing2 <- txhousing %>% 
@@ -207,6 +207,19 @@ apex(
 ) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
   ax_colors("#008FFB")
+```
+
+
+## Treemap
+
+Create a treemap with:
+
+```{r treemap}
+data("mpg", package = "ggplot2")
+n_manufac <- dplyr::count(mpg, manufacturer)
+
+
+apex(n_manufac, aes(x = manufacturer, y = n), "treemap")
 ```
 
 
