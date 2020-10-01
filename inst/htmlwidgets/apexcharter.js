@@ -4,6 +4,8 @@
  * https://github.com/dreamRs/apexcharter
  *
  */
+ 
+/*global HTMLWidgets, ApexCharts, Shiny */
 
 /// Functions
 
@@ -280,7 +282,7 @@ HTMLWidgets.widget({
                   x.auto_update.options_animate,
                   x.auto_update.update_synced_charts
                 )
-                .then(function(a, b) {
+                .then(function(chart) {
                   exportChart(x, chart);
                 });
             }
@@ -331,6 +333,17 @@ if (HTMLWidgets.shinyMode) {
     var chart = get_widget(obj.id);
     if (typeof chart != "undefined") {
       chart.updateOptions(obj.data.options);
+    }
+  });
+  
+  // toggle series
+  Shiny.addCustomMessageHandler("update-apexchart-toggle-series", function(obj) {
+    var chart = get_widget(obj.id);
+    if (typeof chart != "undefined") {
+      var seriesName = obj.data.seriesName;
+      for(var i = 0; i < seriesName.length; i++) {
+        chart.toggleSeries(seriesName[i]);
+      }
     }
   });
 }

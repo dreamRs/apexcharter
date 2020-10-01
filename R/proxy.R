@@ -217,3 +217,27 @@ ax_proxy_options <- function(proxy, options) {
 
 
 
+
+
+#' @title Toggle series with proxy
+#'
+#' @description This method allows you to toggle the visibility of series programmatically.
+#'  Useful when you have a custom legend.
+#'
+#' @param proxy A \code{apexchartProxy} \code{htmlwidget} object.
+#' @param series_name The series name which you want to toggle visibility for.
+#'
+#' @noRd
+#'
+#' @example examples/proxy-toggle.R
+ax_proxy_toggle_series <- function(proxy, series_name) {
+  .ax_proxy2(
+    proxy = proxy, 
+    name = "toggle-series", 
+    l = list(seriesName = list1(series_name))
+  )
+}
+
+
+
+
