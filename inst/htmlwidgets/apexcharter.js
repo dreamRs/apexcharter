@@ -149,8 +149,8 @@ HTMLWidgets.widget({
         if (typeof axOpts.chart === "undefined") {
           axOpts.chart = {};
         }
-        axOpts.chart.width = width;
-        axOpts.chart.height = height;
+        axOpts.chart.width = el.clientWidth;
+        axOpts.chart.height = el.clientHeight;
         if (!axOpts.chart.hasOwnProperty("id")) {
           axOpts.chart.id = el.id;
         }
@@ -266,26 +266,24 @@ HTMLWidgets.widget({
         } else {
           if (x.auto_update) {
             //console.log(x.auto_update);
+            if (x.auto_update.update_options) {
+              var options = Object.assign({}, axOpts);
+              delete options.series;
+              delete options.chart.width;
+              delete options.chart.height;
+              apexchart
+                .updateOptions(
+                  options,
+                  x.auto_update.options_redrawPaths,
+                  x.auto_update.options_animate,
+                  x.auto_update.update_synced_charts
+                );
+            }
             apexchart
               .updateSeries(axOpts.series, x.auto_update.series_animate)
               .then(function(chart) {
                 exportChart(x, chart);
               });
-            if (x.auto_update.update_options) {
-              delete axOpts.series;
-              delete axOpts.chart.width;
-              delete axOpts.chart.height;
-              apexchart
-                .updateOptions(
-                  axOpts,
-                  x.auto_update.options_redrawPaths,
-                  x.auto_update.options_animate,
-                  x.auto_update.update_synced_charts
-                )
-                .then(function(chart) {
-                  exportChart(x, chart);
-                });
-            }
           } else {
             apexchart.destroy();
             apexchart = new ApexCharts(el, axOpts);
