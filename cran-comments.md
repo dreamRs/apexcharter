@@ -7,8 +7,8 @@
 
 0 errors | 0 warnings | 0 note
 
-New features and updated javascript dependencies.
-2 reverse dependencies checked, no new problems.
+Updated JavaScript dependencies to include new chart type.
+1 reverse dependencies checked, no new problems.
 Thank you!
 
 Victor

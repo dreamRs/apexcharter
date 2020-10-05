@@ -10,13 +10,15 @@
 |collate  |French_France.1252           |
 |ctype    |French_France.1252           |
 |tz       |Europe/Berlin                |
-|date     |2020-09-09                   |
+|date     |2020-10-03                   |
 
 # Dependencies
 
-|package     |old   |new   |<U+0394>  |
-|:-----------|:-----|:-----|:--|
-|apexcharter |0.1.5 |0.1.6 |*  |
+|package     |old   |new    |<U+0394>  |
+|:-----------|:-----|:------|:--|
+|apexcharter |0.1.6 |0.1.7  |*  |
+|backports   |NA    |1.1.10 |*  |
+|withr       |NA    |2.3.0  |*  |
 
 # Revdeps
 
