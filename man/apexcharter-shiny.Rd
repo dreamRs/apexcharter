@@ -31,7 +31,7 @@ string and have \code{'px'} appended.}
 is useful if you want to save an expression in a variable.}
 }
 \value{
-An Apexchart output that can be included in the application UI.
+An Apexcharts output that can be included in the application UI.
 }
 \description{
 Output and render functions for using apexcharter within Shiny

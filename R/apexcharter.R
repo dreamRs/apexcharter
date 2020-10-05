@@ -127,7 +127,7 @@ config_update <- function(series_animate = TRUE,
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'   
-#' @return An Apexchart output that can be included in the application UI.
+#' @return An Apexcharts output that can be included in the application UI.
 #'
 #' @name apexcharter-shiny
 #'

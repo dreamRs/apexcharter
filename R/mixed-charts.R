@@ -1,7 +1,8 @@
 
 #' @title Add a line to a chart
 #' 
-#' @description On bar and scatter cherts add a line, on scatter charts add a smooth line.
+#' @description Add a line to an existing chart (bar, scatter and line types supported).
+#'  On scatter charts you can also add a smooth line.
 #'
 #' @param ax An \code{\link{apex}} \code{htmlwidget} object. 
 #' @param mapping Default list of aesthetic mappings to use for chart.

@@ -1,5 +1,5 @@
 
-#' @title Quick ApexChart
+#' @title Quick ApexCharts
 #' 
 #' @description Initialize a chart with three main parameters :
 #'  data, mapping and type of chart.

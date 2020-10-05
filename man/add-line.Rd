@@ -48,7 +48,8 @@ the \code{data.frame} provided in \code{apex()} will be used.}
 A \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
-On bar and scatter cherts add a line, on scatter charts add a smooth line.
+Add a line to an existing chart (bar, scatter and line types supported).
+On scatter charts you can also add a smooth line.
 }
 \examples{
 library(apexcharter)

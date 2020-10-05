@@ -2,7 +2,7 @@
 % Please edit documentation in R/apex.R
 \name{apex}
 \alias{apex}
-\title{Quick ApexChart}
+\title{Quick ApexCharts}
 \usage{
 apex(
   data,
