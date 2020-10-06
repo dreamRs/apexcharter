@@ -1,8 +1,10 @@
 apexcharter 0.1.7
 ==================
 
-* Updated ApexCharts.js to 3.21.0
+* Updated ApexCharts.js to 3.22.0
 * New chart type: treemap, see vignette for example.
+* New function `ax_colors_manual()` to set color mapping manually.
+* `apex()` now accept `"polarArea` as type of chart.
 
 
 

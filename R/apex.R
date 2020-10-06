@@ -12,7 +12,8 @@
 #'  \code{"line"}, \code{"step"}, \code{"spline"},
 #'  \code{"area"}, \code{"area-step"}, \code{"area-spline"}, 
 #'  \code{"pie"}, \code{"donut"},
-#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"}, \code{"heatmap"}, 
+#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"},
+#'  \code{"heatmap"}, \code{"treemap"}, 
 #'  \code{"timeline"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param auto_update In Shiny application, update existing chart
@@ -50,6 +51,7 @@ apex <- function(data, mapping, type = "column", ...,
       "pie", "donut", 
       "radialBar",
       "radar", 
+      "polarArea",
       "scatter", "bubble", 
       "heatmap",
       "treemap",
@@ -65,7 +67,7 @@ apex <- function(data, mapping, type = "column", ...,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  if (type %in% c("pie", "donut", "radialBar")) {
+  if (type %in% c("pie", "donut", "radialBar", "polarArea")) {
     opts <- list(
       chart = list(type = correct_type(type)),
       series = list1(mapdata$y),
