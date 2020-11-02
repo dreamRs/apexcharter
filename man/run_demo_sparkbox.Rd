@@ -12,7 +12,7 @@ Run Shiny spark boxes example
 \examples{
 if (interactive()) {
 
-  run_sparkbox_demo()
+  run_demo_sparkbox()
 
 }
 }

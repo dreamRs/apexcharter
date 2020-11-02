@@ -58,7 +58,7 @@ data.frame(
 # Interactive examples:
 if (interactive()) {
 
-  run_input_demo("click")
+  run_demo_input("click")
 
 }
 }

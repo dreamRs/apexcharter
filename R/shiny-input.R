@@ -38,7 +38,7 @@
 #' # Interactive examples:
 #' if (interactive()) {
 #' 
-#'   run_input_demo("click")
+#'   run_demo_input("click")
 #' 
 #' }
 set_input_click <- function(ax, inputId, multiple = FALSE,
@@ -81,7 +81,7 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
 #' @examples
 #' if (interactive()) {
 #' 
-#'   run_input_demo("zoom")
+#'   run_demo_input("zoom")
 #' 
 #' }
 set_input_zoom <- function(ax, inputId,
@@ -254,7 +254,7 @@ run_demo_sync <- function() {
 #' @examples
 #' if (interactive()) {
 #' 
-#'   run_sparkbox_demo()
+#'   run_demo_sparkbox()
 #' 
 #' }
 run_demo_sparkbox <- function() {

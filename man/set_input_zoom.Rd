@@ -25,7 +25,7 @@ If x-axis is of type datetime, value retrieved is of class \code{POSIXct}.
 \examples{
 if (interactive()) {
 
-  run_input_demo("zoom")
+  run_demo_input("zoom")
 
 }
 }
