@@ -57,7 +57,7 @@ test_that("make_series works", {
   expect_named(serie[[1]], c("name", "data"))
 })
 
-test_that("make_series works with group", {
+test_that("make_series works with group (iris)", {
   mapping <- aes(x = Sepal.Length, y = Sepal.Width, fill = Species)
   mapdata <- lapply(mapping, rlang::eval_tidy, data = iris)
   serie <- make_series(mapdata, mapping)
@@ -65,4 +65,31 @@ test_that("make_series works with group", {
   expect_length(serie, 3)
   expect_length(serie[[1]], 2)
   expect_named(serie[[1]], c("name", "data"))
+  
+  expect_identical(
+    lapply(serie, function(x) {
+      length(x$data)
+    }),
+    as.list(unlist(tapply(mapdata$fill, mapdata$fill, length, simplify = FALSE), use.names = FALSE))
+  )
+})
+
+
+test_that("make_series works with group (mtcars)", {
+  mapping <- aes(x = mpg, y = disp, fill = cyl)
+  mapdata <- lapply(mapping, rlang::eval_tidy, data = mtcars)
+  expect_warning(
+    serie <- make_series(mapdata, mapping)
+  )
+  expect_is(serie, "list")
+  expect_length(serie, 3)
+  expect_length(serie[[1]], 2)
+  expect_named(serie[[1]], c("name", "data"))
+  
+  expect_identical(
+    lapply(serie, function(x) {
+      length(x$data)
+    }),
+    as.list(unlist(tapply(mapdata$fill, factor(mapdata$fill, levels = unique(mapdata$fill)), length, simplify = FALSE), use.names = FALSE))
+  )
 })

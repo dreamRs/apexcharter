@@ -162,7 +162,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
         FUN = function(x) {
           data <- mapdata[mapdata$group %in% x, ]
           data <- data[, setdiff(names(data), "group"), drop = FALSE]
-          data <- data[match(x = x_order, table = data$x, nomatch = 0L), , drop = FALSE]
+          data <- data[order(match(x = data[["x"]], table = x_order, nomatch = 0L)), , drop = FALSE]
           dropNulls(list(
             name = x,
             type = multi_type(type),
