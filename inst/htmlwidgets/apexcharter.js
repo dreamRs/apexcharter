@@ -10,119 +10,121 @@
 /// Functions
 
 // From Friss tuto (https://github.com/FrissAnalytics/shinyJsTutorials/blob/master/tutorials/tutorial_03.Rmd)
-function get_widget(id) {
-  var htmlWidgetsObj = HTMLWidgets.find("#" + id);
-  var widgetObj;
-  if (typeof htmlWidgetsObj !== "undefined") {
-    widgetObj = htmlWidgetsObj.getChart();
-  }
-  return widgetObj;
-}
-
-function is_single(options) {
-  var typeLabels = ["pie", "radialBar", "donut"];
-  var lab = typeLabels.indexOf(options.w.config.chart.type) > -1;
-  var single = options.w.config.series.length === 1;
-  return lab | single;
-}
-
-function is_datetime(chartContext) {
-  if (
-    chartContext.hasOwnProperty("w") &&
-    chartContext.w.hasOwnProperty("config") &&
-    chartContext.w.config.hasOwnProperty("xaxis") &&
-    chartContext.w.config.xaxis.hasOwnProperty("type")
-  ) {
-    return chartContext.w.config.xaxis.type == "datetime";
-  } else {
-    return false;
-  }
-}
-
-function getSelection(chartContext, selectedDataPoints, serieIndex) {
-  var typeLabels = ["pie", "radialBar", "donut"];
-  var typeXY = ["scatter", "bubble"];
-  var selected;
-  if (typeLabels.indexOf(chartContext.opts.chart.type) > -1) {
-    var labels = chartContext.opts.labels;
-    selected = selectedDataPoints[serieIndex].map(function(index) {
-      return labels[index];
-    });
-  } else {
-    var data = chartContext.opts.series[serieIndex].data;
-    selected = selectedDataPoints[serieIndex].map(function(index) {
-      var val = data[index];
-      if (typeXY.indexOf(chartContext.opts.chart.type) < 0) {
-        if (val.hasOwnProperty("x")) {
-          val = val.x;
-        } else {
-          val = val[0];
-        }
-      }
-      return val;
-    });
-  }
-  //console.log(selected);
-  if (typeXY.indexOf(chartContext.opts.chart.type) > -1) {
-    selected = {
-      x: selected.map(function(obj) {
-        return obj.x;
-      }),
-      y: selected.map(function(obj) {
-        return obj.y;
-      })
-    };
-  }
-  if (typeof selected == "undefined") {
-    selected = null;
-  }
-  return selected;
-}
-
-function getYaxis(axis) {
-  var yzoom = { min: null, max: null };
-  if (typeof axis.yaxis !== "undefined" && axis.yaxis !== null) {
-    var y_axis;
-    if (axis.yaxis.hasOwnProperty("min")) {
-      y_axis = axis.yaxis;
+var apexcharter = {
+  getWidget: function(id) {
+    var htmlWidgetsObj = HTMLWidgets.find("#" + id);
+    var widgetObj;
+    if (typeof htmlWidgetsObj !== "undefined") {
+      widgetObj = htmlWidgetsObj.getChart();
+    }
+    return widgetObj;
+  },
+  
+  isSingleSerie: function(options) {
+    var typeLabels = ["pie", "radialBar", "donut"];
+    var lab = typeLabels.indexOf(options.w.config.chart.type) > -1;
+    var single = options.w.config.series.length === 1;
+    return lab | single;
+  },
+  
+  isDatetimeAxis: function(chartContext) {
+    if (
+      chartContext.hasOwnProperty("w") &&
+      chartContext.w.hasOwnProperty("config") &&
+      chartContext.w.config.hasOwnProperty("xaxis") &&
+      chartContext.w.config.xaxis.hasOwnProperty("type")
+    ) {
+      return chartContext.w.config.xaxis.type == "datetime";
     } else {
-      y_axis = axis.yaxis[0];
+      return false;
     }
-    if (y_axis.hasOwnProperty("min") && typeof y_axis.min !== "undefined") {
-      yzoom.min = y_axis.min;
+  },
+  
+  getSelection: function(chartContext, selectedDataPoints, serieIndex) {
+    var typeLabels = ["pie", "radialBar", "donut"];
+    var typeXY = ["scatter", "bubble"];
+    var selected;
+    if (typeLabels.indexOf(chartContext.opts.chart.type) > -1) {
+      var labels = chartContext.opts.labels;
+      selected = selectedDataPoints[serieIndex].map(function(index) {
+        return labels[index];
+      });
+    } else {
+      var data = chartContext.opts.series[serieIndex].data;
+      selected = selectedDataPoints[serieIndex].map(function(index) {
+        var val = data[index];
+        if (typeXY.indexOf(chartContext.opts.chart.type) < 0) {
+          if (val.hasOwnProperty("x")) {
+            val = val.x;
+          } else {
+            val = val[0];
+          }
+        }
+        return val;
+      });
     }
-    if (y_axis.hasOwnProperty("max") && typeof y_axis.max !== "undefined") {
-      yzoom.max = y_axis.max;
+    //console.log(selected);
+    if (typeXY.indexOf(chartContext.opts.chart.type) > -1) {
+      selected = {
+        x: selected.map(function(obj) {
+          return obj.x;
+        }),
+        y: selected.map(function(obj) {
+          return obj.y;
+        })
+      };
+    }
+    if (typeof selected == "undefined") {
+      selected = null;
+    }
+    return selected;
+  },
+  
+  getYaxis: function(axis) {
+    var yzoom = { min: null, max: null };
+    if (typeof axis.yaxis !== "undefined" && axis.yaxis !== null) {
+      var y_axis;
+      if (axis.yaxis.hasOwnProperty("min")) {
+        y_axis = axis.yaxis;
+      } else {
+        y_axis = axis.yaxis[0];
+      }
+      if (y_axis.hasOwnProperty("min") && typeof y_axis.min !== "undefined") {
+        yzoom.min = y_axis.min;
+      }
+      if (y_axis.hasOwnProperty("max") && typeof y_axis.max !== "undefined") {
+        yzoom.max = y_axis.max;
+      }
+    }
+    return yzoom;
+  },
+  
+  getXaxis: function(axis) {
+    var xzoom = { min: null, max: null };
+    if (typeof axis.xaxis !== "undefined") {
+      var x_axis = axis.xaxis;
+      if (x_axis.hasOwnProperty("min") && typeof x_axis.min !== "undefined") {
+        xzoom.min = x_axis.min;
+      }
+      if (x_axis.hasOwnProperty("max") && typeof x_axis.max !== "undefined") {
+        xzoom.max = x_axis.max;
+      }
+    }
+    return xzoom;
+  },
+  
+  exportChart: function(x, chart) {
+    if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
+      if (x.shinyEvents.hasOwnProperty("export")) {
+        setTimeout(function() {
+          chart.dataURI().then(function(imgURI) {
+            Shiny.setInputValue(x.shinyEvents.export.inputId, imgURI);
+          });
+        }, 1000);
+      }
     }
   }
-  return yzoom;
-}
-
-function getXaxis(axis) {
-  var xzoom = { min: null, max: null };
-  if (typeof axis.xaxis !== "undefined") {
-    var x_axis = axis.xaxis;
-    if (x_axis.hasOwnProperty("min") && typeof x_axis.min !== "undefined") {
-      xzoom.min = x_axis.min;
-    }
-    if (x_axis.hasOwnProperty("max") && typeof x_axis.max !== "undefined") {
-      xzoom.max = x_axis.max;
-    }
-  }
-  return xzoom;
-}
-
-function exportChart(x, chart) {
-  if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
-    if (x.shinyEvents.hasOwnProperty("export")) {
-      setTimeout(function() {
-        chart.dataURI().then(function(imgURI) {
-          Shiny.setInputValue(x.shinyEvents.export.inputId, imgURI);
-        });
-      }, 1000);
-    }
-  }
-}
+};
 
 /// Widget
 
@@ -196,7 +198,7 @@ HTMLWidgets.widget({
                   if (typeof opts.selectedDataPoints[i] === "undefined") {
                     continue;
                   }
-                  var selection = getSelection(
+                  var selection = apexcharter.getSelection(
                     chartContext,
                     options.selectedDataPoints,
                     i
@@ -210,12 +212,12 @@ HTMLWidgets.widget({
                     }
                   }
                 }
-                if (is_single(options)) {
+                if (apexcharter.isSingleSerie(options)) {
                   select = select[Object.keys(select)[0]];
                 }
                 Shiny.setInputValue(
                   x.shinyEvents.click.inputId + ":apex_click",
-                  { value: select, datetime: is_datetime(chartContext) }
+                  { value: select, datetime: apexcharter.isDatetimeAxis(chartContext) }
                 );
               } else {
                 Shiny.setInputValue(x.shinyEvents.click.inputId, null);
@@ -225,12 +227,12 @@ HTMLWidgets.widget({
           if (x.shinyEvents.hasOwnProperty("zoomed")) {
             axOpts.chart.events.zoomed = function(chartContext, xaxis, yaxis) {
               var id = x.shinyEvents.zoomed.inputId;
-              if (is_datetime(chartContext)) {
+              if (apexcharter.isDatetimeAxis(chartContext)) {
                 id = id + ":apex_datetime";
               }
               Shiny.setInputValue(id, {
-                x: getXaxis(xaxis),
-                y: getYaxis(xaxis)
+                x: apexcharter.getXaxis(xaxis),
+                y: apexcharter.getYaxis(xaxis)
               });
             };
           }
@@ -241,16 +243,16 @@ HTMLWidgets.widget({
               yaxis
             ) {
               var id = x.shinyEvents.selection.inputId;
-              if (is_datetime(chartContext)) {
+              if (apexcharter.isDatetimeAxis(chartContext)) {
                 id = id + ":apex_datetime";
               }
               var selectionValue;
               if (x.shinyEvents.selection.type === "x") {
                 selectionValue = { x: xaxis.xaxis };
               } else if (x.shinyEvents.selection.type === "xy") {
-                selectionValue = { x: xaxis.xaxis, y: getYaxis(xaxis) };
+                selectionValue = { x: xaxis.xaxis, y: apexcharter.getYaxis(xaxis) };
               } else if (x.shinyEvents.selection.type === "y") {
-                selectionValue = { y: getYaxis(xaxis) };
+                selectionValue = { y: apexcharter.getYaxis(xaxis) };
               }
               Shiny.setInputValue(id, selectionValue);
             };
@@ -261,7 +263,7 @@ HTMLWidgets.widget({
         if (apexchart === null) {
           apexchart = new ApexCharts(el, axOpts);
           apexchart.render().then(function() {
-            exportChart(x, apexchart);
+            apexcharter.exportChart(x, apexchart);
           });
         } else {
           if (x.auto_update) {
@@ -282,13 +284,13 @@ HTMLWidgets.widget({
             apexchart
               .updateSeries(axOpts.series, x.auto_update.series_animate)
               .then(function(chart) {
-                exportChart(x, chart);
+                apexcharter.exportChart(x, chart);
               });
           } else {
             apexchart.destroy();
             apexchart = new ApexCharts(el, axOpts);
             apexchart.render().then(function() {
-              exportChart(x, apexchart);
+              apexcharter.exportChart(x, apexchart);
             });
           }
         }
@@ -313,7 +315,7 @@ HTMLWidgets.widget({
 if (HTMLWidgets.shinyMode) {
   // update serie
   Shiny.addCustomMessageHandler("update-apexchart-series", function(obj) {
-    var chart = get_widget(obj.id);
+    var chart = apexcharter.getWidget(obj.id);
     if (typeof chart != "undefined") {
       chart.updateSeries(
         [
@@ -328,7 +330,7 @@ if (HTMLWidgets.shinyMode) {
 
   // update options
   Shiny.addCustomMessageHandler("update-apexchart-options", function(obj) {
-    var chart = get_widget(obj.id);
+    var chart = apexcharter.getWidget(obj.id);
     if (typeof chart != "undefined") {
       chart.updateOptions(obj.data.options);
     }
@@ -336,7 +338,7 @@ if (HTMLWidgets.shinyMode) {
   
   // toggle series
   Shiny.addCustomMessageHandler("update-apexchart-toggle-series", function(obj) {
-    var chart = get_widget(obj.id);
+    var chart = apexcharter.getWidget(obj.id);
     if (typeof chart != "undefined") {
       var seriesName = obj.data.seriesName;
       for(var i = 0; i < seriesName.length; i++) {
