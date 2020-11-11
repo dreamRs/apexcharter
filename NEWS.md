@@ -1,10 +1,20 @@
+apexcharter 0.1.8
+==================
+
+## Bugfixes
+
+* Fixed bad JavaScript namespace
+* Fixed bug in groups with scatter chart
+
+
+
 apexcharter 0.1.7
 ==================
 
 * Updated ApexCharts.js to 3.22.0
 * New chart type: treemap, see vignette for example.
 * New function `ax_colors_manual()` to set color mapping manually.
-* `apex()` now accept `"polarArea` as type of chart.
+* `apex()` now accept `polarArea` as type of chart.
 
 
 
