@@ -1,6 +1,8 @@
 apexcharter 0.1.8
 ==================
 
+* Updated ApexCharts.js to 3.22.2
+
 ## Bugfixes
 
 * Fixed bad JavaScript namespace
