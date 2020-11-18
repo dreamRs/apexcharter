@@ -84,11 +84,11 @@
       </button>
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;"><a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -151,8 +151,9 @@
 
       
 
-      </header><script src="spark-box_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="spark-box_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="spark-box_files/apexcharts-3.20.1/apexcharts.min.js"></script><link href="spark-box_files/apexcharter-css-0.1.0/apexcharter.css" rel="stylesheet">
-<script src="spark-box_files/d3-format-1.4.2/d3-format.min.js"></script><script src="spark-box_files/apexcharter-binding-0.1.5.920/apexcharter.js"></script><div class="row">
+      </header><script src="spark-box_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="spark-box_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="spark-box_files/anchor-sections-1.0/anchor-sections.js"></script><script src="spark-box_files/htmlwidgets-1.5.2/htmlwidgets.js"></script><script src="spark-box_files/apexcharts-3.22.2/apexcharts.min.js"></script><link href="spark-box_files/apexcharter-css-0.1.0/apexcharter.css" rel="stylesheet">
+<script src="spark-box_files/d3-format-1.4.2/d3-format.min.js"></script><script src="spark-box_files/apexcharter-binding-0.1.8/apexcharter.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Spark boxes</h1>
@@ -165,41 +166,37 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/dreamRs/apexcharter">apexcharter</a></span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter">apexcharter</a></span><span class="op">)</span>
 
-<span class="kw">spark_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  date = <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>() <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,
-  var1 = <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span>)),
-  var2 = <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span>)),
-  var3 = <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span>))
-)
-</pre></div>
+<span class="va">spark_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,
+  var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,
+  var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,
+  var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <p>Create boxes with a sparkline to display a specific value:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/spark_box.html">spark_box</a></span>(
-  data = <span class="kw">spark_data</span>,
-  title = <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="kw">spark_data</span><span class="op">$</span><span class="kw">var1</span>), 
-  subtitle = <span class="st">"Variable 1"</span>
-)
-</pre></div>
-<div id="htmlwidget-4067c4190a516558fc06" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4067c4190a516558fc06">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[["new Date('2020-09-10').getTime()",47],["new Date('2020-09-11').getTime()",37],["new Date('2020-09-12').getTime()",60],["new Date('2020-09-13').getTime()",44],["new Date('2020-09-14').getTime()",34],["new Date('2020-09-15').getTime()",49],["new Date('2020-09-16').getTime()",35],["new Date('2020-09-17').getTime()",53],["new Date('2020-09-18').getTime()",32],["new Date('2020-09-19').getTime()",46],["new Date('2020-09-20').getTime()",40],["new Date('2020-09-21').getTime()",59],["new Date('2020-09-22').getTime()",63],["new Date('2020-09-23').getTime()",31],["new Date('2020-09-24').getTime()",62],["new Date('2020-09-25').getTime()",56],["new Date('2020-09-26').getTime()",12],["new Date('2020-09-27').getTime()",42],["new Date('2020-09-28').getTime()",47],["new Date('2020-09-29').getTime()",45]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":44.7,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2020-09-10","max":"2020-09-29"}},"evals":["ax_opts.series.0.data.0.0","ax_opts.series.0.data.1.0","ax_opts.series.0.data.2.0","ax_opts.series.0.data.3.0","ax_opts.series.0.data.4.0","ax_opts.series.0.data.5.0","ax_opts.series.0.data.6.0","ax_opts.series.0.data.7.0","ax_opts.series.0.data.8.0","ax_opts.series.0.data.9.0","ax_opts.series.0.data.10.0","ax_opts.series.0.data.11.0","ax_opts.series.0.data.12.0","ax_opts.series.0.data.13.0","ax_opts.series.0.data.14.0","ax_opts.series.0.data.15.0","ax_opts.series.0.data.16.0","ax_opts.series.0.data.17.0","ax_opts.series.0.data.18.0","ax_opts.series.0.data.19.0"],"jsHooks":[]}</script><p>With more styles :</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/spark_box.html">spark_box</a></span>(
-  data = <span class="kw">spark_data</span>,
-  title = <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="kw">spark_data</span><span class="op">$</span><span class="kw">var1</span>), 
-  subtitle = <span class="st">"Variable 1"</span>,
-  color = <span class="st">"#FFF"</span>, background = <span class="st">"#2E93fA"</span>,
-  title_style = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(color = <span class="st">"#FFF"</span>),
-  subtitle_style = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(color = <span class="st">"#FFF"</span>)
-)
-</pre></div>
-<div id="htmlwidget-29214aaf080dd98d8784" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-29214aaf080dd98d8784">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[["new Date('2020-09-10').getTime()",47],["new Date('2020-09-11').getTime()",37],["new Date('2020-09-12').getTime()",60],["new Date('2020-09-13').getTime()",44],["new Date('2020-09-14').getTime()",34],["new Date('2020-09-15').getTime()",49],["new Date('2020-09-16').getTime()",35],["new Date('2020-09-17').getTime()",53],["new Date('2020-09-18').getTime()",32],["new Date('2020-09-19').getTime()",46],["new Date('2020-09-20').getTime()",40],["new Date('2020-09-21').getTime()",59],["new Date('2020-09-22').getTime()",63],["new Date('2020-09-23').getTime()",31],["new Date('2020-09-24').getTime()",62],["new Date('2020-09-25').getTime()",56],["new Date('2020-09-26').getTime()",12],["new Date('2020-09-27').getTime()",42],["new Date('2020-09-28').getTime()",47],["new Date('2020-09-29').getTime()",45]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":44.7,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2020-09-10","max":"2020-09-29"}},"evals":["ax_opts.series.0.data.0.0","ax_opts.series.0.data.1.0","ax_opts.series.0.data.2.0","ax_opts.series.0.data.3.0","ax_opts.series.0.data.4.0","ax_opts.series.0.data.5.0","ax_opts.series.0.data.6.0","ax_opts.series.0.data.7.0","ax_opts.series.0.data.8.0","ax_opts.series.0.data.9.0","ax_opts.series.0.data.10.0","ax_opts.series.0.data.11.0","ax_opts.series.0.data.12.0","ax_opts.series.0.data.13.0","ax_opts.series.0.data.14.0","ax_opts.series.0.data.15.0","ax_opts.series.0.data.16.0","ax_opts.series.0.data.17.0","ax_opts.series.0.data.18.0","ax_opts.series.0.data.19.0"],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch an example :</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu">run_sparkbox_demo</span>()
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/spark_box.html">spark_box</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">spark_data</span>,
+  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, 
+  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>
+<span class="op">)</span></code></pre></div>
+<div id="htmlwidget-6e0813785f669cdbcf64" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6e0813785f669cdbcf64">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[["new Date('2020-11-19').getTime()",70],["new Date('2020-11-20').getTime()",48],["new Date('2020-11-21').getTime()",36],["new Date('2020-11-22').getTime()",35],["new Date('2020-11-23').getTime()",54],["new Date('2020-11-24').getTime()",66],["new Date('2020-11-25').getTime()",53],["new Date('2020-11-26').getTime()",46],["new Date('2020-11-27').getTime()",63],["new Date('2020-11-28').getTime()",40],["new Date('2020-11-29').getTime()",47],["new Date('2020-11-30').getTime()",44],["new Date('2020-12-01').getTime()",47],["new Date('2020-12-02').getTime()",34],["new Date('2020-12-03').getTime()",63],["new Date('2020-12-04').getTime()",35],["new Date('2020-12-05').getTime()",46],["new Date('2020-12-06').getTime()",42],["new Date('2020-12-07').getTime()",46],["new Date('2020-12-08').getTime()",49]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":48.2,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2020-11-19","max":"2020-12-08"}},"evals":["ax_opts.series.0.data.0.0","ax_opts.series.0.data.1.0","ax_opts.series.0.data.2.0","ax_opts.series.0.data.3.0","ax_opts.series.0.data.4.0","ax_opts.series.0.data.5.0","ax_opts.series.0.data.6.0","ax_opts.series.0.data.7.0","ax_opts.series.0.data.8.0","ax_opts.series.0.data.9.0","ax_opts.series.0.data.10.0","ax_opts.series.0.data.11.0","ax_opts.series.0.data.12.0","ax_opts.series.0.data.13.0","ax_opts.series.0.data.14.0","ax_opts.series.0.data.15.0","ax_opts.series.0.data.16.0","ax_opts.series.0.data.17.0","ax_opts.series.0.data.18.0","ax_opts.series.0.data.19.0"],"jsHooks":[]}</script><p>With more styles :</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/spark_box.html">spark_box</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">spark_data</span>,
+  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, 
+  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>,
+  color <span class="op">=</span> <span class="st">"#FFF"</span>, background <span class="op">=</span> <span class="st">"#2E93fA"</span>,
+  title_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>,
+  subtitle_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<div id="htmlwidget-c4cf7c28e4b5bd2cf5c2" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c4cf7c28e4b5bd2cf5c2">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[["new Date('2020-11-19').getTime()",70],["new Date('2020-11-20').getTime()",48],["new Date('2020-11-21').getTime()",36],["new Date('2020-11-22').getTime()",35],["new Date('2020-11-23').getTime()",54],["new Date('2020-11-24').getTime()",66],["new Date('2020-11-25').getTime()",53],["new Date('2020-11-26').getTime()",46],["new Date('2020-11-27').getTime()",63],["new Date('2020-11-28').getTime()",40],["new Date('2020-11-29').getTime()",47],["new Date('2020-11-30').getTime()",44],["new Date('2020-12-01').getTime()",47],["new Date('2020-12-02').getTime()",34],["new Date('2020-12-03').getTime()",63],["new Date('2020-12-04').getTime()",35],["new Date('2020-12-05').getTime()",46],["new Date('2020-12-06').getTime()",42],["new Date('2020-12-07').getTime()",46],["new Date('2020-12-08').getTime()",49]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":48.2,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2020-11-19","max":"2020-12-08"}},"evals":["ax_opts.series.0.data.0.0","ax_opts.series.0.data.1.0","ax_opts.series.0.data.2.0","ax_opts.series.0.data.3.0","ax_opts.series.0.data.4.0","ax_opts.series.0.data.5.0","ax_opts.series.0.data.6.0","ax_opts.series.0.data.7.0","ax_opts.series.0.data.8.0","ax_opts.series.0.data.9.0","ax_opts.series.0.data.10.0","ax_opts.series.0.data.11.0","ax_opts.series.0.data.12.0","ax_opts.series.0.data.13.0","ax_opts.series.0.data.14.0","ax_opts.series.0.data.15.0","ax_opts.series.0.data.16.0","ax_opts.series.0.data.17.0","ax_opts.series.0.data.18.0","ax_opts.series.0.data.19.0"],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch an example :</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">run_sparkbox_demo</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="figures/spark-box.png" alt="spark-box" style="width:100%;"></p>
   </div>
 
@@ -216,7 +213,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

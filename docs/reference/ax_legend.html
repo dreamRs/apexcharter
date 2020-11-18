@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -230,28 +230,28 @@
     <p>Legend properties</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ax_legend</span>(
-  <span class='kw'>ax</span>,
-  show = <span class='kw'>NULL</span>,
-  position = <span class='kw'>NULL</span>,
-  showForSingleSeries = <span class='kw'>NULL</span>,
-  showForNullSeries = <span class='kw'>NULL</span>,
-  showForZeroSeries = <span class='kw'>NULL</span>,
-  horizontalAlign = <span class='kw'>NULL</span>,
-  fontSize = <span class='kw'>NULL</span>,
-  textAnchor = <span class='kw'>NULL</span>,
-  offsetY = <span class='kw'>NULL</span>,
-  offsetX = <span class='kw'>NULL</span>,
-  formatter = <span class='kw'>NULL</span>,
-  labels = <span class='kw'>NULL</span>,
-  markers = <span class='kw'>NULL</span>,
-  itemMargin = <span class='kw'>NULL</span>,
-  containerMargin = <span class='kw'>NULL</span>,
-  onItemClick = <span class='kw'>NULL</span>,
-  onItemHover = <span class='kw'>NULL</span>,
-  floating = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>ax_legend</span><span class='op'>(</span>
+  <span class='va'>ax</span>,
+  show <span class='op'>=</span> <span class='cn'>NULL</span>,
+  position <span class='op'>=</span> <span class='cn'>NULL</span>,
+  showForSingleSeries <span class='op'>=</span> <span class='cn'>NULL</span>,
+  showForNullSeries <span class='op'>=</span> <span class='cn'>NULL</span>,
+  showForZeroSeries <span class='op'>=</span> <span class='cn'>NULL</span>,
+  horizontalAlign <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fontSize <span class='op'>=</span> <span class='cn'>NULL</span>,
+  textAnchor <span class='op'>=</span> <span class='cn'>NULL</span>,
+  offsetY <span class='op'>=</span> <span class='cn'>NULL</span>,
+  offsetX <span class='op'>=</span> <span class='cn'>NULL</span>,
+  formatter <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labels <span class='op'>=</span> <span class='cn'>NULL</span>,
+  markers <span class='op'>=</span> <span class='cn'>NULL</span>,
+  itemMargin <span class='op'>=</span> <span class='cn'>NULL</span>,
+  containerMargin <span class='op'>=</span> <span class='cn'>NULL</span>,
+  onItemClick <span class='op'>=</span> <span class='cn'>NULL</span>,
+  onItemHover <span class='op'>=</span> <span class='cn'>NULL</span>,
+  floating <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -351,22 +351,22 @@ when hovered on legend item, it will highlight the paths of the hovered series i
     <p>See <a href='https://apexcharts.com/docs/options/legend/'>https://apexcharts.com/docs/options/legend/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"mpg"</span>, package = <span class='st'>"ggplot2"</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"mpg"</span>, package <span class='op'>=</span> <span class='st'>"ggplot2"</span><span class='op'>)</span>
 
 <span class='co'># Legend position</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(
-  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>, <span class='kw'>year</span>),
-  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>manufacturer</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>year</span>)
-) <span class='op'>%&gt;%</span> 
-  <span class='fu'>ax_legend</span>(position = <span class='st'>"right"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>mpg</span>, <span class='va'>manufacturer</span>, <span class='va'>year</span><span class='op'>)</span>,
+  mapping <span class='op'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>manufacturer</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>year</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_legend</span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"right"</span><span class='op'>)</span>
 
 <span class='co'># hide legend</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(
-  data = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>mpg</span>, <span class='kw'>manufacturer</span>, <span class='kw'>year</span>),
-  mapping = <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(x = <span class='kw'>manufacturer</span>, y = <span class='kw'>n</span>, fill = <span class='kw'>year</span>)
-) <span class='op'>%&gt;%</span> 
-  <span class='fu'>ax_legend</span>(show = <span class='fl'>FALSE</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>mpg</span>, <span class='va'>manufacturer</span>, <span class='va'>year</span><span class='op'>)</span>,
+  mapping <span class='op'>=</span> <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>manufacturer</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>year</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ax_legend</span><span class='op'>(</span>show <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -388,7 +388,7 @@ when hovered on legend item, it will highlight the paths of the hovered series i
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

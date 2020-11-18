@@ -1,6 +1,12 @@
 pandoc: 2.7.3
-pkgdown: 1.6.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-09-09T10:40Z
+articles:
+  apexcharter: apexcharter.html
+  articles/advanced-configuration: advanced-configuration.html
+  chart-options: chart-options.html
+  shiny-integration: shiny-integration.html
+  spark-box: spark-box.html
+  sync-charts: sync-charts.html
+last_built: 2020-11-18T09:39Z
 

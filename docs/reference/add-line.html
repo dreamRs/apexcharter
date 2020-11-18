@@ -117,7 +117,8 @@
 
 
 <meta property="og:title" content="Add a line to a chart — add-line" />
-<meta property="og:description" content="On bar and scatter cherts add a line, on scatter charts add a smooth line." />
+<meta property="og:description" content="Add a line to an existing chart (bar, scatter and line types supported).
+On scatter charts you can also add a smooth line." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -151,11 +152,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -227,26 +228,27 @@
     </div>
 
     <div class="ref-description">
-    <p>On bar and scatter cherts add a line, on scatter charts add a smooth line.</p>
+    <p>Add a line to an existing chart (bar, scatter and line types supported).
+On scatter charts you can also add a smooth line.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_line</span>(
-  <span class='kw'>ax</span>,
-  <span class='kw'>mapping</span>,
-  data = <span class='kw'>NULL</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"line"</span>, <span class='st'>"spline"</span>),
-  serie_name = <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>add_line</span><span class='op'>(</span>
+  <span class='va'>ax</span>,
+  <span class='va'>mapping</span>,
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"line"</span>, <span class='st'>"spline"</span><span class='op'>)</span>,
+  serie_name <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>add_smooth_line</span>(
-  <span class='kw'>ax</span>,
-  formula = <span class='kw'>y</span> <span class='op'>~</span> <span class='kw'>x</span>,
-  model = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lm"</span>, <span class='st'>"loess"</span>),
-  n = <span class='fl'>100</span>,
-  <span class='kw'>...</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"line"</span>, <span class='st'>"spline"</span>),
-  serie_name = <span class='kw'>NULL</span>
-)</pre>
+<span class='fu'>add_smooth_line</span><span class='op'>(</span>
+  <span class='va'>ax</span>,
+  formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>,
+  model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"lm"</span>, <span class='st'>"loess"</span><span class='op'>)</span>,
+  n <span class='op'>=</span> <span class='fl'>100</span>,
+  <span class='va'>...</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"line"</span>, <span class='st'>"spline"</span><span class='op'>)</span>,
+  serie_name <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -295,58 +297,58 @@ the <code>data.frame</code> provided in <code><a href='apex.html'>apex()</a></co
     <p>A <code>apexcharts</code> <code>htmlwidget</code> object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/dreamRs/apexcharter'>apexcharter</a></span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/dreamRs/apexcharter'>apexcharter</a></span><span class='op'>)</span>
 
 
 <span class='co'># Bar ----</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"climate_paris"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"climate_paris"</span><span class='op'>)</span>
 
 <span class='co'># Add a line on a column's chart</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>climate_paris</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>month</span>, <span class='kw'>precipitation</span>), type = <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_line</span>(<span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>month</span>, <span class='kw'>temperature</span>))
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>climate_paris</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>month</span>, <span class='va'>precipitation</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"column"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_line</span><span class='op'>(</span><span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>month</span>, <span class='va'>temperature</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Add secondary axis</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>climate_paris</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>month</span>, <span class='kw'>precipitation</span>), type = <span class='st'>"column"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_line</span>(<span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>month</span>, <span class='kw'>temperature</span>)) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span>(
-    title = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(text = <span class='st'>"Precipitation (in mm)"</span>)
-  ) <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='ax_yaxis2.html'>ax_yaxis2</a></span>(
-    opposite = <span class='fl'>TRUE</span>,
-    decimalsInFloat = <span class='fl'>0</span>,
-    title = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(text = <span class='st'>"Temperature (in degree celsius)"</span>)
-  ) <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='ax_dataLabels.html'>ax_dataLabels</a></span>(
-    enabled = <span class='fl'>TRUE</span>, enabledOnSeries = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>)
-  )
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>climate_paris</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>month</span>, <span class='va'>precipitation</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"column"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_line</span><span class='op'>(</span><span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>month</span>, <span class='va'>temperature</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='ax_yaxis.html'>ax_yaxis</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>text <span class='op'>=</span> <span class='st'>"Precipitation (in mm)"</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_yaxis2.html'>ax_yaxis2</a></span><span class='op'>(</span>
+    opposite <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    decimalsInFloat <span class='op'>=</span> <span class='fl'>0</span>,
+    title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>text <span class='op'>=</span> <span class='st'>"Temperature (in degree celsius)"</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='ax_dataLabels.html'>ax_dataLabels</a></span><span class='op'>(</span>
+    enabled <span class='op'>=</span> <span class='cn'>TRUE</span>, enabledOnSeries <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='op'>)</span>
 
 
 
 <span class='co'># Scatter ----</span>
 
 <span class='co'># add smooth line on scatter plot</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_line</span>(<span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>), data = <span class='fu'><a href='https://rdrr.io/r/stats/lowess.html'>lowess</a></span>(<span class='kw'>cars</span>), serie_name = <span class='st'>"lowess"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_line</span><span class='op'>(</span><span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lowess.html'>lowess</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>)</span>, serie_name <span class='op'>=</span> <span class='st'>"lowess"</span><span class='op'>)</span>
 
 
 <span class='co'># or directly</span>
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>()
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>(model = <span class='st'>"loess"</span>, span = <span class='fl'>1</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"loess"</span>, span <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>(model = <span class='st'>"loess"</span>, degree = <span class='fl'>1</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"loess"</span>, degree <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>(formula = <span class='kw'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span>(<span class='kw'>x</span>, <span class='fl'>2</span>))
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span>formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='apex.html'>apex</a></span>(<span class='kw'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>speed</span>, <span class='kw'>dist</span>), type = <span class='st'>"scatter"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>(model = <span class='st'>"lm"</span>, serie_name = <span class='st'>"lm"</span>) <span class='op'>%&gt;%</span> 
-  <span class='fu'>add_smooth_line</span>(model = <span class='st'>"loess"</span>, serie_name = <span class='st'>"loess"</span>)
+<span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='va'>dist</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"lm"</span>, serie_name <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>add_smooth_line</span><span class='op'>(</span>model <span class='op'>=</span> <span class='st'>"loess"</span>, serie_name <span class='op'>=</span> <span class='st'>"loess"</span><span class='op'>)</span>
 
 
 
@@ -372,7 +374,7 @@ the <code>data.frame</code> provided in <code><a href='apex.html'>apex()</a></co
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

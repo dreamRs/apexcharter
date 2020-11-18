@@ -151,11 +151,11 @@
       <span class="navbar-brand hidden-xs hidden-sm" style="padding: 10px 15px !important;">
         <img src="https://github.com/dreamRs.png" class="hidden-xs hidden-sm" style="height: 50px;display: inline;vertical-align: middle;">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
       <span class="navbar-brand hidden-md hidden-lg">
         <a class="navbar-link" href="../index.html">apexcharter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.920</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -230,7 +230,7 @@
     <p>Allows you to update the series array overriding the existing one.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ax_proxy_series</span>(<span class='kw'>proxy</span>, <span class='kw'>newSeries</span>, animate = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>ax_proxy_series</span><span class='op'>(</span><span class='va'>proxy</span>, <span class='va'>newSeries</span>, animate <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -252,63 +252,63 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://shiny.rstudio.com'>shiny</a></span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
   
-  <span class='kw'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html'>fluidPage</a></span>(
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html'>fluidRow</a></span>(
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/column.html'>column</a></span>(
-        width = <span class='fl'>8</span>, offset = <span class='fl'>2</span>,
-        <span class='kw'>tags</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>h2</a></span>(<span class='st'>"Real time chart"</span>),
-        <span class='fu'><a href='apexcharter-shiny.html'>apexchartOutput</a></span>(outputId = <span class='st'>"chart"</span>)
-      )
-    )
-  )
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html'>fluidPage</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html'>fluidRow</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/column.html'>column</a></span><span class='op'>(</span>
+        width <span class='op'>=</span> <span class='fl'>8</span>, offset <span class='op'>=</span> <span class='fl'>2</span>,
+        <span class='va'>tags</span><span class='op'>$</span><span class='fu'>h2</span><span class='op'>(</span><span class='st'>"Real time chart"</span><span class='op'>)</span>,
+        <span class='fu'><a href='apexcharter-shiny.html'>apexchartOutput</a></span><span class='op'>(</span>outputId <span class='op'>=</span> <span class='st'>"chart"</span><span class='op'>)</span>
+      <span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
   
-  <span class='kw'>server</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>input</span>, <span class='kw'>output</span>, <span class='kw'>session</span>) {
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
     
-    <span class='kw'>rv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html'>reactiveValues</a></span>()
-    <span class='kw'>rv</span><span class='op'>$</span><span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-      date = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>+</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,
-      values = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>10</span><span class='op'>:</span><span class='fl'>90</span>, <span class='fl'>20</span>, <span class='fl'>TRUE</span>)
-    )
+    <span class='va'>rv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html'>reactiveValues</a></span><span class='op'>(</span><span class='op'>)</span>
+    <span class='va'>rv</span><span class='op'>$</span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+      date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,
+      values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>90</span>, <span class='fl'>20</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='op'>)</span>
     
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observe.html'>observe</a></span>({
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/invalidateLater.html'>invalidateLater</a></span>(<span class='fl'>1000</span>, <span class='kw'>session</span>)
-      <span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/isolate.html'>isolate</a></span>(<span class='kw'>rv</span><span class='op'>$</span><span class='kw'>df</span>)
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observe.html'>observe</a></span><span class='op'>(</span><span class='op'>{</span>
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/invalidateLater.html'>invalidateLater</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='va'>session</span><span class='op'>)</span>
+      <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/isolate.html'>isolate</a></span><span class='op'>(</span><span class='va'>rv</span><span class='op'>$</span><span class='va'>df</span><span class='op'>)</span>
       <span class='co'># Append new line of data</span>
-      <span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(
-        <span class='kw'>df</span>, <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-          date = <span class='kw'>df</span><span class='op'>$</span><span class='kw'>date</span>[<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>df</span><span class='op'>$</span><span class='kw'>date</span>)] <span class='op'>+</span> <span class='fl'>1</span>,
-          values = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>10</span><span class='op'>:</span><span class='fl'>90</span>, <span class='fl'>1</span>, <span class='fl'>TRUE</span>)
-        )
-      )
-      <span class='kw'>rv</span><span class='op'>$</span><span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='kw'>df</span>
-    })
+      <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
+        <span class='va'>df</span>, <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+          date <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>date</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>+</span> <span class='fl'>1</span>,
+          values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>90</span>, <span class='fl'>1</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
+        <span class='op'>)</span>
+      <span class='op'>)</span>
+      <span class='va'>rv</span><span class='op'>$</span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span>
+    <span class='op'>}</span><span class='op'>)</span>
     
-    <span class='kw'>output</span><span class='op'>$</span><span class='kw'>chart</span> <span class='op'>&lt;-</span> <span class='fu'><a href='apexcharter-shiny.html'>renderApexchart</a></span>({
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>chart</span> <span class='op'>&lt;-</span> <span class='fu'><a href='apexcharter-shiny.html'>renderApexchart</a></span><span class='op'>(</span><span class='op'>{</span>
       <span class='co'># Generate chart once</span>
-      <span class='fu'><a href='apex.html'>apex</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/isolate.html'>isolate</a></span>(<span class='kw'>rv</span><span class='op'>$</span><span class='kw'>df</span>), <span class='fu'><a href='apexcharter-exports.html'>aes</a></span>(<span class='kw'>date</span>, <span class='kw'>values</span>), <span class='st'>"spline"</span>) <span class='op'>%&gt;%</span> 
-        <span class='fu'><a href='ax_xaxis.html'>ax_xaxis</a></span>(
-          range = <span class='fl'>10</span> <span class='op'>*</span> <span class='fl'>24</span> <span class='op'>*</span> <span class='fl'>60</span> <span class='op'>*</span> <span class='fl'>60</span> <span class='op'>*</span> <span class='fl'>1000</span>
+      <span class='fu'><a href='apex.html'>apex</a></span><span class='op'>(</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/isolate.html'>isolate</a></span><span class='op'>(</span><span class='va'>rv</span><span class='op'>$</span><span class='va'>df</span><span class='op'>)</span>, <span class='fu'><a href='apexcharter-exports.html'>aes</a></span><span class='op'>(</span><span class='va'>date</span>, <span class='va'>values</span><span class='op'>)</span>, <span class='st'>"spline"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+        <span class='fu'><a href='ax_xaxis.html'>ax_xaxis</a></span><span class='op'>(</span>
+          range <span class='op'>=</span> <span class='fl'>10</span> <span class='op'>*</span> <span class='fl'>24</span> <span class='op'>*</span> <span class='fl'>60</span> <span class='op'>*</span> <span class='fl'>60</span> <span class='op'>*</span> <span class='fl'>1000</span>
           <span class='co'># Fixed range for x-axis : 10 days</span>
           <span class='co'># days*hours*minutes*seconds*milliseconds</span>
-        )
-    })
+        <span class='op'>)</span>
+    <span class='op'>}</span><span class='op'>)</span>
     
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observe.html'>observe</a></span>({
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observe.html'>observe</a></span><span class='op'>(</span><span class='op'>{</span>
       <span class='co'># Update chart to add new data</span>
-      <span class='fu'><a href='apexchartProxy.html'>apexchartProxy</a></span>(<span class='st'>"chart"</span>) <span class='op'>%&gt;%</span>
-        <span class='fu'>ax_proxy_series</span>(
-          <span class='fu'><a href='parse_df.html'>parse_df</a></span>(<span class='kw'>rv</span><span class='op'>$</span><span class='kw'>df</span>),
-          <span class='kw'>T</span>
-        )
-    })
+      <span class='fu'><a href='apexchartProxy.html'>apexchartProxy</a></span><span class='op'>(</span><span class='st'>"chart"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+        <span class='fu'>ax_proxy_series</span><span class='op'>(</span>
+          <span class='fu'><a href='parse_df.html'>parse_df</a></span><span class='op'>(</span><span class='va'>rv</span><span class='op'>$</span><span class='va'>df</span><span class='op'>)</span>,
+          <span class='cn'>T</span>
+        <span class='op'>)</span>
+    <span class='op'>}</span><span class='op'>)</span>
     
-  }
+  <span class='op'>}</span>
   
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span>, <span class='kw'>server</span>)
-}
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span><span class='va'>ui</span>, <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 </div></pre>
   </div>
@@ -329,7 +329,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
