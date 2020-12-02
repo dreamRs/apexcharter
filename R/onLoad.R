@@ -15,7 +15,7 @@
       }
       return(value)
     }
-  })
+  }, force = TRUE)
   shiny::registerInputHandler("apex_datetime", function(data, ...) {
     if (is.null(data)) {
       NULL

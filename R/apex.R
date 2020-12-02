@@ -105,6 +105,8 @@ apex <- function(data, mapping, type = "column", ...,
   }
   ax$x$data <- data
   ax$x$mapping <- mapping
+  ax$x$type <- type
+  ax$x$serie_name <- serie_name
   class(ax) <- c(class(ax), "apex")
   return(ax)
 }
