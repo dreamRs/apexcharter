@@ -4,7 +4,14 @@
 \alias{ax_facet_wrap}
 \title{Facet wrap for ApexCharts}
 \usage{
-ax_facet_wrap(ax, vars, nrow = NULL, ncol = NULL, chart_height = "300px")
+ax_facet_wrap(
+  ax,
+  vars,
+  nrow = NULL,
+  ncol = NULL,
+  labeller = label_value,
+  chart_height = "300px"
+)
 }
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}

@@ -7,7 +7,10 @@ get_facets <- function(data, vars) {
     X = seq_along(facets),
     FUN = function(i) {
       facet <- facets[[i]]
-      attr(facet, "keys") <- strsplit(x = names(facets)[i], split = "|__|", fixed = TRUE)
+      attr(facet, "keys") <- strsplit(
+        x = names(facets)[i], 
+        split = "|__|", fixed = TRUE
+      )[[1]]
       facet
     }
   )
@@ -94,7 +97,7 @@ ax_facet_wrap <- function(ax,
                           vars, 
                           nrow = NULL,
                           ncol = NULL,
-                          labeller = ggplot2::label_value,
+                          labeller = label_value,
                           chart_height = "300px") {
   if (!inherits(ax, "apex"))
     stop("ax_facet_wrap only works with charts generated with apex()", call. = FALSE)
