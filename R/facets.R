@@ -17,9 +17,10 @@ get_facets <- function(data, vars) {
 }
 
 #' @importFrom rlang eval_tidy is_null is_function
-buil_facets <- function(chart, data, facets_args, mapping, type, serie_name) {
-  labeller <- facets_args$labeller
-  facets_data <- get_facets(data, facets_args$vars)
+build_facets <- function(chart) {
+  data <- chart$x$data
+  labeller <- chart$x$facet$labeller
+  facets_data <- get_facets(data, chart$x$facet$vars)
   lapply(
     X = seq_along(facets_data),
     FUN = function(i) {
@@ -30,10 +31,10 @@ buil_facets <- function(chart, data, facets_args, mapping, type, serie_name) {
         # browser()
         new <- ax_title(new, text = labeller(keys))
       }
-      mapdata <- lapply(mapping, eval_tidy, data = facet)
-      new$x$ax_opts$series <- make_series(mapdata, mapping, type, serie_name)
+      mapdata <- lapply(chart$x$mapping, eval_tidy, data = facet)
+      new$x$ax_opts$series <- make_series(mapdata, chart$x$mapping, chart$x$type, chart$x$serie_name)
       new$x$facet <- NULL
-      new$height <- facets_args$chart_height
+      new$height <- chart$x$facet$chart_height
       class(new) <- setdiff(class(new), "apex_facet")
       return(new)
     }
@@ -69,14 +70,7 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
 
 #' @export
 print.apex_facet <- function(x, ...) {
-  facets_charts <- buil_facets(
-    chart = x,
-    data = x$x$data, 
-    mapping = x$x$mapping,
-    type = x$x$type, 
-    serie_name = x$x$serie_name, 
-    facets_args = x$x$facet
-  )
+  facets_charts <- build_facets(x)
   TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
   print(htmltools::browsable(TAG))
 }
