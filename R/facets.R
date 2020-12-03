@@ -53,6 +53,7 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
     } 
   }
   htmltools::tags$div(
+    class = "apexcharter-facet-container",
     style = "display: grid;",
     style = sprintf("grid-template-columns: repeat(%s, 1fr);", ncol),
     style = sprintf("grid-template-rows: repeat(%s, 1fr);", nrow),
