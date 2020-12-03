@@ -36,6 +36,12 @@ NULL
 #' @rdname apexcharter-exports
 NULL
 
+#' @importFrom ggplot2 label_value
+#' @name label_value
+#' @export
+#' @rdname apexcharter-exports
+NULL
+
 #' @importFrom htmlwidgets JS
 #' @name JS
 #' @export
