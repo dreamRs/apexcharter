@@ -49,6 +49,7 @@ data("unhcr_ts")
 unhcr_ts %>% 
   subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
   apex(aes(as.Date(paste0(year, "-01-01")), n), type = "line") %>% 
+  ax_yaxis(tickAmount = 5) %>% 
   ax_facet_wrap(vars(continent_origin))
 
 

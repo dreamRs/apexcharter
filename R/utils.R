@@ -59,13 +59,13 @@ to_posix <- function(x) {
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- list(...)
   } else {
-    ax$x$ax_opts[[name]] <- utils::modifyList(
+    ax$x$ax_opts[[name]] <- modifyList(
       x = ax$x$ax_opts[[name]], 
       val = list(...), 
       keep.null = TRUE
     )
   }
-  
+  ax$x$ax_opts[[name]] <- dropNullsOrEmpty(ax$x$ax_opts[[name]])
   return(ax)
 }
 
@@ -77,19 +77,21 @@ to_posix <- function(x) {
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
+#' @importFrom utils modifyList
+#'
 #' @noRd
 .ax_opt2 <- function(ax, name, l) {
   
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- l
   } else {
-    ax$x$ax_opts[[name]] <- utils::modifyList(
+    ax$x$ax_opts[[name]] <- modifyList(
       x = ax$x$ax_opts[[name]], 
       val = l, 
       keep.null = TRUE
     )
   }
-  
+  ax$x$ax_opts[[name]] <- dropNullsOrEmpty(ax$x$ax_opts[[name]])
   return(ax)
 }
 

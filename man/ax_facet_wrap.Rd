@@ -9,6 +9,7 @@ ax_facet_wrap(
   vars,
   nrow = NULL,
   ncol = NULL,
+  scales = c("fixed", "free", "free_y", "free_x"),
   labeller = label_value,
   chart_height = "300px"
 )
