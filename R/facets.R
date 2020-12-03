@@ -33,8 +33,8 @@ build_facets <- function(chart) {
       }
       mapdata <- lapply(chart$x$mapping, eval_tidy, data = facet)
       new$x$ax_opts$series <- make_series(mapdata, chart$x$mapping, chart$x$type, chart$x$serie_name)
-      new$x$facet <- NULL
       new$height <- chart$x$facet$chart_height
+      new$x$facet <- NULL
       class(new) <- setdiff(class(new), "apex_facet")
       return(new)
     }
@@ -68,13 +68,6 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
 }
 
 
-#' @export
-print.apex_facet <- function(x, ...) {
-  facets_charts <- build_facets(x)
-  TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
-  print(htmltools::browsable(TAG))
-}
-
 
 #' Facet wrap for ApexCharts
 #'
@@ -105,4 +98,32 @@ ax_facet_wrap <- function(ax,
   class(ax) <- c("apex_facet", class(ax))
   return(ax)
 }
+
+
+
+
+
+
+
+
+
+# Print methods -----------------------------------------------------------
+
+#' @export
+print.apex_facet <- function(x, ...) {
+  facets_charts <- build_facets(x)
+  TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+  print(htmltools::browsable(TAG))
+}
+
+knit_print.apex_facet <- function(x, ..., options = NULL) {
+  facets_charts <- build_facets(x)
+  TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+  knitr::knit_print(htmltools::browsable(TAG), options = options, ...)
+}
+
+
+
+
+
 
