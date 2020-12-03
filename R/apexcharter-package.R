@@ -30,6 +30,12 @@ NULL
 #' @rdname apexcharter-exports
 NULL
 
+#' @importFrom ggplot2 vars
+#' @name vars
+#' @export
+#' @rdname apexcharter-exports
+NULL
+
 #' @importFrom htmlwidgets JS
 #' @name JS
 #' @export
