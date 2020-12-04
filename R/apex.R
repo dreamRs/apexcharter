@@ -255,7 +255,12 @@ multi_type <- function(x) {
 
 range_num <- function(x) {
   if (is.numeric(x) & length(x) > 0) {
-    range(pretty(x))
+    p <- pretty(x)
+    list(
+      values = p,
+      n = length(p) - 1,
+      range = range(p)
+    )
   } else {
     NULL
   }
@@ -342,17 +347,20 @@ config_scatter <- function(range_x, range_y, datetime = FALSE) {
     dataLabels = list(enabled = FALSE),
     xaxis = list(
       type = "numeric",
-      min = range_x[1], 
-      max = range_x[2],
+      min = range_x$range[1], 
+      max = range_x$range[2],
+      tickAmount = range_x$n,
+      # labels = list(formatter = format_num("~r")),
       crosshairs = list(
         show = TRUE,
         stroke = list(dashArray = 0)
       )
     ),
     yaxis = list(
-      min = range_y[1], 
-      max = range_y[2],
-      decimalsInFloat = 3,
+      min = range_y$range[1], 
+      max = range_y$range[2],
+      tickAmount = range_y$n,
+      labels = list(formatter = format_num("~r")),
       tooltip = list(
         enabled = TRUE
       )
