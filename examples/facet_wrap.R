@@ -10,7 +10,11 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 
 # Change number of columns
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
-  ax_facet_wrap(vars(drv), ncol = 1)
+  ax_facet_wrap(vars(drv), ncol = 2)
+
+# Free axis
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_facet_wrap(vars(drv), ncol = 2, scales = "free")
 
 # labels
 apex(mpg, aes(displ, cty), type = "scatter") %>% 

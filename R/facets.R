@@ -84,8 +84,20 @@ build_facets <- function(chart) {
   mapall <- lapply(chart$x$mapping, eval_tidy, data = data)
   labeller <- chart$x$facet$labeller
   facets_data <- get_facets(data, chart$x$facet$vars)
+  nums <- seq_along(facets_data)
+  dims <- get_grid_dims(nums, nrow = chart$x$facet$nrow, ncol = chart$x$facet$ncol)
+  grid <- matrix(
+    data = c(
+      nums,
+      rep(NA, times = (dims$nrow * dims$ncol) - length(nums))
+    ), 
+    nrow = dims$nrow, 
+    ncol = dims$ncol, 
+    byrow = TRUE
+  )
+  lrow <- get_last_row(grid)
   lapply(
-    X = seq_along(facets_data),
+    X = nums,
     FUN = function(i) {
       new <- chart
       facet <- facets_data[[i]]
@@ -98,6 +110,12 @@ build_facets <- function(chart) {
       new$x$ax_opts$series <- make_series(mapdata, chart$x$mapping, chart$x$type, chart$x$serie_name)
       new <- set_scale(new, mapall$x, scales = chart$x$facet$scales, axis = "x")
       new <- set_scale(new, mapall$y, scales = chart$x$facet$scales, axis = "y")
+      if (chart$x$facet$scales %in% c("fixed", "free_x")) {
+        new <- ax_yaxis(new, show = i %in% grid[, 1])
+      }
+      # if (chart$x$facet$scales %in% c("fixed", "free_y")) {
+      #   new <- ax_xaxis(new, labels = list(show = i %in% lrow), axisTicks = list(show = TRUE))
+      # }
       new$height <- chart$x$facet$chart_height
       new$x$facet <- NULL
       class(new) <- setdiff(class(new), "apex_facet")
@@ -106,7 +124,8 @@ build_facets <- function(chart) {
   )
 }
 
-build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "0px") {
+
+get_grid_dims <- function(content, nrow, ncol) {
   n <- length(content)
   if (is.null(nrow) & !is.null(ncol))
     nrow <- ceiling(n / ncol)
@@ -121,11 +140,23 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
       nrow <- ceiling(n / ncol)
     } 
   }
+  list(nrow = nrow, ncol = ncol)
+}
+
+get_last_row <- function(mat) {
+  apply(X = mat, MARGIN = 2, FUN = function(x) {
+    x <- x[!is.na(x)]
+    x[length(x)]
+  })
+}
+
+build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "10px") {
+  d <- get_grid_dims(content, nrow, ncol)
   htmltools::tags$div(
     class = "apexcharter-facet-container",
     style = "display: grid;",
-    style = sprintf("grid-template-columns: repeat(%s, 1fr);", ncol),
-    style = sprintf("grid-template-rows: repeat(%s, 1fr);", nrow),
+    style = sprintf("grid-template-columns: repeat(%s, 1fr);", d$ncol),
+    style = sprintf("grid-template-rows: repeat(%s, 1fr);", d$nrow),
     style = sprintf("grid-column-gap: %s;", col_gap),
     style = sprintf("grid-row-gap: %s;", row_gap),
     content
