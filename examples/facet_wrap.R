@@ -46,15 +46,28 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 
 
 
+
+
 # Lines ----
 
 data("unhcr_ts")
-
-unhcr_ts %>% 
+refugees <- unhcr_ts %>% 
   subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
-  apex(aes(as.Date(paste0(year, "-01-01")), n), type = "line") %>% 
+  transform(date = as.Date(paste0(year, "-01-01")))
+
+
+apex(refugees, aes(date, n), type = "line") %>% 
   ax_yaxis(tickAmount = 5) %>% 
   ax_facet_wrap(vars(continent_origin))
+  
 
+
+# Free y-axis and synchronize
+apex(refugees, aes(date, n), type = "line", synchronize = "my-id") %>% 
+  ax_yaxis(tickAmount = 5) %>% 
+  ax_xaxis(tooltip = list(enabled = FALSE)) %>% 
+  ax_tooltip(x = list(format = "yyyy")) %>% 
+  ax_facet_wrap(vars(continent_origin), scales = "free_y")
+  
 
 

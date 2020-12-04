@@ -6,7 +6,7 @@
 \usage{
 ax_facet_wrap(
   ax,
-  vars,
+  facets,
   nrow = NULL,
   ncol = NULL,
   scales = c("fixed", "free", "free_y", "free_x"),
@@ -17,7 +17,7 @@ ax_facet_wrap(
 \arguments{
 \item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
 
-\item{vars}{Variable(s) to use for facetting, wrapped in \code{vars(...)}.}
+\item{facets}{Variable(s) to use for facetting, wrapped in \code{vars(...)}.}
 
 \item{nrow, ncol}{Number of row and column in output matrix.}
 

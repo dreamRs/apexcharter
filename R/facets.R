@@ -83,7 +83,7 @@ build_facets <- function(chart) {
   data <- chart$x$data
   mapall <- lapply(chart$x$mapping, eval_tidy, data = data)
   labeller <- chart$x$facet$labeller
-  facets_data <- get_facets(data, chart$x$facet$vars)
+  facets_data <- get_facets(data, chart$x$facet$facets)
   nums <- seq_along(facets_data)
   dims <- get_grid_dims(nums, nrow = chart$x$facet$nrow, ncol = chart$x$facet$ncol)
   grid <- matrix(
@@ -168,16 +168,18 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
 #' Facet wrap for ApexCharts
 #'
 #' @param ax An \code{apexcharts} \code{htmlwidget} object.
-#' @param vars Variable(s) to use for facetting, wrapped in \code{vars(...)}.
+#' @param facets Variable(s) to use for facetting, wrapped in \code{vars(...)}.
 #' @param nrow,ncol Number of row and column in output matrix.
 #' @param chart_height Individual chart height.
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
+#' 
+#' @importFrom rlang quos syms
 #'
 #' @examples
 ax_facet_wrap <- function(ax, 
-                          vars, 
+                          facets, 
                           nrow = NULL,
                           ncol = NULL,
                           scales = c("fixed", "free", "free_y", "free_x"),
@@ -186,8 +188,10 @@ ax_facet_wrap <- function(ax,
   if (!inherits(ax, "apex"))
     stop("ax_facet_wrap only works with charts generated with apex()", call. = FALSE)
   scales <- match.arg(scales)
+  if (is.character(facets))
+    facets <- quos(!!!syms(facets))
   ax$x$facet <- list(
-    vars = vars,
+    facets = facets,
     nrow = nrow,
     ncol = ncol,
     scales = scales,
