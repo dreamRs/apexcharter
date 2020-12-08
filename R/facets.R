@@ -206,6 +206,52 @@ ax_facet_wrap <- function(ax,
 
 
 
+# Shiny -------------------------------------------------------------------
+
+#' @export
+apexfacetOutput <- function(outputId) {
+  htmltools::tagList(
+    shiny::uiOutput(outputId = outputId),
+    htmlwidgets::getDependency("apexcharter", "apexcharter")
+  )
+}
+
+#' @export
+#' 
+#' @importFrom shiny exprToFunction createRenderFunction createWebDependency
+#' @importFrom htmltools renderTags resolveDependencies
+renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
+  func <- exprToFunction(expr, env, quoted)
+  createRenderFunction(
+    func = func,
+    transform = function(result, shinysession, name, ...) {
+      if (is.null(result) || length(result) == 0)
+        return(NULL)
+      if (!inherits(result, "apex_facet")) {
+        stop(
+          "renderApexfacet: 'expr' must return an apexcharter facets.",
+          call. = FALSE
+        )
+      }
+      facets_charts <- build_facets(result)
+      TAG <- build_grid(
+        content = facets_charts,
+        nrow = result$x$facet$nrow,
+        ncol = result$x$facet$ncol
+      )
+      rendered <- renderTags(TAG)
+      deps <- lapply(
+        X = resolveDependencies(rendered$dependencies),
+        FUN = createWebDependency
+      )
+      list(
+        html = rendered$html,
+        deps = deps
+      )
+    }, apexfacetOutput, list()
+  )
+}
+
 
 
 
