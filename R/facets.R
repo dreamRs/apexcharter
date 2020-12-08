@@ -103,7 +103,6 @@ build_facets <- function(chart) {
       facet <- facets_data[[i]]
       if (!is_null(labeller) && is_function(labeller)) {
         keys <- attr(facet, "keys")
-        # browser()
         new <- ax_title(new, text = labeller(keys))
       }
       mapdata <- lapply(chart$x$mapping, eval_tidy, data = facet)
@@ -150,13 +149,14 @@ get_last_row <- function(mat) {
   })
 }
 
+#' @importFrom htmltools tags
 build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "10px") {
   d <- get_grid_dims(content, nrow, ncol)
-  htmltools::tags$div(
+  tags$div(
     class = "apexcharter-facet-container",
-    style = "display: grid;",
-    style = sprintf("grid-template-columns: repeat(%s, 1fr);", d$ncol),
-    style = sprintf("grid-template-rows: repeat(%s, 1fr);", d$nrow),
+    style = "display:-ms-grid; display: grid;",
+    style = sprintf("-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);", d$ncol),
+    style = sprintf("-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", d$nrow),
     style = sprintf("grid-column-gap: %s;", col_gap),
     style = sprintf("grid-row-gap: %s;", row_gap),
     content
@@ -170,6 +170,9 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
 #' @param ax An \code{apexcharts} \code{htmlwidget} object.
 #' @param facets Variable(s) to use for facetting, wrapped in \code{vars(...)}.
 #' @param nrow,ncol Number of row and column in output matrix.
+#' @param scales Should scales be fixed (\code{"fixed"}, the default),
+#'  free (\code{"free"}), or free in one dimension (\code{"free_x"}, \code{"free_y"})?
+#' @param labeller A function with one argument containing for each facet the value of the faceting variable.
 #' @param chart_height Individual chart height.
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
@@ -177,7 +180,7 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
 #' 
 #' @importFrom rlang quos syms
 #'
-#' @examples
+#' @example examples/facet_wrap.R
 ax_facet_wrap <- function(ax, 
                           facets, 
                           nrow = NULL,
@@ -208,15 +211,39 @@ ax_facet_wrap <- function(ax,
 
 # Shiny -------------------------------------------------------------------
 
+
+#' @title Shiny bindings for faceting with apexcharter
+#'
+#' @description Output and render functions for using apexcharter faceting within Shiny
+#' applications and interactive Rmd documents.
+#'
+#' @param outputId output variable to read from
+#'
+#' @return An Apexcharts output that can be included in the application UI.
 #' @export
+#' 
+#' @name apexcharter-shiny-facets
+#' 
+#' @importFrom htmltools tagList
+#' @importFrom shiny uiOutput
+#' @importFrom htmlwidgets getDependency
+#'
+#' @example examples/facet-shiny.R
 apexfacetOutput <- function(outputId) {
-  htmltools::tagList(
-    shiny::uiOutput(outputId = outputId),
-    htmlwidgets::getDependency("apexcharter", "apexcharter")
+  tagList(
+    uiOutput(outputId = outputId),
+    getDependency(name = "apexcharter", package = "apexcharter")
   )
 }
 
+#' @param expr An expression that generates a apexcharter
+#' @param env The environment in which to evaluate \code{expr}.
+#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#'   is useful if you want to save an expression in a variable.
+#' 
 #' @export
+#' 
+#' @rdname apexcharter-shiny-facets
 #' 
 #' @importFrom shiny exprToFunction createRenderFunction createWebDependency
 #' @importFrom htmltools renderTags resolveDependencies
@@ -229,7 +256,7 @@ renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
         return(NULL)
       if (!inherits(result, "apex_facet")) {
         stop(
-          "renderApexfacet: 'expr' must return an apexcharter facets.",
+          "renderApexfacet: 'expr' must return an apexcharter facet object.",
           call. = FALSE
         )
       }
