@@ -17,6 +17,8 @@ get_facets <- function(data, vars) {
 }
 
 set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"), axis = c("x", "y")) {
+  if (is.null(scales))
+    return(ax)
   scales <- match.arg(scales)
   axis <- match.arg(axis)
   if (is.null(values))
@@ -106,6 +108,12 @@ build_facets <- function(chart) {
         new <- ax_title(new, text = labeller(keys))
       }
       mapdata <- lapply(chart$x$mapping, eval_tidy, data = facet)
+      if (chart$x$facet$scales %in% c("fixed", "free_y") & chart$x$type %in% c("bar")) {
+        mapdata <- complete_mapdata(mapdata, mapall)
+      }
+      if (chart$x$facet$scales %in% c("fixed", "free_x") & chart$x$type %in% c("column")) {
+        mapdata <- complete_mapdata(mapdata, mapall)
+      }
       new$x$ax_opts$series <- make_series(mapdata, chart$x$mapping, chart$x$type, chart$x$serie_name)
       new <- set_scale(new, mapall$x, scales = chart$x$facet$scales, axis = "x")
       new <- set_scale(new, mapall$y, scales = chart$x$facet$scales, axis = "y")
@@ -115,6 +123,9 @@ build_facets <- function(chart) {
       # if (chart$x$facet$scales %in% c("fixed", "free_y")) {
       #   new <- ax_xaxis(new, labels = list(show = i %in% lrow), axisTicks = list(show = TRUE))
       # }
+      if (chart$x$facet$scales %in% c("fixed", "free_y") & chart$x$type %in% c("bar", "column")) {
+        new <- ax_xaxis(new, labels = list(show = i %in% lrow))
+      }
       new$height <- chart$x$facet$chart_height
       new$x$facet <- NULL
       class(new) <- setdiff(class(new), "apex_facet")
@@ -301,5 +312,36 @@ knit_print.apex_facet <- function(x, ..., options = NULL) {
 
 
 
+# Complete ----------------------------------------------------------------
+
+complete_mapdata <- function(mapdata, mapall) {
+  data <- as.data.frame(mapdata)
+  full_data <- data.frame(x = unique(mapall$x), stringsAsFactors = FALSE)
+  full_data <- merge(
+    x = full_data,
+    y = data,
+    by = "x",
+    all.x = TRUE,
+    sort = TRUE
+  )
+  full_data$y[is.na(full_data$y)] <- 0
+  return(as.list(full_data))
+}
+
+complete_data <- function(data, vars, fill_var, fill_value = 0) {
+  full_data <- expand.grid(lapply(
+    X = data[, vars], 
+    FUN = unique
+  ))
+  full_data <- merge(
+    x = full_data,
+    y = data,
+    by = vars,
+    all.x = TRUE,
+    sort = FALSE
+  )
+  full_data[[fill_var]][is.na(full_data[[fill_var]])] <- fill_value
+  return(full_data)
+}
 
 

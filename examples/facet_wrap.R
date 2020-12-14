@@ -71,3 +71,20 @@ apex(refugees, aes(date, n), type = "line", synchronize = "my-id") %>%
   
 
 
+
+# Bars ----
+
+data("unhcr_ts")
+refugees <- unhcr_ts %>% 
+  subset(year == 2017)
+
+apex(refugees, aes(continent_origin, n), type = "column") %>% 
+  ax_yaxis(
+    labels = list(
+      formatter = format_num("~s")
+    ),
+    tickAmount = 5
+  ) %>% 
+  ax_facet_wrap(vars(population_type), ncol = 2)
+
+
