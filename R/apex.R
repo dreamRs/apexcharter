@@ -141,7 +141,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
       mapdata$x[is.na(mapdata$x)] <- "NA"
     x_order <- unique(mapdata$x)
     if (is_x_datetime(mapdata)) {
-      add_names <- FALSE
+      add_names <- c("x", "y")
       x_order <- sort(x_order)
     } else {
       add_names <- names(mapping)

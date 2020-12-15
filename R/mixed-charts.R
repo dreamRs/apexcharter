@@ -31,8 +31,8 @@ add_line <- function(ax,
   } else {
     apex_type <- ax$x$mixed_type
   }
-  if (!isTRUE(apex_type %in% c("line", "bar", "scatter")))
-    stop("add_line: apex() must be a column or scatter chart.", call. = FALSE)
+  if (!isTRUE(apex_type %in% c("line", "bar", "scatter", "candlestick")))
+    stop("add_line: apex() must be a column, scatter or candlestick chart.", call. = FALSE)
   ax$x$ax_opts$chart$type <- "line"
   if (is.null(data))
     data <- ax$x$data
@@ -52,6 +52,13 @@ add_line <- function(ax,
   if (identical(apex_type, "bar")) {
     if (is.null(ax$x$ax_opts$stroke$width)) {
       ax$x$ax_opts$stroke$width <- c(0, 4)
+    } else {
+      ax$x$ax_opts$stroke$width <- c(ax$x$ax_opts$stroke$width, 4)
+    }
+  }
+  if (identical(apex_type, "candlestick")) {
+    if (is.null(ax$x$ax_opts$stroke$width)) {
+      ax$x$ax_opts$stroke$width <- c(1, 4)
     } else {
       ax$x$ax_opts$stroke$width <- c(ax$x$ax_opts$stroke$width, 4)
     }

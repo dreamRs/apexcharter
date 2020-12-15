@@ -35,7 +35,8 @@ parse_df <- function(data, add_names = FALSE) {
         # format(x)
         js_date(x)
       } else if (inherits(x, "POSIXt")) {
-        as.numeric(x) * 1000
+        # as.numeric(x) * 1000
+        js_date(x)
       } else if (inherits(x, "factor")) {
         as.character(x)
       } else {
@@ -112,6 +113,7 @@ parse_timeline_data <- function(.list) {
 
 parse_candlestick_data <- function(.list) {
   list(list(
+    type = "candlestick",
     data = lapply(
       X = seq_len(length(.list[[1]])),
       FUN = function(i) {
