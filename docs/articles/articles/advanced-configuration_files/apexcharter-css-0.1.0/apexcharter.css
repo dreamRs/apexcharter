@@ -6,3 +6,6 @@
   box-shadow: 0 1px 28px -12px #3B4252;
 }
 
+.apexcharter-facet-container > div {
+  min-width: 0;
+}

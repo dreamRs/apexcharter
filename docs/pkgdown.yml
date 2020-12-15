@@ -5,8 +5,9 @@ articles:
   apexcharter: apexcharter.html
   articles/advanced-configuration: advanced-configuration.html
   chart-options: chart-options.html
+  facets: facets.html
   shiny-integration: shiny-integration.html
   spark-box: spark-box.html
   sync-charts: sync-charts.html
-last_built: 2020-11-18T09:39Z
+last_built: 2020-12-15T10:11Z
 
