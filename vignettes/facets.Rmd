@@ -1,0 +1,69 @@
+---
+title: "Facets: grid of charts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{facets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(apexcharter)
+```
+
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+Create grid of charts with ApexCharts, currently it's possible to:
+
+- create grids according to one or more variables
+- define number of columns and rows
+- define type of scale for x-axis and y-axis (fixed or free)
+- synchronize charts within the grid
+
+Current limitations are :
+
+- need specific render and output function in Shiny (`apexfacetOutput()` and `renderApexfacet()`)
+- x-axis always appear for scatter and line charts
+- x-axis labels can differ between charts even with fixed scale depending on the width of the chart and the formatter applied to labels
+- when scale on an axis is fixed, the chart with the axis don't have the exact same size than the other since the axis take space in the plotting area
+
+
+## Facet wrap
+
+Create a grid of charts with `ax_facet_wrap()` :
+
+```{r}
+data("mpg", package = "ggplot2")
+apex(mpg, aes(displ, cty), type = "scatter") %>%
+  ax_facet_wrap(vars(drv), ncol = 2)
+```
+
+
+Synchronized line charts with free y-axis :
+
+```{r}
+data("unhcr_ts")
+refugees <- unhcr_ts %>% 
+  subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
+  transform(date = as.Date(paste0(year, "-01-01")))
+
+apex(refugees, aes(date, n), type = "line", synchronize = "sync-it") %>% 
+  ax_yaxis(tickAmount = 5, labels = list(formatter = format_num("~s"))) %>% 
+  ax_xaxis(tooltip = list(enabled = FALSE)) %>% 
+  ax_tooltip(x = list(format = "yyyy")) %>% 
+  ax_facet_wrap(vars(continent_origin), scales = "free_y")
+```
+
+
+
+
+

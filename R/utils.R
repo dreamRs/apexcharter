@@ -59,13 +59,13 @@ to_posix <- function(x) {
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- list(...)
   } else {
-    ax$x$ax_opts[[name]] <- utils::modifyList(
+    ax$x$ax_opts[[name]] <- modifyList(
       x = ax$x$ax_opts[[name]], 
       val = list(...), 
       keep.null = TRUE
     )
   }
-  
+  ax$x$ax_opts[[name]] <- dropNullsOrEmpty(ax$x$ax_opts[[name]])
   return(ax)
 }
 
@@ -77,19 +77,21 @@ to_posix <- function(x) {
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
+#' @importFrom utils modifyList
+#'
 #' @noRd
 .ax_opt2 <- function(ax, name, l) {
   
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- l
   } else {
-    ax$x$ax_opts[[name]] <- utils::modifyList(
+    ax$x$ax_opts[[name]] <- modifyList(
       x = ax$x$ax_opts[[name]], 
       val = l, 
       keep.null = TRUE
     )
   }
-  
+  ax$x$ax_opts[[name]] <- dropNullsOrEmpty(ax$x$ax_opts[[name]])
   return(ax)
 }
 
@@ -100,4 +102,29 @@ to_posix <- function(x) {
 
 
 
+# From vignette('knit_print', package = 'knitr')
+# and https://github.com/rstudio/htmltools/pull/108/files
 
+register_s3_method <- function(pkg, generic, class, fun = NULL) { # nocov start
+  stopifnot(is.character(pkg), length(pkg) == 1)
+  stopifnot(is.character(generic), length(generic) == 1)
+  stopifnot(is.character(class), length(class) == 1)
+  
+  if (is.null(fun)) {
+    fun <- get(paste0(generic, ".", class), envir = parent.frame())
+  } else {
+    stopifnot(is.function(fun))
+  }
+  
+  if (pkg %in% loadedNamespaces()) {
+    registerS3method(generic, class, fun, envir = asNamespace(pkg))
+  }
+  
+  # Always register hook in case package is later unloaded & reloaded
+  setHook(
+    packageEvent(pkg, "onLoad"),
+    function(...) {
+      registerS3method(generic, class, fun, envir = asNamespace(pkg))
+    }
+  )
+} # nocov end

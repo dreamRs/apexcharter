@@ -4,6 +4,8 @@
 \alias{apexcharter-exports}
 \alias{\%>\%}
 \alias{aes}
+\alias{vars}
+\alias{label_value}
 \alias{JS}
 \title{apexcharter exported operators and S3 methods}
 \description{
