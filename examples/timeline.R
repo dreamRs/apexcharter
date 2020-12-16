@@ -2,8 +2,13 @@ library(apexcharter)
 
 data("presidential", package = "ggplot2")
 
-# Basic
-apex(presidential, aes(x = name, start = start, end = end), "timeline")
+# Basic (with formated date in tooltip)
+apex(presidential, aes(x = name, start = start, end = end), "timeline") %>% 
+  ax_tooltip(
+    x = list(
+      format = "yyyy"
+    )
+  )
 
 # With groups
 apex(presidential, 

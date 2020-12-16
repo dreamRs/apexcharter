@@ -121,7 +121,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
       warning("'group' aesthetic in candlestick chart is not supported", call. = FALSE)
     mapdata$group <- NULL
     series <- parse_candlestick_data(mapdata)
-  } else if (identical(type, "rangeBar")) {
+  } else if (isTRUE(type %in% c("rangeBar", "timeline"))) {
     if (!all(c("x", "start", "end") %in% names(mapping)))
       stop("For timeline charts 'x', 'start', and 'end' aesthetics must be provided.", call. = FALSE)
     if (is.null(mapdata$group))
