@@ -44,11 +44,11 @@ test_that("parse_df works with Date/POSIXt", {
   )
   res <- parse_df(x, add_names = TRUE)
   
-  expect_is(res[[1]]$date, "JS_EVAL")
+  expect_is(res[[1]]$date, "numeric")
   expect_is(res[[1]]$datetime, "numeric")
   
   res <- parse_df(x, add_names = FALSE)
-  expect_is(res[[1]][[1]], "JS_EVAL")
+  expect_is(res[[1]][[1]], "numeric")
   expect_is(res[[1]][[2]], "numeric")
 })
 

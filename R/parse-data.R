@@ -31,12 +31,11 @@ parse_df <- function(data, add_names = FALSE) {
     X = data[],
     FUN = function(x) {
       if (inherits(x, "Date")) {
-        # as.numeric(x) * 86400000
-        # format(x)
-        js_date(x)
+        # js_date(x)
+        as.numeric(x) * 1000 * 60*60*24
       } else if (inherits(x, "POSIXt")) {
-        # as.numeric(x) * 1000
-        js_date(x)
+        # js_date(x)
+        as.numeric(x) * 1000
       } else if (inherits(x, "factor")) {
         as.character(x)
       } else {
@@ -119,7 +118,8 @@ parse_candlestick_data <- function(.list) {
       FUN = function(i) {
         val <- lapply(.list, `[[`, i)
         list(
-          x = js_date(val$x)[[1]],
+          # x = js_date(val$x)[[1]],
+          x = as.numeric(val$x) * 1000,
           y = c(val$open, val$high, val$low, val$close)
         )
       }

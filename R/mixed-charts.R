@@ -40,7 +40,7 @@ add_line <- function(ax,
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
   ax$x$ax_opts$series <- c(
     ax$x$ax_opts$series,
-    make_series(mapdata, mapping, type, serie_name)
+    make_series(mapdata, mapping, type, serie_name, force_datetime_names = c("x", "y"))
   )
   if (identical(apex_type, "scatter")) {
     if (is.null(ax$x$ax_opts$markers$size)) {
