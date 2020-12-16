@@ -113,7 +113,7 @@ apex <- function(data, mapping, type = "column", ...,
 
 
 # Construct series
-make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
+make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_datetime_names = FALSE) {
   if (identical(type, "candlestick")) {
     if (!all(c("x", "open", "high", "low", "close") %in% names(mapping)))
       stop("For candlestick charts 'x', 'open', 'high', 'low', and 'close' aesthetics must be provided.", call. = FALSE)
@@ -141,7 +141,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL) {
       mapdata$x[is.na(mapdata$x)] <- "NA"
     x_order <- unique(mapdata$x)
     if (is_x_datetime(mapdata)) {
-      add_names <- FALSE
+      add_names <- force_datetime_names
       x_order <- sort(x_order)
     } else {
       add_names <- names(mapping)
