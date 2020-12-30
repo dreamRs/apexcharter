@@ -1,6 +1,6 @@
 dependencies:
   - name: apexcharts
-    version: 3.23.0
+    version: 3.23.1
     src: htmlwidgets/lib/apexcharts-3.23
     script: apexcharts.min.js
   - name: apexcharter-css
