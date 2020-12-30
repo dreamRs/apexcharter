@@ -105,7 +105,8 @@ build_facets <- function(chart) {
       facet <- facets_data[[i]]
       if (!is_null(labeller) && is_function(labeller)) {
         keys <- attr(facet, "keys")
-        new <- ax_title(new, text = labeller(keys))
+        text <- labeller(keys)
+        new <- ax_title(new, text = text, margin = 0, floating = length(text) <= 1)
       }
       mapdata <- lapply(chart$x$mapping, eval_tidy, data = facet)
       if (chart$x$facet$scales %in% c("fixed", "free_y") & chart$x$type %in% c("bar")) {
@@ -125,6 +126,9 @@ build_facets <- function(chart) {
       # }
       if (chart$x$facet$scales %in% c("fixed", "free_y") & chart$x$type %in% c("bar", "column")) {
         new <- ax_xaxis(new, labels = list(show = i %in% lrow))
+      }
+      if (!is.null(new$x$colors_manual)) {
+        new <- ax_colors_manual(ax = new, values = new$x$colors_manual)
       }
       new$height <- chart$x$facet$chart_height
       new$x$facet <- NULL
@@ -161,7 +165,7 @@ get_last_row <- function(mat) {
 }
 
 #' @importFrom htmltools tags
-build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "10px") {
+build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "5px") {
   d <- get_grid_dims(content, nrow, ncol)
   tags$div(
     class = "apexcharter-facet-container",
@@ -174,6 +178,11 @@ build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_g
   )
 }
 
+
+
+apex_grid <- function(..., nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "10px") {
+  
+}
 
 
 #' Facet wrap for ApexCharts

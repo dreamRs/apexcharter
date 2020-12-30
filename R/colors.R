@@ -9,6 +9,10 @@
 #'
 #' @example examples/colors.R
 ax_colors_manual <- function(ax, values) {
+  if (!inherits(ax, "apexcharter"))
+    stop("ax_colors_manual: ax must be an apexcharter object", call. = FALSE)
+  ax$x$colors_manual <- values
+  ax$x$ax_opts$colors <- NULL
   groups <- get_groups(ax)
   values <- validate_values(values, groups)
   ax_colors(ax = ax, values$val)
