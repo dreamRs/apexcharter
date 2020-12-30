@@ -1,0 +1,139 @@
+
+get_grid_dims <- function(content, nrow, ncol) {
+  n <- length(content)
+  if (is.null(nrow) & !is.null(ncol))
+    nrow <- ceiling(n / ncol)
+  if (!is.null(nrow) & is.null(ncol))
+    ncol <- ceiling(n / nrow)
+  if (is.null(nrow) & is.null(ncol)) {
+    if (n %% 3 < 1) {
+      ncol <- 3
+      nrow <- ceiling(n / ncol)
+    } else {
+      ncol <- 2
+      nrow <- ceiling(n / ncol)
+    } 
+  }
+  list(nrow = nrow, ncol = ncol)
+}
+
+
+#' @importFrom htmltools tags
+build_grid <- function(content,
+                       nrow = NULL,
+                       ncol = NULL, 
+                       col_gap = "0px",
+                       row_gap = "5px",
+                       height = NULL,
+                       width = NULL) {
+  d <- get_grid_dims(content, nrow, ncol)
+  tags$div(
+    class = "apexcharter-grid-container",
+    style = if (!is.null(height)) paste0("height:", height, ";"),
+    style = if (!is.null(width)) paste0("width:", width, ";"),
+    style = "display:-ms-grid; display: grid;",
+    style = sprintf("-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);", d$ncol),
+    style = sprintf("-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", d$nrow),
+    style = sprintf("grid-column-gap: %s;", col_gap),
+    style = sprintf("grid-row-gap: %s;", row_gap),
+    content
+  )
+}
+
+
+
+#' Create a grid of ApexCharts
+#' 
+#' @param ... Several \code{apexcharts} \code{htmlwidget} objects. 
+#' @param nrow,ncol Number of rows and columns.
+#' @param row_gap,col_gap Gap between rows and columns.
+#' @param grid_area Custom grid area to make elements take more than a single
+#'  cell in grid, see \url{https://cssgrid-generator.netlify.app/} for examples.
+#' @param height,width Height and width of the main grid.
+#' @param .list A list of \code{apexcharts} \code{htmlwidget} objects. 
+#'
+#' @return Custom \code{apex_grid} object.
+#' 
+#' @note You have to provide either height for the grid or individual chart height to make it work.
+#' 
+#' @export
+#' 
+#' @importFrom htmltools tags
+#' 
+#' @example examples/apex_grid.R
+apex_grid <- function(..., 
+                      nrow = NULL,
+                      ncol = NULL, 
+                      row_gap = "10px",
+                      col_gap = "0px",
+                      grid_area = NULL,
+                      height = NULL,
+                      width = NULL,
+                      .list = NULL) {
+  content <- c(list(...), .list)
+  if (!is.null(grid_area)) {
+    stopifnot(length(grid_area) == length(content))
+    content <- lapply(
+      X = seq_along(content),
+      FUN = function(i) {
+        tags$div(
+          style = paste0("grid-area:", grid_area[i]),
+          content[i]
+        )
+      }
+    )
+  }
+  grid <- list(
+    content = content,
+    nrow = nrow,
+    ncol = ncol,
+    col_gap = col_gap,
+    row_gap = row_gap,
+    height = height,
+    width = width
+  )
+  class(grid) <- c("apex_grid", class(grid))
+  return(grid)
+}
+
+
+
+
+# Print methods -----------------------------------------------------------
+
+#' @export
+print.apex_grid <- function(x, ...) {
+  TAG <- build_grid(
+    x$content,
+    nrow = x$nrow,
+    ncol = x$ncol, 
+    col_gap = x$col_gap,
+    row_gap = x$row_gap,
+    height = x$height,
+    width = x$width
+  )
+  print(htmltools::browsable(TAG))
+}
+
+knit_print.apex_grid <- function(x, ..., options = NULL) {
+  TAG <- build_grid(
+    x$content,
+    nrow = x$nrow,
+    ncol = x$ncol, 
+    col_gap = x$col_gap,
+    row_gap = x$row_gap,
+    height = x$height,
+    width = x$width
+  )
+  knitr::knit_print(htmltools::browsable(TAG), options = options, ...)
+}
+
+
+
+
+
+
+
+
+
+

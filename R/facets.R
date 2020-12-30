@@ -139,24 +139,6 @@ build_facets <- function(chart) {
 }
 
 
-get_grid_dims <- function(content, nrow, ncol) {
-  n <- length(content)
-  if (is.null(nrow) & !is.null(ncol))
-    nrow <- ceiling(n / ncol)
-  if (!is.null(nrow) & is.null(ncol))
-    ncol <- ceiling(n / nrow)
-  if (is.null(nrow) & is.null(ncol)) {
-    if (n %% 3 < 1) {
-      ncol <- 3
-      nrow <- ceiling(n / ncol)
-    } else {
-      ncol <- 2
-      nrow <- ceiling(n / ncol)
-    } 
-  }
-  list(nrow = nrow, ncol = ncol)
-}
-
 get_last_row <- function(mat) {
   apply(X = mat, MARGIN = 2, FUN = function(x) {
     x <- x[!is.na(x)]
@@ -164,25 +146,6 @@ get_last_row <- function(mat) {
   })
 }
 
-#' @importFrom htmltools tags
-build_grid <- function(content, nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "5px") {
-  d <- get_grid_dims(content, nrow, ncol)
-  tags$div(
-    class = "apexcharter-facet-container",
-    style = "display:-ms-grid; display: grid;",
-    style = sprintf("-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);", d$ncol),
-    style = sprintf("-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", d$nrow),
-    style = sprintf("grid-column-gap: %s;", col_gap),
-    style = sprintf("grid-row-gap: %s;", row_gap),
-    content
-  )
-}
-
-
-
-apex_grid <- function(..., nrow = NULL, ncol = NULL, col_gap = "0px", row_gap = "10px") {
-  
-}
 
 
 #' Facet wrap for ApexCharts
