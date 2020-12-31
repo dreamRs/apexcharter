@@ -62,11 +62,16 @@ apex <- function(data, mapping, type = "column", ...,
   data <- as.data.frame(data)
   if (identical(type, "heatmap")) {
     mapping <- rename_aes_heatmap(mapping)
+  } else {
+    mapping <- rename_aes(mapping)
   }
   if (identical(type, "scatter") & is_sized(mapping)) {
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
+  if (is.null(mapdata$y) & !type %in% c("candlestick", "timeline", "heatmap")) {
+    mapdata <- compute_count(mapdata)
+  }
   if (type %in% c("pie", "donut", "radialBar", "polarArea")) {
     opts <- list(
       chart = list(type = correct_type(type)),
@@ -144,7 +149,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
       add_names <- force_datetime_names
       x_order <- sort(x_order)
     } else {
-      add_names <- names(mapping)
+      add_names <- names(mapdata)
     }
     if (is.null(serie_name) & !is.null(mapping$y))
       serie_name <- rlang::as_label(mapping$y)
@@ -267,6 +272,27 @@ range_num <- function(x) {
 }
 
 
+compute_count <- function(mapdata) {
+  if (!is_grouped(mapdata)) {
+    x <- mapdata$x
+    weight <- mapdata$weight %||% rep(1, length(x))
+    count <- tapply(weight, x, sum, na.rm = TRUE, simplify = FALSE)
+    mapdata$x <- names(count)
+    mapdata$y <- as.numeric(count)
+  } else {
+    weight <- mapdata$weight %||% rep(1, length(mapdata$x))
+    count <- tapply(weight, mapdata[c("x", "group")], sum, na.rm = TRUE, simplify = FALSE)
+    mapdata$x <- rep(rownames(count), ncol(count))
+    mapdata$y <- unlist(count, use.names = FALSE)
+    mapdata$group <- rep(colnames(count), each = nrow(count))
+  }
+  mapdata$y[is.na(mapdata$y)] <- 0
+  return(mapdata)
+}
+
+
+
+# Configs ----
 
 
 # Switch between auto configs according to type & mapping
