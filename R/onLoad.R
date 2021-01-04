@@ -36,4 +36,5 @@
     }
   }, force = TRUE)
   register_s3_method("knitr", "knit_print", "apex_facet")
+  register_s3_method("knitr", "knit_print", "apex_grid")
 }

@@ -98,6 +98,82 @@ apex_grid <- function(...,
 
 
 
+# Shiny -------------------------------------------------------------------
+
+
+#' @title Shiny bindings for grid with apexcharter
+#'
+#' @description Output and render functions for using apexcharter grid within Shiny
+#' applications and interactive Rmd documents.
+#'
+#' @param outputId output variable to read from
+#'
+#' @return An Apexcharts output that can be included in the application UI.
+#' @export
+#' 
+#' @name apexcharter-shiny-grid
+#' 
+#' @importFrom htmltools tagList
+#' @importFrom shiny uiOutput
+#' @importFrom htmlwidgets getDependency
+#'
+#' @example examples/grid-shiny.R
+apexgridOutput <- function(outputId) {
+  tagList(
+    uiOutput(outputId = outputId),
+    getDependency(name = "apexcharter", package = "apexcharter")
+  )
+}
+
+#' @param expr An expression that generates a apexcharter grid.
+#' @param env The environment in which to evaluate \code{expr}.
+#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#'   is useful if you want to save an expression in a variable.
+#' 
+#' @export
+#' 
+#' @rdname apexcharter-shiny-grid
+#' 
+#' @importFrom shiny exprToFunction createRenderFunction createWebDependency
+#' @importFrom htmltools renderTags resolveDependencies
+renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) {
+  func <- exprToFunction(expr, env, quoted)
+  createRenderFunction(
+    func = func,
+    transform = function(result, shinysession, name, ...) {
+      if (is.null(result) || length(result) == 0)
+        return(NULL)
+      if (!inherits(result, "apex_grid")) {
+        stop(
+          "renderApexgrid: 'expr' must return an apexcharter grid object.",
+          call. = FALSE
+        )
+      }
+      TAG <- build_grid(
+        result$content,
+        nrow = result$nrow,
+        ncol = result$ncol, 
+        col_gap = result$col_gap,
+        row_gap = result$row_gap,
+        height = result$height,
+        width = result$width
+      )
+      rendered <- renderTags(TAG)
+      deps <- lapply(
+        X = resolveDependencies(rendered$dependencies),
+        FUN = createWebDependency
+      )
+      list(
+        html = rendered$html,
+        deps = deps
+      )
+    }, apexgridOutput, list()
+  )
+}
+
+
+
+
 
 # Print methods -----------------------------------------------------------
 

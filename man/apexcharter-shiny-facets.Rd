@@ -13,7 +13,7 @@ renderApexfacet(expr, env = parent.frame(), quoted = FALSE)
 \arguments{
 \item{outputId}{output variable to read from}
 
-\item{expr}{An expression that generates a apexcharter}
+\item{expr}{An expression that generates a apexcharter facet.}
 
 \item{env}{The environment in which to evaluate \code{expr}.}
 
@@ -30,7 +30,6 @@ applications and interactive Rmd documents.
 \examples{
 
 library(shiny)
-library(htmltools)
 library(apexcharter)
 
 data("unhcr_ts")

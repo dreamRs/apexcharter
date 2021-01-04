@@ -2,21 +2,15 @@ library(apexcharter)
 data("mpg", package = "ggplot2")
 
 # Two chart side-by-side 
-a1 <- mpg %>% 
-  dplyr::count(manufacturer) %>%
-  apex(aes(manufacturer, n), type = "bar")
+a1 <- apex(mpg, aes(manufacturer), type = "bar")
 
-a2 <- mpg %>% 
-  dplyr::count(trans) %>%
-  apex(aes(trans, n), type = "column")
+a2 <- apex(mpg, aes(trans), type = "column")
 
 apex_grid(a1, a2, height = "400px")
 
 
 # More complex layout:
-a3 <- mpg %>% 
-  dplyr::count(drv) %>%
-  apex(aes(drv, n), type = "pie")
+a3 <- apex(mpg, aes(drv), type = "pie")
 
 apex_grid(
   a1, a2, a3, 

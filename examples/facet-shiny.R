@@ -1,6 +1,5 @@
 
 library(shiny)
-library(htmltools)
 library(apexcharter)
 
 data("unhcr_ts")

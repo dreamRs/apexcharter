@@ -65,5 +65,28 @@ apex(refugees, aes(date, n), type = "line", synchronize = "sync-it") %>%
 
 
 
+## Grid
+
+You can construct a grid of (unrelated) charts with `apex_grid()`, construct your charts independently then assemble them in the grid:
+
+```{r}
+a1 <- apex(mpg, aes(manufacturer), type = "bar")
+a2 <- apex(mpg, aes(trans), type = "column")
+a3 <- apex(mpg, aes(drv), type = "pie")
+
+apex_grid(
+  a1, a2, a3, 
+  grid_area = c("1 / 1 / 3 / 2", "1 / 2 / 2 / 4", "2 / 2 / 3 / 4"),
+  ncol = 3, 
+  nrow = 2,
+  height = "600px"
+)
+```
+
+
+`grid_area` argument allow to specify space occupied by each chart, you can generate interactively your grid template [here](https://cssgrid-generator.netlify.app/).
+
+
+
 
 
