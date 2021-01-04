@@ -37,6 +37,9 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
   ax_facet_wrap(vars(year, drv))
 
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_facet_wrap(vars(year, drv), ncol = 2, nrow = 3)
+
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
   ax_chart(toolbar = list(show = FALSE)) %>% 
   ax_facet_wrap(
     vars(year, drv),
