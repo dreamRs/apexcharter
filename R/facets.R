@@ -59,44 +59,29 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
       x <- format_date(x)
     x
   }
-  
-  fun_axis <- switch(
+
+  waxis <- switch(
     axis,
-    "x" = ax_xaxis,
-    "y" = ax_yaxis
+    "x" = "xaxis",
+    "y" = "yaxis"
   )
   
   if (scales == "fixed") {
-    ax <- fun_axis(
-      ax = ax,
-      min = fmt(range_vals[1]), 
-      max = fmt(range_vals[2])
-    )
+    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
   } else if (scales == "free") {
-    ax <- fun_axis(
-      ax = ax,
-      min = character(0), 
-      max = character(0)
-    )
+    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
+    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
   } else {
-    ax <- fun_axis(
-      ax = ax,
-      min = fmt(range_vals[1]), 
-      max = fmt(range_vals[2])
-    )
+    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
     if (scales == "free_x" & axis == "x") {
-      ax <- fun_axis(
-        ax = ax,
-        min = character(0), 
-        max = character(0)
-      )
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
     }
     if (scales == "free_y" & axis == "y") {
-      ax <- fun_axis(
-        ax = ax,
-        min = character(0), 
-        max = character(0)
-      )
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
     }
   }
   
