@@ -49,9 +49,9 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   output$myfacet <- renderApexfacet({
-    apex(refugees, aes(date, n), type = "line") \%>\% 
+    apex(refugees, aes(date, n), type = "column") \%>\% 
       ax_yaxis(tickAmount = 5) \%>\% 
-      ax_facet_wrap(vars(continent_origin))
+      ax_facet_wrap(vars(continent_origin), scales = "free")
   })
   
 }

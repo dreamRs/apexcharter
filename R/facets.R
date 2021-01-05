@@ -70,18 +70,23 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
     ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
     ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
   } else if (scales == "free") {
-    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
-    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
-  } else {
-    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
-    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
-    if (scales == "free_x" & axis == "x") {
-      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
-      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
+    ax$x$ax_opts[[waxis]]$min <- NULL
+    ax$x$ax_opts[[waxis]]$max <- NULL
+  } else if (scales == "free_x") {
+    if (axis == "y") {
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+    } else {
+      ax$x$ax_opts[[waxis]]$min <- NULL
+      ax$x$ax_opts[[waxis]]$max <- NULL
     }
-    if (scales == "free_y" & axis == "y") {
-      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% character(0)
-      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% character(0)
+  } else if (scales == "free_y") {
+    if (axis == "x") {
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+    } else {
+      ax$x$ax_opts[[waxis]]$min <- NULL
+      ax$x$ax_opts[[waxis]]$max <- NULL
     }
   }
   
@@ -220,6 +225,8 @@ ax_facet_wrap <- function(ax,
 #' @export
 #' 
 #' @rdname apex-facets
+#' 
+#' @example examples/facet_grid.R
 ax_facet_grid <- function(ax, 
                           rows = NULL,
                           cols = NULL,
@@ -275,8 +282,8 @@ build_facet_tag <- function(x) {
       content <- tagList(
         lapply(
           X = facets$label_col, 
-          FUN = function(x) {
-            tags$div(x$x$facet$labeller(x), class = "apexcharter-facet-col-label")
+          FUN = function(label_col) {
+            tags$div(x$x$facet$labeller(label_col), class = "apexcharter-facet-col-label")
           }
         ),
         if (!is.null(facets$nrow)) tags$div(),

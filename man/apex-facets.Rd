@@ -48,6 +48,7 @@ An \code{apexcharts} \code{htmlwidget} object.
 Facet wrap for ApexCharts
 }
 \examples{
+### Wrap --------
 library(apexcharter)
 
 # Scatter ----
@@ -100,8 +101,6 @@ apex(mpg, aes(displ, cty), type = "scatter") \%>\%
 
 
 
-
-
 # Lines ----
 
 data("unhcr_ts")
@@ -125,7 +124,6 @@ apex(refugees, aes(date, n), type = "line", synchronize = "my-id") \%>\%
   
 
 
-
 # Bars ----
 
 data("unhcr_ts")
@@ -141,5 +139,45 @@ apex(refugees, aes(continent_origin, n), type = "column") \%>\%
   ) \%>\% 
   ax_facet_wrap(vars(population_type), ncol = 2)
 
+
+
+
+### Grid --------
+library(apexcharter)
+
+# Scatter ----
+
+data("mpg", package = "ggplot2")
+
+# Only rows
+apex(mpg, aes(displ, cty), type = "scatter") \%>\% 
+  ax_facet_grid(rows = vars(drv), chart_height = "200px")
+
+# Only cols
+apex(mpg, aes(displ, cty), type = "scatter") \%>\% 
+  ax_facet_grid(cols = vars(year))
+
+# Rows and Cols
+apex(mpg, aes(displ, cty), type = "scatter") \%>\% 
+  ax_facet_grid(rows = vars(drv), cols = vars(year))
+
+apex(mpg, aes(displ, cty), type = "scatter") \%>\% 
+  ax_chart(toolbar = list(show = FALSE)) \%>\% 
+  ax_facet_grid(vars(drv), vars(cyl))
+
+
+# Labels
+apex(mpg, aes(displ, cty), type = "scatter") \%>\% 
+  ax_facet_grid(
+    vars(drv),
+    labeller = function(x) {
+      switch(
+        x,
+        "f" = "front-wheel drive", 
+        "r" = "rear wheel drive",
+        "4" = "4wd"
+      )
+    }
+  )
 
 }

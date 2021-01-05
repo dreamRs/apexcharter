@@ -1,5 +1,5 @@
 
-get_grid_dims <- function(content, nrow, ncol) {
+get_grid_dims <- function(content, nrow = NULL, ncol = NULL) {
   n <- length(content)
   if (is.null(nrow) & !is.null(ncol))
     nrow <- ceiling(n / ncol)

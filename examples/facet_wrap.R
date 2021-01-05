@@ -1,3 +1,4 @@
+### Wrap --------
 library(apexcharter)
 
 # Scatter ----
@@ -50,8 +51,6 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 
 
 
-
-
 # Lines ----
 
 data("unhcr_ts")
@@ -73,7 +72,6 @@ apex(refugees, aes(date, n), type = "line", synchronize = "my-id") %>%
   ax_tooltip(x = list(format = "yyyy")) %>% 
   ax_facet_wrap(vars(continent_origin), scales = "free_y")
   
-
 
 
 # Bars ----
