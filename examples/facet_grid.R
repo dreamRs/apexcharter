@@ -18,3 +18,19 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
   ax_facet_grid(vars(drv), vars(cyl))
+
+
+# Labels
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_facet_grid(
+    vars(drv),
+    labeller = function(x) {
+      switch(
+        x,
+        "f" = "front-wheel drive", 
+        "r" = "rear wheel drive",
+        "4" = "4wd"
+      )
+    }
+  )
+

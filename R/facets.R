@@ -263,14 +263,22 @@ build_facet_tag <- function(x) {
       for (i in seq_along(facets$label_row)) {
         content <- append(
           x = content, 
-          values = tagList(tags$div(class = "apexcharter-facet-row-label", facets$label_row[i])),
+          values = tagList(tags$div(
+            class = "apexcharter-facet-row-label", 
+            x$x$facet$labeller(facets$label_row[i])
+          )),
           after = ((facets$ncol %||% 1 + 1) * i) - 1
         )
       }
     }
     if (!is.null(facets$ncol)) {
       content <- tagList(
-        lapply(facets$label_col, FUN = tags$div, class = "apexcharter-facet-col-label"),
+        lapply(
+          X = facets$label_col, 
+          FUN = function(x) {
+            tags$div(x$x$facet$labeller(x), class = "apexcharter-facet-col-label")
+          }
+        ),
         if (!is.null(facets$nrow)) tags$div(),
         content
       )
