@@ -30,20 +30,38 @@ apex(
   mapping = aes(x = date, y = pce),
   type = "line", 
   synchronize = "economics"
-)
+) %>% 
+  ax_yaxis(
+    decimalsInFloat = 0,
+    labels = list(
+      formatter = format_num("~s"),
+      minWidth = 40
+    )
+  ) %>%
+  ax_tooltip(x = list(format = "yyyy"))
 
 apex(
   data = tail(economics, 150), 
   mapping = aes(x = date, y = psavert),
   type = "line", 
   synchronize = "economics"
-)
+) %>% 
+  ax_yaxis(
+    decimalsInFloat = 0,
+    labels = list(
+      formatter = format_num("~s"),
+      minWidth = 40
+    )
+  ) %>%
+  ax_tooltip(x = list(format = "yyyy"))
 ```
 
 
 ```{r run-example-1, echo=FALSE, ref.label="example-1"}
 
 ```
+
+Note that you have to set a common `minWidth` for y axis labels. Different width yaxis in different charts will produce incorrect results when hovering or interacting.
 
 
 For an example in Shiny, you can run:
