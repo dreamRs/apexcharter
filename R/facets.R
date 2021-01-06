@@ -1,9 +1,11 @@
 
 #' @importFrom rlang eval_tidy
-get_facets <- function(data, vars) {
-  byvars <- lapply(X = vars, FUN = eval_tidy, data = data)
-  facets <- split(x = data, f = byvars, sep = "|__|")
-  lapply(
+get_facets <- function(data, rows, cols, type = c("wrap", "grid")) {
+  type <- match.arg(type)
+  byrows <- lapply(X = rows, FUN = eval_tidy, data = data)
+  bycols <- lapply(X = cols, FUN = eval_tidy, data = data)
+  facets <- split(x = data, f = c(bycols, byrows), sep = "|__|")
+  facets <- lapply(
     X = seq_along(facets),
     FUN = function(i) {
       facet <- facets[[i]]
@@ -14,7 +16,28 @@ get_facets <- function(data, vars) {
       facet
     }
   )
+  label_row <- lapply(byrows, unique)
+  label_row <- lapply(label_row, sort)
+  label_row <- apply(expand.grid(label_row), 1, paste, collapse = "*")
+  label_col <- lapply(bycols, unique)
+  label_col <- lapply(label_col, sort)
+  label_col <- apply(expand.grid(label_col), 1, paste, collapse = "*")
+  list(
+    facets = facets,
+    nrow = if (identical(type, "grid")) n_facet(byrows) else NULL,
+    ncol = if (identical(type, "grid")) n_facet(bycols) else NULL,
+    label_row = label_row,
+    label_col = label_col
+  )
 }
+
+n_facet <- function(l) {
+  l <- lapply(l, function(x) {
+    length(unique(x))
+  })
+  Reduce(`*`, l)
+}
+
 
 set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"), axis = c("x", "y")) {
   if (is.null(scales))
@@ -24,7 +47,7 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
   if (is.null(values))
     return(ax)
   if (inherits(values, c("numeric", "integer", "Date", "POSIXt"))) {
-    range_vals <- range(pretty(values), na.rm = TRUE)
+    range_vals <- range(pretty(values, n = 10), na.rm = TRUE)
   } else {
     range_vals <- NULL
   }
@@ -36,44 +59,34 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
       x <- format_date(x)
     x
   }
-  
-  fun_axis <- switch(
+
+  waxis <- switch(
     axis,
-    "x" = ax_xaxis,
-    "y" = ax_yaxis
+    "x" = "xaxis",
+    "y" = "yaxis"
   )
   
   if (scales == "fixed") {
-    ax <- fun_axis(
-      ax = ax,
-      min = fmt(range_vals[1]), 
-      max = fmt(range_vals[2])
-    )
+    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
   } else if (scales == "free") {
-    ax <- fun_axis(
-      ax = ax,
-      min = character(0), 
-      max = character(0)
-    )
-  } else {
-    ax <- fun_axis(
-      ax = ax,
-      min = fmt(range_vals[1]), 
-      max = fmt(range_vals[2])
-    )
-    if (scales == "free_x" & axis == "x") {
-      ax <- fun_axis(
-        ax = ax,
-        min = character(0), 
-        max = character(0)
-      )
+    ax$x$ax_opts[[waxis]]$min <- NULL
+    ax$x$ax_opts[[waxis]]$max <- NULL
+  } else if (scales == "free_x") {
+    if (axis == "y") {
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+    } else {
+      ax$x$ax_opts[[waxis]]$min <- NULL
+      ax$x$ax_opts[[waxis]]$max <- NULL
     }
-    if (scales == "free_y" & axis == "y") {
-      ax <- fun_axis(
-        ax = ax,
-        min = character(0), 
-        max = character(0)
-      )
+  } else if (scales == "free_y") {
+    if (axis == "x") {
+      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
+      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+    } else {
+      ax$x$ax_opts[[waxis]]$min <- NULL
+      ax$x$ax_opts[[waxis]]$max <- NULL
     }
   }
   
@@ -85,9 +98,17 @@ build_facets <- function(chart) {
   data <- chart$x$data
   mapall <- lapply(chart$x$mapping, eval_tidy, data = data)
   labeller <- chart$x$facet$labeller
-  facets_data <- get_facets(data, chart$x$facet$facets)
+  facets_list <- get_facets(
+    data = data, 
+    rows = chart$x$facet$facets_row, 
+    cols = chart$x$facet$facets_col,
+    type = chart$x$facet$type
+  )
+  facets_data <- facets_list$facets
+  nrow_ <- facets_list$nrow %||% chart$x$facet$nrow
+  ncol_ <- facets_list$ncol %||% chart$x$facet$ncol
   nums <- seq_along(facets_data)
-  dims <- get_grid_dims(nums, nrow = chart$x$facet$nrow, ncol = chart$x$facet$ncol)
+  dims <- get_grid_dims(nums, nrow = nrow_, ncol = ncol_)
   grid <- matrix(
     data = c(
       nums,
@@ -98,12 +119,12 @@ build_facets <- function(chart) {
     byrow = TRUE
   )
   lrow <- get_last_row(grid)
-  lapply(
+  facets <- lapply(
     X = nums,
     FUN = function(i) {
       new <- chart
       facet <- facets_data[[i]]
-      if (!is_null(labeller) && is_function(labeller)) {
+      if (identical(chart$x$facet$type, "wrap") && !is_null(labeller) && is_function(labeller)) {
         keys <- attr(facet, "keys")
         text <- labeller(keys)
         new <- ax_title(new, text = text, margin = 0, floating = length(text) <= 1)
@@ -136,6 +157,14 @@ build_facets <- function(chart) {
       return(new)
     }
   )
+  list(
+    facets = facets,
+    type = chart$x$facet$type,
+    nrow = facets_list$nrow, 
+    ncol = facets_list$ncol,
+    label_row = facets_list$label_row,
+    label_col = facets_list$label_col
+  )
 }
 
 
@@ -161,6 +190,8 @@ get_last_row <- function(mat) {
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
+#' @name apex-facets
+#' 
 #' @importFrom rlang quos syms
 #'
 #' @example examples/facet_wrap.R
@@ -177,15 +208,100 @@ ax_facet_wrap <- function(ax,
   if (is.character(facets))
     facets <- quos(!!!syms(facets))
   ax$x$facet <- list(
-    facets = facets,
+    facets_row = facets,
     nrow = nrow,
     ncol = ncol,
     scales = scales,
     labeller = labeller,
-    chart_height = chart_height
+    chart_height = chart_height,
+    type = "wrap"
   )
   class(ax) <- c("apex_facet", class(ax))
   return(ax)
+}
+
+
+#' @param rows,cols A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension. 
+#' @export
+#' 
+#' @rdname apex-facets
+#' 
+#' @example examples/facet_grid.R
+ax_facet_grid <- function(ax, 
+                          rows = NULL,
+                          cols = NULL,
+                          scales = c("fixed", "free", "free_y", "free_x"),
+                          labeller = label_value,
+                          chart_height = "300px") {
+  if (!inherits(ax, "apex"))
+    stop("ax_facet_wrap only works with charts generated with apex()", call. = FALSE)
+  scales <- match.arg(scales)
+  if (!is.null(rows) && is.character(rows))
+    rows <- quos(!!!syms(rows))
+  if (!is.null(cols) && is.character(cols))
+    cols <- quos(!!!syms(cols))
+  ax$x$facet <- list(
+    facets_row = rows,
+    facets_col = cols,
+    nrow = NULL,
+    ncol = NULL,
+    scales = scales,
+    labeller = labeller,
+    chart_height = chart_height,
+    type = "grid"
+  )
+  class(ax) <- c("apex_facet", class(ax))
+  return(ax)
+}
+
+
+
+
+
+# Tag ---------------------------------------------------------------------
+
+build_facet_tag <- function(x) {
+  facets <- build_facets(x)
+  if (identical(facets$type, "wrap")) {
+    TAG <- build_grid(facets$facets, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+  } else if (identical(facets$type, "grid")) {
+    content <- facets$facets
+    if (!is.null(facets$nrow)) {
+      for (i in seq_along(facets$label_row)) {
+        content <- append(
+          x = content, 
+          values = tagList(tags$div(
+            class = "apexcharter-facet-row-label", 
+            x$x$facet$labeller(facets$label_row[i])
+          )),
+          after = ((facets$ncol %||% 1 + 1) * i) - 1
+        )
+      }
+    }
+    if (!is.null(facets$ncol)) {
+      content <- tagList(
+        lapply(
+          X = facets$label_col, 
+          FUN = function(label_col) {
+            tags$div(x$x$facet$labeller(label_col), class = "apexcharter-facet-col-label")
+          }
+        ),
+        if (!is.null(facets$nrow)) tags$div(),
+        content
+      )
+    }
+    TAG <- build_grid(
+      content, 
+      nrow = facets$nrow %||% 1, 
+      ncol = facets$ncol %||% 1,
+      row_label = if (!is.null(facets$ncol)) "30px" else NULL,
+      col_label = if (!is.null(facets$nrow)) "30px" else NULL,
+      row_gap = "3px", 
+      col_gap = "3px"
+    )
+  } else {
+    stop("Facetting must be wrap or grid", call. = FALSE)
+  }
 }
 
 
@@ -243,12 +359,7 @@ renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
           call. = FALSE
         )
       }
-      facets_charts <- build_facets(result)
-      TAG <- build_grid(
-        content = facets_charts,
-        nrow = result$x$facet$nrow,
-        ncol = result$x$facet$ncol
-      )
+      TAG <- build_facet_tag(result)
       rendered <- renderTags(TAG)
       deps <- lapply(
         X = resolveDependencies(rendered$dependencies),
@@ -270,14 +381,12 @@ renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
 
 #' @export
 print.apex_facet <- function(x, ...) {
-  facets_charts <- build_facets(x)
-  TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+  TAG <- build_facet_tag(x)
   print(htmltools::browsable(TAG))
 }
 
 knit_print.apex_facet <- function(x, ..., options = NULL) {
-  facets_charts <- build_facets(x)
-  TAG <- build_grid(facets_charts, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+  TAG <- build_facet_tag(x)
   knitr::knit_print(htmltools::browsable(TAG), options = options, ...)
 }
 

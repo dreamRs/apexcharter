@@ -1,3 +1,4 @@
+### Wrap --------
 library(apexcharter)
 
 # Scatter ----
@@ -37,6 +38,9 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
   ax_facet_wrap(vars(year, drv))
 
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_facet_wrap(vars(year, drv), ncol = 2, nrow = 3)
+
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
   ax_chart(toolbar = list(show = FALSE)) %>% 
   ax_facet_wrap(
     vars(year, drv),
@@ -44,8 +48,6 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
       paste(x, collapse = " / ")
     }
   )
-
-
 
 
 
@@ -70,7 +72,6 @@ apex(refugees, aes(date, n), type = "line", synchronize = "my-id") %>%
   ax_tooltip(x = list(format = "yyyy")) %>% 
   ax_facet_wrap(vars(continent_origin), scales = "free_y")
   
-
 
 
 # Bars ----

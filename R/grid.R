@@ -1,5 +1,5 @@
 
-get_grid_dims <- function(content, nrow, ncol) {
+get_grid_dims <- function(content, nrow = NULL, ncol = NULL) {
   n <- length(content)
   if (is.null(nrow) & !is.null(ncol))
     nrow <- ceiling(n / ncol)
@@ -21,19 +21,43 @@ get_grid_dims <- function(content, nrow, ncol) {
 #' @importFrom htmltools tags
 build_grid <- function(content,
                        nrow = NULL,
-                       ncol = NULL, 
+                       ncol = NULL,
+                       row_gap = "5px", 
                        col_gap = "0px",
-                       row_gap = "5px",
+                       row_label = NULL,
+                       col_label = NULL,
                        height = NULL,
                        width = NULL) {
   d <- get_grid_dims(content, nrow, ncol)
+  if (is.null(col_label)) {
+    col_style <- sprintf(
+      "-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);",
+      d$ncol
+    )
+  } else {
+    col_style <- sprintf(
+      "-ms-grid-columns: repeat(%1$s, 1fr) %2$s; grid-template-columns: repeat(%1$s, 1fr) %2$s;", 
+      d$ncol, col_label
+    )
+  }
+  if (is.null(row_label)) {
+    row_style <- sprintf(
+      "-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", 
+      d$nrow
+    )
+  } else {
+    row_style <- sprintf(
+      "-ms-grid-rows: %2$s repeat(%1$s, 1fr); grid-template-rows: %2$s repeat(%1$s, 1fr);", 
+      d$nrow, row_label
+    )
+  }
   tags$div(
     class = "apexcharter-grid-container",
     style = if (!is.null(height)) paste0("height:", height, ";"),
     style = if (!is.null(width)) paste0("width:", width, ";"),
     style = "display:-ms-grid; display: grid;",
-    style = sprintf("-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);", d$ncol),
-    style = sprintf("-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", d$nrow),
+    style = col_style,
+    style = row_style,
     style = sprintf("grid-column-gap: %s;", col_gap),
     style = sprintf("grid-row-gap: %s;", row_gap),
     content
