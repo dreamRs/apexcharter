@@ -47,7 +47,7 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
   if (is.null(values))
     return(ax)
   if (inherits(values, c("numeric", "integer", "Date", "POSIXt"))) {
-    range_vals <- range(pretty(values), na.rm = TRUE)
+    range_vals <- range(pretty(values, n = 10), na.rm = TRUE)
   } else {
     range_vals <- NULL
   }
