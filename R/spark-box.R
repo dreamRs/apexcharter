@@ -103,14 +103,14 @@ spark_box <- function(data,
 
 #' @rdname apexcharter-shiny
 #' @export
-sparkBoxOutput <- function(outputId, width = "100%", height = "160px"){
+sparkBoxOutput <- function(outputId, width = "100%", height = "160px") { # nocov start
   htmlwidgets::shinyWidgetOutput(outputId, "apexcharter", width, height, package = "apexcharter")
-}
+} # nocov end
 
 #' @rdname apexcharter-shiny
 #' @export
-renderSparkBox <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderSparkBox <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, apexchartOutput, env, quoted = TRUE)
-}
+} # nocov end
 

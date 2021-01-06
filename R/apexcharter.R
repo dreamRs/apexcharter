@@ -136,13 +136,13 @@ config_update <- function(series_animate = TRUE,
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' 
 #' @example examples/apexcharter-shiny.R
-apexchartOutput <- function(outputId, width = "100%", height = "400px"){
+apexchartOutput <- function(outputId, width = "100%", height = "400px") { # nocov start
   htmlwidgets::shinyWidgetOutput(outputId, "apexcharter", width, height, package = "apexcharter")
-}
+} # nocov end
 
 #' @rdname apexcharter-shiny
 #' @export
-renderApexchart <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderApexchart <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, apexchartOutput, env, quoted = TRUE)
-}
+} # nocov end

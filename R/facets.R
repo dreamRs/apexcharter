@@ -346,7 +346,7 @@ apexfacetOutput <- function(outputId) {
 #' 
 #' @importFrom shiny exprToFunction createRenderFunction createWebDependency
 #' @importFrom htmltools renderTags resolveDependencies
-renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
   func <- exprToFunction(expr, env, quoted)
   createRenderFunction(
     func = func,
@@ -371,7 +371,7 @@ renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
       )
     }, apexfacetOutput, list()
   )
-}
+} # nocov end
 
 
 
@@ -380,15 +380,15 @@ renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) {
 # Print methods -----------------------------------------------------------
 
 #' @export
-print.apex_facet <- function(x, ...) {
+print.apex_facet <- function(x, ...) { # nocov start
   TAG <- build_facet_tag(x)
   print(htmltools::browsable(TAG))
-}
+} # nocov end
 
-knit_print.apex_facet <- function(x, ..., options = NULL) {
+knit_print.apex_facet <- function(x, ..., options = NULL) { # nocov start
   TAG <- build_facet_tag(x)
   knitr::knit_print(htmltools::browsable(TAG), options = options, ...)
-}
+} # nocov end
 
 
 

@@ -160,7 +160,7 @@ apexgridOutput <- function(outputId) {
 #' 
 #' @importFrom shiny exprToFunction createRenderFunction createWebDependency
 #' @importFrom htmltools renderTags resolveDependencies
-renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
   func <- exprToFunction(expr, env, quoted)
   createRenderFunction(
     func = func,
@@ -193,14 +193,14 @@ renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) {
       )
     }, apexgridOutput, list()
   )
-}
+} # nocov end
 
 
 
 
 
 # Print methods -----------------------------------------------------------
-
+# nocov start
 #' @export
 print.apex_grid <- function(x, ...) {
   TAG <- build_grid(
@@ -227,7 +227,7 @@ knit_print.apex_grid <- function(x, ..., options = NULL) {
   )
   knitr::knit_print(htmltools::browsable(TAG), options = options, ...)
 }
-
+# nocov end
 
 
 

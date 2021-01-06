@@ -46,6 +46,11 @@ test_that("set_scale works", {
   expect_true(is.null(ax$x$ax_opts$xaxis$min))
   expect_true(is.null(ax$x$ax_opts$xaxis$max))
   
+  ax <- set_scale(apexchart(), 1:100, scales = "free_x", axis = "x")
+  expect_true(is.null(ax$x$ax_opts$xaxis))
+  expect_true(is.null(ax$x$ax_opts$xaxis$min))
+  expect_true(is.null(ax$x$ax_opts$xaxis$max))
+  
   ax <- set_scale(apexchart(), 1:100, scales = "fixed", axis = "y")
   expect_true(!is.null(ax$x$ax_opts$yaxis))
   expect_true(!is.null(ax$x$ax_opts$yaxis$min))
@@ -56,6 +61,10 @@ test_that("set_scale works", {
   expect_true(is.null(ax$x$ax_opts$yaxis$min))
   expect_true(is.null(ax$x$ax_opts$yaxis$max))
   
+  ax <- set_scale(apexchart(), 1:100, scales = "free_y", axis = "y")
+  expect_true(is.null(ax$x$ax_opts$yaxis))
+  expect_true(is.null(ax$x$ax_opts$yaxis$min))
+  expect_true(is.null(ax$x$ax_opts$yaxis$max))
 })
 
 
@@ -79,7 +88,7 @@ test_that("ax_facet_wrap works", {
 })
 
 
-test_that("ax_facet_grid works", {
+test_that("ax_facet_grid works with row", {
   
   ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
     ax_facet_grid(vars(cyl))
@@ -92,6 +101,25 @@ test_that("ax_facet_grid works", {
   expect_is(facet, "list")
   expect_identical(facet$type, "grid")
   expect_length(facet$facets, length(unique(mtcars$cyl)))
+  
+  TAG <- build_facet_tag(ax)
+  expect_is(TAG, "shiny.tag")
+})
+
+
+test_that("ax_facet_grid works with row and col", {
+  
+  ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
+    ax_facet_grid(vars(cyl), vars(carb))
+  
+  expect_is(ax, "apex")
+  expect_is(ax, "apex_facet")
+  expect_true(!is.null(ax$x$facet))
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_identical(facet$type, "grid")
+  expect_length(facet$facets, length(unique(mtcars$cyl)) * length(unique(mtcars$carb)))
   
   TAG <- build_facet_tag(ax)
   expect_is(TAG, "shiny.tag")
