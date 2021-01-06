@@ -39,10 +39,11 @@ Current limitations are :
 
 ## Facet wrap
 
-Create a grid of charts with `ax_facet_wrap()` :
+Create a grid of charts according to a variable of the data with `ax_facet_wrap()` :
 
-```{r}
+```{r facet-wrap}
 data("mpg", package = "ggplot2")
+
 apex(mpg, aes(displ, cty), type = "scatter") %>%
   ax_facet_wrap(vars(drv), ncol = 2)
 ```
@@ -50,18 +51,36 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 
 Synchronized line charts with free y-axis :
 
-```{r}
-data("unhcr_ts")
-refugees <- unhcr_ts %>% 
-  subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
-  transform(date = as.Date(paste0(year, "-01-01")))
+```{r facet-wrap-sync}
+data("economics_long", package = "ggplot2")
 
-apex(refugees, aes(date, n), type = "line", synchronize = "sync-it") %>% 
-  ax_yaxis(tickAmount = 5, labels = list(formatter = format_num("~s"))) %>% 
-  ax_xaxis(tooltip = list(enabled = FALSE)) %>% 
+apex(economics_long, aes(date, value), type = "line", synchronize = "sync-it") %>% 
+  ax_yaxis(
+    decimalsInFloat = 0,
+    labels = list(
+      formatter = format_num("~s"),
+      minWidth = 40
+    )
+  ) %>%
   ax_tooltip(x = list(format = "yyyy")) %>% 
-  ax_facet_wrap(vars(continent_origin), scales = "free_y")
+  ax_facet_wrap(vars(variable), scales = "free_y")
 ```
+
+Don't forget to set a `minWidth` for y axis labels when synchronizing charts, otherwise unexpected results can occurs.
+
+
+
+## Facet grid
+
+Create a matrix of charts defined by row and column faceting variables with `ax_facet_grid()` :
+
+```{r facet-grid}
+data("mpg", package = "ggplot2")
+
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_facet_grid(rows = vars(drv), cols = vars(year))
+```
+
 
 
 
@@ -69,7 +88,7 @@ apex(refugees, aes(date, n), type = "line", synchronize = "sync-it") %>%
 
 You can construct a grid of (unrelated) charts with `apex_grid()`, construct your charts independently then assemble them in the grid:
 
-```{r}
+```{r apex-grid}
 a1 <- apex(mpg, aes(manufacturer), type = "bar")
 a2 <- apex(mpg, aes(trans), type = "column")
 a3 <- apex(mpg, aes(drv), type = "pie")
