@@ -22,6 +22,39 @@ test_that("apex works", {
   expect_is(pie, "apexcharter")
   expect_identical(pie$x$ax_opts$chart$type, "pie")
   expect_false(is.null(pie$x$ax_opts$series))
+  
+  candlestick <- apex(
+    candles, 
+    aes(x = datetime, open = open, close = close, low = low, high = high),
+    type = "candlestick"
+  )
+  expect_is(candlestick, "apexcharter")
+  expect_identical(candlestick$x$ax_opts$chart$type, "candlestick")
+  expect_false(is.null(candlestick$x$ax_opts$series))
+  
+  tl <- data.frame(
+    x = month.abb,
+    start = Sys.Date() + 1:12,
+    end = Sys.Date() + 1:12 * 3
+  )
+  timeline <- apex(tl, aes(x = x, start = start, end = end), "timeline")
+  expect_is(timeline, "apexcharter")
+  expect_identical(timeline$x$ax_opts$chart$type, "rangeBar")
+  expect_false(is.null(timeline$x$ax_opts$series))
+  
+  
+  hm <- expand.grid(year = 2000:2010, month = month.name)
+  hm$value <- sample.int(1e4, nrow(hm))
+  heatmap <- apex(
+    data = hm,
+    type = "heatmap", 
+    mapping = aes(x = year, y = month, fill = value)
+  ) %>% 
+    ax_dataLabels(enabled = FALSE) %>% 
+    ax_colors("#008FFB")
+  expect_is(heatmap, "apexcharter")
+  expect_identical(heatmap$x$ax_opts$chart$type, "heatmap")
+  expect_false(is.null(heatmap$x$ax_opts$series))
 })
 
 
@@ -93,3 +126,14 @@ test_that("make_series works with group (mtcars)", {
     as.list(unlist(tapply(mapdata$fill, factor(mapdata$fill, levels = unique(mapdata$fill)), length, simplify = FALSE), use.names = FALSE))
   )
 })
+
+
+
+test_that("compute count", {
+  ax <- apex(data = mtcars, type = "column", mapping = aes(x = vs))
+  expect_is(ax, "apex")
+  
+  ax <- apex(data = mtcars, type = "column", mapping = aes(x = vs, fill = gear))
+  expect_is(ax, "apex")
+})
+

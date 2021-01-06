@@ -38,7 +38,7 @@ get_groups <- function(ax) {
   if (!inherits(ax, "apexcharter"))
     stop("ax must be an apexcharter htmlwidget")
   if (is.null(ax$x$ax_opts$series))
-    stop("ax must have a series of data")
+    stop("ax must have a serie of data")
   groups <- lapply(ax$x$ax_opts$series, `[[`, "name")
   groups <- unlist(groups)
   as.character(groups)

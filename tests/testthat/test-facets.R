@@ -126,3 +126,31 @@ test_that("ax_facet_grid works with row and col", {
 })
 
 
+test_that("complete_mapdata works", {
+  
+  cmd <- complete_mapdata(
+    mapdata = list(x = c("April", "June", "September"), y = 1:3),
+    mapall = list(x = month.name)
+  )
+  
+  expect_is(cmd, "list")
+  expect_length(cmd$x, 12)
+})
+
+test_that("complete_data works", {
+  
+  cd <- complete_data(
+    data = data.frame(
+      var1 = c("a", "a", "b", "b", "c"),
+      var2 = c("A", "B", "A", "C", "A"),
+      value = 1:5
+    ),
+    vars = c("var1", "var2"),
+    fill_var = "value",
+    fill_value = 0
+  )
+  
+  expect_is(cd, "data.frame")
+})
+
+

@@ -1,6 +1,6 @@
 
 #' @importFrom shiny registerInputHandler
-.onLoad <- function(...) {
+.onLoad <- function(...) { # nocov start
   shiny::registerInputHandler("apex_click", function(data, ...) {
     if (is.null(data)) {
       NULL
@@ -37,4 +37,4 @@
   }, force = TRUE)
   register_s3_method("knitr", "knit_print", "apex_facet")
   register_s3_method("knitr", "knit_print", "apex_grid")
-}
+} # nocov end

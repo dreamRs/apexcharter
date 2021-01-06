@@ -180,14 +180,14 @@ set_input_selection <- function(ax, inputId, type = c("x", "xy", "y"),
 #'
 #' @example examples/export-2.R
 set_input_export <- function(ax, inputId,
-                             session = shiny::getDefaultReactiveDomain()) {
+                             session = shiny::getDefaultReactiveDomain()) { # nocov start
   if (is.null(session))
     session <- list(ns = identity)
   ax$x$shinyEvents$export <- list(
     inputId = session$ns(inputId)
   )
   ax
-}
+} # nocov end
 
 
 
@@ -196,7 +196,7 @@ set_input_export <- function(ax, inputId,
 
 # Demo --------------------------------------------------------------------
 
-
+# nocov start
 
 #' Run Shiny input events examples
 #'
@@ -214,7 +214,7 @@ set_input_export <- function(ax, inputId,
 #'   run_demo_input("selection")
 #' 
 #' }
-run_demo_input <- function(example = c("click", "zoom", "selection")) {
+run_demo_input <- function(example = c("click", "zoom", "selection")) { 
   example <- match.arg(example)
   shiny::shinyAppFile(
     appFile = system.file("examples-input", example, "app.R", package = "apexcharter"),
@@ -264,3 +264,4 @@ run_demo_sparkbox <- function() {
   )
 }
 
+# nocov end
