@@ -327,7 +327,7 @@ build_facet_tag <- function(x) {
 #' @importFrom shiny uiOutput
 #' @importFrom htmlwidgets getDependency
 #'
-#' @example examples/facet-shiny.R
+#' @example examples/facet-wrap-shiny.R
 apexfacetOutput <- function(outputId) {
   tagList(
     uiOutput(outputId = outputId),
