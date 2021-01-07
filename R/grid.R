@@ -12,7 +12,7 @@ get_grid_dims <- function(content, nrow = NULL, ncol = NULL) {
     } else {
       ncol <- 2
       nrow <- ceiling(n / ncol)
-    } 
+    }
   }
   list(nrow = nrow, ncol = ncol)
 }
@@ -22,40 +22,22 @@ get_grid_dims <- function(content, nrow = NULL, ncol = NULL) {
 build_grid <- function(content,
                        nrow = NULL,
                        ncol = NULL,
-                       row_gap = "5px", 
+                       row_gap = "5px",
                        col_gap = "0px",
-                       row_label = NULL,
-                       col_label = NULL,
+                       row_before = NULL,
+                       row_after = NULL,
+                       col_before = NULL,
+                       col_after = NULL,
                        height = NULL,
                        width = NULL) {
   d <- get_grid_dims(content, nrow, ncol)
-  if (is.null(col_label)) {
-    col_style <- sprintf(
-      "-ms-grid-columns: repeat(%1$s, 1fr); grid-template-columns: repeat(%1$s, 1fr);",
-      d$ncol
-    )
-  } else {
-    col_style <- sprintf(
-      "-ms-grid-columns: repeat(%1$s, 1fr) %2$s; grid-template-columns: repeat(%1$s, 1fr) %2$s;", 
-      d$ncol, col_label
-    )
-  }
-  if (is.null(row_label)) {
-    row_style <- sprintf(
-      "-ms-grid-rows: repeat(%1$s, 1fr); grid-template-rows: repeat(%1$s, 1fr);", 
-      d$nrow
-    )
-  } else {
-    row_style <- sprintf(
-      "-ms-grid-rows: %2$s repeat(%1$s, 1fr); grid-template-rows: %2$s repeat(%1$s, 1fr);", 
-      d$nrow, row_label
-    )
-  }
+  col_style <- paste("grid-template-columns:", col_before, sprintf("repeat(%s, 1fr)", d$ncol), col_after, ";")
+  row_style <- paste("grid-template-rows:", row_before, sprintf("repeat(%s, 1fr)", d$nrow), row_after, ";")
   tags$div(
     class = "apexcharter-grid-container",
     style = if (!is.null(height)) paste0("height:", height, ";"),
     style = if (!is.null(width)) paste0("width:", width, ";"),
-    style = "display:-ms-grid; display: grid;",
+    style = "display: grid;",
     style = col_style,
     style = row_style,
     style = sprintf("grid-column-gap: %s;", col_gap),
@@ -67,27 +49,27 @@ build_grid <- function(content,
 
 
 #' Create a grid of ApexCharts
-#' 
-#' @param ... Several \code{apexcharts} \code{htmlwidget} objects. 
+#'
+#' @param ... Several \code{apexcharts} \code{htmlwidget} objects.
 #' @param nrow,ncol Number of rows and columns.
 #' @param row_gap,col_gap Gap between rows and columns.
 #' @param grid_area Custom grid area to make elements take more than a single
 #'  cell in grid, see \url{https://cssgrid-generator.netlify.app/} for examples.
 #' @param height,width Height and width of the main grid.
-#' @param .list A list of \code{apexcharts} \code{htmlwidget} objects. 
+#' @param .list A list of \code{apexcharts} \code{htmlwidget} objects.
 #'
 #' @return Custom \code{apex_grid} object.
-#' 
+#'
 #' @note You have to provide either height for the grid or individual chart height to make it work.
-#' 
+#'
 #' @export
-#' 
+#'
 #' @importFrom htmltools tags
-#' 
+#'
 #' @example examples/apex_grid.R
-apex_grid <- function(..., 
+apex_grid <- function(...,
                       nrow = NULL,
-                      ncol = NULL, 
+                      ncol = NULL,
                       row_gap = "10px",
                       col_gap = "0px",
                       grid_area = NULL,
@@ -134,9 +116,9 @@ apex_grid <- function(...,
 #'
 #' @return An Apexcharts output that can be included in the application UI.
 #' @export
-#' 
+#'
 #' @name apexcharter-shiny-grid
-#' 
+#'
 #' @importFrom htmltools tagList
 #' @importFrom shiny uiOutput
 #' @importFrom htmlwidgets getDependency
@@ -153,11 +135,11 @@ apexgridOutput <- function(outputId) {
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
-#' 
+#'
 #' @export
-#' 
+#'
 #' @rdname apexcharter-shiny-grid
-#' 
+#'
 #' @importFrom shiny exprToFunction createRenderFunction createWebDependency
 #' @importFrom htmltools renderTags resolveDependencies
 renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
@@ -176,7 +158,7 @@ renderApexgrid <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov
       TAG <- build_grid(
         result$content,
         nrow = result$nrow,
-        ncol = result$ncol, 
+        ncol = result$ncol,
         col_gap = result$col_gap,
         row_gap = result$row_gap,
         height = result$height,
@@ -206,7 +188,7 @@ print.apex_grid <- function(x, ...) {
   TAG <- build_grid(
     x$content,
     nrow = x$nrow,
-    ncol = x$ncol, 
+    ncol = x$ncol,
     col_gap = x$col_gap,
     row_gap = x$row_gap,
     height = x$height,
@@ -219,7 +201,7 @@ knit_print.apex_grid <- function(x, ..., options = NULL) {
   TAG <- build_grid(
     x$content,
     nrow = x$nrow,
-    ncol = x$ncol, 
+    ncol = x$ncol,
     col_gap = x$col_gap,
     row_gap = x$row_gap,
     height = x$height,

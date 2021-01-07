@@ -10,7 +10,7 @@ get_facets <- function(data, rows, cols, type = c("wrap", "grid")) {
     FUN = function(i) {
       facet <- facets[[i]]
       attr(facet, "keys") <- strsplit(
-        x = names(facets)[i], 
+        x = names(facets)[i],
         split = "|__|", fixed = TRUE
       )[[1]]
       facet
@@ -51,7 +51,7 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
   } else {
     range_vals <- NULL
   }
-  
+
   fmt <- function(x, time = inherits(values, c("Date", "POSIXt"))) {
     if (is.null(x))
       return(NULL)
@@ -65,7 +65,7 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
     "x" = "xaxis",
     "y" = "yaxis"
   )
-  
+
   if (scales == "fixed") {
     ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
     ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
@@ -89,7 +89,7 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
       ax$x$ax_opts[[waxis]]$max <- NULL
     }
   }
-  
+
   return(ax)
 }
 
@@ -99,8 +99,8 @@ build_facets <- function(chart) {
   mapall <- lapply(chart$x$mapping, eval_tidy, data = data)
   labeller <- chart$x$facet$labeller
   facets_list <- get_facets(
-    data = data, 
-    rows = chart$x$facet$facets_row, 
+    data = data,
+    rows = chart$x$facet$facets_row,
     cols = chart$x$facet$facets_col,
     type = chart$x$facet$type
   )
@@ -113,9 +113,9 @@ build_facets <- function(chart) {
     data = c(
       nums,
       rep(NA, times = (dims$nrow * dims$ncol) - length(nums))
-    ), 
-    nrow = dims$nrow, 
-    ncol = dims$ncol, 
+    ),
+    nrow = dims$nrow,
+    ncol = dims$ncol,
     byrow = TRUE
   )
   lrow <- get_last_row(grid)
@@ -160,7 +160,7 @@ build_facets <- function(chart) {
   list(
     facets = facets,
     type = chart$x$facet$type,
-    nrow = facets_list$nrow, 
+    nrow = facets_list$nrow,
     ncol = facets_list$ncol,
     label_row = facets_list$label_row,
     label_col = facets_list$label_col
@@ -189,14 +189,14 @@ get_last_row <- function(mat) {
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
-#' 
+#'
 #' @name apex-facets
-#' 
+#'
 #' @importFrom rlang quos syms
 #'
 #' @example examples/facet_wrap.R
-ax_facet_wrap <- function(ax, 
-                          facets, 
+ax_facet_wrap <- function(ax,
+                          facets,
                           nrow = NULL,
                           ncol = NULL,
                           scales = c("fixed", "free", "free_y", "free_x"),
@@ -221,13 +221,13 @@ ax_facet_wrap <- function(ax,
 }
 
 
-#' @param rows,cols A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension. 
+#' @param rows,cols A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension.
 #' @export
-#' 
+#'
 #' @rdname apex-facets
-#' 
+#'
 #' @example examples/facet_grid.R
-ax_facet_grid <- function(ax, 
+ax_facet_grid <- function(ax,
                           rows = NULL,
                           cols = NULL,
                           scales = c("fixed", "free", "free_y", "free_x"),
@@ -269,9 +269,9 @@ build_facet_tag <- function(x) {
     if (!is.null(facets$nrow)) {
       for (i in seq_along(facets$label_row)) {
         content <- append(
-          x = content, 
+          x = content,
           values = tagList(tags$div(
-            class = "apexcharter-facet-row-label", 
+            class = "apexcharter-facet-row-label",
             x$x$facet$labeller(facets$label_row[i])
           )),
           after = ((facets$ncol %||% 1 + 1) * i) - 1
@@ -281,7 +281,7 @@ build_facet_tag <- function(x) {
     if (!is.null(facets$ncol)) {
       content <- tagList(
         lapply(
-          X = facets$label_col, 
+          X = facets$label_col,
           FUN = function(label_col) {
             tags$div(x$x$facet$labeller(label_col), class = "apexcharter-facet-col-label")
           }
@@ -291,12 +291,12 @@ build_facet_tag <- function(x) {
       )
     }
     TAG <- build_grid(
-      content, 
-      nrow = facets$nrow %||% 1, 
+      content,
+      nrow = facets$nrow %||% 1,
       ncol = facets$ncol %||% 1,
-      row_label = if (!is.null(facets$ncol)) "30px" else NULL,
-      col_label = if (!is.null(facets$nrow)) "30px" else NULL,
-      row_gap = "3px", 
+      row_before = if (!is.null(facets$ncol)) "30px",
+      col_after = if (!is.null(facets$nrow)) "30px",
+      row_gap = "3px",
       col_gap = "3px"
     )
   } else {
@@ -320,9 +320,9 @@ build_facet_tag <- function(x) {
 #'
 #' @return An Apexcharts output that can be included in the application UI.
 #' @export
-#' 
+#'
 #' @name apexcharter-shiny-facets
-#' 
+#'
 #' @importFrom htmltools tagList
 #' @importFrom shiny uiOutput
 #' @importFrom htmlwidgets getDependency
@@ -339,11 +339,11 @@ apexfacetOutput <- function(outputId) {
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
-#' 
+#'
 #' @export
-#' 
+#'
 #' @rdname apexcharter-shiny-facets
-#' 
+#'
 #' @importFrom shiny exprToFunction createRenderFunction createWebDependency
 #' @importFrom htmltools renderTags resolveDependencies
 renderApexfacet <- function(expr, env = parent.frame(), quoted = FALSE) { # nocov start
@@ -411,7 +411,7 @@ complete_mapdata <- function(mapdata, mapall) {
 
 complete_data <- function(data, vars, fill_var, fill_value = 0) {
   full_data <- expand.grid(lapply(
-    X = data[, vars], 
+    X = data[, vars],
     FUN = unique
   ))
   full_data <- merge(
