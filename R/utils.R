@@ -50,8 +50,8 @@ make_styles <- function(styles) {
   styles <- dropNulls(styles)
   if (length(styles) < 1)
     return(NULL)
-  styles <- sprintf("%s:%s", to_hyphen(names(styles)), unlist(styles, use.names = FALSE))
-  paste(styles, collapse = ";")
+  styles <- sprintf("%s: %s;", to_hyphen(names(styles)), unlist(styles, use.names = FALSE))
+  paste(styles, collapse = " ")
 }
 
 

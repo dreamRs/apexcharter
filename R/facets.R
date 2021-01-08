@@ -119,6 +119,10 @@ build_facets <- function(chart) {
   chart <- remove_option(chart, "title")
   subtitle <- get_option(chart, "subtitle")
   chart <- remove_option(chart, "subtitle")
+  xaxis_title <- get_option(chart, "xaxis", "title")
+  chart <- remove_option(chart, "xaxis", "title")
+  yaxis_title <- get_option(chart, "yaxis", "title")
+  chart <- remove_option(chart, "yaxis", "title")
   facets_list <- get_facets(
     data = data,
     rows = chart$x$facet$facets_row,
@@ -186,7 +190,9 @@ build_facets <- function(chart) {
     label_row = facets_list$label_row,
     label_col = facets_list$label_col,
     title = title,
-    subtitle = subtitle
+    subtitle = subtitle,
+    xaxis_title = xaxis_title,
+    yaxis_title = yaxis_title
   )
 }
 
@@ -285,10 +291,72 @@ ax_facet_grid <- function(ax,
 
 build_facet_tag <- function(x) {
   facets <- build_facets(x)
+  content <- facets$facets
+  d <- get_grid_dims(content, x$x$facet$nrow, x$x$facet$ncol)
+  row_after <- col_before <- NULL
+  if (!is.null(facets$xaxis_title)) {
+    if (identical(facets$type, "wrap")) {
+      area <- paste(
+        d$nrow + 1,
+        1,
+        d$nrow + 1,
+        d$ncol + 2,
+        sep = " / "
+      )
+    } else {
+      area <- paste(
+        (facets$nrow %||% 1) + 1 + !is.null(facets$ncol),
+        1,
+        (facets$nrow %||% 1) + 1 + !is.null(facets$ncol),
+        (facets$ncol %||% 1) + 2,
+        sep = " / "
+      )
+    }
+    TAGX <- tags$div(
+      class = "apexcharter-facet-xaxis-title",
+      facets$xaxis_title$text,
+      style = make_styles(facets$xaxis_title$style),
+      style = paste("grid-area:", area, ";")
+    )
+    content <- c(content, list(TAGX))
+    row_after <- "30px"
+  }
+  if (!is.null(facets$yaxis_title)) {
+    if (identical(facets$type, "wrap")) {
+      area <- paste(
+        1,
+        1,
+        d$nrow + 1,
+        2,
+        sep = " / "
+      )
+    } else {
+      area <- paste(
+        1,
+        1,
+        (facets$nrow %||% 1) + 1 + !is.null(facets$ncol),
+        2,
+        sep = " / "
+      )
+    }
+    TAGY <- tags$div(
+      class = "apexcharter-facet-yaxis-title apexcharter-facet-rotate180",
+      facets$yaxis_title$text,
+      style = make_styles(facets$yaxis_title$style),
+      style = paste("grid-area:", area, ";")
+    )
+    content <- c(content, list(TAGY))
+    col_before <- "30px"
+  }
   if (identical(facets$type, "wrap")) {
-    TAG <- build_grid(facets$facets, nrow = x$x$facet$nrow, ncol = x$x$facet$ncol)
+    TAG <- build_grid(
+      content = content, 
+      nrow = d$nrow, 
+      ncol = d$ncol, 
+      row_after = row_after, 
+      col_before = col_before
+    )
   } else if (identical(facets$type, "grid")) {
-    content <- facets$facets
     if (!is.null(facets$nrow)) {
       for (i in seq_along(facets$label_row)) {
         content <- append(
@@ -320,7 +388,9 @@ build_facet_tag <- function(x) {
       row_before = if (!is.null(facets$ncol)) "30px",
       col_after = if (!is.null(facets$nrow)) "30px",
       row_gap = "3px",
-      col_gap = "3px"
+      col_gap = "3px",
+      row_after = row_after, 
+      col_before = col_before
     )
   } else {
     stop("Facetting must be wrap or grid", call. = FALSE)

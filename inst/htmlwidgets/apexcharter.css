@@ -37,3 +37,37 @@
   margin-bottom: 5px;
 }
 
+.apexcharter-facet-yaxis-title {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center; 
+  writing-mode: vertical-rl; 
+  text-orientation: mixed;
+  line-height: 30px;
+  height: 100%;
+}
+
+.apexcharter-facet-xaxis-title {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  line-height: 30px; 
+  width: 100%;
+}
+
+.apexcharter-facet-rotate180 {
+  transform: rotate(180deg);
+  /* Legacy vendor prefixes that you probably don't need... */
+  /* Safari */
+  -webkit-transform: rotate(180deg);
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+  /* IE */
+  -ms-transform: rotate(180deg);
+  /* Opera */
+  -o-transform: rotate(180deg);
+  /* Internet Explorer */
+  /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+}
+
+
+
+

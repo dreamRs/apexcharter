@@ -43,12 +43,16 @@ Current limitations are :
 Create a grid of charts according to a variable of the data with `ax_facet_wrap()` :
 
 ```{r facet-wrap}
+library(apexcharter)
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(displ, cty), type = "scatter") %>%
+  ax_xaxis(labels = list(formatter = format_num(".0f"))) %>% 
   ax_labs(
     title = "Facet wrap example",
-    subtitle = "mpg data from ggplot2"
+    subtitle = "mpg data from ggplot2",
+    x = "engine displacement, in litres",
+    y = "city miles per gallon"
   ) %>% 
   ax_facet_wrap(vars(drv), ncol = 2)
 ```
@@ -57,6 +61,7 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 Synchronized line charts with free y-axis :
 
 ```{r facet-wrap-sync}
+library(apexcharter)
 data("economics_long", package = "ggplot2")
 
 apex(economics_long, aes(date, value), type = "line", synchronize = "sync-it") %>% 
@@ -80,12 +85,16 @@ Don't forget to set a `minWidth` for y axis labels when synchronizing charts, ot
 Create a matrix of charts defined by row and column faceting variables with `ax_facet_grid()` :
 
 ```{r facet-grid}
+library(apexcharter)
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_xaxis(labels = list(formatter = format_num(".0f"))) %>% 
   ax_labs(
     title = "Facet grid example",
-    subtitle = "mpg data from ggplot2"
+    subtitle = "mpg data from ggplot2",
+    x = "engine displacement, in litres",
+    y = "city miles per gallon"
   ) %>% 
   ax_facet_grid(rows = vars(drv), cols = vars(year))
 ```
@@ -98,10 +107,15 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
 You can construct a grid of (unrelated) charts with `apex_grid()`, construct your charts independently then assemble them in the grid:
 
 ```{r apex-grid}
+library(apexcharter)
+data("mpg", package = "ggplot2")
+
+# Construct 3 charts
 a1 <- apex(mpg, aes(manufacturer), type = "bar")
 a2 <- apex(mpg, aes(trans), type = "column")
 a3 <- apex(mpg, aes(drv), type = "pie")
 
+# Assemble them in a grid
 apex_grid(
   a1, a2, a3, 
   grid_area = c("1 / 1 / 3 / 2", "1 / 2 / 2 / 4", "2 / 2 / 3 / 4"),
