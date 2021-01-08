@@ -126,6 +126,37 @@ test_that("ax_facet_grid works with row and col", {
 })
 
 
+
+test_that("globla title and subtitle works", {
+  
+  ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
+    ax_facet_grid(vars(cyl), vars(carb))
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_null(facet$title)
+  expect_null(facet$subtitle)
+  
+  ax <- ax  %>%
+    ax_labs(
+      title = "Facet wrap example",
+      subtitle = "mpg data from ggplot2"
+    )
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_is(facet$title, "list")
+  expect_is(facet$subtitle, "list")
+  
+  TAG <- build_facet_tag(ax)
+  TAG <- htmltools::doRenderTags(TAG)
+  expect_true(grepl(pattern = "apexcharter-facet-subtitle", x = TAG))
+  expect_true(grepl(pattern = "apexcharter-facet-title", x = TAG))
+})
+
+
+
+
 test_that("complete_mapdata works", {
   
   cmd <- complete_mapdata(
@@ -152,5 +183,16 @@ test_that("complete_data works", {
   
   expect_is(cd, "data.frame")
 })
+
+
+
+test_that("apexfacetOutput works", {
+  
+  TAG <- apexfacetOutput("facet")
+  
+  expect_is(TAG, "shiny.tag.list")
+  expect_true(length(htmltools::findDependencies(TAG)) > 0)
+})
+
 
 

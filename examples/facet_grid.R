@@ -38,3 +38,13 @@ apex(mpg, aes(displ, cty), type = "scatter") %>%
     }
   )
 
+
+# Title and subtitle are treated as global
+apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_labs(
+    title = "Facet grid example",
+    subtitle = "mpg data from ggplot2"
+  ) %>% 
+  ax_facet_grid(rows = vars(drv), cols = vars(year))
+
+

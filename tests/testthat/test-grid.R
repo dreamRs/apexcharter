@@ -11,3 +11,12 @@ test_that("apex_grid works", {
   )
   expect_is(ax, "apex_grid")
 })
+
+
+test_that("apexgridOutput works", {
+  
+  TAG <- apexgridOutput("grid")
+  
+  expect_is(TAG, "shiny.tag.list")
+  expect_true(length(htmltools::findDependencies(TAG)) > 0)
+})

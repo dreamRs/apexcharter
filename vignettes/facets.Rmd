@@ -35,6 +35,7 @@ Current limitations are :
 - x-axis always appear for scatter and line charts
 - x-axis labels can differ between charts even with fixed scale depending on the width of the chart and the formatter applied to labels
 - when scale on an axis is fixed, the chart with the axis don't have the exact same size than the other since the axis take space in the plotting area
+- if legend is needed, it will appear on each charts
 
 
 ## Facet wrap
@@ -45,6 +46,10 @@ Create a grid of charts according to a variable of the data with `ax_facet_wrap(
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(displ, cty), type = "scatter") %>%
+  ax_labs(
+    title = "Facet wrap example",
+    subtitle = "mpg data from ggplot2"
+  ) %>% 
   ax_facet_wrap(vars(drv), ncol = 2)
 ```
 
@@ -78,6 +83,10 @@ Create a matrix of charts defined by row and column faceting variables with `ax_
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(displ, cty), type = "scatter") %>% 
+  ax_labs(
+    title = "Facet grid example",
+    subtitle = "mpg data from ggplot2"
+  ) %>% 
   ax_facet_grid(rows = vars(drv), cols = vars(year))
 ```
 
