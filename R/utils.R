@@ -42,6 +42,19 @@ to_posix <- function(x) {
 }
 
 
+to_hyphen <- function(x) {
+  tolower(gsub("([A-Z])", "-\\1", x))
+}
+
+make_styles <- function(styles) {
+  styles <- dropNulls(styles)
+  if (length(styles) < 1)
+    return(NULL)
+  styles <- sprintf("%s:%s", to_hyphen(names(styles)), unlist(styles, use.names = FALSE))
+  paste(styles, collapse = ";")
+}
+
+
 
 #' Utility function to create ApexChart parameters JSON
 #'
@@ -50,18 +63,18 @@ to_posix <- function(x) {
 #' @param ... Arguments for the slot
 #'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
-#' 
+#'
 #' @importFrom utils modifyList
 #'
 #' @noRd
 .ax_opt <- function(ax, name, ...) {
-  
+
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- list(...)
   } else {
     ax$x$ax_opts[[name]] <- modifyList(
-      x = ax$x$ax_opts[[name]], 
-      val = list(...), 
+      x = ax$x$ax_opts[[name]],
+      val = list(...),
       keep.null = TRUE
     )
   }
@@ -81,13 +94,13 @@ to_posix <- function(x) {
 #'
 #' @noRd
 .ax_opt2 <- function(ax, name, l) {
-  
+
   if (is.null(ax$x$ax_opts[[name]])) {
     ax$x$ax_opts[[name]] <- l
   } else {
     ax$x$ax_opts[[name]] <- modifyList(
-      x = ax$x$ax_opts[[name]], 
-      val = l, 
+      x = ax$x$ax_opts[[name]],
+      val = l,
       keep.null = TRUE
     )
   }
@@ -109,17 +122,17 @@ register_s3_method <- function(pkg, generic, class, fun = NULL) { # nocov start
   stopifnot(is.character(pkg), length(pkg) == 1)
   stopifnot(is.character(generic), length(generic) == 1)
   stopifnot(is.character(class), length(class) == 1)
-  
+
   if (is.null(fun)) {
     fun <- get(paste0(generic, ".", class), envir = parent.frame())
   } else {
     stopifnot(is.function(fun))
   }
-  
+
   if (pkg %in% loadedNamespaces()) {
     registerS3method(generic, class, fun, envir = asNamespace(pkg))
   }
-  
+
   # Always register hook in case package is later unloaded & reloaded
   setHook(
     packageEvent(pkg, "onLoad"),

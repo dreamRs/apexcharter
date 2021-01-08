@@ -93,11 +93,32 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
   return(ax)
 }
 
+
+get_option <- function(ax, opt1, opt2 = NULL) {
+  if (is.null(opt2)) {
+    ax$x$ax_opts[[opt1]]
+  } else {
+    ax$x$ax_opts[[opt1]][[opt2]]
+  }
+}
+remove_option <- function(ax, opt1, opt2 = NULL) {
+  if (is.null(opt2)) {
+    ax$x$ax_opts[[opt1]] <- NULL
+  } else {
+    ax$x$ax_opts[[opt1]][[opt2]] <- NULL
+  }
+  ax
+}
+
 #' @importFrom rlang eval_tidy is_null is_function
 build_facets <- function(chart) {
   data <- chart$x$data
   mapall <- lapply(chart$x$mapping, eval_tidy, data = data)
   labeller <- chart$x$facet$labeller
+  title <- get_option(chart, "title")
+  chart <- remove_option(chart, "title")
+  subtitle <- get_option(chart, "subtitle")
+  chart <- remove_option(chart, "subtitle")
   facets_list <- get_facets(
     data = data,
     rows = chart$x$facet$facets_row,
@@ -163,7 +184,9 @@ build_facets <- function(chart) {
     nrow = facets_list$nrow,
     ncol = facets_list$ncol,
     label_row = facets_list$label_row,
-    label_col = facets_list$label_col
+    label_col = facets_list$label_col,
+    title = title,
+    subtitle = subtitle
   )
 }
 
@@ -302,6 +325,27 @@ build_facet_tag <- function(x) {
   } else {
     stop("Facetting must be wrap or grid", call. = FALSE)
   }
+  if (!is.null(facets$subtitle)) {
+    TAG <- tagList(
+      tags$div(
+        class = "apexcharter-facet-subtitle",
+        facets$subtitle$text,
+        style = make_styles(facets$subtitle$style)
+      ),
+      TAG
+    )
+  }
+  if (!is.null(facets$title)) {
+    TAG <- tagList(
+      tags$div(
+        class = "apexcharter-facet-title",
+        facets$title$text,
+        style = make_styles(facets$title$style)
+      ),
+      TAG
+    )
+  }
+  return(TAG)
 }
 
 
