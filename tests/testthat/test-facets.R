@@ -127,7 +127,7 @@ test_that("ax_facet_grid works with row and col", {
 
 
 
-test_that("globla title and subtitle works", {
+test_that("global title and subtitle works", {
   
   ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
     ax_facet_grid(vars(cyl), vars(carb))
@@ -139,8 +139,8 @@ test_that("globla title and subtitle works", {
   
   ax <- ax  %>%
     ax_labs(
-      title = "Facet wrap example",
-      subtitle = "mpg data from ggplot2"
+      title = "this is a title",
+      subtitle = "this is a subtitle"
     )
   
   facet <- build_facets(ax)
@@ -154,6 +154,61 @@ test_that("globla title and subtitle works", {
   expect_true(grepl(pattern = "apexcharter-facet-title", x = TAG))
 })
 
+
+test_that("axis title works (grid)", {
+  
+  ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
+    ax_facet_grid(vars(cyl), vars(carb))
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_null(facet$xaxis_title)
+  expect_null(facet$yaxis_title)
+  
+  ax <- ax  %>%
+    ax_labs(
+      x = "x axis title",
+      y = "y axis title"
+    )
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_is(facet$xaxis_title, "list")
+  expect_is(facet$yaxis_title, "list")
+  
+  TAG <- build_facet_tag(ax)
+  TAG <- htmltools::doRenderTags(TAG)
+  expect_true(grepl(pattern = "apexcharter-facet-yaxis-title", x = TAG))
+  expect_true(grepl(pattern = "apexcharter-facet-xaxis-title", x = TAG))
+})
+
+
+test_that("axis title works (wrap)", {
+  
+  ax <- apex(mtcars, aes(disp, wt), type = "scatter") %>% 
+    ax_facet_wrap(vars(cyl, carb))
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_null(facet$xaxis_title)
+  expect_null(facet$yaxis_title)
+  
+  ax <- ax  %>%
+    ax_labs(
+      x = "x axis title",
+      y = "y axis title"
+    )
+  
+  facet <- build_facets(ax)
+  expect_is(facet, "list")
+  expect_is(facet$xaxis_title, "list")
+  expect_is(facet$yaxis_title, "list")
+  
+  TAG <- build_facet_tag(ax)
+  TAG <- htmltools::doRenderTags(TAG)
+  expect_true(grepl(pattern = "apexcharter-facet-yaxis-title", x = TAG))
+  expect_true(grepl(pattern = "apexcharter-facet-xaxis-title", x = TAG))
+})
 
 
 
