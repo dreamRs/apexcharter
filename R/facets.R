@@ -511,14 +511,21 @@ knit_print.apex_facet <- function(x, ..., options = NULL) { # nocov start
 
 complete_mapdata <- function(mapdata, mapall) {
   data <- as.data.frame(mapdata)
-  full_data <- data.frame(x = unique(mapall$x), stringsAsFactors = FALSE)
+  full_x <- unique(mapall$x)
+  full_data <- data.frame(
+    xorder = seq_along(full_x), 
+    x = full_x, 
+    stringsAsFactors = FALSE
+  )
   full_data <- merge(
     x = full_data,
     y = data,
     by = "x",
     all.x = TRUE,
-    sort = TRUE
+    sort = FALSE
   )
+  full_data <- full_data[order(full_data$xorder), ]
+  full_data$xorder <- NULL
   full_data$y[is.na(full_data$y)] <- 0
   return(as.list(full_data))
 }

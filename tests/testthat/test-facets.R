@@ -221,6 +221,7 @@ test_that("complete_mapdata works", {
   
   expect_is(cmd, "list")
   expect_length(cmd$x, 12)
+  expect_identical(cmd$x, month.name)
 })
 
 test_that("complete_data works", {
