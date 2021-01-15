@@ -1,14 +1,10 @@
 library(ggplot2)
-library(dplyr)
 library(apexcharter)
 
 # make a barchart with a frequency table
 data("mpg", package = "ggplot2")
-apex(
-  data = count(mpg, manufacturer), 
-  mapping = aes(x = manufacturer, y = n), 
-  type = "bar"
-)
+apex(mpg, aes(manufacturer), type = "bar")
+
 
 # timeseries
 data("economics", package = "ggplot2")

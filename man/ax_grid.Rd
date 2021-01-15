@@ -51,20 +51,19 @@ Add grids on chart
 See \url{https://apexcharts.com/docs/options/grid/}
 }
 \examples{
-library(dplyr)
 data("mpg", package = "ggplot2")
 
 # Hide Y-axis and gridelines
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n)
+  data = mpg,
+  mapping = aes(x = manufacturer)
 ) \%>\% 
   ax_grid(show = FALSE)
 
 # just grid lines
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n)
+  data = mpg,
+  mapping = aes(x = manufacturer)
 ) \%>\% 
   ax_grid(yaxis = list(lines = list(show = FALSE)))
 

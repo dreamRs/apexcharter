@@ -27,13 +27,12 @@ Charts' states
 See \url{https://apexcharts.com/docs/options/states/}
 }
 \examples{
-library(dplyr)
 data("mpg", package = "ggplot2")
 
 # Inverse effect on hover
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n),
+  data = mpg,
+  mapping = aes(x = manufacturer),
   type = "bar"
 ) \%>\% 
   ax_states(

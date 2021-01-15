@@ -43,10 +43,9 @@ See \url{https://apexcharts.com/docs/options/plotoptions/bar/}.
 }
 \examples{
 
-library(dplyr)
 data("mpg", package = "ggplot2")
 
-apex(count(mpg, manufacturer), aes(manufacturer, n)) \%>\% 
+apex(mpg, aes(manufacturer)) \%>\% 
   ax_plotOptions(
     bar = bar_opts(
       endingShape = "rounded",

@@ -40,11 +40,9 @@ Use these options in \code{\link{ax_plotOptions}}.
 See \url{https://apexcharts.com/docs/options/plotoptions/pie/}.
 }
 \examples{
-
-library(dplyr)
 data("mpg", package = "ggplot2")
 
-apex(count(mpg, cyl), aes(cyl, n), type = "donut") \%>\%
+apex(mpg, aes(cyl), type = "donut") \%>\%
   ax_plotOptions(
     pie = pie_opts(
       donut = list(size = "90\%", background = "#BABABA")

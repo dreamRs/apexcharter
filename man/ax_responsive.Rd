@@ -21,13 +21,12 @@ Responsive options
 See \url{https://apexcharts.com/docs/options/responsive/}
 }
 \examples{
-library(dplyr)
 data("mpg", package = "ggplot2")
 
 # Open in browser and resize window
 apex(
-  data = count(mpg, manufacturer, year),
-  mapping = aes(x = manufacturer, y = n, fill = year),
+  data = mpg,
+  mapping = aes(x = manufacturer, fill = year),
   type = "bar"
 ) \%>\% 
   ax_legend(position = "right") \%>\% 

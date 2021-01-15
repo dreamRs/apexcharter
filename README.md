@@ -39,11 +39,8 @@ Use `apex` function to quickly create visualizations :
 
 ```r
 library(apexcharter)
-
 data("mpg", package = "ggplot2")
-n_manufac <- dplyr::count(mpg, manufacturer)
-
-apex(data = n_manufac, type = "bar", mapping = aes(x = manufacturer, y = n))
+apex(data = mpg, type = "bar", mapping = aes(manufacturer))
 ```
 ![](man/figures/apex-bar.png)
 
@@ -65,7 +62,6 @@ All methods from ApexCharts are available with function like `ax_*` compatible w
 ```r
 library(apexcharter)
 data(mpg, package = "ggplot2")
-n_manufac <- dplyr::count(mpg, manufacturer)
 
 apexchart() %>% 
   ax_chart(type = "bar") %>% 
@@ -84,10 +80,10 @@ apexchart() %>%
   ) %>% 
   ax_series(list(
     name = "Count",
-    data = n_manufac$n
+    data = tapply(mpg$manufacturer, mpg$manufacturer, length)
   )) %>% 
   ax_colors("#112446") %>% 
-  ax_xaxis(categories = n_manufac$manufacturer) %>% 
+  ax_xaxis(categories = unique(mpg$manufacturer)) %>% 
   ax_title(text = "Number of models") %>% 
   ax_subtitle(text = "Data from ggplot2")
 ```

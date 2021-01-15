@@ -43,13 +43,12 @@ Fill property
 See \url{https://apexcharts.com/docs/options/fill/}
 }
 \examples{
-library(dplyr)
 data("diamonds", package = "ggplot2")
 
 # Use a pattern to fill bars
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = color, y = n, fill = cut)
+  data = diamonds,
+  mapping = aes(x = color, fill = cut)
 ) \%>\% 
   ax_fill(
     type = "pattern", 

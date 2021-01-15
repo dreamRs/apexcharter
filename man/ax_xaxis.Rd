@@ -68,27 +68,26 @@ X-axis options
 See \url{https://apexcharts.com/docs/options/xaxis/}
 }
 \examples{
-library(dplyr)
 data("mpg", package = "ggplot2")
 
 # X axis title
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n)
+  data = mpg,
+  mapping = aes(x = manufacturer)
 ) \%>\% 
   ax_xaxis(title = list(text = "Car's manufacturer"))
 
 # force labels to rotate and increase height
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n)
+  data = mpg,
+  mapping = aes(x = manufacturer)
 ) \%>\% 
   ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
 
 # force to not rotate
 apex(
-  data = count(mpg, manufacturer),
-  mapping = aes(x = manufacturer, y = n)
+  data = mpg,
+  mapping = aes(x = manufacturer)
 ) \%>\% 
   ax_xaxis(labels = list(rotate = 0, trim = FALSE))
 

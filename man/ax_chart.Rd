@@ -82,27 +82,27 @@ A \code{apexcharts} \code{htmlwidget} object.
 Chart parameters
 }
 \examples{
-library(dplyr)
+library(apexcharter)
 data("diamonds", package = "ggplot2")
 
 ##  Stack bar type
 # default is dodge
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = cut, y = n, fill = color)
+  data = diamonds,
+  mapping = aes(x = cut, fill = color)
 )
 
 # stack
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = cut, y = n, fill = color)
+  data = diamonds,
+  mapping = aes(x = cut, fill = color)
 ) \%>\%
   ax_chart(stacked = TRUE)
 
 # stack filled
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = cut, y = n, fill = color)
+  data = diamonds,
+  mapping = aes(x = cut, fill = color)
 ) \%>\%
   ax_chart(stacked = TRUE, stackType = "100\%")
 
@@ -113,8 +113,8 @@ apex(
 
 # Hide the toolbar
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = cut, y = n, fill = color)
+  data = diamonds,
+  mapping = aes(x = cut, fill = color)
 ) \%>\%
   ax_chart(toolbar = list(show = FALSE))
 

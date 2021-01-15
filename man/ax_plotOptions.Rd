@@ -36,13 +36,12 @@ A \code{apexcharts} \code{htmlwidget} object.
 Specific options for chart
 }
 \examples{
-library(dplyr)
 data("diamonds", package = "ggplot2")
 
 # Stack bar type
 apex(
-  data = count(diamonds, cut),
-  mapping = aes(x = cut, y = n)
+  data = diamonds,
+  mapping = aes(x = cut)
 ) \%>\%
   ax_plotOptions(
     bar = bar_opts(endingShape = "rounded", columnWidth = "10\%")
@@ -50,8 +49,8 @@ apex(
 
 # Pie
 apex(
-  data = count(diamonds, cut),
-  mapping = aes(x = cut, y = n), 
+  data = diamonds,
+  mapping = aes(x = cut), 
   type = "pie"
 ) \%>\%
   ax_plotOptions(

@@ -198,13 +198,12 @@ ax_chart <- function(ax,
 #' @export
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("diamonds", package = "ggplot2")
 #' 
 #' # Stack bar type
 #' apex(
-#'   data = count(diamonds, cut),
-#'   mapping = aes(x = cut, y = n)
+#'   data = diamonds,
+#'   mapping = aes(x = cut)
 #' ) %>%
 #'   ax_plotOptions(
 #'     bar = bar_opts(endingShape = "rounded", columnWidth = "10%")
@@ -212,8 +211,8 @@ ax_chart <- function(ax,
 #' 
 #' # Pie
 #' apex(
-#'   data = count(diamonds, cut),
-#'   mapping = aes(x = cut, y = n), 
+#'   data = diamonds,
+#'   mapping = aes(x = cut), 
 #'   type = "pie"
 #' ) %>%
 #'   ax_plotOptions(
@@ -254,22 +253,20 @@ ax_plotOptions <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/colors/}
 #' 
 #' @examples 
-#' 
-#' library(dplyr)
 #' data("diamonds", package = "ggplot2")
 #' 
 #' # Change default color(s)
 #' apex(
-#'   data = count(diamonds, cut),
-#'   mapping = aes(x = cut, y = n)
+#'   data = diamonds,
+#'   mapping = aes(x = cut)
 #' ) %>%
 #'   ax_colors("#F7D358")
 #' 
 #' 
 #' library(scales)
 #' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = cut, y = n, fill = color)
+#'   data = diamonds,
+#'   mapping = aes(x = cut, fill = color)
 #' ) %>%
 #'   ax_colors(brewer_pal(palette = "Set2")(7))
 ax_colors <- function(ax, ...) {
@@ -300,13 +297,12 @@ ax_colors <- function(ax, ...) {
 #' @note See \url{https://apexcharts.com/docs/options/datalabels/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("diamonds", package = "ggplot2")
 #' 
 #' # Add data labels
 #' apex(
-#'   data = count(diamonds, cut),
-#'   mapping = aes(x = cut, y = n)
+#'   data = diamonds,
+#'   mapping = aes(x = cut)
 #' ) %>%
 #'   ax_dataLabels(enabled = TRUE)
 ax_dataLabels <- function(ax,
@@ -341,13 +337,12 @@ ax_dataLabels <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/fill/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("diamonds", package = "ggplot2")
 #' 
 #' # Use a pattern to fill bars
 #' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = color, y = n, fill = cut)
+#'   data = diamonds,
+#'   mapping = aes(x = color, fill = cut)
 #' ) %>% 
 #'   ax_fill(
 #'     type = "pattern", 
@@ -407,20 +402,19 @@ ax_fill <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/grid/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # Hide Y-axis and gridelines
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_grid(show = FALSE)
 #' 
 #' # just grid lines
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_grid(yaxis = list(lines = list(show = FALSE)))
 #' 
@@ -522,20 +516,19 @@ ax_labels2 <- function(ax, labels) {
 #' @note See \url{https://apexcharts.com/docs/options/legend/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # Legend position
 #' apex(
-#'   data = count(mpg, manufacturer, year),
-#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer, fill = year)
 #' ) %>% 
 #'   ax_legend(position = "right")
 #' 
 #' # hide legend
 #' apex(
-#'   data = count(mpg, manufacturer, year),
-#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer, fill = year)
 #' ) %>% 
 #'   ax_legend(show = FALSE)
 ax_legend <- function(ax,
@@ -650,13 +643,12 @@ ax_noData <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/responsive/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # Open in browser and resize window
 #' apex(
-#'   data = count(mpg, manufacturer, year),
-#'   mapping = aes(x = manufacturer, y = n, fill = year),
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer, fill = year),
 #'   type = "bar"
 #' ) %>% 
 #'   ax_legend(position = "right") %>% 
@@ -737,13 +729,12 @@ ax_series2 <- function(ax, l) {
 #' @note See \url{https://apexcharts.com/docs/options/states/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # Inverse effect on hover
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n),
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer),
 #'   type = "bar"
 #' ) %>% 
 #'   ax_states(
@@ -930,20 +921,19 @@ ax_stroke <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/tooltip/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # Hide tooltip
 #' apex(
-#'   data = count(mpg, manufacturer, year),
-#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer, fill = year)
 #' ) %>% 
 #'   ax_tooltip(enabled = FALSE)
 #' 
 #' # Share between series
 #' apex(
-#'   data = count(mpg, manufacturer, year),
-#'   mapping = aes(x = manufacturer, y = n, fill = year)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer, fill = year)
 #' ) %>% 
 #'   ax_tooltip(shared = TRUE)
 #' 
@@ -1006,27 +996,26 @@ ax_tooltip <- function(ax,
 #' @note See \url{https://apexcharts.com/docs/options/xaxis/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
 #' # X axis title
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_xaxis(title = list(text = "Car's manufacturer"))
 #' 
 #' # force labels to rotate and increase height
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
 #' 
 #' # force to not rotate
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_xaxis(labels = list(rotate = 0, trim = FALSE))
 #' 
@@ -1193,28 +1182,27 @@ ax_yaxis2 <- function(ax, ...) {
 #' @note See \url{https://apexcharts.com/docs/options/theme/}
 #' 
 #' @examples 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' data("diamonds", package = "ggplot2")
 #' 
 #' # Dark mode
 #' apex(
-#'   data = count(mpg, manufacturer),
-#'   mapping = aes(x = manufacturer, y = n)
+#'   data = mpg,
+#'   mapping = aes(x = manufacturer)
 #' ) %>% 
 #'   ax_theme(mode = "dark")
 #' 
 #' # Use predefined palette (1 to 10)
 #' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = color, y = n, fill = cut)
+#'   data = diamonds,
+#'   mapping = aes(x = color, fill = cut)
 #' ) %>% 
 #'   ax_theme(palette = "palette2")
 #' 
 #' # monochrome palette
 #' apex(
-#'   data = count(diamonds, cut, color),
-#'   mapping = aes(x = color, y = n, fill = cut)
+#'   data = diamonds,
+#'   mapping = aes(x = color, fill = cut)
 #' ) %>% 
 #'   ax_theme(monochrome = list(enabled = TRUE, color = "#0B6121"))
 ax_theme <- function(ax,

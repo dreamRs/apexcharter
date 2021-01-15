@@ -21,10 +21,8 @@ Packages and data used below:
 
 ```{r message=FALSE, warning=FALSE}
 library(apexcharter)
-library(dplyr)
 
 data("diamonds", package = "ggplot2")
-n_cut <- count(diamonds, cut)
 ```
 
 
@@ -33,7 +31,7 @@ n_cut <- count(diamonds, cut)
 You can set title, subtitle and axis' titles at once with `ax_labs()`:
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>%
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
   ax_labs(
     title = "Cut distribution",
     subtitle = "Data from ggplot2",
@@ -49,14 +47,14 @@ If you more control (font size, alignment, ...), you can use `ax_title()`, `ax_s
 ### Title
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(text = "Cut distribution")
 ```
 
 You can set some options, for example:
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(
     text = "Cut distribution", 
     align = "center",
@@ -71,7 +69,7 @@ Full list of parameters is available here : https://apexcharts.com/docs/options/
 ### Subtitle
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(text = "Cut distribution") %>% 
   ax_subtitle(text = "Data from ggplot2")
 ```
@@ -79,7 +77,7 @@ apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>%
 With same options than for title:
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(
     text = "Cut distribution", 
     align = "center",
@@ -98,7 +96,7 @@ Full list of parameters is available here : https://apexcharts.com/docs/options/
 ### Axis title
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_yaxis(title = list(text = "Count")) %>% 
   ax_xaxis(title = list(text = "Cut"))
 ```
@@ -106,7 +104,7 @@ apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>%
 With some options:
 
 ```{r}
-apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>% 
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_yaxis(title = list(
     text = "Count",
     style = list(fontSize = "14px", color = "#BDBDBD")
@@ -125,17 +123,12 @@ apex(data = n_cut, type = "column", mapping = aes(x = cut, y = n)) %>%
 
 ```{r message=FALSE, warning=FALSE}
 library(apexcharter)
-library(dplyr)
 
 ## economics dataset from ggplot2
 data("economics", package = "ggplot2")
-economics <- tail(economics, 50)
-
 data("economics_long", package = "ggplot2")
-economics_long <- economics_long %>% 
-  filter(variable %in% c("pce", "pop")) %>% 
-  group_by(variable) %>% 
-  slice(tail(row_number(), 20))
+economics <- tail(economics, 50)
+economics_long <- subset(economics_long, date >= "2010-01-01")
 ```
 
 

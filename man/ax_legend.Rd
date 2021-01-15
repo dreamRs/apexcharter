@@ -83,20 +83,19 @@ Legend properties
 See \url{https://apexcharts.com/docs/options/legend/}
 }
 \examples{
-library(dplyr)
 data("mpg", package = "ggplot2")
 
 # Legend position
 apex(
-  data = count(mpg, manufacturer, year),
-  mapping = aes(x = manufacturer, y = n, fill = year)
+  data = mpg,
+  mapping = aes(x = manufacturer, fill = year)
 ) \%>\% 
   ax_legend(position = "right")
 
 # hide legend
 apex(
-  data = count(mpg, manufacturer, year),
-  mapping = aes(x = manufacturer, y = n, fill = year)
+  data = mpg,
+  mapping = aes(x = manufacturer, fill = year)
 ) \%>\% 
   ax_legend(show = FALSE)
 }

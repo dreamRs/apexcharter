@@ -134,10 +134,9 @@ events_opts <- function(click = NULL,
 #' 
 #' @examples 
 #' 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
-#' apex(count(mpg, manufacturer), aes(manufacturer, n)) %>% 
+#' apex(mpg, aes(manufacturer)) %>% 
 #'   ax_plotOptions(
 #'     bar = bar_opts(
 #'       endingShape = "rounded",
@@ -320,11 +319,9 @@ radialBar_opts <- function(size = NULL,
 #' @export
 #' 
 #' @examples 
-#' 
-#' library(dplyr)
 #' data("mpg", package = "ggplot2")
 #' 
-#' apex(count(mpg, cyl), aes(cyl, n), type = "donut") %>%
+#' apex(mpg, aes(cyl), type = "donut") %>%
 #'   ax_plotOptions(
 #'     pie = pie_opts(
 #'       donut = list(size = "90%", background = "#BABABA")

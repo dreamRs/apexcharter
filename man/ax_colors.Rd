@@ -21,22 +21,20 @@ Colors
 See \url{https://apexcharts.com/docs/options/colors/}
 }
 \examples{
-
-library(dplyr)
 data("diamonds", package = "ggplot2")
 
 # Change default color(s)
 apex(
-  data = count(diamonds, cut),
-  mapping = aes(x = cut, y = n)
+  data = diamonds,
+  mapping = aes(x = cut)
 ) \%>\%
   ax_colors("#F7D358")
 
 
 library(scales)
 apex(
-  data = count(diamonds, cut, color),
-  mapping = aes(x = cut, y = n, fill = color)
+  data = diamonds,
+  mapping = aes(x = cut, fill = color)
 ) \%>\%
   ax_colors(brewer_pal(palette = "Set2")(7))
 }

@@ -24,7 +24,6 @@ Imports:
     shiny (>= 1.1.0)
 Suggests: 
     testthat,
-    dplyr,
     knitr,
     scales,
     rmarkdown,

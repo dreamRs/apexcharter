@@ -19,12 +19,11 @@ Secondary Y-axis options
 }
 \examples{
 library(apexcharter)
-library(dplyr)
 data("economics_long", package = "ggplot2")
 
 eco <- economics_long \%>\%
-  filter(variable \%in\% c("pce", "pop")) \%>\% 
-  mutate(value = round(value))
+  subset(variable \%in\% c("pce", "pop")) \%>\% 
+  transform(value = round(value))
 
 # add second y-axis
 apex(eco, aes(x = date, y = value, color = variable), type = "line") \%>\%
