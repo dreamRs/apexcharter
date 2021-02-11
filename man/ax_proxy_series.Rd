@@ -20,7 +20,7 @@ Allows you to update the series array overriding the existing one.
 
 if (interactive()) {
   library(shiny)
-  
+
   ui <- fluidPage(
     fluidRow(
       column(
@@ -30,15 +30,15 @@ if (interactive()) {
       )
     )
   )
-  
+
   server <- function(input, output, session) {
-    
+
     rv <- reactiveValues()
     rv$df <- data.frame(
       date = Sys.Date() + 1:20,
       values = sample(10:90, 20, TRUE)
     )
-    
+
     observe({
       invalidateLater(1000, session)
       df <- isolate(rv$df)
@@ -51,17 +51,17 @@ if (interactive()) {
       )
       rv$df <- df
     })
-    
+
     output$chart <- renderApexchart({
       # Generate chart once
-      apex(isolate(rv$df), aes(date, values), "spline") \%>\% 
+      apex(isolate(rv$df), aes(date, values), "spline") \%>\%
         ax_xaxis(
           range = 10 * 24 * 60 * 60 * 1000
           # Fixed range for x-axis : 10 days
           # days*hours*minutes*seconds*milliseconds
         )
     })
-    
+
     observe({
       # Update chart to add new data
       apexchartProxy("chart") \%>\%
@@ -70,9 +70,9 @@ if (interactive()) {
           T
         )
     })
-    
+
   }
-  
+
   shinyApp(ui, server)
 }
 

@@ -18,7 +18,7 @@ Allows you to update the configuration object.
 
 if (interactive()) {
   library(shiny)
-  
+
   ui <- fluidPage(
     fluidRow(
       column(
@@ -37,20 +37,20 @@ if (interactive()) {
     )
   )
   server <- function(input, output, session) {
-    
+
     output$chart <- renderApexchart({
       apexchart() \%>\%
-        ax_chart(type = "bar") \%>\% 
+        ax_chart(type = "bar") \%>\%
         ax_series(list(
           name = "Example",
           data = c(23, 43, 76, 31)
-        )) \%>\% 
+        )) \%>\%
         ax_xaxis(
           categories = c("Label A", "Label B",
                          "Label C", "Label D")
         )
     })
-    
+
     observe({
       apexchartProxy("chart") \%>\%
         ax_proxy_options(list(
@@ -62,9 +62,9 @@ if (interactive()) {
           )
         ))
     })
-    
+
   }
-  
+
   shinyApp(ui, server)
 }
 

@@ -1,28 +1,28 @@
 
 #' @title Proxy for \code{apexchart}
-#' 
+#'
 #' @description Allow to update a chart in Shiny application.
 #'
 #' @param shinyId single-element character vector indicating the output ID of the
 #'   chart to modify (if invoked from a Shiny module, the namespace will be added
 #'   automatically)
 #' @param session the Shiny session object to which the chart belongs; usually the
-#'   default value will suffice 
+#'   default value will suffice
 #'
 #' @export
-#' 
+#'
 #' @importFrom shiny getDefaultReactiveDomain
 #'
 apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain()) {
-  
+
   if (is.null(session)) {
     stop("apexchartProxy must be called from the server function of a Shiny app")
   }
-  
+
   if (!is.null(session$ns) && nzchar(session$ns(NULL)) && substring(shinyId, 1, nchar(session$ns(""))) != session$ns("")) {
     shinyId <- session$ns(shinyId)
   }
-  
+
   structure(
     list(
       session = session,
@@ -43,7 +43,7 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 #' @return A \code{apexchartProxy} \code{htmlwidget} object.
 #' @noRd
 .ax_proxy <- function(proxy, name, ...) {
-  if (!"apexchart_Proxy" %in% class(proxy)) 
+  if (!"apexchart_Proxy" %in% class(proxy))
     stop("This function must be used with a apexchartProxy object", call. = FALSE)
   proxy$session$sendCustomMessage(
     type = sprintf("update-apexchart-%s", name),
@@ -52,7 +52,7 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
   proxy
 }
 .ax_proxy2 <- function(proxy, name, l) {
-  if (!"apexchart_Proxy" %in% class(proxy)) 
+  if (!"apexchart_Proxy" %in% class(proxy))
     stop("This function must be used with a apexchartProxy object", call. = FALSE)
   proxy$session$sendCustomMessage(
     type = sprintf("update-apexchart-%s", name),
@@ -64,9 +64,9 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 
 
 
-#' @title Proxy for updating series. 
-#' 
-#' @description Allows you to update the series array overriding the existing one. 
+#' @title Proxy for updating series.
+#'
+#' @description Allows you to update the series array overriding the existing one.
 #'
 #' @param proxy A \code{apexchartProxy} \code{htmlwidget} object.
 #' @param newSeries The series array to override the existing one.
@@ -75,10 +75,10 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' if (interactive()) {
 #'   library(shiny)
-#'   
+#'
 #'   ui <- fluidPage(
 #'     fluidRow(
 #'       column(
@@ -88,15 +88,15 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 #'       )
 #'     )
 #'   )
-#'   
+#'
 #'   server <- function(input, output, session) {
-#'     
+#'
 #'     rv <- reactiveValues()
 #'     rv$df <- data.frame(
 #'       date = Sys.Date() + 1:20,
 #'       values = sample(10:90, 20, TRUE)
 #'     )
-#'     
+#'
 #'     observe({
 #'       invalidateLater(1000, session)
 #'       df <- isolate(rv$df)
@@ -109,17 +109,17 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 #'       )
 #'       rv$df <- df
 #'     })
-#'     
+#'
 #'     output$chart <- renderApexchart({
 #'       # Generate chart once
-#'       apex(isolate(rv$df), aes(date, values), "spline") %>% 
+#'       apex(isolate(rv$df), aes(date, values), "spline") %>%
 #'         ax_xaxis(
 #'           range = 10 * 24 * 60 * 60 * 1000
 #'           # Fixed range for x-axis : 10 days
 #'           # days*hours*minutes*seconds*milliseconds
 #'         )
 #'     })
-#'     
+#'
 #'     observe({
 #'       # Update chart to add new data
 #'       apexchartProxy("chart") %>%
@@ -128,24 +128,24 @@ apexchartProxy <- function(shinyId, session = shiny::getDefaultReactiveDomain())
 #'           T
 #'         )
 #'     })
-#'     
+#'
 #'   }
-#'   
+#'
 #'   shinyApp(ui, server)
 #' }
-#' 
+#'
 ax_proxy_series <- function(proxy, newSeries, animate = TRUE) {
   .ax_proxy2(
-    proxy = proxy, 
-    name = "series", 
+    proxy = proxy,
+    name = "series",
     l = list(newSeries = newSeries, animate = animate)
   )
 }
 
 
 
-#' @title Proxy for updating options 
-#' 
+#' @title Proxy for updating options
+#'
 #' @description Allows you to update the configuration object.
 #'
 #' @param proxy A \code{apexchartProxy} \code{htmlwidget} object.
@@ -153,11 +153,13 @@ ax_proxy_series <- function(proxy, newSeries, animate = TRUE) {
 #'
 #' @export
 #'
+#' @importFrom htmlwidgets JSEvals
+#'
 #' @examples
-#' 
+#'
 #' if (interactive()) {
 #'   library(shiny)
-#'   
+#'
 #'   ui <- fluidPage(
 #'     fluidRow(
 #'       column(
@@ -176,20 +178,20 @@ ax_proxy_series <- function(proxy, newSeries, animate = TRUE) {
 #'     )
 #'   )
 #'   server <- function(input, output, session) {
-#'     
+#'
 #'     output$chart <- renderApexchart({
 #'       apexchart() %>%
-#'         ax_chart(type = "bar") %>% 
+#'         ax_chart(type = "bar") %>%
 #'         ax_series(list(
 #'           name = "Example",
 #'           data = c(23, 43, 76, 31)
-#'         )) %>% 
+#'         )) %>%
 #'         ax_xaxis(
 #'           categories = c("Label A", "Label B",
 #'                          "Label C", "Label D")
 #'         )
 #'     })
-#'     
+#'
 #'     observe({
 #'       apexchartProxy("chart") %>%
 #'         ax_proxy_options(list(
@@ -201,17 +203,17 @@ ax_proxy_series <- function(proxy, newSeries, animate = TRUE) {
 #'           )
 #'         ))
 #'     })
-#'     
+#'
 #'   }
-#'   
+#'
 #'   shinyApp(ui, server)
 #' }
-#' 
+#'
 ax_proxy_options <- function(proxy, options) {
   .ax_proxy2(
-    proxy = proxy, 
-    name = "options", 
-    l = list(options = options)
+    proxy = proxy,
+    name = "options",
+    l = list(options = options, evals = JSEvals(options))
   )
 }
 
@@ -232,8 +234,8 @@ ax_proxy_options <- function(proxy, options) {
 #' @example examples/proxy-toggle.R
 ax_proxy_toggle_series <- function(proxy, series_name) {
   .ax_proxy2(
-    proxy = proxy, 
-    name = "toggle-series", 
+    proxy = proxy,
+    name = "toggle-series",
     l = list(seriesName = list1(series_name))
   )
 }
