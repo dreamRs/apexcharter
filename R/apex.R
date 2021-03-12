@@ -1,6 +1,6 @@
 
 #' @title Quick ApexCharts
-#' 
+#'
 #' @description Initialize a chart with three main parameters :
 #'  data, mapping and type of chart.
 #'
@@ -8,12 +8,12 @@
 #'  a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
 #' @param mapping Default list of aesthetic mappings to use for chart
 #' @param type Specify the chart type. Available options:
-#'  \code{"column"}, \code{"bar"}, 
+#'  \code{"column"}, \code{"bar"},
 #'  \code{"line"}, \code{"step"}, \code{"spline"},
-#'  \code{"area"}, \code{"area-step"}, \code{"area-spline"}, 
+#'  \code{"area"}, \code{"area-step"}, \code{"area-spline"},
 #'  \code{"pie"}, \code{"donut"},
 #'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"},
-#'  \code{"heatmap"}, \code{"treemap"}, 
+#'  \code{"heatmap"}, \code{"treemap"},
 #'  \code{"timeline"}.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param auto_update In Shiny application, update existing chart
@@ -25,34 +25,34 @@
 #' @param width A numeric input in pixels.
 #' @param height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
-#' 
+#'
 #' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
 #' @export
-#' 
+#'
 #' @importFrom rlang eval_tidy as_label
 #' @importFrom utils modifyList
 #' @importFrom stats complete.cases
 #'
 #' @example examples/apex.R
-apex <- function(data, mapping, type = "column", ..., 
+apex <- function(data, mapping, type = "column", ...,
                  auto_update = TRUE,
                  synchronize = NULL,
                  serie_name = NULL,
                  width = NULL,
-                 height = NULL, 
+                 height = NULL,
                  elementId = NULL) {
   type <- match.arg(
-    arg = type, 
+    arg = type,
     choices = c(
-      "column", "bar", 
-      "line", "spline", "step", 
+      "column", "bar",
+      "line", "spline", "step",
       "area", "area-spline", "area-step",
-      "pie", "donut", 
+      "pie", "donut",
       "radialBar",
-      "radar", 
+      "radar",
       "polarArea",
-      "scatter", "bubble", 
+      "scatter", "bubble",
       "heatmap",
       "treemap",
       "timeline",
@@ -81,7 +81,7 @@ apex <- function(data, mapping, type = "column", ...,
   } else {
     opts <- list(
       chart = dropNulls(list(
-        type = correct_type(type), 
+        type = correct_type(type),
         group = synchronize
       )),
       series = make_series(mapdata, mapping, type, serie_name)
@@ -96,10 +96,10 @@ apex <- function(data, mapping, type = "column", ...,
     opts$xaxis$labels$style$colors <- "#848484"
   }
   ax <- apexchart(
-    ax_opts = opts, 
-    width = width, 
+    ax_opts = opts,
+    width = width,
     height = height,
-    elementId = elementId, 
+    elementId = elementId,
     auto_update = auto_update
   )
   if (inherits(mapdata$x, c("character", "Date", "POSIXt", "numeric", "integer")) & length(mapdata$x) > 0) {
@@ -174,7 +174,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
             name = x,
             type = multi_type(type),
             data = parse_df(
-              data = data, 
+              data = data,
               add_names = add_names
             )
           ))
@@ -248,8 +248,8 @@ correct_type <- function(type) {
 }
 
 multi_type <- function(x) {
-  multis <- c("column", "area", "line", 
-              "spline", "step", "scatter", 
+  multis <- c("column", "area", "line",
+              "spline", "step", "scatter",
               "bubble")
   if (isTRUE(x %in% multis)) {
     correct_type(x)
@@ -301,7 +301,7 @@ choose_config <- function(type, mapdata) {
   range_x <- range_num(mapdata$x)
   range_y <- range_num(mapdata$y)
   switch(
-    type, 
+    type,
     "bar" = config_bar(horizontal = TRUE),
     "column" = config_bar(horizontal = FALSE, datetime = datetime),
     "line" = config_line(datetime = datetime),
@@ -329,7 +329,8 @@ config_bar <- function(horizontal = FALSE, datetime = FALSE) {
       )
     ),
     tooltip = list(
-      shared = TRUE, 
+      shared = TRUE,
+      intersect = FALSE,
       followCursor = TRUE
     )
   )
@@ -354,7 +355,7 @@ config_line <- function(curve = "straight", datetime = FALSE) {
     stroke = list(
       curve = curve,
       width = 2
-    ), 
+    ),
     yaxis = list(
       decimalsInFloat = 2
     )
@@ -373,7 +374,7 @@ config_scatter <- function(range_x, range_y, datetime = FALSE) {
     dataLabels = list(enabled = FALSE),
     xaxis = list(
       type = "numeric",
-      min = range_x$range[1], 
+      min = range_x$range[1],
       max = range_x$range[2],
       tickAmount = range_x$n,
       # labels = list(formatter = format_num("~r")),
@@ -383,7 +384,7 @@ config_scatter <- function(range_x, range_y, datetime = FALSE) {
       )
     ),
     yaxis = list(
-      min = range_y$range[1], 
+      min = range_y$range[1],
       max = range_y$range[2],
       tickAmount = range_y$n,
       labels = list(formatter = format_num("~r")),
