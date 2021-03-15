@@ -4,7 +4,7 @@
  * https://github.com/dreamRs/apexcharter
  *
  */
- 
+
 /*global HTMLWidgets, ApexCharts, Shiny */
 
 /// Functions
@@ -19,14 +19,14 @@ var apexcharter = {
     }
     return widgetObj;
   },
-  
+
   isSingleSerie: function(options) {
     var typeLabels = ["pie", "radialBar", "donut"];
     var lab = typeLabels.indexOf(options.w.config.chart.type) > -1;
     var single = options.w.config.series.length === 1;
     return lab | single;
   },
-  
+
   isDatetimeAxis: function(chartContext) {
     if (
       chartContext.hasOwnProperty("w") &&
@@ -39,7 +39,7 @@ var apexcharter = {
       return false;
     }
   },
-  
+
   getSelection: function(chartContext, selectedDataPoints, serieIndex) {
     var typeLabels = ["pie", "radialBar", "donut"];
     var typeXY = ["scatter", "bubble"];
@@ -79,7 +79,7 @@ var apexcharter = {
     }
     return selected;
   },
-  
+
   getYaxis: function(axis) {
     var yzoom = { min: null, max: null };
     if (typeof axis.yaxis !== "undefined" && axis.yaxis !== null) {
@@ -98,7 +98,7 @@ var apexcharter = {
     }
     return yzoom;
   },
-  
+
   getXaxis: function(axis) {
     var xzoom = { min: null, max: null };
     if (typeof axis.xaxis !== "undefined") {
@@ -112,7 +112,7 @@ var apexcharter = {
     }
     return xzoom;
   },
-  
+
   exportChart: function(x, chart) {
     if (x.hasOwnProperty("shinyEvents") & HTMLWidgets.shinyMode) {
       if (x.shinyEvents.hasOwnProperty("export")) {
@@ -332,10 +332,16 @@ if (HTMLWidgets.shinyMode) {
   Shiny.addCustomMessageHandler("update-apexchart-options", function(obj) {
     var chart = apexcharter.getWidget(obj.id);
     if (typeof chart != "undefined") {
-      chart.updateOptions(obj.data.options);
+      var options = obj.data.options;
+      var evals = obj.data.evals;
+      if (!(evals instanceof Array)) evals = [evals];
+      for (var k = 0; evals && k < evals.length; k++) {
+          window.HTMLWidgets.evaluateStringMember(options, evals[k]);
+      }
+      chart.updateOptions(options);
     }
   });
-  
+
   // toggle series
   Shiny.addCustomMessageHandler("update-apexchart-toggle-series", function(obj) {
     var chart = apexcharter.getWidget(obj.id);
