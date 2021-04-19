@@ -1,5 +1,5 @@
 Package: apexcharter
-Version: 0.1.8.9300
+Version: 0.1.8.9400
 Title: Create Interactive Chart with the JavaScript 'ApexCharts' Library
 Description: Provides an 'htmlwidgets' interface to 'apexcharts.js'. 
   'Apexcharts' is a modern JavaScript charting library to build interactive charts and visualizations with simple API.

@@ -21,7 +21,7 @@ The objective of this vignette is to show how to quickly build data visualizatio
 Data used are from `ggplot2` package.
 
 
-```{r message=FALSE, warning=FALSE}
+```{r packages, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(scales)
 library(apexcharter)
@@ -187,7 +187,7 @@ apex(data = new_mtcars, type = "radar", mapping = aes(x = model, y = value, grou
 
 With some custom options for color mapping:
 
-```{r}
+```{r polar-area}
 apex(mtcars, aes(rownames(mtcars), mpg), type = "polarArea") %>% 
   ax_legend(show = FALSE) %>% 
   ax_colors(col_numeric("Blues", domain = NULL)(mtcars$mpg)) %>% 
@@ -231,7 +231,7 @@ apex(mpg, aes(x = manufacturer), "treemap")
 
 Create a candlestick chart with:
 
-```{r}
+```{r candlestick}
 data("candles", package = "apexcharter")
 
 apex(
