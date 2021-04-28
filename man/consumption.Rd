@@ -8,7 +8,7 @@
 A data frame with 120 observations and the following 3 variables:
 \describe{
 \item{\code{date}}{date.}
-\item{\code{type}}{Type of data : realised or forecast.}
+\item{\code{type}}{Type of data : realized or forecast.}
 \item{\code{value}}{Value in giga-watt per hour.}
 }
 }

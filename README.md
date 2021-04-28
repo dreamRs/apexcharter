@@ -5,7 +5,6 @@
 <!-- badges: start -->
 [![version](http://www.r-pkg.org/badges/version/apexcharter)](https://CRAN.R-project.org/package=apexcharter)
 [![cran checks](https://cranchecks.info/badges/worst/apexcharter)](https://cranchecks.info/pkgs/apexcharter)
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![R build status](https://github.com/dreamRs/apexcharter/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/apexcharter/actions)
 [![Codecov test coverage](https://codecov.io/gh/dreamRs/apexcharter/branch/master/graph/badge.svg)](https://codecov.io/gh/dreamRs/apexcharter?branch=master)
 <!-- badges: end -->
