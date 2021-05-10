@@ -56,6 +56,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
   )
 }
 
+# dput(tools::file_path_sans_ext(list.files("inst/htmlwidgets/lib/apexcharts-locales/")))
 #' @importFrom jsonlite fromJSON
 add_locale_apex <- function(widget) {
   if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
@@ -63,8 +64,9 @@ add_locale_apex <- function(widget) {
     defaultLocale <- match.arg(
       arg = defaultLocale,
       choices = c("ca", "cs", "de", "el", "en", "es", "fi", "fr", "he", "hi", 
-                  "hr", "hy", "id", "it", "ko", "lt", "nb", "nl", "pl", "pt-br", 
-                  "pt", "ru", "se", "sk", "sl", "th", "tr", "ua")
+                  "hr", "hu", "hy", "id", "it", "ja", "ka", "ko", "lt", "nb", "nl", 
+                  "pl", "pt-br", "pt", "rs", "ru", "se", "sk", "sl", "sq", "th", 
+                  "tr", "ua", "zh-cn")
     )
     if (!is.null(widget$x$ax_opts$chart$locales)) {
       warning(
