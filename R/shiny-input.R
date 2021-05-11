@@ -217,7 +217,7 @@ set_input_export <- function(ax, inputId,
 run_demo_input <- function(example = c("click", "zoom", "selection")) { 
   example <- match.arg(example)
   shiny::shinyAppFile(
-    appFile = system.file("examples-input", example, "app.R", package = "apexcharter"),
+    appFile = system.file("examples/input", example, "app.R", package = "apexcharter"),
     options = list("display.mode" = "showcase")
   )
 }
@@ -239,7 +239,7 @@ run_demo_input <- function(example = c("click", "zoom", "selection")) {
 #' }
 run_demo_sync <- function() {
   shiny::shinyAppFile(
-    appFile = system.file("example-sync", "app.R", package = "apexcharter"),
+    appFile = system.file("examples/sync", "app.R", package = "apexcharter"),
     options = list("display.mode" = "showcase")
   )
 }
@@ -259,7 +259,7 @@ run_demo_sync <- function() {
 #' }
 run_demo_sparkbox <- function() {
   shiny::shinyAppFile(
-    appFile = system.file("example-spark", "app.R", package = "apexcharter"),
+    appFile = system.file("examples/spark", "app.R", package = "apexcharter"),
     options = list("display.mode" = "showcase")
   )
 }
