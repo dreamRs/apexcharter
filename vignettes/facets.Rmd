@@ -19,7 +19,6 @@ knitr::opts_chunk$set(
 library(apexcharter)
 ```
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 
 Create grid of charts with ApexCharts, currently it's possible to:
 
