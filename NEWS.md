@@ -1,7 +1,7 @@
 apexcharter 0.2.0
 ==================
 
-* Updated ApexCharts.js to 3.26.1
+* Updated ApexCharts.js to 3.26.2
 * New functions `ax_facet_wrap()` and `ax_facet_grid()` to create faceting charts.
 * New function `apex_grid()` to combine several charts in a grid.
 
