@@ -1,3 +1,10 @@
+apexcharter 0.2.1
+==================
+
+* Updated ApexCharts.js to 3.26.3
+
+
+
 apexcharter 0.2.0
 ==================
 
