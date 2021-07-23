@@ -154,7 +154,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
     if (is.null(serie_name) & !is.null(mapping$y))
       serie_name <- rlang::as_label(mapping$y)
     series <- list(dropNulls(list(
-      name = serie_name,
+      name = as.character(serie_name),
       type = multi_type(type),
       data = parse_df(mapdata, add_names = add_names)
     )))
@@ -171,7 +171,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
           data <- data[, setdiff(names(data), "group"), drop = FALSE]
           data <- data[order(match(x = data[["x"]], table = x_order, nomatch = 0L)), , drop = FALSE]
           dropNulls(list(
-            name = x,
+            name = as.character(x),
             type = multi_type(type),
             data = parse_df(
               data = data,
