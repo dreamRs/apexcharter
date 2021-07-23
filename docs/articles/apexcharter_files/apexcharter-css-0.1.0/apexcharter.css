@@ -1,0 +1,73 @@
+
+/* Spark box styles */
+.apexcharter-spark-box {
+  border-radius: 0.5rem;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 28px -12px #3B4252;
+}
+
+.apexcharter-grid-container > div {
+  min-width: 0;
+}
+
+.apexcharter-facet-col-label {
+  background:#E6E6E6;
+  text-align: center;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.apexcharter-facet-row-label {
+  background:#E6E6E6;
+  text-align: center;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 30px;
+}
+
+
+.apexcharter-facet-subtitle {
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 5px;
+}
+
+.apexcharter-facet-title {
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 5px;
+}
+
+.apexcharter-facet-yaxis-title {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center; 
+  writing-mode: vertical-rl; 
+  text-orientation: mixed;
+  line-height: 30px;
+  height: 100%;
+}
+
+.apexcharter-facet-xaxis-title {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  line-height: 30px; 
+  width: 100%;
+}
+
+.apexcharter-facet-rotate180 {
+  transform: rotate(180deg);
+  /* Legacy vendor prefixes that you probably don't need... */
+  /* Safari */
+  -webkit-transform: rotate(180deg);
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+  /* IE */
+  -ms-transform: rotate(180deg);
+  /* Opera */
+  -o-transform: rotate(180deg);
+  /* Internet Explorer */
+  /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+}
+
+
+
+
