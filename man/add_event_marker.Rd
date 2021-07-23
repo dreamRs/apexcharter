@@ -47,7 +47,7 @@ or see \code{\link{label}} for more controls.}
 An \code{apexcharts} \code{htmlwidget} object.
 }
 \description{
-Add an event marker to a chart
+Add a point with a label based on a datetime.
 }
 \examples{
 library(apexcharter)
@@ -73,4 +73,7 @@ apex(consumption, aes(date, value, group = type), "spline") \%>\%
     size = 10,
     color = "firebrick"
   )
+}
+\seealso{
+\code{\link{add_event}} to add a vertical line.
 }

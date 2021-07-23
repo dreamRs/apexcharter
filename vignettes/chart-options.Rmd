@@ -41,7 +41,7 @@ apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
   )
 ```
 
-If you more control (font size, alignment, ...), you can use `ax_title()`, `ax_subtitle()`, `ax_xaxis()` and `ax_yaxis()`, as described below.
+If you want more control (font size, alignment, ...), you can use `ax_title()`, `ax_subtitle()`, `ax_xaxis()` and `ax_yaxis()`, as described below.
 
 
 

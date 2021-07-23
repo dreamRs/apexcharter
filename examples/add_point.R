@@ -39,14 +39,3 @@ apex(
     x = clusters$centers[, 1],
     y = clusters$centers[, 2]
   )
-
-
-
-
-
-
-
-
-
-
-

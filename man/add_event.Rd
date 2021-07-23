@@ -53,3 +53,6 @@ apex(consumption, aes(date, value, group = type), "spline") \%>\%
   add_shade(from = "2020-01-06", to = "2020-01-20")\%>\% 
   add_event(when = c("2020-01-11", "2020-01-29"))
 }
+\seealso{
+\code{\link{add_event_marker}} to add a point.
+}

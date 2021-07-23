@@ -91,15 +91,7 @@ apex(
     x = clusters$centers[, 1],
     y = clusters$centers[, 2]
   )
-
-
-
-
-
-
-
-
-
-
-
+}
+\seealso{
+\code{\link{add_event_marker}} to add a point when x-axis is a datetime.
 }

@@ -51,7 +51,8 @@ label(
 \item{padding}{Padding for the label: top, right, bottom, left.}
 }
 \value{
-A \code{list} that can be used in \code{\link{add_shade}}.
+A \code{list} that can be used in \code{\link{add_shade}}, \code{\link{add_point}},
+\code{\link{add_event}}, \code{\link{add_event_marker}}.
 }
 \description{
 Label for annotations

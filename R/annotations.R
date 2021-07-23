@@ -96,7 +96,8 @@ add_annotation <- function(ax, type_annotation = c("xaxis", "yaxis", "points"),
 #' @param cssClass A custom Css Class to give to the annotation label elements.
 #' @param padding Padding for the label: top, right, bottom, left.
 #'
-#' @return A \code{list} that can be used in \code{\link{add_shade}}.
+#' @return A \code{list} that can be used in \code{\link{add_shade}}, \code{\link{add_point}},
+#'  \code{\link{add_event}}, \code{\link{add_event_marker}}.
 #' @export
 #'
 label <- function(text = NULL,
@@ -271,6 +272,8 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object. 
 #' @export
+#' 
+#' @seealso \code{\link{add_event_marker}} to add a point.
 #'
 #' @example examples/add_event.R
 add_event <- function(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...) {
@@ -287,13 +290,17 @@ add_event <- function(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...) 
 }
 
 
-#' Add an event marker to a chart
+#' @title Add an event marker to a chart
+#' 
+#' @description Add a point with a label based on a datetime.
 #'
 #' @param when Vector of position to place the event.
 #' @inheritParams add_point
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object. 
 #' @export
+#' 
+#' @seealso \code{\link{add_event}} to add a vertical line.
 #'
 #' @example examples/add_event_marker.R
 add_event_marker <- function(ax, when, y,
@@ -397,6 +404,8 @@ add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
 #'
 #' @return An \code{apexcharts} \code{htmlwidget} object. 
 #' @export
+#' 
+#' @seealso \code{\link{add_event_marker}} to add a point when x-axis is a datetime.
 #'
 #' @example examples/add_point.R
 add_point <- function(ax, x, y,
@@ -411,7 +420,7 @@ add_point <- function(ax, x, y,
     ax = ax, 
     type_annotation = "points", 
     position = "front",
-    as_date = FALSE, 
+    as_date = inherits(x, c("Date", "POSIXct")), 
     x = x, y = y,
     marker = marker(
       size = size, 
