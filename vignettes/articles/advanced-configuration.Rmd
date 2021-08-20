@@ -20,7 +20,7 @@ Here some advanced configuration examples to use the full potential of [ApexChar
 
 
 
-# Bar chart
+## Bar chart
 
 This example is taken from [{hrbrthemes}](https://github.com/hrbrmstr/hrbrthemes) readme, it use `mpg` dataset from [{ggplot2}](https://github.com/tidyverse/ggplot2).
 
@@ -147,7 +147,7 @@ count(mpg, class) %>%
 <br>
 
 
-# Lines 
+## Lines 
 
 Dataset used is from the UNHCR (The UN Refugee Agency) and contains data about UNHCR's populations of concern summarised by continent of origin.
 
@@ -314,7 +314,7 @@ unhcr_ts %>%
 <br>
 <br>
 
-# Scatter plot
+## Scatter plot
 
 Dataset used is from [{gapminder}](https://github.com/jennybc/gapminder).
 
@@ -559,7 +559,7 @@ gapminder %>%
 <br>
 <br>
 
-# Heatmap
+## Heatmap
 
 This is an adaption of this fancy [{highcharter} example](http://jkunst.com/highcharter/showcase.html), based from this  [WSJ visualization](http://graphics.wsj.com/infectious-diseases-and-vaccines/).
 
