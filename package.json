@@ -1,0 +1,39 @@
+{
+  "name": "apexcharter",
+  "version": "1.0.0",
+  "description": "> Htmlwidget for [apexcharts.js](https://github.com/apexcharts/apexcharts.js) : A modern JavaScript charting library to build interactive charts and visualizations with simple API. See the [online demo](https://dreamrs.github.io/apexcharter/) for examples.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "man": "man",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "none": "webpack --config webpack.dev.js --mode=none",
+    "development": "webpack --config webpack.dev.js",
+    "production": "webpack --config webpack.prod.js",
+    "watch": "webpack --config webpack.dev.js -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreamRs/apexcharter.git"
+  },
+  "keywords": [],
+  "author": "Victor Perrier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dreamRs/apexcharter/issues"
+  },
+  "homepage": "https://github.com/dreamRs/apexcharter#readme",
+  "devDependencies": {
+    "apexcharts": "^3.27.3",
+    "css-loader": "^6.2.0",
+    "d3-format": "^3.0.1",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-merge": "^5.8.0"
+  }
+}

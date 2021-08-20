@@ -4,3 +4,4 @@ inst/doc
 .RData
 *.Rproj
 data-raw/*.csv
+node_modules

@@ -56,7 +56,7 @@ apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height
   )
 }
 
-# dput(tools::file_path_sans_ext(list.files("inst/htmlwidgets/assets/apexcharts-locales/")))
+# dput(tools::file_path_sans_ext(list.files("inst/apexcharts-locale/")))
 #' @importFrom jsonlite fromJSON
 add_locale_apex <- function(widget) {
   if (!is.null(widget$x$ax_opts$chart$defaultLocale)) {
@@ -75,7 +75,7 @@ add_locale_apex <- function(widget) {
       )
     } else {
       path <- system.file(
-        file.path("htmlwidgets/assets/apexcharts-locales", paste0(defaultLocale, ".json")),
+        file.path("apexcharts-locale", paste0(defaultLocale, ".json")),
         package = "apexcharter"
       )
       locale <- jsonlite::fromJSON(txt = path)
