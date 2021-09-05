@@ -4,10 +4,12 @@ import {format, formatLocale} from "d3-format";
 import * as utils from "../modules/utils";
 import "../css/apexcharter.css";
 
+/*
 window.d3 = {
   format: format,
   formatLocale: formatLocale
 };
+*/
 
 HTMLWidgets.widget({
   name: "apexcharter",
