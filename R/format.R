@@ -10,25 +10,25 @@
 #'
 #' @return a \code{JS} function
 #' @export
-#' 
+#'
 #' @importFrom htmlwidgets JS
 #'
 #' @example examples/format.R
 format_num <- function(format, prefix = "", suffix = "", locale = "en-US") {
   check_locale_d3(locale)
-  path <- system.file(file.path("htmlwidgets/assets/d3-format/locale", paste0(locale, ".json")), package = "apexcharter")
+  path <- system.file(file.path("d3-format-locale", paste0(locale, ".json")), package = "apexcharter")
   if (path != "") {
     locale <- paste(readLines(con = path, encoding = "UTF-8"), collapse = "")
   }
   JS(sprintf(
-    "function(value) {var locale = d3.formatLocale(JSON.parse('%s')); return '%s' + locale.format('%s')(value) + '%s';}", 
+    "function(value) {var locale = formatLocale(JSON.parse('%s')); return '%s' + locale.format('%s')(value) + '%s';}",
     locale, prefix, format, suffix
   ))
 }
 
 
 check_locale_d3 <- function(x) {
-  json <- list.files(system.file("htmlwidgets/assets/d3-format/locale", package = "apexcharter"))
+  json <- list.files(system.file("d3-format-locale", package = "apexcharter"))
   njson <- gsub("\\.json", "", json)
   if (!x %in% njson) {
     stop(paste(
