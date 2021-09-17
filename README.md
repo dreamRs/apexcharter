@@ -10,23 +10,20 @@
 <!-- badges: end -->
 
 
-:warning: Use RStudio >= 1.2 to properly display charts
-
-
 
 ## Installation
 
-Install from CRAN with:
+Install from [CRAN](https://cran.r-project.org/web/packages/apexcharter/index.html) with:
 
 ```r
 install.packages("apexcharter")
 ```
 
-Or install the development version from [GitHub](https://github.com/) with:
+Or install the development version from [GitHub](https://github.com/dreamRs/apexcharter) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("dreamRs/apexcharter")
+```r
+# install.packages("remotes")
+remotes::install_github("dreamRs/apexcharter")
 ```
 
 
@@ -140,4 +137,28 @@ apexchart(ax_opts = list(
 ```
 
 ![](man/figures/raw-api.png)
+
+
+
+## Development
+
+This package use [{packer}](https://github.com/JohnCoene/packer) to manage JavaScript assets, see packer's [documentation](https://packer.john-coene.com/#/) for more.
+
+Install nodes modules with:
+
+```r
+packer::npm_install()
+```
+
+Modify `srcjs/widgets/apexcharter.js`, then run:
+
+```r
+packer::bundle()
+```
+
+Re-install R package and try `apexcharter()` or `apex()` functions.
+
+
+
+
 
