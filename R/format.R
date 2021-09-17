@@ -10,7 +10,7 @@
 #'
 #' @return a \code{JS} function
 #' @export
-#' 
+#'
 #' @importFrom htmlwidgets JS
 #'
 #' @example examples/format.R
@@ -21,7 +21,7 @@ format_num <- function(format, prefix = "", suffix = "", locale = "en-US") {
     locale <- paste(readLines(con = path, encoding = "UTF-8"), collapse = "")
   }
   JS(sprintf(
-    "function(value) {var locale = d3.formatLocale(JSON.parse('%s')); return '%s' + locale.format('%s')(value) + '%s';}", 
+    "function(value) {var locale = formatLocale(JSON.parse('%s')); return '%s' + locale.format('%s')(value) + '%s';}",
     locale, prefix, format, suffix
   ))
 }
