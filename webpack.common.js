@@ -59,9 +59,10 @@ var plugins = [
 var options = {
   entry: entryPoints,
   output: {
-    filename: '[name].js',
+    filename: "[name].js",
     path: path.resolve(__dirname, JSON.parse(outputPath)),
-    libraryTarget: 'window'
+    libraryTarget: "window",
+    hashFunction: "xxhash64",
   },
   externals: externals,
   module: {

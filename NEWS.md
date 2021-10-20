@@ -1,7 +1,7 @@
 apexcharter 0.2.1
 ==================
 
-* Updated ApexCharts.js to 3.28.3
+* Updated ApexCharts.js to 3.29.0
 * Internal: use [{packer}](https://github.com/JohnCoene/packer) to manage JavaScript assets.
 * `d3.format` JavaScript functions are now available in browser under `format()` and `formatLocale()`.
 
