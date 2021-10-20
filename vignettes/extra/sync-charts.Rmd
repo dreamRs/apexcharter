@@ -21,7 +21,7 @@ data("economics", package = "ggplot2")
 ```
 
 
-## Sync charts
+## Synchronize charts
 
 With [Apexcharts](https://apexcharts.com) you can sync (tooltip, zoom) several charts together by providing a common id in `synchronize` argument. This works in Shiny and Markdown. Here an example where we create two charts, tooltip will be displayed on both charts when you hover one, and if you zoom on one, the other one will be synced :
 
