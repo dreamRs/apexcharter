@@ -3,13 +3,13 @@ pkgdown: 1.6.1.9001
 pkgdown_sha: ce9781a15c7ea07df9fb17a11295ba4abec0b54b
 articles:
   apexcharter: apexcharter.html
-  advanced-configuration: articles/advanced-configuration.html
-  chart-options: chart-options.html
-  facets: facets.html
-  shiny-integration: shiny-integration.html
-  spark-box: spark-box.html
-  sync-charts: sync-charts.html
-last_built: 2021-07-23T09:13Z
+  advanced-configuration: extra/advanced-configuration.html
+  chart-options: extra/chart-options.html
+  facets: extra/facets.html
+  shiny-integration: extra/shiny-integration.html
+  spark-box: extra/spark-box.html
+  sync-charts: extra/sync-charts.html
+last_built: 2021-10-20T16:19Z
 urls:
   reference: https://dreamrs.github.io/apexcharter/reference
   article: https://dreamrs.github.io/apexcharter/articles

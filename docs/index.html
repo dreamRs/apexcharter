@@ -11,7 +11,7 @@
 <title>Create Interactive Chart with the JavaScript ApexCharts Library • apexcharter</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="deps/bs3compat-0.2.5.1/tabs.js"></script><script src="deps/bs3compat-0.2.5.1/bs3compat.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="deps/bs3compat-0.3.1/transition.js"></script><script src="deps/bs3compat-0.3.1/tabs.js"></script><script src="deps/bs3compat-0.3.1/bs3compat.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <link href="syntax-highlighting.css" rel="stylesheet">
@@ -34,7 +34,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.2.0.9100</button>
+    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.2.0.9200</button>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto ml-3">
@@ -47,12 +47,12 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/articles/advanced-configuration.html">Advanced configuration examples</a>
-    <a class="dropdown-item" href="articles/chart-options.html">Chart options</a>
-    <a class="dropdown-item" href="articles/facets.html">Facets: grid of charts</a>
-    <a class="dropdown-item" href="articles/shiny-integration.html">Shiny integration</a>
-    <a class="dropdown-item" href="articles/spark-box.html">Spark boxes</a>
-    <a class="dropdown-item" href="articles/sync-charts.html">Syncing charts</a>
+    <a class="dropdown-item" href="articles/extra/advanced-configuration.html">Advanced configuration examples</a>
+    <a class="dropdown-item" href="articles/extra/chart-options.html">Chart options</a>
+    <a class="dropdown-item" href="articles/extra/facets.html">Facets: grid of charts</a>
+    <a class="dropdown-item" href="articles/extra/shiny-integration.html">Shiny integration</a>
+    <a class="dropdown-item" href="articles/extra/spark-box.html">Spark boxes</a>
+    <a class="dropdown-item" href="articles/extra/sync-charts.html">Syncing charts</a>
   </div>
 </li>
 <li class="nav-item">
@@ -84,17 +84,16 @@
 </blockquote>
 <!-- badges: start -->
 
-<p><span class="emoji" data-emoji="warning">⚠️</span> Use RStudio &gt;= 1.2 to properly display charts</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
-<p>Install from CRAN with:</p>
+<p>Install from <a href="https://cran.r-project.org/web/packages/apexcharter/index.html" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"apexcharter"</span><span class="op">)</span></code></pre></div>
-<p>Or install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>Or install the development version from <a href="https://github.com/dreamRs/apexcharter" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"dreamRs/apexcharter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"dreamRs/apexcharter"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="quick-charts" class="section level2">
 <h2 class="hasAnchor">
@@ -193,6 +192,18 @@
   <span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/raw-api.png"></p>
+</div>
+<div id="development" class="section level2">
+<h2 class="hasAnchor">
+<a href="#development" class="anchor" aria-hidden="true"></a>Development</h2>
+<p>This package use <a href="https://github.com/JohnCoene/packer" class="external-link">{packer}</a> to manage JavaScript assets, see packer’s <a href="https://packer.john-coene.com/#/" class="external-link">documentation</a> for more.</p>
+<p>Install nodes modules with:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/packer/man/npm_install.html" class="external-link">npm_install</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Modify <code>srcjs/widgets/apexcharter.js</code>, then run:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/packer/man/bundle.html" class="external-link">bundle</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Re-install R package and try <code>apexcharter()</code> or <code><a href="reference/apex.html">apex()</a></code> functions.</p>
 </div>
 </div>
   </div>
