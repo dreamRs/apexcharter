@@ -1,8 +1,8 @@
 ---
-title: "Chart options"
+title: "Customize chart options"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{chart-options}
+  %\VignetteIndexEntry{Customize chart options}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

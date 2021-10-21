@@ -1,8 +1,8 @@
 ---
-title: "Syncing charts"
+title: "Synchronize charts with each other"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{syncing-charts}
+  %\VignetteIndexEntry{Synchronize charts with each other}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,8 +1,8 @@
 ---
-title: "Spark boxes"
+title: "Create boxes with sparklines"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{spark-box}
+  %\VignetteIndexEntry{Create boxes with sparklines}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

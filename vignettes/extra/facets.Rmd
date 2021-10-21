@@ -1,8 +1,8 @@
 ---
-title: "Facets: grid of charts"
+title: "Create grid of charts"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{facets}
+  %\VignetteIndexEntry{Create grid of charts}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

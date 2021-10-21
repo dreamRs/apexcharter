@@ -1,8 +1,8 @@
 ---
-title: "Shiny integration"
+title: "Use in Shiny application"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{shiny-integration}
+  %\VignetteIndexEntry{Use in Shiny application}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
