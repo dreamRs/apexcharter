@@ -2,16 +2,16 @@
   "name": "sk",
   "options": {
     "months": [
-      "Január",
-      "Február",
+      "Janu\u00e1r",
+      "Febru\u00e1r",
       "Marec",
-      "Apríl",
-      "Máj",
-      "Jún",
-      "Júl",
+      "Apr\u00edl",
+      "M\u00e1j",
+      "J\u00fan",
+      "J\u00fal",
       "August",
       "September",
-      "Október",
+      "Okt\u00f3ber",
       "November",
       "December"
     ],
@@ -20,9 +20,9 @@
       "Feb",
       "Mar",
       "Apr",
-      "Máj",
-      "Jún",
-      "Júl",
+      "M\u00e1j",
+      "J\u00fan",
+      "J\u00fal",
       "Aug",
       "Sep",
       "Okt",
@@ -30,26 +30,26 @@
       "Dec"
     ],
     "days": [
-      "Nedeľa",
+      "Nede\u013ea",
       "Pondelok",
       "Utorok",
       "Streda",
-      "Štvrtok",
+      "\u0160tvrtok",
       "Piatok",
       "Sobota"
     ],
-    "shortDays": ["Ne", "Po", "Ut", "St", "Št", "Pi", "So"],
+    "shortDays": ["Ne", "Po", "Ut", "St", "\u0160t", "Pi", "So"],
     "toolbar": {
-      "exportToSVG": "Stiahnuť SVG",
-      "exportToPNG": "Stiahnuť PNG",
-      "exportToCSV": "Stiahnuť CSV",
+      "exportToSVG": "Stiahnu\u0165 SVG",
+      "exportToPNG": "Stiahnu\u0165 PNG",
+      "exportToCSV": "Stiahnu\u0165 CSV",
       "menu": "Menu",
       "selection": "Vyberanie",
       "selectionZoom": "Zoom: Vyberanie",
-      "zoomIn": "Zoom: Priblížiť",
-      "zoomOut": "Zoom: Vzdialiť",
-      "pan": "Presúvanie",
-      "reset": "Resetovať"
+      "zoomIn": "Zoom: Pribl\u00ed\u017ei\u0165",
+      "zoomOut": "Zoom: Vzdiali\u0165",
+      "pan": "Pres\u00favanie",
+      "reset": "Resetova\u0165"
     }
   }
 }

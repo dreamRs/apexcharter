@@ -30,15 +30,15 @@
       "Des"
     ],
     "days": [
-      "Søndag",
+      "S\u00f8ndag",
       "Mandag",
       "Tirsdag",
       "Onsdag",
       "Torsdag",
       "Fredag",
-      "Lørdag"
+      "L\u00f8rdag"
     ],
-    "shortDays": ["Sø", "Ma", "Ti", "On", "To", "Fr", "Lø"],
+    "shortDays": ["S\u00f8", "Ma", "Ti", "On", "To", "Fr", "L\u00f8"],
     "toolbar": {
       "exportToSVG": "Last ned SVG",
       "exportToPNG": "Last ned PNG",
@@ -49,7 +49,7 @@
       "zoomIn": "Zoome inn",
       "zoomOut": "Zoome ut",
       "pan": "Skyving",
-      "reset": "Start på nytt"
+      "reset": "Start p\u00e5 nytt"
     }
   }
 }

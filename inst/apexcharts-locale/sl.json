@@ -34,11 +34,11 @@
       "Ponedeljek",
       "Torek",
       "Sreda",
-      "Četrtek",
+      "\u010cetrtek",
       "Petek",
       "Sobota"
     ],
-    "shortDays": ["Ne", "Po", "To", "Sr", "Če", "Pe", "So"],
+    "shortDays": ["Ne", "Po", "To", "Sr", "\u010ce", "Pe", "So"],
     "toolbar": {
       "exportToSVG": "Prenesi SVG",
       "exportToPNG": "Prenesi PNG",
@@ -46,7 +46,7 @@
       "menu": "Menu",
       "selection": "Izbiranje",
       "selectionZoom": "Zoom: Izbira",
-      "zoomIn": "Zoom: Približaj",
+      "zoomIn": "Zoom: Pribli\u017eaj",
       "zoomOut": "Zoom: Oddalji",
       "pan": "Pomikanje",
       "reset": "Resetiraj"

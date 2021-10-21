@@ -34,19 +34,19 @@
       "Ponedeljak",
       "Utorak",
       "Sreda",
-      "Četvrtak",
+      "\u010cetvrtak",
       "Petak",
       "Subota"
     ],
-    "shortDays": ["Ned", "Pon", "Uto", "Sre", "Čet", "Pet", "Sub"],
+    "shortDays": ["Ned", "Pon", "Uto", "Sre", "\u010cet", "Pet", "Sub"],
     "toolbar": {
       "exportToSVG": "Preuzmi SVG",
       "exportToPNG": "Preuzmi PNG",
       "exportToCSV": "Preuzmi CSV",
       "menu": "Meni",
       "selection": "Odabir",
-      "selectionZoom": "Odabirno povećanje",
-      "zoomIn": "Uvećajte prikaz",
+      "selectionZoom": "Odabirno pove\u0107anje",
+      "zoomIn": "Uve\u0107ajte prikaz",
       "zoomOut": "Umanjite prikaz",
       "pan": "Pomeranje",
       "reset": "Resetuj prikaz"

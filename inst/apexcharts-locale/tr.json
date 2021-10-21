@@ -3,27 +3,27 @@
   "options": {
     "months": [
       "Ocak",
-      "Şubat",
+      "\u015eubat",
       "Mart",
       "Nisan",
-      "Mayıs",
+      "May\u0131s",
       "Haziran",
       "Temmuz",
-      "Ağustos",
-      "Eylül",
+      "A\u011fustos",
+      "Eyl\u00fcl",
       "Ekim",
-      "Kasım",
-      "Aralık"
+      "Kas\u0131m",
+      "Aral\u0131k"
     ],
     "shortMonths": [
       "Oca",
-      "Şub",
+      "\u015eub",
       "Mar",
       "Nis",
       "May",
       "Haz",
       "Tem",
-      "Ağu",
+      "A\u011fu",
       "Eyl",
       "Eki",
       "Kas",
@@ -32,24 +32,24 @@
     "days": [
       "Pazar",
       "Pazartesi",
-      "Salı",
-      "Çarşamba",
-      "Perşembe",
+      "Sal\u0131",
+      "\u00c7ar\u015famba",
+      "Per\u015fembe",
       "Cuma",
       "Cumartesi"
     ],
-    "shortDays": ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"],
+    "shortDays": ["Paz", "Pzt", "Sal", "\u00c7ar", "Per", "Cum", "Cmt"],
     "toolbar": {
-      "exportToSVG": "SVG İndir",
-      "exportToPNG": "PNG İndir",
-      "exportToCSV": "CSV İndir",
-      "menu": "Menü",
-      "selection": "Seçim",
-      "selectionZoom": "Seçim Yakınlaştır",
-      "zoomIn": "Yakınlaştır",
-      "zoomOut": "Uzaklaştır",
-      "pan": "Kaydır",
-      "reset": "Yakınlaştırmayı Sıfırla"
+      "exportToSVG": "SVG \u0130ndir",
+      "exportToPNG": "PNG \u0130ndir",
+      "exportToCSV": "CSV \u0130ndir",
+      "menu": "Men\u00fc",
+      "selection": "Se\u00e7im",
+      "selectionZoom": "Se\u00e7im Yak\u0131nla\u015ft\u0131r",
+      "zoomIn": "Yak\u0131nla\u015ft\u0131r",
+      "zoomOut": "Uzakla\u015ft\u0131r",
+      "pan": "Kayd\u0131r",
+      "reset": "Yak\u0131nla\u015ft\u0131rmay\u0131 S\u0131f\u0131rla"
     }
   }
 }

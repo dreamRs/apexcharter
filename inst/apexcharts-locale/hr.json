@@ -2,9 +2,9 @@
   "name": "hr",
   "options": {
     "months": [
-      "Siječanj",
-      "Veljača",
-      "Ožujak",
+      "Sije\u010danj",
+      "Velja\u010da",
+      "O\u017eujak",
       "Travanj",
       "Svibanj",
       "Lipanj",
@@ -18,7 +18,7 @@
     "shortMonths": [
       "Sij",
       "Velj",
-      "Ožu",
+      "O\u017eu",
       "Tra",
       "Svi",
       "Lip",
@@ -34,19 +34,19 @@
       "Ponedjeljak",
       "Utorak",
       "Srijeda",
-      "Četvrtak",
+      "\u010cetvrtak",
       "Petak",
       "Subota"
     ],
-    "shortDays": ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"],
+    "shortDays": ["Ned", "Pon", "Uto", "Sri", "\u010cet", "Pet", "Sub"],
     "toolbar": {
       "exportToSVG": "Preuzmi SVG",
       "exportToPNG": "Preuzmi PNG",
       "exportToCSV": "Preuzmi CSV",
       "menu": "Izbornik",
       "selection": "Odabir",
-      "selectionZoom": "Odabirno povećanje",
-      "zoomIn": "Uvećajte prikaz",
+      "selectionZoom": "Odabirno pove\u0107anje",
+      "zoomIn": "Uve\u0107ajte prikaz",
       "zoomOut": "Umanjite prikaz",
       "pan": "Pomicanje",
       "reset": "Povratak na zadani prikaz"

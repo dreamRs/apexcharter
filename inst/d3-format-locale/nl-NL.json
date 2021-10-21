@@ -2,5 +2,5 @@
   "decimal": ",",
   "thousands": ".",
   "grouping": [3],
-  "currency": ["€\u00a0", ""]
+  "currency": ["\u20ac\u00a0", ""]
 }

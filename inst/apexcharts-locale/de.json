@@ -4,7 +4,7 @@
     "months": [
       "Januar",
       "Februar",
-      "März",
+      "M\u00e4rz",
       "April",
       "Mai",
       "Juni",
@@ -18,7 +18,7 @@
     "shortMonths": [
       "Jan",
       "Feb",
-      "Mär",
+      "M\u00e4r",
       "Apr",
       "Mai",
       "Jun",
@@ -43,13 +43,13 @@
       "exportToSVG": "SVG speichern",
       "exportToPNG": "PNG speichern",
       "exportToCSV": "CSV speichern",
-      "menu": "Menü",
+      "menu": "Men\u00fc",
       "selection": "Auswahl",
-      "selectionZoom": "Auswahl vergrößern",
-      "zoomIn": "Vergrößern",
+      "selectionZoom": "Auswahl vergr\u00f6\u00dfern",
+      "zoomIn": "Vergr\u00f6\u00dfern",
       "zoomOut": "Verkleinern",
       "pan": "Verschieben",
-      "reset": "Zoom zurücksetzen"
+      "reset": "Zoom zur\u00fccksetzen"
     }
   }
 }

@@ -3,31 +3,31 @@
   "options": {
     "months": [
       "janvier",
-      "février",
+      "f\u00e9vrier",
       "mars",
       "avril",
       "mai",
       "juin",
       "juillet",
-      "août",
+      "ao\u00fbt",
       "septembre",
       "octobre",
       "novembre",
-      "décembre"
+      "d\u00e9cembre"
     ],
     "shortMonths": [
       "janv.",
-      "févr.",
+      "f\u00e9vr.",
       "mars",
       "avr.",
       "mai",
       "juin",
       "juill.",
-      "août",
+      "ao\u00fbt",
       "sept.",
       "oct.",
       "nov.",
-      "déc."
+      "d\u00e9c."
     ],
     "days": [
       "dimanche",
@@ -40,16 +40,16 @@
     ],
     "shortDays": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
     "toolbar": {
-      "exportToSVG": "Télécharger au format SVG",
-      "exportToPNG": "Télécharger au format PNG",
-      "exportToCSV": "Télécharger au format CSV",
+      "exportToSVG": "T\u00e9l\u00e9charger au format SVG",
+      "exportToPNG": "T\u00e9l\u00e9charger au format PNG",
+      "exportToCSV": "T\u00e9l\u00e9charger au format CSV",
       "menu": "Menu",
-      "selection": "Sélection",
-      "selectionZoom": "Sélection et zoom",
+      "selection": "S\u00e9lection",
+      "selectionZoom": "S\u00e9lection et zoom",
       "zoomIn": "Zoomer",
-      "zoomOut": "Dézoomer",
+      "zoomOut": "D\u00e9zoomer",
       "pan": "Navigation",
-      "reset": "Réinitialiser le zoom"
+      "reset": "R\u00e9initialiser le zoom"
     }
   }
 }

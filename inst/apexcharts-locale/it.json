@@ -31,11 +31,11 @@
     ],
     "days": [
       "Domenica",
-      "Lunedì",
-      "Martedì",
-      "Mercoledì",
-      "Giovedì",
-      "Venerdì",
+      "Luned\u00ec",
+      "Marted\u00ec",
+      "Mercoled\u00ec",
+      "Gioved\u00ec",
+      "Venerd\u00ec",
       "Sabato"
     ],
     "shortDays": ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],

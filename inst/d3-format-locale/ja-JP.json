@@ -2,5 +2,5 @@
   "decimal": ".",
   "thousands": ",",
   "grouping": [3],
-  "currency": ["", "円"]
+  "currency": ["", "\u5186"]
 }

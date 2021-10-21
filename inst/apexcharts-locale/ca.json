@@ -4,7 +4,7 @@
     "months": [
       "Gener",
       "Febrer",
-      "Març",
+      "Mar\u00e7",
       "Abril",
       "Maig",
       "Juny",
@@ -18,7 +18,7 @@
     "shortMonths": [
       "Gen.",
       "Febr.",
-      "Març",
+      "Mar\u00e7",
       "Abr.",
       "Maig",
       "Juny",
@@ -43,12 +43,12 @@
       "exportToSVG": "Descarregar SVG",
       "exportToPNG": "Descarregar PNG",
       "exportToCSV": "Descarregar CSV",
-      "menu": "Menú",
+      "menu": "Men\u00fa",
       "selection": "Seleccionar",
       "selectionZoom": "Seleccionar Zoom",
       "zoomIn": "Augmentar",
       "zoomOut": "Disminuir",
-      "pan": "Navegació",
+      "pan": "Navegaci\u00f3",
       "reset": "Reiniciar Zoom"
     }
   }

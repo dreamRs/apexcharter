@@ -2,16 +2,16 @@
   "name": "hu",
   "options": {
     "months": [
-      "január",
-      "február",
-      "március",
-      "április",
-      "május",
-      "június",
-      "július",
+      "janu\u00e1r",
+      "febru\u00e1r",
+      "m\u00e1rcius",
+      "\u00e1prilis",
+      "m\u00e1jus",
+      "j\u00fanius",
+      "j\u00falius",
       "augusztus",
       "szeptember",
-      "október",
+      "okt\u00f3ber",
       "november",
       "december"
     ],
@@ -19,10 +19,10 @@
       "jan",
       "feb",
       "mar",
-      "ápr",
-      "máj",
-      "jún",
-      "júl",
+      "\u00e1pr",
+      "m\u00e1j",
+      "j\u00fan",
+      "j\u00fal",
       "aug",
       "szept",
       "okt",
@@ -30,13 +30,13 @@
       "dec"
     ],
     "days": [
-      "hétfő",
+      "h\u00e9tf\u0151",
       "kedd",
       "szerda",
-      "csütörtök",
-      "péntek",
+      "cs\u00fct\u00f6rt\u00f6k",
+      "p\u00e9ntek",
       "szombat",
-      "vasárnap"
+      "vas\u00e1rnap"
     ],
     "shortDays": [
       "H",
@@ -48,17 +48,17 @@
       "V"
     ],
     "toolbar": {
-      "exportToSVG": "Exportálás SVG-be",
-      "exportToPNG": "Exportálás PNG-be",
-      "exportToCSV": "Exportálás CSV-be",
-      "menu": "Fő ajánlat",
-      "download": "SVG letöltése",
-      "selection": "Kiválasztás",
-      "selectionZoom": "Nagyító kiválasztása",
-      "zoomIn": "Nagyítás",
-      "zoomOut": "Kicsinyítés",
-      "pan": "Képcsúsztatás",
-      "reset": "Nagyító visszaállítása"
+      "exportToSVG": "Export\u00e1l\u00e1s SVG-be",
+      "exportToPNG": "Export\u00e1l\u00e1s PNG-be",
+      "exportToCSV": "Export\u00e1l\u00e1s CSV-be",
+      "menu": "F\u0151 aj\u00e1nlat",
+      "download": "SVG let\u00f6lt\u00e9se",
+      "selection": "Kiv\u00e1laszt\u00e1s",
+      "selectionZoom": "Nagy\u00edt\u00f3 kiv\u00e1laszt\u00e1sa",
+      "zoomIn": "Nagy\u00edt\u00e1s",
+      "zoomOut": "Kicsiny\u00edt\u00e9s",
+      "pan": "K\u00e9pcs\u00fasztat\u00e1s",
+      "reset": "Nagy\u00edt\u00f3 vissza\u00e1ll\u00edt\u00e1sa"
     }
   }
 }

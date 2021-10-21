@@ -33,10 +33,10 @@
       "Domingo",
       "Lunes",
       "Martes",
-      "Miércoles",
+      "Mi\u00e9rcoles",
       "Jueves",
       "Viernes",
-      "Sábado"
+      "S\u00e1bado"
     ],
     "shortDays": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
     "toolbar": {
@@ -48,7 +48,7 @@
       "selectionZoom": "Seleccionar Zoom",
       "zoomIn": "Aumentar",
       "zoomOut": "Disminuir",
-      "pan": "Navegación",
+      "pan": "Navegaci\u00f3n",
       "reset": "Reiniciar Zoom"
     }
   }

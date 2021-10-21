@@ -1,6 +1,6 @@
 {
-  "decimal": "\u002c",
-  "thousands": "\u002e",
+  "decimal": ",",
+  "thousands": ".",
   "grouping": [3],
-  "currency": ["\u062f\u002e\u062c\u002e ", ""]
+  "currency": ["\u062f.\u062c. ", ""]
 }

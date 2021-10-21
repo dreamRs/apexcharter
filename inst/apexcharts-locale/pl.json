@@ -2,18 +2,18 @@
   "name": "pl",
   "options": {
     "months": [
-      "Styczeń",
+      "Stycze\u0144",
       "Luty",
       "Marzec",
-      "Kwiecień",
+      "Kwiecie\u0144",
       "Maj",
       "Czerwiec",
       "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
+      "Sierpie\u0144",
+      "Wrzesie\u0144",
+      "Pa\u017adziernik",
       "Listopad",
-      "Grudzień"
+      "Grudzie\u0144"
     ],
     "shortMonths": [
       "Sty",
@@ -25,20 +25,20 @@
       "Lip",
       "Sie",
       "Wrz",
-      "Paź",
+      "Pa\u017a",
       "Lis",
       "Gru"
     ],
     "days": [
       "Niedziela",
-      "Poniedziałek",
+      "Poniedzia\u0142ek",
       "Wtorek",
-      "Środa",
+      "\u015aroda",
       "Czwartek",
-      "Piątek",
+      "Pi\u0105tek",
       "Sobota"
     ],
-    "shortDays": ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "Sb"],
+    "shortDays": ["Nd", "Pn", "Wt", "\u015ar", "Cz", "Pt", "Sb"],
     "toolbar": {
       "exportToSVG": "Pobierz SVG",
       "exportToPNG": "Pobierz PNG",
@@ -46,7 +46,7 @@
       "menu": "Menu",
       "selection": "Wybieranie",
       "selectionZoom": "Zoom: Wybieranie",
-      "zoomIn": "Zoom: Przybliż",
+      "zoomIn": "Zoom: Przybli\u017c",
       "zoomOut": "Zoom: Oddal",
       "pan": "Przesuwanie",
       "reset": "Resetuj"

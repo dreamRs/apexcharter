@@ -30,15 +30,15 @@
       "Dec"
     ],
     "days": [
-      "Söndag",
-      "Måndag",
+      "S\u00f6ndag",
+      "M\u00e5ndag",
       "Tisdag",
       "Onsdag",
       "Torsdag",
       "Fredag",
-      "Lördag"
+      "L\u00f6rdag"
     ],
-    "shortDays": ["Sön", "Mån", "Tis", "Ons", "Tor", "Fre", "Lör"],
+    "shortDays": ["S\u00f6n", "M\u00e5n", "Tis", "Ons", "Tor", "Fre", "L\u00f6r"],
     "toolbar": {
       "exportToSVG": "Ladda SVG",
       "exportToPNG": "Ladda PNG",
@@ -49,7 +49,7 @@
       "zoomIn": "Zooma in",
       "zoomOut": "Zooma ut",
       "pan": "Panorering",
-      "reset": "Återställ zoomning"
+      "reset": "\u00c5terst\u00e4ll zoomning"
     }
   }
 }

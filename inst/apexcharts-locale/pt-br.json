@@ -4,7 +4,7 @@
     "months": [
       "Janeiro",
       "Fevereiro",
-      "Março",
+      "Mar\u00e7o",
       "Abril",
       "Maio",
       "Junho",
@@ -32,11 +32,11 @@
     "days": [
       "Domingo",
       "Segunda",
-      "Terça",
+      "Ter\u00e7a",
       "Quarta",
       "Quinta",
       "Sexta",
-      "Sábado"
+      "S\u00e1bado"
     ],
     "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
     "toolbar": {
@@ -48,7 +48,7 @@
       "selectionZoom": "Selecionar Zoom",
       "zoomIn": "Aumentar",
       "zoomOut": "Diminuir",
-      "pan": "Navegação",
+      "pan": "Navega\u00e7\u00e3o",
       "reset": "Reiniciar Zoom"
     }
   }

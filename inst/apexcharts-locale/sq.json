@@ -12,7 +12,7 @@
       "Gusht",
       "Shtator",
       "Tetor",
-      "Nëntor",
+      "N\u00ebntor",
       "Dhjetor"
     ],
     "shortMonths": [
@@ -26,19 +26,19 @@
       "Gush",
       "Sht",
       "Tet",
-      "Nën",
+      "N\u00ebn",
       "Dhj"
     ],
     "days": [
-      "e Dielë",
-      "e Hënë",
-      "e Martë",
-      "e Mërkurë",
+      "e Diel\u00eb",
+      "e H\u00ebn\u00eb",
+      "e Mart\u00eb",
+      "e M\u00ebrkur\u00eb",
       "e Enjte",
       "e Premte",
-      "e Shtunë"
+      "e Shtun\u00eb"
     ],
-    "shortDays": ["Die", "Hën", "Mar", "Mër", "Enj", "Pre", "Sht"],
+    "shortDays": ["Die", "H\u00ebn", "Mar", "M\u00ebr", "Enj", "Pre", "Sht"],
     "toolbar": {
       "exportToSVG": "Shkarko SVG",
       "exportToPNG": "Shkarko PNG",
@@ -47,7 +47,7 @@
       "selection": "Seleksiono",
       "selectionZoom": "Seleksiono Zmadhim",
       "zoomIn": "Zmadho",
-      "zoomOut": "Zvogëlo",
+      "zoomOut": "Zvog\u00eblo",
       "pan": "Spostoje",
       "reset": "Rikthe dimensionin"
     }
