@@ -5,7 +5,7 @@
 <!-- badges: start -->
 [![version](http://www.r-pkg.org/badges/version/apexcharter)](https://CRAN.R-project.org/package=apexcharter)
 [![cran checks](https://cranchecks.info/badges/worst/apexcharter)](https://cranchecks.info/pkgs/apexcharter)
-[![Codecov test coverage](https://codecov.io/gh/dreamRs/apexcharter/branch/master/graph/badge.svg)](https://codecov.io/gh/dreamRs/apexcharter?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/dreamRs/apexcharter/branch/master/graph/badge.svg)](https://app.codecov.io/gh/dreamRs/apexcharter?branch=master)
 [![R-CMD-check](https://github.com/dreamRs/apexcharter/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/apexcharter/actions)
 <!-- badges: end -->
 
@@ -13,7 +13,7 @@
 
 ## Installation
 
-Install from [CRAN](https://cran.r-project.org/web/packages/apexcharter/index.html) with:
+Install from [CRAN](https://CRAN.R-project.org/package=apexcharter) with:
 
 ```r
 install.packages("apexcharter")

@@ -1,4 +1,4 @@
-apexcharter 0.2.1
+apexcharter 0.3.0
 ==================
 
 * Updated ApexCharts.js to 3.29.0
