@@ -38,7 +38,7 @@ n_facet <- function(l) {
   Reduce(`*`, l)
 }
 
-
+#' @importFrom rlang %||%
 set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"), axis = c("x", "y")) {
   if (is.null(scales))
     return(ax)
@@ -289,6 +289,7 @@ ax_facet_grid <- function(ax,
 
 # Tag ---------------------------------------------------------------------
 
+#' @importFrom rlang %||%
 build_facet_tag <- function(x) {
   facets <- build_facets(x)
   content <- facets$facets

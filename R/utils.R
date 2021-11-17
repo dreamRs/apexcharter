@@ -12,10 +12,6 @@ dropNulls <- function(x) {
   x[!vapply(x, is.null, FUN.VALUE = logical(1))]
 }
 
-`%||%` <- function(x, y) {
-  if (!is.null(x)) x else y
-}
-
 formatNoSci <- function(x) {
   if (is.null(x)) return(NULL)
   format(x, scientific = FALSE, digits = 15)

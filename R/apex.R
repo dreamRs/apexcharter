@@ -118,6 +118,7 @@ apex <- function(data, mapping, type = "column", ...,
 
 
 # Construct series
+#' @importFrom rlang %||%
 make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_datetime_names = FALSE) {
   if (identical(type, "candlestick")) {
     if (!all(c("x", "open", "high", "low", "close") %in% names(mapping)))
@@ -271,7 +272,7 @@ range_num <- function(x) {
   }
 }
 
-
+#' @importFrom rlang %||%
 compute_count <- function(mapdata) {
   if (!is_grouped(mapdata)) {
     x <- mapdata$x
