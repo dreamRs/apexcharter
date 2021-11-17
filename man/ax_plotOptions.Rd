@@ -15,7 +15,7 @@ ax_plotOptions(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{bar}{See \code{\link{bar_opts}}.}
 
@@ -30,7 +30,7 @@ ax_plotOptions(
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Specific options for chart

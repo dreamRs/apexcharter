@@ -7,12 +7,12 @@
 ax_colors(ax, ...)
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{...}{Colors for the chart's series. When all colors are used, it starts from the beginning.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Colors

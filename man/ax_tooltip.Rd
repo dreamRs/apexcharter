@@ -25,7 +25,7 @@ ax_tooltip(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{enabled}{Logical. Show tooltip when user hovers over chart area.}
 
@@ -60,7 +60,7 @@ ax_tooltip(
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Tooltip options

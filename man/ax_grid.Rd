@@ -19,7 +19,7 @@ ax_grid(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{show}{Logical. To show or hide grid area (including xaxis / yaxis)}
 
@@ -42,7 +42,7 @@ ax_grid(
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Add grids on chart

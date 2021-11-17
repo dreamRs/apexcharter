@@ -24,7 +24,7 @@ ax_xaxis(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{type}{Character. Available Options : \code{"categories"} and \code{"datetime"}.}
 
@@ -59,7 +59,7 @@ similar to an absolutely positioned element. Set the offsetX and offsetY then to
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 X-axis options

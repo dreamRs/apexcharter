@@ -4,14 +4,13 @@
 #' @description Add a line to an existing chart (bar, scatter and line types supported).
 #'  On scatter charts you can also add a smooth line.
 #'
-#' @param ax An \code{\link{apex}} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param mapping Default list of aesthetic mappings to use for chart.
 #' @param data A \code{data.frame} to use to add a line, if \code{NULL} (default),
 #'  the \code{data.frame} provided in \code{apex()} will be used.
 #' @param type Type of line.
 #' @param serie_name Name for the serie displayed in tooltip and legend.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
 #' @name add-line

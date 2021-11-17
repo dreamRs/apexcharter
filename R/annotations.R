@@ -182,7 +182,7 @@ marker <- function(size = NULL,
 #' @description \code{add_shade()} allow to add a shaded area on specified range,
 #'  \code{add_shade_weekend()} add a shadow on every week-end.
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param from Vector of position to start shadow.
 #' @param to Vector of position to end shadow.
 #' @param color Color of the shadow.
@@ -195,7 +195,7 @@ marker <- function(size = NULL,
 #' @note \code{add_shade_weekend} only works if variable
 #'  used for x-axis is of class \code{Date} or \code{POSIXt}.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#'  
 #' @export
 #' 
 #' @name add-shade
@@ -259,7 +259,7 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL
 #' 
 #' @description Add a vertical line to mark a special event on a chart.
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param when Vector of position to place the event.
 #' @param color Color of the line.
 #' @param dash Creates dashes in borders of SVG path.
@@ -270,7 +270,7 @@ add_shade_weekend <- function(ax, color = "#848484", opacity = 0.2, label = NULL
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#'  
 #' @export
 #' 
 #' @seealso \code{\link{add_event_marker}} to add a point.
@@ -297,7 +297,7 @@ add_event <- function(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...) 
 #' @param when Vector of position to place the event.
 #' @inheritParams add_point
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#' @return An [apexchart()] `htmlwidget` object.
 #' @export
 #' 
 #' @seealso \code{\link{add_event}} to add a vertical line.
@@ -338,7 +338,7 @@ add_event_marker <- function(ax, when, y,
 
 #' Add horizontal or vertical line
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param value Vector of position for the line(s).
 #' @param color Color(s) of the line(s). 
 #' @param dash Creates dashes in borders of SVG path.
@@ -349,7 +349,7 @@ add_event_marker <- function(ax, when, y,
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#'  
 #' @export
 #' 
 #' @name add-vh-lines
@@ -388,7 +388,7 @@ add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
 
 #' Add an annotation point
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param x Coordinate(s) on the x-axis.
 #' @param y Coordinate(s) on the y-axis.
 #' @param size Size of the marker.
@@ -402,7 +402,7 @@ add_vline <- function(ax, value, color = "#000", dash = 0, label = NULL, ...) {
 #' @param ... Additional arguments, see
 #'  \url{https://apexcharts.com/docs/options/annotations/} for possible options.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
+#'  
 #' @export
 #' 
 #' @seealso \code{\link{add_event_marker}} to add a point when x-axis is a datetime.

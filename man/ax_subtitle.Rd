@@ -17,7 +17,7 @@ ax_subtitle(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{text}{Text to display as a subtitle of chart.}
 
@@ -36,7 +36,7 @@ ax_subtitle(
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Chart's subtitle

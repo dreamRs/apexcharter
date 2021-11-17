@@ -1,7 +1,7 @@
 
 #' Modify axis, legend, and chart labels
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param title Text for the title.
 #' @param subtitle Text for the subtitle.
 #' @param x Text for the x-axis label.

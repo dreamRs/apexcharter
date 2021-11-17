@@ -7,14 +7,14 @@
 set_input_zoom(ax, inputId, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{inputId}{The id that will be used server-side for retrieving zoom.}
 
 \item{session}{The Shiny session.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Retrieve zoom information in Shiny

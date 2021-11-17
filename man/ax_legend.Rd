@@ -28,7 +28,7 @@ ax_legend(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{show}{Logical. Whether to show or hide the legend container.}
 
@@ -74,7 +74,7 @@ when hovered on legend item, it will highlight the paths of the hovered series i
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Legend properties

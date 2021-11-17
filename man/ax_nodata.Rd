@@ -17,7 +17,7 @@ ax_nodata(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{text}{The text to display when no-data is available.}
 
@@ -34,7 +34,7 @@ ax_nodata(
 \item{offsetX, offsetY}{Text offset.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Configuration for charts with no data

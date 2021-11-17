@@ -208,7 +208,7 @@ get_last_row <- function(mat) {
 
 #' Facet wrap for ApexCharts
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object.
+#' @param ax An [apexchart()] `htmlwidget` object. 
 #' @param facets Variable(s) to use for facetting, wrapped in \code{vars(...)}.
 #' @param nrow,ncol Number of row and column in output matrix.
 #' @param scales Should scales be fixed (\code{"fixed"}, the default),
@@ -216,7 +216,7 @@ get_last_row <- function(mat) {
 #' @param labeller A function with one argument containing for each facet the value of the faceting variable.
 #' @param chart_height Individual chart height.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
+#' @return An [apexchart()] `htmlwidget` object with an additionnal class `"apex_facet"`.
 #' @export
 #'
 #' @name apex-facets

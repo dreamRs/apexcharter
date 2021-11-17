@@ -19,7 +19,7 @@ add_point(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{x}{Coordinate(s) on the x-axis.}
 
@@ -44,7 +44,7 @@ or see \code{\link{label}} for more controls.}
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Add an annotation point

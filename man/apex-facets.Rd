@@ -26,7 +26,7 @@ ax_facet_grid(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{facets}{Variable(s) to use for facetting, wrapped in \code{vars(...)}.}
 
@@ -42,7 +42,7 @@ free (\code{"free"}), or free in one dimension (\code{"free_x"}, \code{"free_y"}
 \item{rows, cols}{A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object with an additionnal class \code{"apex_facet"}.
 }
 \description{
 Facet wrap for ApexCharts

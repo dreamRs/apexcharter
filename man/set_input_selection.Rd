@@ -22,7 +22,7 @@ set_input_selection(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{inputId}{The id that will be used server-side for retrieving selection.}
 
@@ -48,7 +48,7 @@ Higher number creates more space between dashes in the border.}
 \item{session}{The Shiny session.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Retrieve selection information in Shiny

@@ -11,7 +11,7 @@ add_shade(ax, from, to, color = "#848484", opacity = 0.2, label = NULL, ...)
 add_shade_weekend(ax, color = "#848484", opacity = 0.2, label = NULL, ...)
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{from}{Vector of position to start shadow.}
 
@@ -28,7 +28,7 @@ or see \code{\link{label}} for more controls.}
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 \code{add_shade()} allow to add a shaded area on specified range,

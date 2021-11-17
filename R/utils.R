@@ -58,11 +58,9 @@ make_styles <- function(styles) {
 
 #' Utility function to create ApexChart parameters JSON
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object.
+#' @template ax-default
 #' @param name Slot's name to edit
 #' @param ... Arguments for the slot
-#'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
 #' @importFrom utils modifyList
 #'
@@ -84,11 +82,9 @@ make_styles <- function(styles) {
 
 #' Utility function to create ApexChart parameters JSON
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object.
+#' @template ax-default
 #' @param name Slot's name to edit
 #' @param l List of arguments for the slot
-#'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #'
 #' @importFrom utils modifyList
 #'

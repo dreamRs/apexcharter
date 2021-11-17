@@ -21,7 +21,7 @@ ax_yaxis(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{opposite}{Logical. When enabled, will draw the yaxis on the right side of the chart.}
 
@@ -49,7 +49,7 @@ similar to an absolutely positioned element. Set the offsetX and offsetY then to
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Y-axis options

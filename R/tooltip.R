@@ -1,13 +1,12 @@
 
-#' Fix tooltip
+#' Fixed tooltip
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param position Predefined position: \code{"topLeft"}, \code{"topRight"},
 #'  \code{"bottomLeft"} or \code{"bottomRight"}.
 #' @param offsetX Sets the left offset for the tooltip container in fixed position.
 #' @param offsetY Sets the top offset for the tooltip container in fixed position.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object. 
 #' @export
 #'
 #' @example examples/set_tooltip_fixed.R

@@ -17,7 +17,7 @@ ax_dataLabels(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{enabled}{To determine whether to show dataLabels or not.}
 
@@ -37,7 +37,7 @@ Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.}
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Labels on data

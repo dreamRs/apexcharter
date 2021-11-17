@@ -2,7 +2,7 @@
 % Please edit documentation in R/tooltip.R
 \name{set_tooltip_fixed}
 \alias{set_tooltip_fixed}
-\title{Fix tooltip}
+\title{Fixed tooltip}
 \usage{
 set_tooltip_fixed(
   ax,
@@ -12,7 +12,7 @@ set_tooltip_fixed(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{position}{Predefined position: \code{"topLeft"}, \code{"topRight"},
 \code{"bottomLeft"} or \code{"bottomRight"}.}
@@ -22,10 +22,10 @@ set_tooltip_fixed(
 \item{offsetY}{Sets the top offset for the tooltip container in fixed position.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
-Fix tooltip
+Fixed tooltip
 }
 \examples{
 

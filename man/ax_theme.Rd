@@ -7,7 +7,7 @@
 ax_theme(ax, mode = c("light", "dark"), palette = NULL, monochrome = NULL, ...)
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{mode}{use light or dark theme.}
 
@@ -18,7 +18,7 @@ ax_theme(ax, mode = c("light", "dark"), palette = NULL, monochrome = NULL, ...)
 \item{...}{Additional parameters.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Theme for charts

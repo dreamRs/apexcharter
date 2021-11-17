@@ -25,7 +25,7 @@ add_smooth_line(
 )
 }
 \arguments{
-\item{ax}{An \code{\link{apex}} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{mapping}{Default list of aesthetic mappings to use for chart.}
 
@@ -45,7 +45,7 @@ the \code{data.frame} provided in \code{apex()} will be used.}
 \item{...}{Arguments passed to \code{model}.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Add a line to an existing chart (bar, scatter and line types supported).

@@ -9,6 +9,7 @@
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^examples$
+^man-roxygen$
 ^\.github$
 ^LICENSE\.md$
 ^codecov\.yml$

@@ -16,7 +16,7 @@ ax_fill(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{type}{Whether to fill the paths with solid colors or gradient.
 Available options: \code{"solid"}, \code{"gradient"}, \code{"pattern"} or \code{"image"}.}
@@ -34,7 +34,7 @@ Available options: \code{"solid"}, \code{"gradient"}, \code{"pattern"} or \code{
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Fill property

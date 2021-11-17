@@ -4,7 +4,7 @@
 
 #' Annotations properties
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param position Whether to put the annotations behind the charts or in front of it. Available Options: \code{"front"} or \code{"back"}.
 #' @param yaxis List of lists.
 #' @param xaxis List of lists.
@@ -13,7 +13,6 @@
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/annotations/}.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
 #' @examples 
@@ -126,7 +125,7 @@ ax_annotations <- function(ax,
 
 #' Chart parameters
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
 #'  \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
 #' @param stacked Logical. Enables stacked option for axis charts. 
@@ -154,7 +153,6 @@ ax_annotations <- function(ax,
 #' @param height Height of the chart. 
 #' @param ... Additional parameters. 
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
 #' @example examples/ax_chart.R
@@ -186,7 +184,7 @@ ax_chart <- function(ax,
 
 #' Specific options for chart
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param bar See \code{\link{bar_opts}}.
 #' @param heatmap See \code{\link{heatmap_opts}}.
 #' @param radialBar See \code{\link{radialBar_opts}}.
@@ -194,7 +192,7 @@ ax_chart <- function(ax,
 #' @param bubble See \code{\link{bubble_opts}}.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @examples 
@@ -244,10 +242,10 @@ ax_plotOptions <- function(ax,
 
 #' Colors
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param ... Colors for the chart's series. When all colors are used, it starts from the beginning.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/colors/}
@@ -280,7 +278,7 @@ ax_colors <- function(ax, ...) {
 
 #' Labels on data
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param enabled To determine whether to show dataLabels or not.
 #' @param textAnchor The alignment of text relative to dataLabel's drawing position.
 #'  Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.
@@ -291,7 +289,7 @@ ax_colors <- function(ax, ...) {
 #' @param formatter The formatter function takes in a single value and allows you to format the value before displaying
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/datalabels/}
@@ -321,7 +319,7 @@ ax_dataLabels <- function(ax,
 
 #' Fill property
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param type Whether to fill the paths with solid colors or gradient.
 #'  Available options: \code{"solid"}, \code{"gradient"}, \code{"pattern"} or \code{"image"}.
 #' @param colors Colors to fill the svg paths..
@@ -331,7 +329,7 @@ ax_dataLabels <- function(ax,
 #' @param pattern A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/fill/}
@@ -384,7 +382,7 @@ ax_fill <- function(ax,
 
 #' Add grids on chart
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param show Logical. To show or hide grid area (including xaxis / yaxis)
 #' @param borderColor Colors of grid borders / lines.
 #' @param strokeDashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
@@ -396,7 +394,7 @@ ax_fill <- function(ax,
 #' @param padding A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/grid/}
@@ -448,12 +446,12 @@ ax_grid <- function(ax,
 
 #' Alternative axis labels
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param labels A vector to use as labels.
 #' @param ... Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
 #'  option. While, in pie/donut charts, each label corresponds to value in series array.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @name ax_labels
@@ -484,7 +482,7 @@ ax_labels2 <- function(ax, labels) {
 
 #' Legend properties
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param show Logical. Whether to show or hide the legend container.
 #' @param position Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.
 #' @param showForSingleSeries Show legend even if there is just 1 series.
@@ -510,7 +508,7 @@ ax_labels2 <- function(ax, labels) {
 #' @param floating Logical. The floating option will take out the legend from the chart area and make it float above the chart.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/legend/}
@@ -558,7 +556,7 @@ ax_legend <- function(ax,
 
 #' Markers properties
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param size Numeric. Size of the marker point.
 #' @param colors Sets the fill color(s) of the marker point.
 #' @param strokeColor Stroke Color of the marker.
@@ -572,7 +570,7 @@ ax_legend <- function(ax,
 #' @param hover List with item \code{size} (Size of the marker when it is active).
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/markers/}
@@ -607,7 +605,7 @@ ax_markers <- function(ax,
 
 #' No data specification
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param text 
 #' @param align 
 #' @param verticalAlign 
@@ -616,7 +614,7 @@ ax_markers <- function(ax,
 #' @param style 
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @noRd
 #'
 ax_noData <- function(ax,
@@ -634,10 +632,10 @@ ax_noData <- function(ax,
 
 #' Responsive options
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/responsive/}
@@ -674,10 +672,10 @@ ax_responsive <- function(ax, ...) {
 
 #' Add data to a chart
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param ... Lists containing data to plot, typically list with two items: \code{name} and \code{data}.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #' 
 #' @name ax-series
@@ -717,13 +715,13 @@ ax_series2 <- function(ax, l) {
 
 #' Charts' states
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param normal A list of parameters.
 #' @param hover A list of parameters.
 #' @param active A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/states/}
@@ -756,7 +754,7 @@ ax_states <- function(ax,
 
 #' Chart's title
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param text Text to display as a title of chart.
 #' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
 #' @param margin Numeric. Vertical spacing around the title text.
@@ -766,7 +764,7 @@ ax_states <- function(ax,
 #' @param style List with two items: \code{fontSize} (Font Size of the title text) and \code{color} (Fore color of the title text).
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/title/}
@@ -797,7 +795,7 @@ ax_title <- function(ax,
 
 #' Chart's subtitle
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param text Text to display as a subtitle of chart.
 #' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
 #' @param margin Numeric. Vertical spacing around the subtitle text.
@@ -807,7 +805,7 @@ ax_title <- function(ax,
 #' @param style List with two items: \code{fontSize} (Font Size of the subtitle text) and \code{color} (Fore color of the subtitle text).
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/subtitle/}
@@ -841,7 +839,7 @@ ax_subtitle <- function(ax,
 
 #' Stroke properties
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param show Logical. To show or hide path-stroke / line
 #' @param curve In line / area charts, whether to draw smooth lines or straight lines.
 #'  Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline) 
@@ -855,7 +853,7 @@ ax_subtitle <- function(ax,
 #' @param dashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border. 
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/stroke/}
@@ -897,7 +895,7 @@ ax_stroke <- function(ax,
 
 #' Tooltip options
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param enabled Logical. Show tooltip when user hovers over chart area.
 #' @param shared Logical. When having multiple series, show a shared tooltip.
 #' @param followCursor Logical. Follow user's cursor position instead of putting tooltip on actual data points.
@@ -915,7 +913,7 @@ ax_stroke <- function(ax,
 #' @param fixed A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/tooltip/}
@@ -971,7 +969,7 @@ ax_tooltip <- function(ax,
 
 #' X-axis options
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param type Character. Available Options : \code{"categories"} and \code{"datetime"}.
 #' @param categories Categories are labels which are displayed on the x-axis.
 #' @param labels A list of parameters.
@@ -990,7 +988,7 @@ ax_tooltip <- function(ax,
 #' @param tooltip A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/xaxis/}
@@ -1076,7 +1074,7 @@ ax_xaxis <- function(ax,
 
 #' Y-axis options
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param opposite Logical. When enabled, will draw the yaxis on the right side of the chart.
 #' @param tickAmount Number of Tick Intervals to show.
 #' @param max Lowest number to be set for the y-axis. The graph drawing beyond this number will be clipped off.
@@ -1091,7 +1089,7 @@ ax_xaxis <- function(ax,
 #' @param crosshairs A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/yaxis/}
@@ -1145,10 +1143,10 @@ ax_yaxis <- function(ax,
 
 #' Secondary Y-axis options
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param ... See arguments from \code{\link{ax_yaxis}}.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' 
 #' @export
 #'
 #' @example examples/ax_yaxis2.R 
@@ -1170,13 +1168,12 @@ ax_yaxis2 <- function(ax, ...) {
 
 #' Theme for charts
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param mode use light or dark theme.
 #' @param palette Character. Available palettes: \code{"palette1"} to \code{"palette10"}.
 #' @param monochrome A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/theme/}
@@ -1226,7 +1223,7 @@ ax_theme <- function(ax,
 
 #' Configuration for charts with no data
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param text The text to display when no-data is available.
 #' @param align Horizontal alignment: \code{"left"}, \code{"center"} or \code{"right"}.
 #' @param verticalAlign Vertical alignment: \code{"top"}, \code{"middle"} or \code{"bottom"}.
@@ -1235,7 +1232,6 @@ ax_theme <- function(ax,
 #' @param fontFamily FontFamily of the text.
 #' @param offsetX,offsetY Text offset.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @examples

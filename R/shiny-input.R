@@ -8,7 +8,7 @@
 #'   with size > 0 and set tooltip's options `intersect = TRUE` and `shared = FALSE`.
 #'  * **scatter:** retrieve XY coordinates.
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param inputId The id that will be used server-side for retrieving click.
 #' @param multiple Allow multiple selection: \code{TRUE} or \code{FALSE} (default).
 #' @param effect_type Type of effect for selected element, default is to use lightly darken color.
@@ -17,7 +17,6 @@
 #' 
 #' @note If x-axis is of type datetime, value retrieved is of class \code{POSIXct}.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
 #' @importFrom shiny getDefaultReactiveDomain
@@ -67,13 +66,12 @@ set_input_click <- function(ax, inputId, multiple = FALSE,
 
 #' Retrieve zoom information in Shiny
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param inputId The id that will be used server-side for retrieving zoom.
 #' @param session The Shiny session.
 #' 
 #' @note If x-axis is of type datetime, value retrieved is of class \code{POSIXct}.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #' 
 #' @importFrom shiny getDefaultReactiveDomain
@@ -97,7 +95,7 @@ set_input_zoom <- function(ax, inputId,
 
 #' Retrieve selection information in Shiny
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param inputId The id that will be used server-side for retrieving selection.
 #' @param type Allow selection either on x-axis, y-axis or on both axis.
 #' @param fill_color Background color of the selection rect which is drawn when user drags on the chart.
@@ -111,7 +109,6 @@ set_input_zoom <- function(ax, inputId,
 #' @param ymin,ymax Start value of y-axis. Both \code{min} and \code{max} must be provided.
 #' @param session The Shiny session.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @examples
@@ -131,11 +128,19 @@ set_input_zoom <- function(ax, inputId,
 #'     xmin = format_date("1980-01-01"), 
 #'     xmax = format_date("1985-01-01")
 #'   )
-set_input_selection <- function(ax, inputId, type = c("x", "xy", "y"),
-                                fill_color = "#24292e", fill_opacity = 0.1,
-                                stroke_width = 1, stroke_dasharray = 3, 
-                                stroke_color = "#24292e", stroke_opacity = 0.4,
-                                xmin = NULL, xmax = NULL, ymin = NULL, ymax = NULL,
+set_input_selection <- function(ax, 
+                                inputId,
+                                type = c("x", "xy", "y"),
+                                fill_color = "#24292e", 
+                                fill_opacity = 0.1,
+                                stroke_width = 1,
+                                stroke_dasharray = 3, 
+                                stroke_color = "#24292e", 
+                                stroke_opacity = 0.4,
+                                xmin = NULL, 
+                                xmax = NULL, 
+                                ymin = NULL, 
+                                ymax = NULL,
                                 session = shiny::getDefaultReactiveDomain()) {
   type <- match.arg(type)
   if (is.null(session))
@@ -171,11 +176,10 @@ set_input_selection <- function(ax, inputId, type = c("x", "xy", "y"),
 
 #' Retrieve chart's base64 dataURI.
 #'
-#' @param ax An \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default
 #' @param inputId The id that will be used server-side for retrieving data.
 #' @param session The Shiny session.
 #'
-#' @return An \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @example examples/export-2.R

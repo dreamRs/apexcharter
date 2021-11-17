@@ -7,7 +7,7 @@
 ax_labs(ax, title = NULL, subtitle = NULL, x = NULL, y = NULL)
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{title}{Text for the title.}
 
@@ -16,6 +16,9 @@ ax_labs(ax, title = NULL, subtitle = NULL, x = NULL, y = NULL)
 \item{x}{Text for the x-axis label.}
 
 \item{y}{Text for the y-axis label.}
+}
+\value{
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Modify axis, legend, and chart labels

@@ -1,10 +1,9 @@
 
 #' Set specific color's series
 #'
-#' @param ax A \code{apexcharts} \code{htmlwidget} object. 
+#' @template ax-default 
 #' @param values Named list, names represent data series, values colors to use.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
 #' @export
 #'
 #' @example examples/colors.R

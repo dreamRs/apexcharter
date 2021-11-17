@@ -7,7 +7,7 @@
 add_event(ax, when, color = "#E41A1C", dash = 4, label = NULL, ...)
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{when}{Vector of position to place the event.}
 
@@ -24,7 +24,7 @@ or see \code{\link{label}} for more controls.}
 \url{https://apexcharts.com/docs/options/annotations/} for possible options.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Add a vertical line to mark a special event on a chart.

@@ -14,7 +14,7 @@ set_input_click(
 )
 }
 \arguments{
-\item{ax}{An \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{inputId}{The id that will be used server-side for retrieving click.}
 
@@ -27,7 +27,7 @@ set_input_click(
 \item{session}{The Shiny session.}
 }
 \value{
-An \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 According to type of chart, different values are retrieved:

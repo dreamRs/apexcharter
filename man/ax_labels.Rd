@@ -10,7 +10,7 @@ ax_labels(ax, ...)
 ax_labels2(ax, labels)
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{...}{Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
 option. While, in pie/donut charts, each label corresponds to value in series array.}
@@ -18,7 +18,7 @@ option. While, in pie/donut charts, each label corresponds to value in series ar
 \item{labels}{A vector to use as labels.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Alternative axis labels

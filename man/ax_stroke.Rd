@@ -16,7 +16,7 @@ ax_stroke(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{show}{Logical. To show or hide path-stroke / line}
 
@@ -38,7 +38,7 @@ and \code{"round"} (ends the path-stroke with a radius that smooths out the star
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Stroke properties

@@ -14,7 +14,7 @@ ax_annotations(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{position}{Whether to put the annotations behind the charts or in front of it. Available Options: \code{"front"} or \code{"back"}.}
 
@@ -27,7 +27,7 @@ ax_annotations(
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Annotations properties

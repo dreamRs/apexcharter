@@ -11,14 +11,14 @@ ax_series(ax, ...)
 ax_series2(ax, l)
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{...}{Lists containing data to plot, typically list with two items: \code{name} and \code{data}.}
 
 \item{l}{A list.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Add data to a chart

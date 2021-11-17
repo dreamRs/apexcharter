@@ -7,7 +7,7 @@
 ax_states(ax, normal = NULL, hover = NULL, active = NULL, ...)
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{normal}{A list of parameters.}
 
@@ -18,7 +18,7 @@ ax_states(ax, normal = NULL, hover = NULL, active = NULL, ...)
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Charts' states

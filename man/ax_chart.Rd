@@ -28,7 +28,7 @@ ax_chart(
 )
 }
 \arguments{
-\item{ax}{A \code{apexcharts} \code{htmlwidget} object.}
+\item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
 \item{type}{Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
 \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.}
@@ -76,7 +76,7 @@ Available options: \code{"normal"} or \code{"100\%"}.}
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Chart parameters
