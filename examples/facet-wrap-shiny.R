@@ -4,7 +4,9 @@ library(apexcharter)
 
 data("unhcr_ts")
 refugees <- unhcr_ts %>% 
-  subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
+  subset(
+    population_type == "Refugees (incl. refugee-like situations)"
+  ) %>% 
   transform(date = as.Date(paste0(year, "-01-01")))
 
 
@@ -21,14 +23,13 @@ server <- function(input, output, session) {
   output$myfacet <- renderApexfacet({
     apex(refugees, aes(date, n), type = "column") %>% 
       ax_yaxis(tickAmount = 5) %>% 
-      ax_facet_wrap(vars(continent_origin), scales = "free")
+      ax_facet_wrap(
+        vars(continent_origin), 
+        scales = "free"
+      )
   })
   
 }
 
 if (interactive())
   shinyApp(ui, server)
-
-
-
-

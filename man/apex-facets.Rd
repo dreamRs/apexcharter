@@ -4,7 +4,7 @@
 \alias{apex-facets}
 \alias{ax_facet_wrap}
 \alias{ax_facet_grid}
-\title{Facet wrap for ApexCharts}
+\title{Facets for ApexCharts}
 \usage{
 ax_facet_wrap(
   ax,
@@ -39,14 +39,20 @@ free (\code{"free"}), or free in one dimension (\code{"free_x"}, \code{"free_y"}
 
 \item{chart_height}{Individual chart height.}
 
-\item{rows, cols}{A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension.}
+\item{rows, cols}{A set of variables or expressions quoted by \code{vars()}
+and defining faceting groups on the rows or columns dimension.}
 }
 \value{
 An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object with an additionnal class \code{"apex_facet"}.
 }
 \description{
-Facet wrap for ApexCharts
+Create matrix of charts by row and column faceting variable (\code{ax_facet_grid}),
+or by specified number of row and column for faceting variable(s) (\code{ax_facet_wrap}).
 }
+\section{Warning}{
+To properly render in Shiny applications, use \code{\link[=apexfacetOutput]{apexfacetOutput()}} (in UI) and \code{\link[=renderApexfacet]{renderApexfacet()}} (in Server).
+}
+
 \examples{
 ### Wrap --------
 

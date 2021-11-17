@@ -206,17 +206,24 @@ get_last_row <- function(mat) {
 
 
 
-#' Facet wrap for ApexCharts
+#' @title Facets for ApexCharts
+#' 
+#' @description Create matrix of charts by row and column faceting variable (`ax_facet_grid`),
+#'  or by specified number of row and column for faceting variable(s) (`ax_facet_wrap`).
 #'
 #' @param ax An [apexchart()] `htmlwidget` object. 
-#' @param facets Variable(s) to use for facetting, wrapped in \code{vars(...)}.
+#' @param facets Variable(s) to use for facetting, wrapped in `vars(...)`.
 #' @param nrow,ncol Number of row and column in output matrix.
-#' @param scales Should scales be fixed (\code{"fixed"}, the default),
-#'  free (\code{"free"}), or free in one dimension (\code{"free_x"}, \code{"free_y"})?
+#' @param scales Should scales be fixed (`"fixed"`, the default),
+#'  free (`"free"`), or free in one dimension (`"free_x"`, `"free_y"`)?
 #' @param labeller A function with one argument containing for each facet the value of the faceting variable.
 #' @param chart_height Individual chart height.
 #'
 #' @return An [apexchart()] `htmlwidget` object with an additionnal class `"apex_facet"`.
+#' 
+#' @details # Warning
+#' To properly render in Shiny applications, use [apexfacetOutput()] (in UI) and [renderApexfacet()] (in Server).
+#' 
 #' @export
 #'
 #' @name apex-facets
@@ -250,7 +257,8 @@ ax_facet_wrap <- function(ax,
 }
 
 
-#' @param rows,cols A set of variables or expressions quoted by vars() and defining faceting groups on the rows or columns dimension.
+#' @param rows,cols A set of variables or expressions quoted by `vars()`
+#'  and defining faceting groups on the rows or columns dimension.
 #' @export
 #'
 #' @rdname apex-facets
@@ -450,10 +458,12 @@ apexfacetOutput <- function(outputId) {
   )
 }
 
-#' @param expr An expression that generates a apexcharter facet.
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#' @param expr An expression that generates a apexcharter facet with [ax_facet_wrap()] or [ax_facet_grid()].
+#' @param env The environment in which to evaluate `expr`.
+#' @param quoted Is `expr` a quoted expression (with `quote()`)? This
 #'   is useful if you want to save an expression in a variable.
+#'   
+#' @seealso [ax_facet_wrap()], [ax_facet_grid()] 
 #'
 #' @export
 #'
