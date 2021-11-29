@@ -1,7 +1,7 @@
 apexcharter (unreleased)
 ==================
 
-* Updated ApexCharts.js to 3.30.0
+* Updated ApexCharts.js to 3.31.0
 
 
 
