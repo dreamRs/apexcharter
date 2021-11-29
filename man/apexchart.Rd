@@ -2,7 +2,7 @@
 % Please edit documentation in R/apexcharter.R
 \name{apexchart}
 \alias{apexchart}
-\title{Create an apexcharts.js widget}
+\title{Create an ApexCharts widget}
 \usage{
 apexchart(
   ax_opts = list(),
@@ -17,19 +17,17 @@ apexchart(
 
 \item{auto_update}{In Shiny application, update existing chart
 rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
-use \code{\link{config_update}} for more control.}
+use \code{\link[=config_update]{config_update()}} for more control.}
 
-\item{width}{A numeric input in pixels.}
-
-\item{height}{A numeric input in pixels.}
+\item{width, height}{A numeric input in pixels.}
 
 \item{elementId}{Use an explicit element ID for the widget.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
-Create an apexcharts.js widget
+Create an ApexCharts widget
 }
 \examples{
 library(apexcharter)
@@ -65,4 +63,7 @@ apexchart() \%>\%
   ax_xaxis(
     categories = LETTERS[1:5]
   )
+}
+\seealso{
+For quickly create a chart, see \code{\link[=apex]{apex()}}.
 }

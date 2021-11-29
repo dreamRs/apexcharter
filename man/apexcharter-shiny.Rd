@@ -17,13 +17,13 @@ sparkBoxOutput(outputId, width = "100\%", height = "160px")
 renderSparkBox(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
-\item{outputId}{output variable to read from}
+\item{outputId}{Output variable to read from.}
 
-\item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
-\code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-string and have \code{'px'} appended.}
+\item{width, height}{Must be a valid CSS unit (like \verb{100\%},
+\verb{400px}, \code{auto}) or a number, which will be coerced to a
+string and have \code{px} appended.}
 
-\item{expr}{An expression that generates a apexcharter}
+\item{expr}{An expression that generates a calendar}
 
 \item{env}{The environment in which to evaluate \code{expr}.}
 
@@ -31,11 +31,15 @@ string and have \code{'px'} appended.}
 is useful if you want to save an expression in a variable.}
 }
 \value{
-An Apexcharts output that can be included in the application UI.
+Output element that can be included in UI. Render function to create output in server.
 }
 \description{
 Output and render functions for using apexcharter within Shiny
 applications and interactive Rmd documents.
+}
+\note{
+To render a chart with facets (using \code{\link[=ax_facet_wrap]{ax_facet_wrap()}} or \code{\link[=ax_facet_grid]{ax_facet_grid()}}) in Shiny,
+see \code{\link[=apexfacetOutput]{apexfacetOutput()}} (in UI) and \code{\link[=renderApexfacet]{renderApexfacet()}} (in Server).
 }
 \examples{
 if (interactive()) {

@@ -1,22 +1,26 @@
 
-#' Create an apexcharts.js widget
+#' Create an ApexCharts widget
 #'
-#' @param ax_opts A \code{list} in JSON format with chart parameters.
+#' @param ax_opts A `list` in JSON format with chart parameters.
 #' @param auto_update In Shiny application, update existing chart
-#'  rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
-#'  use \code{\link{config_update}} for more control.
-#' @param width A numeric input in pixels.
-#' @param height A numeric input in pixels.
+#'  rather than generating new one. Can be `TRUE`/`FALSE` or
+#'  use [config_update()] for more control.
+#' @param width,height A numeric input in pixels.
 #' @param elementId Use an explicit element ID for the widget.
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @return An [apexchart()] `htmlwidget` object.
+#' @seealso For quickly create a chart, see [apex()].
 #' @export
 #'
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #'
 #' @example examples/apexchart.R
-apexchart <- function(ax_opts = list(), auto_update = TRUE, width = NULL, height = NULL, elementId = NULL) {
-  
+apexchart <- function(ax_opts = list(),
+                      auto_update = TRUE,
+                      width = NULL,
+                      height = NULL,
+                      elementId = NULL) {
+
   if (isTRUE(auto_update)) {
     auto_update <- config_update()
   }
@@ -63,9 +67,9 @@ add_locale_apex <- function(widget) {
     defaultLocale <- widget$x$ax_opts$chart$defaultLocale
     defaultLocale <- match.arg(
       arg = defaultLocale,
-      choices = c("ca", "cs", "de", "el", "en", "es", "fi", "fr", "he", "hi", 
-                  "hr", "hu", "hy", "id", "it", "ja", "ka", "ko", "lt", "nb", "nl", 
-                  "pl", "pt-br", "pt", "rs", "ru", "se", "sk", "sl", "sq", "th", 
+      choices = c("ca", "cs", "de", "el", "en", "es", "fi", "fr", "he", "hi",
+                  "hr", "hu", "hy", "id", "it", "ja", "ka", "ko", "lt", "nb", "nl",
+                  "pl", "pt-br", "pt", "rs", "ru", "se", "sk", "sl", "sq", "th",
                   "tr", "ua", "zh-cn")
     )
     if (!is.null(widget$x$ax_opts$chart$locales)) {
@@ -93,22 +97,22 @@ add_locale_apex <- function(widget) {
 #' @param update_options Update or not global options for chart.
 #' @param options_animate Should the chart animate on re-rendering.
 #' @param options_redrawPaths When the chart is re-rendered,
-#'  should it draw from the existing paths or completely redraw 
-#'  the chart paths from the beginning. By default, the chart 
+#'  should it draw from the existing paths or completely redraw
+#'  the chart paths from the beginning. By default, the chart
 #'  is re-rendered from the existing paths.
 #' @param update_synced_charts All the charts in a group should
 #'  also update when one chart in a group is updated.
-#' 
+#'
 #' @export
-config_update <- function(series_animate = TRUE, 
-                          update_options = FALSE, 
-                          options_animate = TRUE, 
+config_update <- function(series_animate = TRUE,
+                          update_options = FALSE,
+                          options_animate = TRUE,
                           options_redrawPaths = TRUE,
                           update_synced_charts = FALSE) {
   list(
-    series_animate = series_animate, 
-    update_options = update_options, 
-    options_animate = options_animate, 
+    series_animate = series_animate,
+    update_options = update_options,
+    options_animate = options_animate,
     options_redrawPaths = options_redrawPaths,
     update_synced_charts = update_synced_charts
   )
@@ -120,23 +124,26 @@ config_update <- function(series_animate = TRUE,
 #' @description Output and render functions for using apexcharter within Shiny
 #' applications and interactive Rmd documents.
 #'
-#' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a apexcharter
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#' @param outputId Output variable to read from.
+#' @param width,height Must be a valid CSS unit (like `100%`,
+#'   `400px`, `auto`) or a number, which will be coerced to a
+#'   string and have `px` appended.
+#' @param expr An expression that generates a calendar
+#' @param env The environment in which to evaluate `expr`.
+#' @param quoted Is `expr` a quoted expression (with `quote()`)? This
 #'   is useful if you want to save an expression in a variable.
-#'   
-#' @return An Apexcharts output that can be included in the application UI.
+#'
+#' @return Output element that can be included in UI. Render function to create output in server.
+#'
+#' @note To render a chart with facets (using [ax_facet_wrap()] or [ax_facet_grid()]) in Shiny,
+#'  see [apexfacetOutput()] (in UI) and [renderApexfacet()] (in Server).
 #'
 #' @name apexcharter-shiny
 #'
 #' @export
 #'
 #' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
-#' 
+#'
 #' @example examples/apexcharter-shiny.R
 apexchartOutput <- function(outputId, width = "100%", height = "400px") { # nocov start
   htmlwidgets::shinyWidgetOutput(outputId, "apexcharter", width, height, package = "apexcharter")

@@ -36,7 +36,7 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 
 \item{auto_update}{In Shiny application, update existing chart
 rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
-use \code{\link{config_update}} for more control.}
+use \code{\link[=config_update]{config_update()}} for more control.}
 
 \item{synchronize}{Give a common id to charts to synchronize them (tooltip and zoom).}
 
@@ -50,7 +50,7 @@ only used for single serie.}
 \item{elementId}{Use an explicit element ID for the widget.}
 }
 \value{
-A \code{apexcharts} \code{htmlwidget} object.
+An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.
 }
 \description{
 Initialize a chart with three main parameters :

@@ -5,28 +5,23 @@
 #'  data, mapping and type of chart.
 #'
 #' @param data Default dataset to use for chart. If not already
-#'  a \code{data.frame}, it will be coerced to with \code{as.data.frame}.
+#'  a `data.frame`, it will be coerced to with `as.data.frame`.
 #' @param mapping Default list of aesthetic mappings to use for chart
 #' @param type Specify the chart type. Available options:
-#'  \code{"column"}, \code{"bar"},
-#'  \code{"line"}, \code{"step"}, \code{"spline"},
-#'  \code{"area"}, \code{"area-step"}, \code{"area-spline"},
-#'  \code{"pie"}, \code{"donut"},
-#'  \code{"radialBar"}, \code{"radar"}, \code{"scatter"},
-#'  \code{"heatmap"}, \code{"treemap"},
-#'  \code{"timeline"}.
+#'  `"column"`, `"bar"`,
+#'  `"line"`, `"step"`, `"spline"`,
+#'  `"area"`, `"area-step"`, `"area-spline"`,
+#'  `"pie"`, `"donut"`,
+#'  `"radialBar"`, `"radar"`, `"scatter"`,
+#'  `"heatmap"`, `"treemap"`,
+#'  `"timeline"`.
 #' @param ... Other arguments passed on to methods. Not currently used.
-#' @param auto_update In Shiny application, update existing chart
-#'  rather than generating new one. Can be \code{TRUE}/\code{FALSE} or
-#'  use \code{\link{config_update}} for more control.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
 #'  only used for single serie.
-#' @param width A numeric input in pixels.
-#' @param height A numeric input in pixels.
-#' @param elementId Use an explicit element ID for the widget.
+#' @inheritParams apexchart
 #'
-#' @return A \code{apexcharts} \code{htmlwidget} object.
+#' @return An [apexchart()] `htmlwidget` object.
 #'
 #' @export
 #'
@@ -35,7 +30,9 @@
 #' @importFrom stats complete.cases
 #'
 #' @example examples/apex.R
-apex <- function(data, mapping, type = "column", ...,
+apex <- function(data, mapping,
+                 type = "column",
+                 ...,
                  auto_update = TRUE,
                  synchronize = NULL,
                  serie_name = NULL,
