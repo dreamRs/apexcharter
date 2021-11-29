@@ -1,20 +1,3 @@
-#' UNHCR data for 2017
-#'
-#' The dataset contains data about UNHCR's populations of concern for the year 2017.
-#'
-#' @format A data frame with 11237 observations and the following 6 variables:
-#'   \describe{
-#'     \item{\code{country_origin}}{Country of origin of population}
-#'     \item{\code{country_residence}}{Country / territory of asylum/residence of population}
-#'     \item{\code{population_type}}{Populations of concern : Refugees, Asylum-seekers, Internally displaced persons (IDPs), Returned refugees,
-#'     Returned IDPs, Stateless persons, Others of concern.}
-#'     \item{\code{value}}{Number of people concerned}
-#'     \item{\code{continent_residence}}{Continent of origin of population}
-#'     \item{\code{continent_origin}}{Continent of residence of population}
-#'   }
-#' @source UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
-"unhcr_popstats_2017"
-
 
 #' UNHCR data by continent of origin
 #'
@@ -24,7 +7,7 @@
 #'   \describe{
 #'     \item{\code{year}}{Year concerned.}
 #'     \item{\code{population_type}}{Populations of concern : Refugees, Asylum-seekers, Internally displaced persons (IDPs), Returned refugees,
-#'     Returned IDPs, Stateless persons, Others of concern.}    
+#'     Returned IDPs, Stateless persons, Others of concern.}
 #'     \item{\code{continent_origin}}{Continent of residence of population.}
 #'     \item{\code{n}}{Number of people concerned.}
 #'   }
@@ -40,7 +23,7 @@
 #' @format A data frame with 120 observations and the following 3 variables:
 #'   \describe{
 #'     \item{\code{date}}{date.}
-#'     \item{\code{type}}{Type of data : realized or forecast.}    
+#'     \item{\code{type}}{Type of data : realized or forecast.}
 #'     \item{\code{value}}{Value in giga-watt per hour.}
 #'   }
 #' @source Rte (Electricity Transmission Network in France) (\url{https://data.rte-france.com/})
@@ -53,7 +36,7 @@
 #' @format A data frame with 60 observations and the following 5 variables:
 #'   \describe{
 #'     \item{\code{datetime}}{Timestamp.}
-#'     \item{\code{open}}{Open value.}    
+#'     \item{\code{open}}{Open value.}
 #'     \item{\code{high}}{Highest value.}
 #'     \item{\code{low}}{Lowest value.}
 #'     \item{\code{close}}{Close value.}
@@ -63,14 +46,14 @@
 
 
 #' @title Paris Climate
-#' 
+#'
 #' @description Average temperature and precipitation in Paris for the period 1971-2000.
 #'
 #'
 #' @format A data frame with 12 observations and the following 3 variables:
 #'   \describe{
 #'     \item{\code{month}}{Month}
-#'     \item{\code{temperature}}{Temperature (in degree celsius).}    
+#'     \item{\code{temperature}}{Temperature (in degree celsius).}
 #'     \item{\code{precipitation}}{Precipitation (in mm).}
 #'   }
 #' @source Wikipedia (\url{https://fr.wikipedia.org/wiki/Climat_de_Paris})

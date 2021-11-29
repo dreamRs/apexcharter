@@ -2,34 +2,38 @@
 library(apexcharter)
 
 # On a column chart
-apex(
-  data = table(unhcr_popstats_2017$continent_residence),
-  aes(Var1, Freq),
-  "column"
-) %>% 
-  add_hline(value = 2100)
+unhcr_ts %>%
+  subset(year == 2017 & population_type == "Asylum-seekers") %>%
+  apex(
+    aes(continent_origin, n),
+    "column"
+  ) %>%
+  add_hline(value = 5e5)
 
 
 # On a scatter chart
 apex(
-  data = iris,
-  aes(Sepal.Length, Sepal.Width),
+  data = cars,
+  aes(speed, dist),
   "scatter"
-) %>% 
-  add_hline(value = mean(iris$Sepal.Width)) %>% 
-  add_vline(value = mean(iris$Sepal.Length))
+) %>%
+  add_hline(value = mean(cars$dist)) %>%
+  add_vline(value = mean(cars$speed))
 
 # With labels
 apex(
-  data = iris,
-  aes(Sepal.Length, Sepal.Width),
+  data = cars,
+  aes(speed, dist),
   "scatter"
-) %>% 
+) %>%
   add_hline(
-    value = mean(iris$Sepal.Width),
-    label = "Mean of Sepal.Width"
-  ) %>% 
+    value = mean(cars$dist),
+    label = "Mean of dist"
+  ) %>%
   add_vline(
-    value = mean(iris$Sepal.Length),
-    label = "Mean of Sepal.Length"
+    value = mean(cars$speed),
+    label = label(
+      text = "Mean of speed",
+      borderColor = "red"
+    )
   )
