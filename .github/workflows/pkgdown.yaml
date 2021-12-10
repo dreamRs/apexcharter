@@ -28,6 +28,7 @@ jobs:
           extra-packages: |
              dplyr
              highcharter
+             gapminder
              pkgdown
           needs: website
 
