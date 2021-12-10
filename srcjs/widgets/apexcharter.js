@@ -7,7 +7,7 @@ import "../css/apexcharter.css";
 //window['d3.format'] = format;
 //window['d3.formatLocale'] = formatLocale;
 // add in webpackconfig: output.libraryTarget: 'window'
-export { format , formatLocale };
+export { ApexCharts, format , formatLocale };
 
 
 HTMLWidgets.widget({
