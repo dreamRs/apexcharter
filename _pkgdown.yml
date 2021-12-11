@@ -2,15 +2,13 @@ url: https://dreamrs.github.io/apexcharter/
 
 template:
   bootstrap: 5
+  bootswatch: zephyr
   bslib:
     base_font: {google: "Poppins"}
     primary: "#112446"
 
 navbar:
   bg: primary
-
-toc:
-  depth: 3
 
 authors:
   Victor Perrier:
