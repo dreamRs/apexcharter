@@ -34,7 +34,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../../articles/apexcharter.html">Get started</a>
@@ -74,6 +74,9 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="spark-box_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="spark-box_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="spark-box_files/apexcharter-binding-0.3.0.9100/apexcharter.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Create boxes with sparklines</h1>
@@ -101,8 +104,8 @@
   title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, 
   subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>
 <span class="op">)</span></code></pre></div>
-<div id="htmlwidget-3f0fb758a4db42f41572" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f0fb758a4db42f41572">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1641945600000,42],[1642032000000,33],[1642118400000,35],[1642204800000,44],[1642291200000,55],[1642377600000,55],[1642464000000,46],[1642550400000,36],[1642636800000,52],[1642723200000,38],[1642809600000,48],[1642896000000,40],[1642982400000,50],[1643068800000,39],[1643155200000,46],[1643241600000,44],[1643328000000,53],[1643414400000,43],[1643500800000,44],[1643587200000,57]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":45,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2022-01-12","max":"2022-01-31"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>With more styles :</p>
+<div id="htmlwidget-b3d14d68e9b1f9bdfab5" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3d14d68e9b1f9bdfab5">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1646006400000,44],[1646092800000,55],[1646179200000,56],[1646265600000,59],[1646352000000,43],[1646438400000,54],[1646524800000,69],[1646611200000,36],[1646697600000,35],[1646784000000,24],[1646870400000,25],[1646956800000,39],[1647043200000,28],[1647129600000,46],[1647216000000,62],[1647302400000,63],[1647388800000,51],[1647475200000,40],[1647561600000,46],[1647648000000,27]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":45.1,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2022-02-28","max":"2022-03-19"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>With more styles :</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/spark_box.html">spark_box</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">spark_data</span>,
@@ -112,8 +115,8 @@
   title_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>,
   subtitle_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<div id="htmlwidget-1b6f024450c1b5358562" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1b6f024450c1b5358562">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1641945600000,42],[1642032000000,33],[1642118400000,35],[1642204800000,44],[1642291200000,55],[1642377600000,55],[1642464000000,46],[1642550400000,36],[1642636800000,52],[1642723200000,38],[1642809600000,48],[1642896000000,40],[1642982400000,50],[1643068800000,39],[1643155200000,46],[1643241600000,44],[1643328000000,53],[1643414400000,43],[1643500800000,44],[1643587200000,57]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":45,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2022-01-12","max":"2022-01-31"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch an example :</p>
+<div id="htmlwidget-2bde2cf5c24e52993598" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2bde2cf5c24e52993598">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1646006400000,44],[1646092800000,55],[1646179200000,56],[1646265600000,59],[1646352000000,43],[1646438400000,54],[1646524800000,69],[1646611200000,36],[1646697600000,35],[1646784000000,24],[1646870400000,25],[1646956800000,39],[1647043200000,28],[1647129600000,46],[1647216000000,62],[1647302400000,63],[1647388800000,51],[1647475200000,40],[1647561600000,46],[1647648000000,27]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":45.1,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2022-02-28","max":"2022-03-19"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch an example :</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">run_sparkbox_demo</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="figures/spark-box.png" alt="spark-box" style="width:100%;"></p>
@@ -129,7 +132,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
