@@ -30,9 +30,10 @@ add_line <- function(ax,
   } else {
     apex_type <- ax$x$mixed_type
   }
-  if (!isTRUE(apex_type %in% c("line", "bar", "scatter", "candlestick")))
+  if (!isTRUE(apex_type %in% c("line", "bar", "scatter", "candlestick", "rangeArea")))
     stop("add_line: apex() must be a column, scatter or candlestick chart.", call. = FALSE)
-  ax$x$ax_opts$chart$type <- "line"
+  if (!identical(apex_type, "rangeArea"))
+    ax$x$ax_opts$chart$type <- "line"
   if (is.null(data))
     data <- ax$x$data
   data <- as.data.frame(data)

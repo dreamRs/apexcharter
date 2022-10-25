@@ -45,6 +45,7 @@ apex <- function(data, mapping,
       "column", "bar",
       "line", "spline", "step",
       "area", "area-spline", "area-step",
+      "rangeArea",
       "pie", "donut",
       "radialBar",
       "radar",
@@ -66,7 +67,7 @@ apex <- function(data, mapping,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  if (is.null(mapdata$y) & !type %in% c("candlestick", "timeline", "heatmap")) {
+  if (is.null(mapdata$y) & !type %in% c("candlestick", "timeline", "heatmap", "rangeArea")) {
     mapdata <- compute_count(mapdata)
   }
   if (type %in% c("pie", "donut", "radialBar", "polarArea")) {
@@ -132,6 +133,15 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
     series <- parse_timeline_data(mapdata)
   } else {
     mapdata <- as.data.frame(mapdata, stringsAsFactors = FALSE)
+    if (all(rlang::has_name(mapdata, c("ymin", "ymax")))) {
+      mapdata$y <- lapply(
+        X = seq_len(nrow(mapdata)),
+        FUN = function(i) {
+          list(mapdata$ymin[i], mapdata$ymax[i])
+        }
+      )
+      mapdata$ymin <- mapdata$ymax <- NULL
+    }
     if (isTRUE(type %in% c("scatter", "bubble"))) {
       complete <- complete.cases(mapdata[c("x", "y")])
       n_missing <- sum(!complete)
@@ -143,7 +153,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
     if (is.character(mapdata$x))
       mapdata$x[is.na(mapdata$x)] <- "NA"
     x_order <- unique(mapdata$x)
-    if (is_x_datetime(mapdata)) {
+    if (is_x_datetime(mapdata) & !identical(type, "rangeArea")) {
       add_names <- force_datetime_names
       x_order <- sort(x_order)
     } else {
@@ -248,7 +258,7 @@ correct_type <- function(type) {
 multi_type <- function(x) {
   multis <- c("column", "area", "line",
               "spline", "step", "scatter",
-              "bubble")
+              "bubble", "rangeArea")
   if (isTRUE(x %in% multis)) {
     correct_type(x)
   } else {
@@ -304,6 +314,7 @@ choose_config <- function(type, mapdata) {
     "column" = config_bar(horizontal = FALSE, datetime = datetime),
     "line" = config_line(datetime = datetime),
     "area" = config_line(datetime = datetime),
+    "rangeArea" = config_line(datetime = datetime),
     "spline" = config_line(curve = "smooth", datetime = datetime),
     "step" = config_line(curve = "stepline", datetime = datetime),
     "area-spline" = config_line(curve = "smooth", datetime = datetime),
