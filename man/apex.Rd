@@ -43,9 +43,7 @@ use \code{\link[=config_update]{config_update()}} for more control.}
 \item{serie_name}{Name for the serie displayed in tooltip,
 only used for single serie.}
 
-\item{width}{A numeric input in pixels.}
-
-\item{height}{A numeric input in pixels.}
+\item{width, height}{A numeric input in pixels.}
 
 \item{elementId}{Use an explicit element ID for the widget.}
 }
