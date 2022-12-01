@@ -75,7 +75,8 @@ or by specified number of row and column for faceting variable(s) (<code>ax_face
 <span>  ncol <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fixed"</span>, <span class="st">"free"</span>, <span class="st">"free_y"</span>, <span class="st">"free_x"</span><span class="op">)</span>,</span>
 <span>  labeller <span class="op">=</span> <span class="va">label_value</span>,</span>
-<span>  chart_height <span class="op">=</span> <span class="st">"300px"</span></span>
+<span>  chart_height <span class="op">=</span> <span class="st">"300px"</span>,</span>
+<span>  grid_width <span class="op">=</span> <span class="st">"100%"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">ax_facet_grid</span><span class="op">(</span></span>
@@ -84,7 +85,8 @@ or by specified number of row and column for faceting variable(s) (<code>ax_face
 <span>  cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fixed"</span>, <span class="st">"free"</span>, <span class="st">"free_y"</span>, <span class="st">"free_x"</span><span class="op">)</span>,</span>
 <span>  labeller <span class="op">=</span> <span class="va">label_value</span>,</span>
-<span>  chart_height <span class="op">=</span> <span class="st">"300px"</span></span>
+<span>  chart_height <span class="op">=</span> <span class="st">"300px"</span>,</span>
+<span>  grid_width <span class="op">=</span> <span class="st">"100%"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -112,7 +114,11 @@ free (<code>"free"</code>), or free in one dimension (<code>"free_x"</code>, <co
 
 
 <dt>chart_height</dt>
-<dd><p>Individual chart height.</p></dd>
+<dd><p>Individual chart height, ignored if an height is defined in <code><a href="apex.html">apex()</a></code> or <code>apexcharter()</code>.</p></dd>
+
+
+<dt>grid_width</dt>
+<dd><p>Total width for the grid, regardless of the number of column.</p></dd>
 
 
 <dt>rows, cols</dt>
