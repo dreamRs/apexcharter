@@ -38,7 +38,7 @@ n_facet <- function(l) {
   Reduce(`*`, l)
 }
 
-#' @importFrom rlang %||%
+#' @importFrom rlang %||% is_list is_named
 set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"), axis = c("x", "y")) {
   if (is.null(scales))
     return(ax)
@@ -66,30 +66,41 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
     "y" = "yaxis"
   )
 
+  this_axis <- ax$x$ax_opts[[waxis]]
+  if (is_list(this_axis) & !is_named(this_axis)) {
+    this_axis <- this_axis[[1]]
+    yaxis2 <- TRUE
+  } else {
+    yaxis2 <- FALSE
+  }
   if (scales == "fixed") {
-    ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
-    ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+    this_axis$min <- this_axis$min %||% fmt(range_vals[1])
+    this_axis$max <- this_axis$max %||% fmt(range_vals[2])
   } else if (scales == "free") {
-    ax$x$ax_opts[[waxis]]$min <- NULL
-    ax$x$ax_opts[[waxis]]$max <- NULL
+    this_axis$min <- NULL
+    this_axis$max <- NULL
   } else if (scales == "free_x") {
     if (axis == "y") {
-      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
-      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
+      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
     } else {
-      ax$x$ax_opts[[waxis]]$min <- NULL
-      ax$x$ax_opts[[waxis]]$max <- NULL
+      this_axis$min <- NULL
+      this_axis$max <- NULL
     }
   } else if (scales == "free_y") {
     if (axis == "x") {
-      ax$x$ax_opts[[waxis]]$min <- ax$x$ax_opts[[waxis]]$min %||% fmt(range_vals[1])
-      ax$x$ax_opts[[waxis]]$max <- ax$x$ax_opts[[waxis]]$max %||% fmt(range_vals[2])
+      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
+      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
     } else {
-      ax$x$ax_opts[[waxis]]$min <- NULL
-      ax$x$ax_opts[[waxis]]$max <- NULL
+      this_axis$min <- NULL
+      this_axis$max <- NULL
     }
   }
-
+  if (yaxis2) {
+    ax$x$ax_opts[[waxis]][[1]] <- this_axis
+  } else {
+    ax$x$ax_opts[[waxis]] <- this_axis
+  }
   return(ax)
 }
 
@@ -207,11 +218,11 @@ get_last_row <- function(mat) {
 
 
 #' @title Facets for ApexCharts
-#' 
+#'
 #' @description Create matrix of charts by row and column faceting variable (`ax_facet_grid`),
 #'  or by specified number of row and column for faceting variable(s) (`ax_facet_wrap`).
 #'
-#' @param ax An [apexchart()] `htmlwidget` object. 
+#' @param ax An [apexchart()] `htmlwidget` object.
 #' @param facets Variable(s) to use for facetting, wrapped in `vars(...)`.
 #' @param nrow,ncol Number of row and column in output matrix.
 #' @param scales Should scales be fixed (`"fixed"`, the default),
@@ -220,10 +231,10 @@ get_last_row <- function(mat) {
 #' @param chart_height Individual chart height.
 #'
 #' @return An [apexchart()] `htmlwidget` object with an additionnal class `"apex_facet"`.
-#' 
+#'
 #' @details # Warning
 #' To properly render in Shiny applications, use [apexfacetOutput()] (in UI) and [renderApexfacet()] (in Server).
-#' 
+#'
 #' @export
 #'
 #' @name apex-facets
@@ -359,10 +370,10 @@ build_facet_tag <- function(x) {
   }
   if (identical(facets$type, "wrap")) {
     TAG <- build_grid(
-      content = content, 
-      nrow = d$nrow, 
-      ncol = d$ncol, 
-      row_after = row_after, 
+      content = content,
+      nrow = d$nrow,
+      ncol = d$ncol,
+      row_after = row_after,
       col_before = col_before
     )
   } else if (identical(facets$type, "grid")) {
@@ -398,7 +409,7 @@ build_facet_tag <- function(x) {
       col_after = if (!is.null(facets$nrow)) "30px",
       row_gap = "3px",
       col_gap = "3px",
-      row_after = row_after, 
+      row_after = row_after,
       col_before = col_before
     )
   } else {
@@ -462,8 +473,8 @@ apexfacetOutput <- function(outputId) {
 #' @param env The environment in which to evaluate `expr`.
 #' @param quoted Is `expr` a quoted expression (with `quote()`)? This
 #'   is useful if you want to save an expression in a variable.
-#'   
-#' @seealso [ax_facet_wrap()], [ax_facet_grid()] 
+#'
+#' @seealso [ax_facet_wrap()], [ax_facet_grid()]
 #'
 #' @export
 #'
@@ -524,8 +535,8 @@ complete_mapdata <- function(mapdata, mapall) {
   data <- as.data.frame(mapdata)
   full_x <- unique(mapall$x)
   full_data <- data.frame(
-    xorder = seq_along(full_x), 
-    x = full_x, 
+    xorder = seq_along(full_x),
+    x = full_x,
     stringsAsFactors = FALSE
   )
   full_data <- merge(

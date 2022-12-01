@@ -5,7 +5,10 @@ null_or_empty <- function(x) {
 
 
 dropNullsOrEmpty <- function(x) {
-  x[!vapply(x, null_or_empty, FUN.VALUE = logical(1))]
+  clss <- class(x)
+  x <- x[!vapply(x, null_or_empty, FUN.VALUE = logical(1))]
+  class(x) <- clss
+  return(x)
 }
 
 dropNulls <- function(x) {
