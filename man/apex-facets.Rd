@@ -13,7 +13,8 @@ ax_facet_wrap(
   ncol = NULL,
   scales = c("fixed", "free", "free_y", "free_x"),
   labeller = label_value,
-  chart_height = "300px"
+  chart_height = "300px",
+  grid_width = "100\%"
 )
 
 ax_facet_grid(
@@ -22,7 +23,8 @@ ax_facet_grid(
   cols = NULL,
   scales = c("fixed", "free", "free_y", "free_x"),
   labeller = label_value,
-  chart_height = "300px"
+  chart_height = "300px",
+  grid_width = "100\%"
 )
 }
 \arguments{
@@ -37,7 +39,9 @@ free (\code{"free"}), or free in one dimension (\code{"free_x"}, \code{"free_y"}
 
 \item{labeller}{A function with one argument containing for each facet the value of the faceting variable.}
 
-\item{chart_height}{Individual chart height.}
+\item{chart_height}{Individual chart height, ignored if an height is defined in \code{apex()} or \code{apexcharter()}.}
+
+\item{grid_width}{Total width for the grid, regardless of the number of column.}
 
 \item{rows, cols}{A set of variables or expressions quoted by \code{vars()}
 and defining faceting groups on the rows or columns dimension.}

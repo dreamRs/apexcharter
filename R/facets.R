@@ -221,7 +221,7 @@ build_facets <- function(chart) {
         #   serie_name = chart$x$add_line$serie_name
         # )
       }
-      new$height <- chart$x$facet$chart_height
+      new$height <- chart$height %||% chart$x$facet$chart_height
       new$x$facet <- NULL
       class(new) <- setdiff(class(new), "apex_facet")
       return(new)
@@ -262,7 +262,8 @@ get_last_row <- function(mat) {
 #' @param scales Should scales be fixed (`"fixed"`, the default),
 #'  free (`"free"`), or free in one dimension (`"free_x"`, `"free_y"`)?
 #' @param labeller A function with one argument containing for each facet the value of the faceting variable.
-#' @param chart_height Individual chart height.
+#' @param chart_height Individual chart height, ignored if an height is defined in `apex()` or `apexcharter()`.
+#' @param grid_width Total width for the grid, regardless of the number of column.
 #'
 #' @return An [apexchart()] `htmlwidget` object with an additionnal class `"apex_facet"`.
 #'
@@ -282,7 +283,8 @@ ax_facet_wrap <- function(ax,
                           ncol = NULL,
                           scales = c("fixed", "free", "free_y", "free_x"),
                           labeller = label_value,
-                          chart_height = "300px") {
+                          chart_height = "300px",
+                          grid_width = "100%") {
   if (!inherits(ax, "apex"))
     stop("ax_facet_wrap only works with charts generated with apex()", call. = FALSE)
   scales <- match.arg(scales)
@@ -295,6 +297,7 @@ ax_facet_wrap <- function(ax,
     scales = scales,
     labeller = labeller,
     chart_height = chart_height,
+    grid_width = grid_width,
     type = "wrap"
   )
   class(ax) <- c("apex_facet", class(ax))
@@ -314,7 +317,8 @@ ax_facet_grid <- function(ax,
                           cols = NULL,
                           scales = c("fixed", "free", "free_y", "free_x"),
                           labeller = label_value,
-                          chart_height = "300px") {
+                          chart_height = "300px",
+                          grid_width = "100%") {
   if (!inherits(ax, "apex"))
     stop("ax_facet_wrap only works with charts generated with apex()", call. = FALSE)
   scales <- match.arg(scales)
@@ -330,6 +334,7 @@ ax_facet_grid <- function(ax,
     scales = scales,
     labeller = labeller,
     chart_height = chart_height,
+    grid_width = grid_width,
     type = "grid"
   )
   class(ax) <- c("apex_facet", class(ax))
@@ -343,6 +348,7 @@ ax_facet_grid <- function(ax,
 # Tag ---------------------------------------------------------------------
 
 #' @importFrom rlang %||%
+#' @importFrom htmltools tags css validateCssUnit
 build_facet_tag <- function(x) {
   facets <- build_facets(x)
   content <- facets$facets
@@ -469,6 +475,11 @@ build_facet_tag <- function(x) {
       TAG
     )
   }
+  TAG <- tags$div(
+    style = css(width = validateCssUnit(x$x$facet$grid_width)),
+    class = "apexcharter-facet",
+    TAG
+  )
   return(TAG)
 }
 
