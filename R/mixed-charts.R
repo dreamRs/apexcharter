@@ -1,6 +1,6 @@
 
 #' @title Add a line to a chart
-#' 
+#'
 #' @description Add a line to an existing chart (bar, scatter and line types supported).
 #'  On scatter charts you can also add a smooth line.
 #'
@@ -12,14 +12,14 @@
 #' @param serie_name Name for the serie displayed in tooltip and legend.
 #'
 #' @export
-#' 
+#'
 #' @name add-line
 #'
 #' @example examples/mixed-charts.R
-add_line <- function(ax, 
-                     mapping, 
+add_line <- function(ax,
+                     mapping,
                      data = NULL,
-                     type = c("line", "spline"), 
+                     type = c("line", "spline"),
                      serie_name = NULL) {
   type <- match.arg(type)
   if (!inherits(ax, "apex"))
@@ -41,6 +41,12 @@ add_line <- function(ax,
   ax$x$ax_opts$series <- c(
     ax$x$ax_opts$series,
     make_series(mapdata, mapping, type, serie_name, force_datetime_names = c("x", "y"))
+  )
+  ax$x$add_line <- list(
+    data = data,
+    mapping = mapping,
+    type = type,
+    serie_name = serie_name
   )
   if (identical(apex_type, "scatter")) {
     if (is.null(ax$x$ax_opts$markers$size)) {
@@ -78,14 +84,14 @@ add_line <- function(ax,
 #' @param model Model to use between \code{\link{lm}} or \code{\link{loess}}.
 #' @param n Number of points used for predictions.
 #' @param ... Arguments passed to \code{model}.
-#' 
+#'
 #' @export
-#' 
+#'
 #' @importFrom stats lm loess predict
 #' @importFrom rlang !! sym
-#' 
+#'
 #' @name add-line
-add_smooth_line <- function(ax, 
+add_smooth_line <- function(ax,
                             formula = y ~ x,
                             model = c("lm", "loess"),
                             n = 100,
@@ -115,14 +121,14 @@ add_smooth_line <- function(ax,
   }
   new_data <- data.frame(x = seq(
     from = min(mapdata$x, na.rm = TRUE),
-    to = max(mapdata$x, na.rm = TRUE), 
+    to = max(mapdata$x, na.rm = TRUE),
     length.out = n
   ))
   new_data$smooth <- predict(model_results, new_data)
   add_line(
     ax = ax,
-    mapping = aes(x = `!!`(sym("x")), y = `!!`(sym("smooth"))), 
-    data = new_data, 
+    mapping = aes(x = `!!`(sym("x")), y = `!!`(sym("smooth"))),
+    data = new_data,
     type = type,
     serie_name = serie_name
   )

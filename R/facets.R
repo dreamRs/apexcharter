@@ -155,6 +155,14 @@ build_facets <- function(chart) {
     byrow = TRUE
   )
   lrow <- get_last_row(grid)
+  facet_data_add_line <- if (!is.null(chart$x$add_line)) {
+    get_facets(
+      data = chart$x$add_line$data,
+      rows = chart$x$facet$facets_row,
+      cols = chart$x$facet$facets_col,
+      type = chart$x$facet$type
+    )$facets
+  }
   facets <- lapply(
     X = nums,
     FUN = function(i) {
@@ -186,6 +194,32 @@ build_facets <- function(chart) {
       }
       if (!is.null(new$x$colors_manual)) {
         new <- ax_colors_manual(ax = new, values = new$x$colors_manual)
+      }
+      if (!is.null(facet_data_add_line)) {
+        maplinedata <- lapply(chart$x$add_line$mapping, eval_tidy, data = facet_data_add_line[[i]])
+        if (chart$x$facet$scales %in% c("fixed", "free_y") & chart$x$type %in% c("bar")) {
+          maplinedata <- complete_mapdata(maplinedata, mapall)
+        }
+        if (chart$x$facet$scales %in% c("fixed", "free_x") & chart$x$type %in% c("column")) {
+          maplinedata <- complete_mapdata(maplinedata, mapall)
+        }
+        new$x$ax_opts$series <- c(
+          new$x$ax_opts$series,
+          make_series(
+            mapdata = maplinedata,
+            mapping = chart$x$add_line$mapping,
+            type = chart$x$add_line$type,
+            serie_name = chart$x$add_line$serie_name,
+            force_datetime_names = c("x", "y")
+          )
+        )
+        # new <- add_line(
+        #   ax = new,
+        #   mapping = chart$x$add_line$mapping,
+        #   data = facet_data_add_line[[i]],
+        #   type = chart$x$add_line$type,
+        #   serie_name = chart$x$add_line$serie_name
+        # )
       }
       new$height <- chart$x$facet$chart_height
       new$x$facet <- NULL

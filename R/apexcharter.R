@@ -42,6 +42,7 @@ apexchart <- function(ax_opts = list(),
     preRenderHook = function(widget) {
       widget$x$data <- NULL
       widget$x$mapping <- NULL
+      widget$x$add_line <- NULL
       add_locale_apex(widget)
     },
     sizingPolicy = htmlwidgets::sizingPolicy(
