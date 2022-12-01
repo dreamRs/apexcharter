@@ -8,8 +8,8 @@
 <meta name="description" content="apexcharter">
 <title>Create boxes with sparklines • apexcharter</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="../../deps/_Poppins-0.4.1/font.css" rel="stylesheet">
+<link href="../../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../../deps/Poppins-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Create boxes with sparklines">
@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">apexcharter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9200</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,8 +77,8 @@
 
 
 
-<script src="spark-box_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="spark-box_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="spark-box_files/apexcharter-binding-0.3.1.9000/apexcharter.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+<script src="spark-box_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="spark-box_files/apexcharter-binding-0.3.1.9200/apexcharter.js"></script><div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Create boxes with sparklines</h1>
             
       
@@ -89,36 +89,37 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span>
-
-<span class="va">spark_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,
-  var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,
-  var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,
-  var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">spark_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,</span>
+<span>  var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Create boxes with a sparkline to display a specific value:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/spark_box.html">spark_box</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">spark_data</span>,
-  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, 
-  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>
-<span class="op">)</span></code></pre></div>
-<div id="htmlwidget-03dabc16d6389fde54c5" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-03dabc16d6389fde54c5">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1648944000000,39],[1649030400000,48],[1649116800000,62],[1649203200000,41],[1649289600000,44],[1649376000000,53],[1649462400000,63],[1649548800000,54],[1649635200000,58],[1649721600000,59],[1649808000000,55],[1649894400000,62],[1649980800000,33],[1650067200000,53],[1650153600000,57],[1650240000000,34],[1650326400000,66],[1650412800000,56],[1650499200000,53],[1650585600000,41]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":51.55,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2022-04-03","max":"2022-04-22"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>With more styles :</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../../reference/spark_box.html">spark_box</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">spark_data</span>,</span>
+<span>  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, </span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-2a123b3e02bcb837473d" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a123b3e02bcb837473d">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1669939200000,50],[1670025600000,58],[1670112000000,70],[1670198400000,58],[1670284800000,40],[1670371200000,29],[1670457600000,56],[1670544000000,52],[1670630400000,40],[1670716800000,34],[1670803200000,54],[1670889600000,44],[1670976000000,75],[1671062400000,42],[1671148800000,51],[1671235200000,66],[1671321600000,48],[1671408000000,26],[1671494400000,50],[1671580800000,62]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#2E93fA"],"title":{"text":50.25,"style":{"fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#2E93fA","background":"#FFF"},"xaxis":{"min":"2022-12-02","max":"2022-12-21"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>With more styles :</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/spark_box.html">spark_box</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">spark_data</span>,
-  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, 
-  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>,
-  color <span class="op">=</span> <span class="st">"#FFF"</span>, background <span class="op">=</span> <span class="st">"#2E93fA"</span>,
-  title_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>,
-  subtitle_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<div id="htmlwidget-4cd7a5ae8da38d2ec89a" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4cd7a5ae8da38d2ec89a">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1648944000000,39],[1649030400000,48],[1649116800000,62],[1649203200000,41],[1649289600000,44],[1649376000000,53],[1649462400000,63],[1649548800000,54],[1649635200000,58],[1649721600000,59],[1649808000000,55],[1649894400000,62],[1649980800000,33],[1650067200000,53],[1650153600000,57],[1650240000000,34],[1650326400000,66],[1650412800000,56],[1650499200000,53],[1650585600000,41]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":51.55,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2022-04-03","max":"2022-04-22"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch an example :</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../../reference/spark_box.html">spark_box</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">spark_data</span>,</span>
+<span>  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">spark_data</span><span class="op">$</span><span class="va">var1</span><span class="op">)</span>, </span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Variable 1"</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#FFF"</span>, background <span class="op">=</span> <span class="st">"#2E93fA"</span>,</span>
+<span>  title_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span>,</span>
+<span>  subtitle_style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#FFF"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-356e70265992a176d6a9" style="width:100%;height:160px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-356e70265992a176d6a9">{"x":{"ax_opts":{"chart":{"type":"area","sparkline":{"enabled":true}},"series":[{"name":"var1","type":"area","data":[[1669939200000,50],[1670025600000,58],[1670112000000,70],[1670198400000,58],[1670284800000,40],[1670371200000,29],[1670457600000,56],[1670544000000,52],[1670630400000,40],[1670716800000,34],[1670803200000,54],[1670889600000,44],[1670976000000,75],[1671062400000,42],[1671148800000,51],[1671235200000,66],[1671321600000,48],[1671408000000,26],[1671494400000,50],[1671580800000,62]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}},"show":false},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}},"colors":["#FFF"],"title":{"text":50.25,"style":{"color":"#FFF","fontSize":"24px"}},"subtitle":{"text":"Variable 1","style":{"color":"#FFF","fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":true,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":{"color":"#FFF","background":"#2E93fA"},"xaxis":{"min":"2022-12-02","max":"2022-12-21"},"type":"area"},"evals":[],"jsHooks":[]}</script><p>You can also use spark boxes in Shiny application, use code to launch
+an example :</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">run_sparkbox_demo</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">run_sparkbox_demo</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/spark-box.png" alt="spark-box" style="width:100%;"></p>
   </main>
 </div>
@@ -132,7 +133,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

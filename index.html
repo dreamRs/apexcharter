@@ -10,8 +10,8 @@
   Apexcharts examples and documentation are available here: &lt;https://apexcharts.com/&gt;.">
 <title>Create Interactive Chart with the JavaScript ApexCharts Library • apexcharter</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="deps/_Poppins-0.4.1/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="deps/Poppins-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Create Interactive Chart with the JavaScript ApexCharts Library">
@@ -31,7 +31,7 @@
     
     <a class="navbar-brand me-2" href="index.html">apexcharter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9200</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,26 +92,26 @@
 </h2>
 <p>Install from <a href="https://CRAN.R-project.org/package=apexcharter" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"apexcharter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"apexcharter"</span><span class="op">)</span></span></code></pre></div>
 <p>Or install the development version from <a href="https://github.com/dreamRs/apexcharter" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"dreamRs/apexcharter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"dreamRs/apexcharter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-charts">Quick Charts<a class="anchor" aria-label="anchor" href="#quick-charts"></a>
 </h2>
 <p>Use <code>apex</code> function to quickly create visualizations :</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"mpg"</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span>
-<span class="fu"><a href="reference/apex.html">apex</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"bar"</span>, mapping <span class="op">=</span> <span class="fu"><a href="reference/apexcharter-exports.html">aes</a></span><span class="op">(</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"mpg"</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/apex.html">apex</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mpg</span>, type <span class="op">=</span> <span class="st">"bar"</span>, mapping <span class="op">=</span> <span class="fu"><a href="reference/apexcharter-exports.html">aes</a></span><span class="op">(</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/apex-bar.png"></p>
 <p>With datetime:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"economics"</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span>
-<span class="fu"><a href="reference/apex.html">apex</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">economics</span>, type <span class="op">=</span> <span class="st">"line"</span>, mapping <span class="op">=</span> <span class="fu"><a href="reference/apexcharter-exports.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_stroke.html">ax_stroke</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"economics"</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/apex.html">apex</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">economics</span>, type <span class="op">=</span> <span class="st">"line"</span>, mapping <span class="op">=</span> <span class="fu"><a href="reference/apexcharter-exports.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_stroke.html">ax_stroke</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/apex-line.png"></p>
 </div>
 <div class="section level2">
@@ -119,32 +119,32 @@
 </h2>
 <p>All methods from ApexCharts are available with function like <code>ax_*</code> compatible with pipe from <code>magrittr</code> :</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mpg</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/apexchart.html">apexchart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_chart.html">ax_chart</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_plotOptions.html">ax_plotOptions</a></span><span class="op">(</span>bar <span class="op">=</span> <span class="fu"><a href="reference/bar_opts.html">bar_opts</a></span><span class="op">(</span>
-    horizontal <span class="op">=</span> <span class="cn">FALSE</span>,
-    endingShape <span class="op">=</span> <span class="st">"flat"</span>,
-    columnWidth <span class="op">=</span> <span class="st">"70%"</span>,
-    dataLabels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      position <span class="op">=</span> <span class="st">"top"</span>
-    <span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_grid.html">ax_grid</a></span><span class="op">(</span>
-    show <span class="op">=</span> <span class="cn">TRUE</span>,
-    position <span class="op">=</span> <span class="st">"front"</span>,
-    borderColor <span class="op">=</span> <span class="st">"#FFF"</span>
-  <span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax-series.html">ax_series</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    name <span class="op">=</span> <span class="st">"Count"</span>,
-    data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span>, <span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span>, <span class="va">length</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_colors.html">ax_colors</a></span><span class="op">(</span><span class="st">"#112446"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_xaxis.html">ax_xaxis</a></span><span class="op">(</span>categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_title.html">ax_title</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Number of models"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/ax_subtitle.html">ax_subtitle</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Data from ggplot2"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dreamRs/apexcharter" class="external-link">apexcharter</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mpg</span>, package <span class="op">=</span> <span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/apexchart.html">apexchart</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_chart.html">ax_chart</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_plotOptions.html">ax_plotOptions</a></span><span class="op">(</span>bar <span class="op">=</span> <span class="fu"><a href="reference/bar_opts.html">bar_opts</a></span><span class="op">(</span></span>
+<span>    horizontal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    endingShape <span class="op">=</span> <span class="st">"flat"</span>,</span>
+<span>    columnWidth <span class="op">=</span> <span class="st">"70%"</span>,</span>
+<span>    dataLabels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      position <span class="op">=</span> <span class="st">"top"</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_grid.html">ax_grid</a></span><span class="op">(</span></span>
+<span>    show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    position <span class="op">=</span> <span class="st">"front"</span>,</span>
+<span>    borderColor <span class="op">=</span> <span class="st">"#FFF"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax-series.html">ax_series</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Count"</span>,</span>
+<span>    data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span>, <span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span>, <span class="va">length</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_colors.html">ax_colors</a></span><span class="op">(</span><span class="st">"#112446"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_xaxis.html">ax_xaxis</a></span><span class="op">(</span>categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">$</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_title.html">ax_title</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Number of models"</span><span class="op">)</span> <span class="op"><a href="reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/ax_subtitle.html">ax_subtitle</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Data from ggplot2"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/apexcharter-full-bar.png"></p>
 </div>
 <div class="section level2">
@@ -152,48 +152,48 @@
 </h2>
 <p>Pass a list of parameters to the function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/apexchart.html">apexchart</a></span><span class="op">(</span>ax_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  chart <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    type <span class="op">=</span> <span class="st">"line"</span>
-  <span class="op">)</span>,
-  stroke <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    curve <span class="op">=</span> <span class="st">"smooth"</span>
-  <span class="op">)</span>,
-  grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    borderColor <span class="op">=</span> <span class="st">"#e7e7e7"</span>,
-    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f3f3f3"</span>, <span class="st">"transparent"</span><span class="op">)</span>,
-      opacity <span class="op">=</span> <span class="fl">0.5</span>
-    <span class="op">)</span>
-  <span class="op">)</span>,
-  dataLabels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    enabled <span class="op">=</span> <span class="cn">TRUE</span>
-  <span class="op">)</span>,
-  markers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>style <span class="op">=</span> <span class="st">"inverted"</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>,
-  series <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      name <span class="op">=</span> <span class="st">"High"</span>,
-      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">36</span>, <span class="fl">32</span>, <span class="fl">32</span>, <span class="fl">33</span><span class="op">)</span>
-    <span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      name <span class="op">=</span> <span class="st">"Low"</span>,
-      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">11</span>, <span class="fl">14</span>, <span class="fl">18</span>, <span class="fl">17</span>, <span class="fl">13</span>, <span class="fl">13</span><span class="op">)</span>
-    <span class="op">)</span>
-  <span class="op">)</span>,
-  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    text <span class="op">=</span> <span class="st">"Average High &amp; Low Temperature"</span>,
-    align <span class="op">=</span> <span class="st">"left"</span>
-  <span class="op">)</span>,
-  xaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    categories <span class="op">=</span> <span class="va">month.abb</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span>
-  <span class="op">)</span>,
-  yaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Temperature"</span><span class="op">)</span>,
-    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      formatter <span class="op">=</span> <span class="fu">htmlwidgets</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html" class="external-link">JS</a></span><span class="op">(</span><span class="st">"function(value) {return value + '\u00b0C';}"</span><span class="op">)</span>
-    <span class="op">)</span>
-  <span class="op">)</span>
-<span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/apexchart.html">apexchart</a></span><span class="op">(</span>ax_opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  chart <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    type <span class="op">=</span> <span class="st">"line"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  stroke <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    curve <span class="op">=</span> <span class="st">"smooth"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    borderColor <span class="op">=</span> <span class="st">"#e7e7e7"</span>,</span>
+<span>    row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f3f3f3"</span>, <span class="st">"transparent"</span><span class="op">)</span>,</span>
+<span>      opacity <span class="op">=</span> <span class="fl">0.5</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  dataLabels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    enabled <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  markers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>style <span class="op">=</span> <span class="st">"inverted"</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>,</span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="st">"High"</span>,</span>
+<span>      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">36</span>, <span class="fl">32</span>, <span class="fl">32</span>, <span class="fl">33</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="st">"Low"</span>,</span>
+<span>      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">11</span>, <span class="fl">14</span>, <span class="fl">18</span>, <span class="fl">17</span>, <span class="fl">13</span>, <span class="fl">13</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    text <span class="op">=</span> <span class="st">"Average High &amp; Low Temperature"</span>,</span>
+<span>    align <span class="op">=</span> <span class="st">"left"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  xaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    categories <span class="op">=</span> <span class="va">month.abb</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  yaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Temperature"</span><span class="op">)</span>,</span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      formatter <span class="op">=</span> <span class="fu">htmlwidgets</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html" class="external-link">JS</a></span><span class="op">(</span><span class="st">"function(value) {return value + '\u00b0C';}"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/raw-api.png"></p>
 </div>
 <div class="section level2">
@@ -202,10 +202,10 @@
 <p>This package use <a href="https://github.com/JohnCoene/packer" class="external-link">{packer}</a> to manage JavaScript assets, see packer’s <a href="https://packer.john-coene.com/#/" class="external-link">documentation</a> for more.</p>
 <p>Install nodes modules with:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu">npm_install</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">packer</span><span class="fu">::</span><span class="fu">npm_install</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Modify <code>srcjs/widgets/apexcharter.js</code>, then run:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu">bundle</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">packer</span><span class="fu">::</span><span class="fu">bundle</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Re-install R package and try <code>apexcharter()</code> or <code><a href="reference/apex.html">apex()</a></code> functions.</p>
 </div>
 </div>
@@ -266,7 +266,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>
