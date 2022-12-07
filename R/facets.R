@@ -46,62 +46,85 @@ set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"
   axis <- match.arg(axis)
   if (is.null(values))
     return(ax)
+  
   if (inherits(values, c("numeric", "integer", "Date", "POSIXt"))) {
     range_vals <- range(pretty(values, n = 10), na.rm = TRUE)
   } else {
     range_vals <- NULL
   }
-
-  fmt <- function(x, time = inherits(values, c("Date", "POSIXt"))) {
-    if (is.null(x))
-      return(NULL)
-    if (time)
-      x <- format_date(x)
-    x
-  }
-
+  
   waxis <- switch(
     axis,
     "x" = "xaxis",
     "y" = "yaxis"
   )
-
+  
   this_axis <- ax$x$ax_opts[[waxis]]
-  if (is_list(this_axis) & !is_named(this_axis)) {
-    this_axis <- this_axis[[1]]
-    yaxis2 <- TRUE
+  if (inherits(this_axis, "yaxis2")) {
+    ax$x$ax_opts[[waxis]][[1]] <- set_scale_axis(
+      this_axis[[1]], 
+      range_vals = range_vals,
+      scales = scales, 
+      axis = axis
+    )
+    # ax$x$ax_opts[[waxis]][[2]] <- set_scale_axis(
+    #   this_axis[[2]],
+    #   range_vals = range_vals, 
+    #   scales = scales,
+    #   axis = axis
+    # )
   } else {
-    yaxis2 <- FALSE
+    ax$x$ax_opts[[waxis]] <- set_scale_axis(
+      this_axis,
+      range_vals = range_vals,
+      scales = scales, 
+      axis = axis
+    )
   }
+  
+  return(ax)
+}
+
+
+scale_fmt <- function(x, time = inherits(x, c("Date", "POSIXt"))) {
+  if (is.null(x))
+    return(NULL)
+  if (time)
+    x <- format_date(x)
+  x
+}
+
+
+set_scale_axis <- function(this_axis,
+                           range_vals, 
+                           scales = c("fixed", "free", "free_y", "free_x"),
+                           axis = c("x", "y")) {
+  scales <- match.arg(scales)
+  axis <- match.arg(axis)
   if (scales == "fixed") {
-    this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-    this_axis$max <- this_axis$max %||% fmt(range_vals[2])
+    this_axis$min <- this_axis$min %||% scale_fmt(range_vals[1])
+    this_axis$max <- this_axis$max %||% scale_fmt(range_vals[2])
   } else if (scales == "free") {
     this_axis$min <- NULL
     this_axis$max <- NULL
   } else if (scales == "free_x") {
     if (axis == "y") {
-      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
+      this_axis$min <- this_axis$min %||% scale_fmt(range_vals[1])
+      this_axis$max <- this_axis$max %||% scale_fmt(range_vals[2])
     } else {
       this_axis$min <- NULL
       this_axis$max <- NULL
     }
   } else if (scales == "free_y") {
     if (axis == "x") {
-      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
+      this_axis$min <- this_axis$min %||% scale_fmt(range_vals[1])
+      this_axis$max <- this_axis$max %||% scale_fmt(range_vals[2])
     } else {
       this_axis$min <- NULL
       this_axis$max <- NULL
     }
   }
-  if (yaxis2) {
-    ax$x$ax_opts[[waxis]][[1]] <- this_axis
-  } else {
-    ax$x$ax_opts[[waxis]] <- this_axis
-  }
-  return(ax)
+  return(this_axis)
 }
 
 
@@ -612,5 +635,4 @@ complete_data <- function(data, vars, fill_var, fill_value = 0) {
   full_data[[fill_var]][is.na(full_data[[fill_var]])] <- fill_value
   return(full_data)
 }
-
 
