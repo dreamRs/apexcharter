@@ -101,7 +101,7 @@ build_facets <- function(chart) {
         # )
       }
       if (has_yaxis2(new)) {
-        values <- get_yaxis_serie(new, 2)
+        values <- get_yaxis_serie(chart, 2)
         new <- set_scale(new, values, scales = chart$x$facet$scales, axis = "y2")
       }
       new$height <- chart$height %||% chart$x$facet$chart_height
