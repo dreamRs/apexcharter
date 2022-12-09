@@ -252,3 +252,21 @@ test_that("apexfacetOutput works", {
 
 
 
+test_that("get_yaxis_serie works", {
+  mydata <- data.frame(
+    x = 1:10,
+    y = c(1:5, (16:20) * 10),
+    fill = rep(c("a", "b"), each = 5)
+  )
+  ax <- apex(mydata, aes(x, y), "line")
+  expect_equal(get_yaxis_serie(ax, 1), c(1:5, (16:20) * 10))
+  
+  ax <- apex(mydata, aes(x, y, fill = fill), "line")
+  expect_equal(get_yaxis_serie(ax, 1), c(1:5, (16:20) * 10))
+  
+  ax <- apex(mydata, aes(x, y, fill = fill), "line") %>% 
+    ax_yaxis(title = list(text = "Y1")) %>% 
+    ax_yaxis2(title = list(text = "Y2"))
+  expect_equal(get_yaxis_serie(ax, 1), c(1:5))
+  expect_equal(get_yaxis_serie(ax, 2), c((16:20) * 10))
+})

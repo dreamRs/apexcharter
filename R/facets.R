@@ -1,125 +1,4 @@
 
-#' @importFrom rlang eval_tidy
-get_facets <- function(data, rows, cols, type = c("wrap", "grid")) {
-  type <- match.arg(type)
-  byrows <- lapply(X = rows, FUN = eval_tidy, data = data)
-  bycols <- lapply(X = cols, FUN = eval_tidy, data = data)
-  facets <- split(x = data, f = c(bycols, byrows), sep = "|__|")
-  facets <- lapply(
-    X = seq_along(facets),
-    FUN = function(i) {
-      facet <- facets[[i]]
-      attr(facet, "keys") <- strsplit(
-        x = names(facets)[i],
-        split = "|__|", fixed = TRUE
-      )[[1]]
-      facet
-    }
-  )
-  label_row <- lapply(byrows, unique)
-  label_row <- lapply(label_row, sort)
-  label_row <- apply(expand.grid(label_row), 1, paste, collapse = "*")
-  label_col <- lapply(bycols, unique)
-  label_col <- lapply(label_col, sort)
-  label_col <- apply(expand.grid(label_col), 1, paste, collapse = "*")
-  list(
-    facets = facets,
-    nrow = if (identical(type, "grid")) n_facet(byrows) else NULL,
-    ncol = if (identical(type, "grid")) n_facet(bycols) else NULL,
-    label_row = label_row,
-    label_col = label_col
-  )
-}
-
-n_facet <- function(l) {
-  l <- lapply(l, function(x) {
-    length(unique(x))
-  })
-  Reduce(`*`, l)
-}
-
-#' @importFrom rlang %||% is_list is_named
-set_scale <- function(ax, values, scales = c("fixed", "free", "free_y", "free_x"), axis = c("x", "y")) {
-  if (is.null(scales))
-    return(ax)
-  scales <- match.arg(scales)
-  axis <- match.arg(axis)
-  if (is.null(values))
-    return(ax)
-  if (inherits(values, c("numeric", "integer", "Date", "POSIXt"))) {
-    range_vals <- range(pretty(values, n = 10), na.rm = TRUE)
-  } else {
-    range_vals <- NULL
-  }
-
-  fmt <- function(x, time = inherits(values, c("Date", "POSIXt"))) {
-    if (is.null(x))
-      return(NULL)
-    if (time)
-      x <- format_date(x)
-    x
-  }
-
-  waxis <- switch(
-    axis,
-    "x" = "xaxis",
-    "y" = "yaxis"
-  )
-
-  this_axis <- ax$x$ax_opts[[waxis]]
-  if (is_list(this_axis) & !is_named(this_axis)) {
-    this_axis <- this_axis[[1]]
-    yaxis2 <- TRUE
-  } else {
-    yaxis2 <- FALSE
-  }
-  if (scales == "fixed") {
-    this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-    this_axis$max <- this_axis$max %||% fmt(range_vals[2])
-  } else if (scales == "free") {
-    this_axis$min <- NULL
-    this_axis$max <- NULL
-  } else if (scales == "free_x") {
-    if (axis == "y") {
-      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
-    } else {
-      this_axis$min <- NULL
-      this_axis$max <- NULL
-    }
-  } else if (scales == "free_y") {
-    if (axis == "x") {
-      this_axis$min <- this_axis$min %||% fmt(range_vals[1])
-      this_axis$max <- this_axis$max %||% fmt(range_vals[2])
-    } else {
-      this_axis$min <- NULL
-      this_axis$max <- NULL
-    }
-  }
-  if (yaxis2) {
-    ax$x$ax_opts[[waxis]][[1]] <- this_axis
-  } else {
-    ax$x$ax_opts[[waxis]] <- this_axis
-  }
-  return(ax)
-}
-
-
-get_option <- function(ax, opt1, opt2 = NULL) {
-  if (is.null(opt2)) {
-    ax$x$ax_opts[[opt1]]
-  } else {
-    ax$x$ax_opts[[opt1]][[opt2]]
-  }
-}
-remove_option <- function(ax, opt1, opt2 = NULL) {
-  if (is.null(opt2)) {
-    ax$x$ax_opts[[opt1]] <- NULL
-  } else {
-    ax$x$ax_opts[[opt1]][[opt2]] <- NULL
-  }
-  ax
-}
 
 #' @importFrom rlang eval_tidy is_null is_function
 build_facets <- function(chart) {
@@ -220,6 +99,10 @@ build_facets <- function(chart) {
         #   type = chart$x$add_line$type,
         #   serie_name = chart$x$add_line$serie_name
         # )
+      }
+      if (has_yaxis2(new)) {
+        values <- get_yaxis_serie(chart, 2)
+        new <- set_scale(new, values, scales = chart$x$facet$scales, axis = "y2")
       }
       new$height <- chart$height %||% chart$x$facet$chart_height
       new$x$facet <- NULL
@@ -612,5 +495,4 @@ complete_data <- function(data, vars, fill_var, fill_value = 0) {
   full_data[[fill_var]][is.na(full_data[[fill_var]])] <- fill_value
   return(full_data)
 }
-
 
