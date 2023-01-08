@@ -1,7 +1,9 @@
-apexcharter (unreleased)
+apexcharter 0.4.0
 ==================
 
-* Updated ApexCharts.js to 3.35.0
+* Updated ApexCharts.js to 3.36.3.
+* New chart type : range area charts
+* Facets: correctly manage secondary y axis.
 
 
 
