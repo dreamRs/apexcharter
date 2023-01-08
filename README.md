@@ -6,7 +6,7 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/apexcharter)](https://CRAN.R-project.org/package=apexcharter)
 [![cran checks](https://badges.cranchecks.info/worst/apexcharter.svg)](https://cranchecks.info/pkgs/apexcharter)
 [![Codecov test coverage](https://codecov.io/gh/dreamRs/apexcharter/branch/master/graph/badge.svg)](https://app.codecov.io/gh/dreamRs/apexcharter?branch=master)
-[![R-CMD-check](https://github.com/dreamRs/apexcharter/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/apexcharter/actions)
+[![R-CMD-check](https://github.com/dreamRs/apexcharter/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dreamRs/apexcharter/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 
