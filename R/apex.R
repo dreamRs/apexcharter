@@ -54,7 +54,8 @@ apex <- function(data, mapping,
       "heatmap",
       "treemap",
       "timeline",
-      "candlestick"
+      "candlestick",
+      "boxplot"
     )
   )
   data <- as.data.frame(data)
@@ -67,7 +68,7 @@ apex <- function(data, mapping,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  if (is.null(mapdata$y) & !type %in% c("candlestick", "timeline", "heatmap", "rangeArea")) {
+  if (is.null(mapdata$y) & !type %in% c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea")) {
     mapdata <- compute_count(mapdata)
   }
   if (type %in% c("pie", "donut", "radialBar", "polarArea")) {
@@ -118,7 +119,9 @@ apex <- function(data, mapping,
 # Construct series
 #' @importFrom rlang %||%
 make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_datetime_names = FALSE) {
-  if (identical(type, "candlestick")) {
+  if (identical(type, "boxplot")) {
+    series <- parse_boxplot_data(mapdata, serie_name = serie_name)
+  } else if (identical(type, "candlestick")) {
     if (!all(c("x", "open", "high", "low", "close") %in% names(mapping)))
       stop("For candlestick charts 'x', 'open', 'high', 'low', and 'close' aesthetics must be provided.", call. = FALSE)
     if (!is.null(mapdata$group))
@@ -250,6 +253,8 @@ correct_type <- function(type) {
     "area"
   } else if (identical(type, "timeline")) {
     "rangeBar"
+  } else if (identical(type, "boxplot")) {
+    "boxPlot"
   } else {
     type
   }
@@ -308,6 +313,9 @@ choose_config <- function(type, mapdata) {
   datetime <- is_x_datetime(mapdata)
   range_x <- range_num(mapdata$x)
   range_y <- range_num(mapdata$y)
+  if (identical(type, "boxplot")) {
+    box_horiz <- !is.numeric(mapdata$y) & is.numeric(mapdata$x)
+  }
   switch(
     type,
     "bar" = config_bar(horizontal = TRUE),
@@ -323,6 +331,7 @@ choose_config <- function(type, mapdata) {
     "bubble" = config_scatter(range_x = range_x, range_y = range_y, datetime = datetime),
     "timeline" = config_timeline(),
     "candlestick" = config_candlestick(),
+    "boxplot" = config_boxplot(horizontal = box_horiz),
     list()
   )
 }
@@ -432,6 +441,16 @@ config_candlestick <- function() {
   list(
     xaxis = list(
       type = "datetime"
+    )
+  )
+}
+
+config_boxplot <- function(horizontal = FALSE) {
+  list(
+    plotOptions = list(
+      bar = list(
+        horizontal = horizontal
+      )
     )
   )
 }

@@ -244,4 +244,16 @@ apex(
 
 
 
+## Boxplot
+
+Create boxplot (without outliers for now) with:
+
+```{r boxplot}
+data("mpg", package = "ggplot2")
+apex(mpg, aes(hwy, class), "boxplot") %>% 
+  ax_plotOptions(
+    boxPlot = boxplot_opts(color.upper = "#8BB0A6", color.lower = "#8BB0A6" )
+  ) %>% 
+  ax_stroke(colors = list("#2A5769"))
+```
 

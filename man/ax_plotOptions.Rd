@@ -11,21 +11,24 @@ ax_plotOptions(
   radialBar = NULL,
   pie = NULL,
   bubble = NULL,
+  boxPlot = NULL,
   ...
 )
 }
 \arguments{
 \item{ax}{An \code{\link[=apexchart]{apexchart()}} \code{htmlwidget} object.}
 
-\item{bar}{See \code{\link{bar_opts}}.}
+\item{bar}{See \code{\link[=bar_opts]{bar_opts()}}.}
 
-\item{heatmap}{See \code{\link{heatmap_opts}}.}
+\item{heatmap}{See \code{\link[=heatmap_opts]{heatmap_opts()}}.}
 
-\item{radialBar}{See \code{\link{radialBar_opts}}.}
+\item{radialBar}{See \code{\link[=radialBar_opts]{radialBar_opts()}}.}
 
-\item{pie}{See \code{\link{pie_opts}}.}
+\item{pie}{See \code{\link[=pie_opts]{pie_opts()}}.}
 
-\item{bubble}{See \code{\link{bubble_opts}}.}
+\item{bubble}{See \code{\link[=bubble_opts]{bubble_opts()}}.}
+
+\item{boxPlot}{See \code{\link[=boxplot_opts]{boxplot_opts()}}.}
 
 \item{...}{Additional parameters.}
 }

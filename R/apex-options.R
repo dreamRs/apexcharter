@@ -115,7 +115,7 @@ events_opts <- function(click = NULL,
 
 #' @title Bar options
 #' 
-#' @description Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in [ax_plotOptions()].
 #'
 #' @param horizontal Logical. This option will turn a column chart into a horizontal bar chart.
 #' @param endingShape Available Options: \code{"flat"} or \code{"rounded"}.
@@ -128,7 +128,7 @@ events_opts <- function(click = NULL,
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/bar/}.
 #' 
-#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
 #'
 #' @export
 #' 
@@ -170,7 +170,7 @@ bar_opts <- function(horizontal = NULL,
 
 #' @title Heatmap options
 #' 
-#' @description Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in [ax_plotOptions()].
 #'
 #' @param radius Numeric. Radius of the rectangle inside heatmap.
 #' @param enableShades Logical. Enable different shades of color depending on the value
@@ -180,7 +180,7 @@ bar_opts <- function(horizontal = NULL,
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/heatmap/}.
 #' 
-#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
 #'
 #' @export
 #' 
@@ -228,7 +228,7 @@ heatmap_opts <- function(radius = NULL,
 
 #' @title Radial bar options
 #' 
-#' @description Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in [ax_plotOptions()].
 #'
 #' @param size Numeric. Manual size of the radialBars instead of calculating automatically from default height / width.
 #' @param inverseOrder Logical. Whether to make the first value of series innermost or outermost.
@@ -243,7 +243,7 @@ heatmap_opts <- function(radius = NULL,
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/radialbar/}.
 #' 
-#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
 #'
 #' @export
 #' 
@@ -301,7 +301,7 @@ radialBar_opts <- function(size = NULL,
 
 #' @title Pie options
 #' 
-#' @description Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in [ax_plotOptions()].
 #'
 #' @param size Numeric. Custom size of the pie which will override the default size calculations.
 #' @param donut List with two fields \code{size} (Donut / ring size in percentage relative to the total pie area.)
@@ -314,7 +314,7 @@ radialBar_opts <- function(size = NULL,
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/pie/}.
 #' 
-#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
 #'
 #' @export
 #' 
@@ -351,7 +351,7 @@ pie_opts <- function(size = NULL,
 
 #' @title Bubble options
 #' 
-#' @description Use these options in \code{\link{ax_plotOptions}}.
+#' @description Use these options in [ax_plotOptions()].
 #'
 #' @param minBubbleRadius Minimum radius size of a bubble.
 #'  If a bubble value is too small to be displayed, this size will be used.
@@ -361,7 +361,7 @@ pie_opts <- function(size = NULL,
 #' 
 #' @note See \url{https://apexcharts.com/docs/options/plotoptions/bubble/}.
 #'
-#' @return A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
 #' @export
 #'
 #' @examples
@@ -386,3 +386,36 @@ bubble_opts <- function(minBubbleRadius, maxBubbleRadius, ...) {
   )
 }
 
+
+
+
+#' @title Boxplot options
+#' 
+#' @description Use these options in [ax_plotOptions()].
+#'
+#' @param color.upper Color for the upper quartile (Q3 to median) of the box plot.
+#' @param color.lower Color for the lower quartile (median to Q1) of the box plot.
+#' @param ... Additional parameters.
+#'
+#' @note See \url{https://apexcharts.com/docs/options/plotoptions/boxplot/}.
+#'
+#' @return A \code{list} of options that can be used in [ax_plotOptions()].
+#' @export
+#'
+#' @examples
+#' data("mpg", package = "ggplot2")
+#' apex(mpg, aes(class, hwy), "boxplot") %>% 
+#'   ax_plotOptions(
+#'     boxPlot = boxplot_opts(color.upper = "#848484", color.lower = "#848484" )
+#'   )
+boxplot_opts <- function(color.upper, color.lower, ...) {
+  dropNulls(
+    list(
+      colors = dropNulls(list(
+        upper = color.upper,
+        lower = color.lower
+      )),
+      ...
+    )
+  )
+}

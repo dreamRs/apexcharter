@@ -16,10 +16,10 @@ If a bubble value is too large to cover the chart, this size will be used.}
 \item{...}{Additional parameters.}
 }
 \value{
-A \code{list} of options that can be used in \code{\link{ax_plotOptions}}.
+A \code{list} of options that can be used in \code{\link[=ax_plotOptions]{ax_plotOptions()}}.
 }
 \description{
-Use these options in \code{\link{ax_plotOptions}}.
+Use these options in \code{\link[=ax_plotOptions]{ax_plotOptions()}}.
 }
 \note{
 See \url{https://apexcharts.com/docs/options/plotoptions/bubble/}.

@@ -127,3 +127,29 @@ parse_candlestick_data <- function(.list) {
   ))
 }
 
+
+parse_boxplot_data <- function(.list, serie_name = NULL) {
+  if (!is.numeric(.list$y) & is.numeric(.list$x)) {
+    .list[c("x", "y")] <- .list[c("y", "x")]
+  }
+  boxed <- boxplot(y ~ x, data = .list, plot = FALSE) 
+  list(dropNulls(list(
+    serie_name = serie_name,
+    type = "boxPlot",
+    data = lapply(
+      X = seq_along(boxed$names),
+      FUN = function(i) {
+        list(
+          x = boxed$names[i],
+          y = c(
+            boxed$stats[1, i],
+            boxed$stats[2, i],
+            boxed$stats[3, i],
+            boxed$stats[4, i],
+            boxed$stats[5, i]
+          )
+        )
+      }
+    )
+  )))
+}

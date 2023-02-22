@@ -185,11 +185,12 @@ ax_chart <- function(ax,
 #' Specific options for chart
 #'
 #' @template ax-default 
-#' @param bar See \code{\link{bar_opts}}.
-#' @param heatmap See \code{\link{heatmap_opts}}.
-#' @param radialBar See \code{\link{radialBar_opts}}.
-#' @param pie See \code{\link{pie_opts}}.
-#' @param bubble See \code{\link{bubble_opts}}.
+#' @param bar See [bar_opts()].
+#' @param heatmap See [heatmap_opts()].
+#' @param radialBar See [radialBar_opts()].
+#' @param pie See [pie_opts()].
+#' @param bubble See [bubble_opts()].
+#' @param boxPlot See [boxplot_opts()].
 #' @param ... Additional parameters.
 #'
 #' 
@@ -234,6 +235,7 @@ ax_plotOptions <- function(ax,
                            radialBar = NULL,
                            pie = NULL,
                            bubble = NULL,
+                           boxPlot = NULL,
                            ...) {
   params <- c(as.list(environment()), list(...))[-1]
   .ax_opt2(ax, "plotOptions", l = dropNulls(params))
