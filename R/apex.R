@@ -350,16 +350,12 @@ config_bar <- function(horizontal = FALSE, datetime = FALSE) {
       shared = TRUE,
       intersect = FALSE,
       followCursor = TRUE
+    ),
+    grid = list(
+      yaxis = list(lines = list(show = !isTRUE(horizontal))),
+      xaxis = list(lines = list(show = isTRUE(horizontal)))
     )
   )
-  if (isTRUE(horizontal)) {
-    config <- c(config, list(
-      grid = list(
-        yaxis = list(lines = list(show = FALSE)),
-        xaxis = list(lines = list(show = TRUE))
-      )
-    ))
-  }
   if (isTRUE(datetime)) {
     config$xaxis$type <- "datetime"
   }
