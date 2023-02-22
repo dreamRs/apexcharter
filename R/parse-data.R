@@ -128,6 +128,7 @@ parse_candlestick_data <- function(.list) {
 }
 
 
+#' @importFrom graphics boxplot
 parse_boxplot_data <- function(.list, serie_name = NULL) {
   if (!is.numeric(.list$y) & is.numeric(.list$x)) {
     .list[c("x", "y")] <- .list[c("y", "x")]
