@@ -1,8 +1,16 @@
+apexcharter 0.4.1
+==================
+
+* Updated ApexCharts.js to 3.37.3.
+* `apex()` : added support for boxplot.
+
+
+
 apexcharter 0.4.0
 ==================
 
 * Updated ApexCharts.js to 3.36.3.
-* New chart type : range area charts
+* New chart type : range area charts.
 * Facets: correctly manage secondary y axis.
 
 
