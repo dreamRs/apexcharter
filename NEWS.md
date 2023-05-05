@@ -1,7 +1,7 @@
 apexcharter 0.4.1
 ==================
 
-* Updated ApexCharts.js to 3.37.3.
+* Updated ApexCharts.js to 3.40.0 (new chart type: dumbbell chart).
 * `apex()` : added support for boxplot.
 
 
