@@ -1273,9 +1273,44 @@ ax_nodata <- function(ax,
 
 
 
-
-
-
+#' Forecast data points
+#'
+#' @template ax-default
+#' @param count Number of ending data-points you want to indicate as a forecast or prediction values.
+#'  The ending line/bar will result into a dashed border with a distinct look to differentiate from the rest of the data-points.
+#' @param fillOpacity Opacity of the fill attribute.
+#' @param strokeWidth Sets the width of the points.
+#' @param dashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
+#' @param ... Additional arguments (not used).
+#'
+#' @export
+#'
+#' @examples
+#' # add 5 predictions to data then plot it
+#' data.frame(
+#'   time = seq_len(53),
+#'   lh = c(
+#'     as.vector(lh),
+#'     as.vector(predict(arima(lh, order = c(1,0,1)), 5)$pred)
+#'   )
+#' ) %>% 
+#'   apex(aes(time, lh), type = "line") %>% 
+#'   ax_xaxis(type = "numeric") %>% 
+#'   ax_forecast_data_points(count = 5)
+ax_forecast_data_points <- function(ax,
+                                    count = NULL,
+                                    fillOpacity = NULL,
+                                    strokeWidth = NULL,
+                                    dashArray = NULL,
+                                    ...) {
+  params <- list(
+    count = count,
+    fillOpacity = fillOpacity,
+    strokeWidth = strokeWidth,
+    dashArray = dashArray
+  )
+  .ax_opt2(ax, "forecastDataPoints", l = dropNulls(params))
+}
 
 
 
