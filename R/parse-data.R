@@ -110,6 +110,44 @@ parse_timeline_data <- function(.list) {
 }
 
 
+parse_dumbbell_data <- function(.list) {
+  if (is.null(.list$group)) {
+    lapply(
+      X = seq_len(length(.list[[1]])),
+      FUN = function(i) {
+        val <- lapply(.list, `[[`, i)
+        l <- list(
+          x = as.character(val$y),
+          y = list(val$x, val$xend)
+        )
+        if (!is.null(val$fill)) {
+          l$fillColor <- val$fill
+        }
+        l
+      }
+    )
+  } else {
+    grouped <- as.data.frame(.list, stringsAsFactors = FALSE)
+    grouped$group <- NULL
+    grouped <- split(
+      x = grouped,
+      f = .list$group
+    )
+    grouped <- lapply(grouped, as.list)
+    lapply(
+      X = names(grouped),
+      FUN = function(name) {
+        list(
+          name = name,
+          data = parse_dumbbell_data(grouped[[name]])
+        )
+      }
+    )
+  }
+}
+
+
+
 parse_candlestick_data <- function(.list) {
   list(list(
     type = "candlestick",
