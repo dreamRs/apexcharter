@@ -14,7 +14,7 @@
 #'  `"pie"`, `"donut"`,
 #'  `"radialBar"`, `"radar"`, `"scatter"`,
 #'  `"heatmap"`, `"treemap"`,
-#'  `"timeline"`.
+#'  `"timeline"` and `"dumbbell"`.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
@@ -43,6 +43,7 @@ apex <- function(data, mapping,
     arg = type,
     choices = c(
       "column", "bar",
+      "rangeBar", "dumbbell",
       "line", "spline", "step",
       "area", "area-spline", "area-step",
       "rangeArea",
@@ -68,7 +69,8 @@ apex <- function(data, mapping,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  if (is.null(mapdata$y) & !type %in% c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea")) {
+  type_no_compute <- c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea", "rangeBar", "dumbbell")
+  if (is.null(mapdata$y) & !type %in% type_no_compute) {
     mapdata <- compute_count(mapdata)
   }
   if (type %in% c("pie", "donut", "radialBar", "polarArea")) {
@@ -134,6 +136,12 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
     if (is.null(mapdata$group))
       mapdata$group <- serie_name %||% rlang::as_label(mapping$x)
     series <- parse_timeline_data(mapdata)
+  } else if (isTRUE(type %in% c("dumbbell"))) {
+    if (!all(c("y", "x", "xend") %in% names(mapping)))
+      stop("For dumbbell charts 'x', 'xend', and 'y' aesthetics must be provided.", call. = FALSE)
+    if (is.null(mapdata$group))
+      mapdata$group <- serie_name %||% rlang::as_label(mapping$x)
+    series <- parse_dumbbell_data(mapdata)
   } else {
     mapdata <- as.data.frame(mapdata, stringsAsFactors = FALSE)
     if (all(rlang::has_name(mapdata, c("ymin", "ymax")))) {
@@ -245,13 +253,13 @@ list1 <- function(x) {
 
 # Change type of charts for helpers type
 correct_type <- function(type) {
-  if (identical(type, "column")) {
+  if (isTRUE(type %in% c("column"))) {
     "bar"
   } else if (isTRUE(type %in% c("spline", "step"))) {
     "line"
   } else if (isTRUE(type %in% c("area-spline", "area-step"))) {
     "area"
-  } else if (identical(type, "timeline")) {
+  } else if (isTRUE(type %in% c("timeline", "dumbbell"))) {
     "rangeBar"
   } else if (identical(type, "boxplot")) {
     "boxPlot"
@@ -319,6 +327,7 @@ choose_config <- function(type, mapdata) {
   switch(
     type,
     "bar" = config_bar(horizontal = TRUE),
+    "dumbbell" = config_bar(horizontal = TRUE, isDumbbell = TRUE),
     "column" = config_bar(horizontal = FALSE, datetime = datetime),
     "line" = config_line(datetime = datetime),
     "area" = config_line(datetime = datetime),
@@ -338,12 +347,13 @@ choose_config <- function(type, mapdata) {
 
 
 # Config for column & bar charts
-config_bar <- function(horizontal = FALSE, datetime = FALSE) {
+config_bar <- function(horizontal = FALSE, datetime = FALSE, isDumbbell = FALSE) {
   config <- list(
     dataLabels = list(enabled = FALSE),
     plotOptions = list(
       bar = list(
-        horizontal = horizontal
+        horizontal = horizontal,
+        isDumbbell = isDumbbell
       )
     ),
     tooltip = list(
