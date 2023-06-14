@@ -6,3 +6,4 @@ inst/doc
 data-raw/*.csv
 node_modules
 docs
+data-raw/inputs/

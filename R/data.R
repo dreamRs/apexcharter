@@ -58,3 +58,34 @@
 #'   }
 #' @source Wikipedia (\url{https://fr.wikipedia.org/wiki/Climat_de_Paris})
 "climate_paris"
+
+
+#' @title eco2mix data
+#'
+#' @description The dataset contains data about electricity consumption and production in France between 2012 and 2022.
+#'
+#' @format A data frame with 3,033 observations and 3 variables.
+#'
+#' @source Rte (Réseau et transport d'électricité) (\url{https://www.rte-france.com/eco2mix/} and \url{https://opendata.reseaux-energies.fr/})
+"eco2mix"
+
+
+#' @title Temperature data
+#'
+#' @description The dataset contains data about temperatures in France between 2018 and 2022.
+#'
+#' @format A data frame with 365 observations and 6 variables.
+#'
+#' @source Enedis (\url{https://data.enedis.fr/explore/dataset/donnees-de-temperature-et-de-pseudo-rayonnement/})
+"temperatures"
+
+
+#' @title Life expectancy  data
+#'
+#' @description The dataset contains data about life expectancy in 1972 and 2007 for 10 countries.
+#'
+#' @format A data frame with 10 observations and 4 variables.
+#'
+#' @source gapminder package (\url{https://jennybc.github.io/gapminder/} and \url{https://www.gapminder.org/data/})
+"life_expec"
+
