@@ -193,6 +193,9 @@
     <loc>https://dreamrs.github.io/apexcharter/reference/consumption.html</loc>
   </url>
   <url>
+    <loc>https://dreamrs.github.io/apexcharter/reference/eco2mix.html</loc>
+  </url>
+  <url>
     <loc>https://dreamrs.github.io/apexcharter/reference/events_opts.html</loc>
   </url>
   <url>
@@ -209,6 +212,9 @@
   </url>
   <url>
     <loc>https://dreamrs.github.io/apexcharter/reference/label.html</loc>
+  </url>
+  <url>
+    <loc>https://dreamrs.github.io/apexcharter/reference/life_expec.html</loc>
   </url>
   <url>
     <loc>https://dreamrs.github.io/apexcharter/reference/parse_df.html</loc>
@@ -245,6 +251,9 @@
   </url>
   <url>
     <loc>https://dreamrs.github.io/apexcharter/reference/spark_box.html</loc>
+  </url>
+  <url>
+    <loc>https://dreamrs.github.io/apexcharter/reference/temperatures.html</loc>
   </url>
   <url>
     <loc>https://dreamrs.github.io/apexcharter/reference/unhcr_ts.html</loc>
