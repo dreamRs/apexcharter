@@ -66,7 +66,7 @@
 #'
 #' @format A data frame with 3,033 observations and 3 variables.
 #'
-#' @source Rte (Réseau et transport d'électricité) (\url{https://www.rte-france.com/eco2mix/} and \url{https://opendata.reseaux-energies.fr/})
+#' @source Rte (Réseau et transport d'électricité) (\url{https://www.rte-france.com/eco2mix} and \url{https://opendata.reseaux-energies.fr/})
 "eco2mix"
 
 
