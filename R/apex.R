@@ -212,8 +212,11 @@ is_sized <- function(x) {
   any(c("size", "z") %in% names(x))
 }
 
-
+#' @importFrom rlang quo
 rename_aes_heatmap <- function(mapping) {
+  if (is.null(mapping["x"]))
+    stop("apex(..., type = 'heatmap') must have an 'x' aesthetic", call. = FALSE)
+  mapping[["x"]] <- quo(as.character(!!mapping[["x"]]))
   n_mapping <- names(mapping)
   n_mapping[n_mapping == "y"] <- "group"
   if ("fill" %in% n_mapping) {
