@@ -1,7 +1,7 @@
 apexcharter 0.4.2
 ==================
 
-* Updated ApexCharts.js to 3.44.0.
+* Updated ApexCharts.js to 3.45.0.
 
 
 
