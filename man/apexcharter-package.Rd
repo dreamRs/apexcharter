@@ -2,12 +2,22 @@
 % Please edit documentation in R/apexcharter-package.R
 \docType{package}
 \name{apexcharter-package}
+\alias{apexcharter}
 \alias{apexcharter-package}
 \title{An \code{htmlwidget} interface to the
 ApexCharts javascript chart library}
 \description{
 This package allow you to use ApexCharts.js (\url{https://apexcharts.com/}),
 to create interactive and modern SVG charts.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dreamRs/apexcharter}
+  \item \url{https://dreamrs.github.io/apexcharter/}
+  \item Report bugs at \url{https://github.com/dreamRs/apexcharter/issues}
+}
+
 }
 \author{
 Victor Perrier (@dreamRs_fr)
