@@ -9,6 +9,7 @@ template:
 
 navbar:
   bg: primary
+  fg: "#FFFFFF"
 
 authors:
   Victor Perrier:
