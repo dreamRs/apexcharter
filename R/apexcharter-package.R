@@ -5,9 +5,8 @@
 #' to create interactive and modern SVG charts.
 #' 
 #' @name apexcharter-package
-#' @docType package
 #' @author Victor Perrier (@@dreamRs_fr)
-NULL
+"_PACKAGE"
 
 #' apexcharter exported operators and S3 methods
 #' 

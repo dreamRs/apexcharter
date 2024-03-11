@@ -11,7 +11,7 @@
 #'     \item{\code{continent_origin}}{Continent of residence of population.}
 #'     \item{\code{n}}{Number of people concerned.}
 #'   }
-#' @source UNHCR (The UN Refugee Agency) (\url{https://www.unhcr.org/})
+#' @source UNHCR (The UN Refugee Agency) (\url{https://data.unhcr.org/})
 "unhcr_ts"
 
 
