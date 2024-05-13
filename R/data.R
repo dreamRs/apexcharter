@@ -89,3 +89,12 @@
 #' @source gapminder package (\url{https://jennybc.github.io/gapminder/} and \url{https://www.gapminder.org/data/})
 "life_expec"
 
+#' @title Life expectancy  data (long format)
+#'
+#' @description The dataset contains data about life expectancy in 1972 and 2007 for 10 countries.
+#'
+#' @format A data frame with 20 observations and 3 variables.
+#'
+#' @source gapminder package (\url{https://jennybc.github.io/gapminder/} and \url{https://www.gapminder.org/data/})
+"life_expec_long"
+

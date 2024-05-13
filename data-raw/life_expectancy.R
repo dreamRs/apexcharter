@@ -9,13 +9,14 @@ library(gapminder)
 
 # Data --------------------------------------------------------------------
 
-life_expec <- as.data.table(gapminder::gapminder)
-life_expec <- life_expec[year %in% c(1972, 2007), list(country, year, lifeExp)]
+life_expec_long <- as.data.table(gapminder::gapminder)
+life_expec_long <- life_expec_long[year %in% c(1972, 2007), list(country, year, lifeExp)]
 
 # life_expec <- life_expec[country %in% sample(unique(country), 10)]
-life_expec <- life_expec[country %in% c("Botswana", "Ghana", "Iran", "Liberia", "Malaysia", "Mexico", 
+life_expec_long <- life_expec_long[country %in% c("Botswana", "Ghana", "Iran", "Liberia", "Malaysia", "Mexico",
                                         "Nigeria", "Pakistan", "Philippines", "Zambia")]
-life_expec <- dcast(life_expec, country ~ year, value.var = "lifeExp")
+life_expec_long[, country := as.character(country)]
+life_expec <- dcast(life_expec_long, country ~ year, value.var = "lifeExp")
 life_expec[, type := fifelse(`1972` > `2007`, "decreased", "increased")]
 
 
@@ -25,6 +26,8 @@ life_expec[, type := fifelse(`1972` > `2007`, "decreased", "increased")]
 setDF(life_expec)
 usethis::use_data(life_expec, internal = FALSE, overwrite = TRUE, compress = "xz")
 
+setDF(life_expec_long)
+usethis::use_data(life_expec_long, internal = FALSE, overwrite = TRUE, compress = "xz")
 
 
 
@@ -34,13 +37,13 @@ usethis::use_data(life_expec, internal = FALSE, overwrite = TRUE, compress = "xz
 
 pkgload::load_all()
 
-apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>% 
+apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>%
   ax_plotOptions(
     bar = bar_opts(
       dumbbellColors = list(list("#3d85c6", "#fb6003"))
     )
-  ) %>% 
-  ax_colors("#BABABA") %>% 
+  ) %>%
+  ax_colors("#BABABA") %>%
   ax_labs(
     title = "Life expectancy : 1972 vs. 2007",
     subtitle = "Data from Gapminder dataset",
@@ -49,14 +52,14 @@ apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>%
 
 
 
-apex(life_expec, aes(country, x = `1972`, xend = `2007`, group = type), type = "dumbbell") %>% 
+apex(life_expec, aes(country, x = `1972`, xend = `2007`, group = type), type = "dumbbell") %>%
   ax_xaxis(type = "category", categories = unique(life_expec$country)) %>%
   ax_plotOptions(
     bar = bar_opts(
       dumbbellColors = list(list("#3d85c6", "#fb6003"), list("#3d85c6", "#fb6003"))
     )
-  ) %>% 
-  ax_colors(c("#3d85c6", "#fb6003")) %>% 
+  ) %>%
+  ax_colors(c("#3d85c6", "#fb6003")) %>%
   ax_labs(
     title = "Life expectancy : 1972 vs. 2007",
     subtitle = "Data from Gapminder dataset",
