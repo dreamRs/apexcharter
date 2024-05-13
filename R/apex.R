@@ -14,7 +14,7 @@
 #'  `"pie"`, `"donut"`,
 #'  `"radialBar"`, `"radar"`, `"scatter"`,
 #'  `"heatmap"`, `"treemap"`,
-#'  `"timeline"` and `"dumbbell"`.
+#'  `"timeline"`, `"dumbbell"` and `"slope"`.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
@@ -44,7 +44,7 @@ apex <- function(data, mapping,
     choices = c(
       "column", "bar",
       "rangeBar", "dumbbell",
-      "line", "spline", "step",
+      "line", "spline", "step", "slope",
       "area", "area-spline", "area-step",
       "rangeArea",
       "pie", "donut",
@@ -69,7 +69,7 @@ apex <- function(data, mapping,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  type_no_compute <- c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea", "rangeBar", "dumbbell")
+  type_no_compute <- c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea", "rangeBar", "dumbbell", "slope")
   if (is.null(mapdata$y) & !type %in% type_no_compute) {
     mapdata <- compute_count(mapdata)
   }
@@ -179,7 +179,7 @@ make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_
     )))
     if (is_grouped(mapping)) {
       mapdata <- rename_aes(mapdata)
-      len_grp <- tapply(mapdata$group, mapdata$group, length)
+      len_grp <- tapply(as.character(mapdata$group), as.character(mapdata$group), length)
       if (length(unique(len_grp)) > 1 & !isTRUE(type %in% c("scatter", "bubble"))) {
         warning("apex: all groups must have same length! You can use `tidyr::complete` for this.")
       }
@@ -258,7 +258,7 @@ list1 <- function(x) {
 correct_type <- function(type) {
   if (isTRUE(type %in% c("column"))) {
     "bar"
-  } else if (isTRUE(type %in% c("spline", "step"))) {
+  } else if (isTRUE(type %in% c("spline", "step", "slope"))) {
     "line"
   } else if (isTRUE(type %in% c("area-spline", "area-step"))) {
     "area"
@@ -344,6 +344,7 @@ choose_config <- function(type, mapdata) {
     "timeline" = config_timeline(),
     "candlestick" = config_candlestick(),
     "boxplot" = config_boxplot(horizontal = box_horiz),
+    "slope" = config_slope(),
     list()
   )
 }
@@ -464,3 +465,12 @@ config_boxplot <- function(horizontal = FALSE) {
   )
 }
 
+config_slope <- function() {
+  list(
+    plotOptions = list(
+      line = list(
+        isSlopeChart = TRUE
+      )
+    )
+  )
+}

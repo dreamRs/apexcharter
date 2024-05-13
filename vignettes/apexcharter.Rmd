@@ -336,3 +336,26 @@ apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>%
   )
 ```
 
+
+
+## Slope charts
+
+Create a slope chart with:
+
+```{r slope}
+data("life_expec", package = "apexcharter")
+
+apex(
+  life_expec_long,
+  mapping = aes(x = as.character(year), y = lifeExp, fill = country),
+  type = "slope"
+) %>% 
+  ax_colors("#112466") %>% 
+  ax_labs(
+    title = "Life expectancy : 1972 vs. 2007",
+    subtitle = "Data from Gapminder dataset",
+    x = "Life expectancy at birth, in years"
+  )
+```
+
+
