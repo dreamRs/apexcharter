@@ -2,6 +2,7 @@ apexcharter 0.4.3
 ==================
 
 * Updated ApexCharts.js to 3.49.1 (see https://github.com/apexcharts/apexcharts.js/releases).
+* New chart type : slope charts.
 
 
 
