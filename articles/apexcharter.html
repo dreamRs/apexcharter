@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">apexcharter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9300</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.2.9400</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
 
 
 <link href="apexcharter_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="apexcharter_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="apexcharter_files/apexcharter-binding-0.4.1.9300/apexcharter.js"></script><div class="row">
+<script src="apexcharter_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="apexcharter_files/apexcharter-binding-0.4.2.9400/apexcharter.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Starting with ApexCharts</h1>
                         <h4 data-toc-skip class="author">Victor
@@ -380,6 +380,28 @@ directly in <code>aes</code>, but you can use a <code>data.frame</code>)
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="apexcharter html-widget html-fill-item" id="htmlwidget-d258b2ee1c304ebe1664" style="width:100%;height:350px;"></div>
 <script type="application/json" data-for="htmlwidget-d258b2ee1c304ebe1664">{"x":{"ax_opts":{"chart":{"type":"rangeBar"},"series":[{"name":"1972","data":[{"x":"Botswana","y":[56.024,50.728]},{"x":"Ghana","y":[49.875,60.022]},{"x":"Iran","y":[55.234,70.964]},{"x":"Liberia","y":[42.614,45.678]},{"x":"Malaysia","y":[63.01,74.241]},{"x":"Mexico","y":[62.361,76.19499999999999]},{"x":"Nigeria","y":[42.821,46.859]},{"x":"Pakistan","y":[51.929,65.483]},{"x":"Philippines","y":[58.065,71.688]},{"x":"Zambia","y":[50.107,42.384]}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":true,"isDumbbell":true,"dumbbellColors":[["#3d85c6","#fb6003"]]}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":true}}},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Life expectancy at birth, in years","style":{"fontWeight":400,"fontSize":"14px"}}},"colors":["#BABABA"],"title":{"text":"Life expectancy : 1972 vs. 2007","style":{"fontWeight":700,"fontSize":"16px"}},"subtitle":{"text":"Data from Gapminder dataset","style":{"fontWeight":400,"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":42.614,"max":63.01},"type":"dumbbell"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="section level2">
+<h2 id="slope-charts">Slope charts<a class="anchor" aria-label="anchor" href="#slope-charts"></a>
+</h2>
+<p>Create a slope chart with:</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"life_expec_long"</span>, package <span class="op">=</span> <span class="st">"apexcharter"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/apex.html">apex</a></span><span class="op">(</span></span>
+<span>  <span class="va">life_expec_long</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="../reference/apexcharter-exports.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"slope"</span>,</span>
+<span>  height <span class="op">=</span> <span class="st">"700px"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="../reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ax_colors.html">ax_colors</a></span><span class="op">(</span><span class="st">"#112466"</span><span class="op">)</span> <span class="op"><a href="../reference/apexcharter-exports.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ax_labs.html">ax_labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Life expectancy : 1972 vs. 2007"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Data from Gapminder dataset"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Life expectancy at birth, in years"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-b8f31ebacaee3527bb86" style="width:100%;height:700px;" class="apexcharter html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8f31ebacaee3527bb86">{"x":{"ax_opts":{"chart":{"type":"line"},"series":[{"name":"Botswana","data":[{"x":"1972","y":56.024},{"x":"2007","y":50.728}]},{"name":"Ghana","data":[{"x":"1972","y":49.875},{"x":"2007","y":60.022}]},{"name":"Iran","data":[{"x":"1972","y":55.234},{"x":"2007","y":70.964}]},{"name":"Liberia","data":[{"x":"1972","y":42.614},{"x":"2007","y":45.678}]},{"name":"Malaysia","data":[{"x":"1972","y":63.01},{"x":"2007","y":74.241}]},{"name":"Mexico","data":[{"x":"1972","y":62.361},{"x":"2007","y":76.19499999999999}]},{"name":"Nigeria","data":[{"x":"1972","y":42.821},{"x":"2007","y":46.859}]},{"name":"Pakistan","data":[{"x":"1972","y":51.929},{"x":"2007","y":65.483}]},{"name":"Philippines","data":[{"x":"1972","y":58.065},{"x":"2007","y":71.688}]},{"name":"Zambia","data":[{"x":"1972","y":50.107},{"x":"2007","y":42.384}]}],"plotOptions":{"line":{"isSlopeChart":true}},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}},"title":{"text":"Life expectancy at birth, in years","style":{"fontWeight":400,"fontSize":"14px"}}},"colors":["#112466"],"title":{"text":"Life expectancy : 1972 vs. 2007","style":{"fontWeight":700,"fontSize":"16px"}},"subtitle":{"text":"Data from Gapminder dataset","style":{"fontWeight":400,"fontSize":"14px"}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"1972","max":"2007"},"type":"slope"},"evals":[],"jsHooks":[]}</script>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
