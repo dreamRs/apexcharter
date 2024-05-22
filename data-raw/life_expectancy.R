@@ -16,9 +16,11 @@ life_expec_long <- life_expec_long[year %in% c(1972, 2007), list(country, year, 
 life_expec_long <- life_expec_long[country %in% c("Botswana", "Ghana", "Iran", "Liberia", "Malaysia", "Mexico",
                                         "Nigeria", "Pakistan", "Philippines", "Zambia")]
 life_expec_long[, country := as.character(country)]
+life_expec_long[, lifeExp := round(lifeExp, 1)]
 life_expec <- dcast(life_expec_long, country ~ year, value.var = "lifeExp")
 life_expec[, type := fifelse(`1972` > `2007`, "decreased", "increased")]
 
+life_expec_long <- melt(data = life_expec, id.vars = c("country", "type"), variable.name = "year", value.name = "lifeExp")
 
 
 # Use data ----------------------------------------------------------------

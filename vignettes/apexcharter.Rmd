@@ -347,16 +347,20 @@ data("life_expec_long", package = "apexcharter")
 
 apex(
   life_expec_long,
-  mapping = aes(x = as.character(year), y = lifeExp, fill = country),
+  mapping = aes(x = year, y = lifeExp, fill = country),
   type = "slope",
   height = "700px"
 ) %>% 
-  ax_colors("#112466") %>% 
+  ax_chart(animations = list(enabled = FALSE)) %>% 
+  # aurora nord12 = #d08770 / aurora nord14 = #a3be8c -> darken colorspace::darken(, amount = 0.3)
+  ax_colors(ifelse(unique(life_expec_long[, c("country", "type")])$type == "decreased", "#955945", "#6A8354")) %>% 
   ax_labs(
     title = "Life expectancy : 1972 vs. 2007",
     subtitle = "Data from Gapminder dataset",
     x = "Life expectancy at birth, in years"
-  )
+  ) %>% 
+  # ax_dataLabels(enabled = FALSE) %>% # show or note the labels + values
+  ax_xaxis(position = "bottom")
 ```
 
 
