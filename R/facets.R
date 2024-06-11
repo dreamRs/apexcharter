@@ -241,9 +241,9 @@ build_facet_tag <- function(x) {
     if (identical(facets$type, "wrap")) {
       area <- paste(
         d$nrow + 1,
-        1,
-        d$nrow + 1,
-        d$ncol + 2,
+        1 + !is.null(facets$yaxis_title$text) * 1,
+        d$nrow + 2,
+        d$ncol + 1 + !is.null(facets$yaxis_title$text) * 1,
         sep = " / "
       )
     } else {

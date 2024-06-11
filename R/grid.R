@@ -18,7 +18,7 @@ get_grid_dims <- function(content, nrow = NULL, ncol = NULL) {
 }
 
 
-#' @importFrom htmltools tags
+#' @importFrom htmltools tags css
 build_grid <- function(content,
                        nrow = NULL,
                        ncol = NULL,
@@ -31,17 +31,17 @@ build_grid <- function(content,
                        height = NULL,
                        width = NULL) {
   d <- get_grid_dims(content, nrow, ncol)
-  col_style <- paste("grid-template-columns:", col_before, sprintf("repeat(%s, 1fr)", d$ncol), col_after, ";")
-  row_style <- paste("grid-template-rows:", row_before, sprintf("repeat(%s, 1fr)", d$nrow), row_after, ";")
   tags$div(
     class = "apexcharter-grid-container",
-    style = if (!is.null(height)) paste0("height:", height, ";"),
-    style = if (!is.null(width)) paste0("width:", width, ";"),
-    style = "display: grid;",
-    style = col_style,
-    style = row_style,
-    style = sprintf("grid-column-gap: %s;", col_gap),
-    style = sprintf("grid-row-gap: %s;", row_gap),
+    style = css(
+      height = height,
+      width = width,
+      display = "grid",
+      gridTemplateColumns = paste(col_before, sprintf("repeat(%s, 1fr)", d$ncol), col_after),
+      gridTemplateRows = paste(row_before, sprintf("repeat(%s, 1fr)", d$nrow), row_after),
+      gridColumnGap = col_gap,
+      gridRowGap = row_gap
+    ),
     content
   )
 }
