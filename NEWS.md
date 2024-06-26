@@ -1,3 +1,11 @@
+apexcharter 0.4.4
+==================
+
+* Updated ApexCharts.js to 3.49.2 (see https://github.com/apexcharts/apexcharts.js/releases).
+* `ax_facet_wrap`: fixed a bug generating CSS grid when using an xaxis title.
+
+
+
 apexcharter 0.4.3
 ==================
 
