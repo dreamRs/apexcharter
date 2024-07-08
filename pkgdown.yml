@@ -1,16 +1,15 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
-  advanced-configuration: extra/advanced-configuration.html
+  extra/advanced-configuration: extra/advanced-configuration.html
   apexcharter: apexcharter.html
-  chart-options: extra/chart-options.html
-  facets: extra/facets.html
-  shiny-integration: extra/shiny-integration.html
-  spark-box: extra/spark-box.html
-  sync-charts: extra/sync-charts.html
-last_built: 2024-06-26T08:27Z
+  extra/chart-options: extra/chart-options.html
+  extra/facets: extra/facets.html
+  extra/shiny-integration: extra/shiny-integration.html
+  extra/spark-box: extra/spark-box.html
+  extra/sync-charts: extra/sync-charts.html
+last_built: 2024-07-08T08:18Z
 urls:
   reference: https://dreamrs.github.io/apexcharter/reference
   article: https://dreamrs.github.io/apexcharter/articles
-

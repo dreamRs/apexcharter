@@ -5,85 +5,68 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="apexcharter">
 <title>Customize chart options • apexcharter</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../../deps/Poppins-0.4.9/font.css" rel="stylesheet">
-<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Customize chart options">
-<meta property="og:description" content="apexcharter">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<link href="../../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../../deps/headroom-0.11.0/headroom.min.js"></script><script src="../../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../../deps/search-1.0.0/fuse.min.js"></script><script src="../../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Customize chart options">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../../index.html">apexcharter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9100</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../../articles/apexcharter.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../../articles/apexcharter.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../../articles/extra/advanced-configuration.html">Advanced configuration examples</a>
-    <a class="dropdown-item" href="../../articles/extra/chart-options.html">Customize chart options</a>
-    <a class="dropdown-item" href="../../articles/extra/facets.html">Create grid of charts</a>
-    <a class="dropdown-item" href="../../articles/extra/shiny-integration.html">Use in Shiny application</a>
-    <a class="dropdown-item" href="../../articles/extra/spark-box.html">Create boxes with sparklines</a>
-    <a class="dropdown-item" href="../../articles/extra/sync-charts.html">Synchronize charts with each other</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../../articles/extra/advanced-configuration.html">Advanced configuration examples</a></li>
+    <li><a class="dropdown-item" href="../../articles/extra/chart-options.html">Customize chart options</a></li>
+    <li><a class="dropdown-item" href="../../articles/extra/facets.html">Create grid of charts</a></li>
+    <li><a class="dropdown-item" href="../../articles/extra/shiny-integration.html">Use in Shiny application</a></li>
+    <li><a class="dropdown-item" href="../../articles/extra/spark-box.html">Create boxes with sparklines</a></li>
+    <li><a class="dropdown-item" href="../../articles/extra/sync-charts.html">Synchronize charts with each other</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/dreamRs/apexcharter/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/dreamRs/apexcharter/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
 
 
 <link href="chart-options_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="chart-options_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="chart-options_files/apexcharter-binding-0.4.3.9000/apexcharter.js"></script><div class="row">
+<script src="chart-options_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="chart-options_files/apexcharter-binding-0.4.3.9100/apexcharter.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Customize chart options</h1>
+
+      <h1>Customize chart options</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dreamRs/apexcharter/blob/HEAD/vignettes/extra/chart-options.Rmd" class="external-link"><code>vignettes/extra/chart-options.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/dreamRs/apexcharter/blob/master/vignettes/extra/chart-options.Rmd" class="external-link"><code>vignettes/extra/chart-options.Rmd</code></a></small>
       <div class="d-none name"><code>chart-options.Rmd</code></div>
     </div>
 
@@ -281,7 +264,7 @@ below.</p>
 <script type="application/json" data-for="htmlwidget-da0b268a2927f570ebf3">{"x":{"ax_opts":{"chart":{"type":"line"},"series":[{"name":"pce","type":"line","data":[[1262304000000,0.8124427787902901],[1264982400000,0.8149070342514397],[1267401600000,0.8199125531568996],[1270080000000,0.8219489864893772],[1272672000000,0.8234977025951691],[1275350400000,0.8252432168801499],[1277942400000,0.8280925122571041],[1280620800000,0.8318145647765486],[1283299200000,0.8335943048318232],[1285891200000,0.8383602433452269],[1288569600000,0.8426384646319447],[1291161600000,0.8458385741544097],[1293840000000,0.8495520702312807],[1296518400000,0.8525125993616894],[1298937600000,0.8593919791907317],[1301616000000,0.8625664193854764],[1304208000000,0.8646541913733946],[1306886400000,0.8667761891316066],[1309478400000,0.870258661258995],[1312156800000,0.8722351994934586],[1314835200000,0.8754438654584971],[1317427200000,0.8767273318445125],[1320105600000,0.8772749441692123],[1322697600000,0.8783616123760386],[1325376000000,0.8860538542495573],[1328054400000,0.8938744427616775],[1330560000000,0.8937289832379289],[1333238400000,0.8961162307159176],[1335830400000,0.8951664655902662],[1338508800000,0.89325837889639],[1341100800000,0.8959023196515817],[1343779200000,0.8982040027038359],[1346457600000,0.903115400740988],[1349049600000,0.9063925182466138],[1351728000000,0.909558401998785],[1354320000000,0.9098749903740021],[1356998400000,0.9152056540972525],[1359676800000,0.9183544249642769],[1362096000000,0.9172848696425975],[1364774400000,0.9154281216041619],[1367366400000,0.9187822470929488],[1370044800000,0.92085290619572],[1372636800000,0.9232401536737087],[1375315200000,0.9260209975100753],[1377993600000,0.9292467763602604],[1380585600000,0.9337731344816079],[1383264000000,0.9395744025463973],[1385856000000,0.9421670046461483],[1388534400000,0.9417049567471828],[1391212800000,0.9462997664091178],[1393632000000,0.9528711143055164],[1396310400000,0.9579707540792841],[1398902400000,0.9618896047779175],[1401580800000,0.9677593243832945],[1404172800000,0.9714813769027389],[1406851200000,0.978651675779278],[1409529600000,0.9797725697563981],[1412121600000,0.985385596084572],[1414800000000,0.9878156257754276],[1417392000000,0.9887226086882118],[1420070400000,0.9873535778764622],[1422748800000,0.9904681229731926],[1425168000000,0.9969624628864303],[1427846400000,1]]},{"name":"pop","type":"line","data":[[1262304000000,0.904928367541553],[1264982400000,0.9065225784849976],[1267401600000,0.9080428311887979],[1270080000000,0.9078719958728018],[1272672000000,0.9093334271233382],[1275350400000,0.9108080640284419],[1277942400000,0.9124285383645424],[1280620800000,0.9141712985411042],[1283299200000,0.9159684098062219],[1285891200000,0.9178049736833985],[1288569600000,0.9194140255802654],[1291161600000,0.9209420110288995],[1293840000000,0.9224132458549796],[1296518400000,0.9236675447290189],[1298937600000,0.924916847313091],[1301616000000,0.9263206897476913],[1304208000000,0.9277245979229488],[1306886400000,0.9292378081588184],[1309478400000,0.9309292002291556],[1312156800000,0.9326410705142923],[1314835200000,0.9344797627452546],[1317427200000,0.9362468798354051],[1320105600000,0.9377701237391198],[1322697600000,0.9392508416550392],[1325376000000,0.9406763209835264],[1328054400000,0.9419566038524274],[1330560000000,0.9432746382938756],[1333238400000,0.9446532034456815],[1335830400000,0.9459959810270823],[1338508800000,0.9475331948205072],[1341100800000,0.9491207659575486],[1343779200000,0.9508592365562104],[1346457600000,0.9527033277386666],[1349049600000,0.9544062490768062],[1351728000000,0.9560488204913961],[1354320000000,0.9575188555504774],[1356998400000,0.9588077257927593],[1359676800000,0.959880514711547],[1362096000000,0.9610480770056479],[1364774400000,0.9623269875383242],[1367366400000,0.9636894544466343],[1370044800000,0.9652293307366872],[1372636800000,0.9667720667453391],[1375315200000,0.968592663860335],[1377993600000,0.9704481774820253],[1380585600000,0.972224366782906],[1383264000000,0.9739151836224904],[1385856000000,0.9754233153925709],[1388534400000,0.9769219722903952],[1391212800000,0.9782364567363403],[1393632000000,0.9795785522584196],[1396310400000,0.9809920996575775],[1398902400000,0.9824736228965508],[1401580800000,0.9840731506156676],[1404172800000,0.9857020068855945],[1406851200000,0.9876037033191516],[1409529600000,0.989506155770269],[1412121600000,0.9913833638089218],[1414800000000,0.9931129594188262],[1417392000000,0.9946081320618051],[1420070400000,0.9961077504167446],[1422748800000,0.9973064080418247],[1425168000000,0.9985906106974269],[1427846400000,1]]},{"name":"psavert","type":"line","data":[[1262304000000,0.2582781456953642],[1264982400000,0.23841059602649],[1267401600000,0.2317880794701987],[1270080000000,0.2781456953642384],[1272672000000,0.3178807947019867],[1275350400000,0.3112582781456953],[1277942400000,0.3046357615894039],[1280620800000,0.3112582781456953],[1283299200000,0.2980132450331126],[1285891200000,0.2913907284768211],[1288569600000,0.2913907284768211],[1291161600000,0.3245033112582781],[1293840000000,0.3443708609271523],[1296518400000,0.357615894039735],[1298937600000,0.3178807947019867],[1301616000000,0.3112582781456953],[1304208000000,0.3112582781456953],[1306886400000,0.3311258278145695],[1309478400000,0.3377483443708609],[1312156800000,0.3311258278145695],[1314835200000,0.3046357615894039],[1317427200000,0.3046357615894039],[1320105600000,0.3178807947019867],[1322697600000,0.3708609271523178],[1325376000000,0.3841059602649006],[1328054400000,0.3841059602649006],[1330560000000,0.4172185430463576],[1333238400000,0.4304635761589403],[1335830400000,0.4370860927152318],[1338508800000,0.4569536423841059],[1341100800000,0.3973509933774834],[1343779200000,0.3841059602649006],[1346457600000,0.3973509933774834],[1349049600000,0.4370860927152318],[1351728000000,0.4966887417218542],[1354320000000,0.6490066225165563],[1356998400000,0.271523178807947],[1359676800000,0.23841059602649],[1362096000000,0.2450331125827815],[1364774400000,0.2781456953642384],[1367366400000,0.2980132450331126],[1370044800000,0.3046357615894039],[1372636800000,0.2913907284768211],[1375315200000,0.2980132450331126],[1377993600000,0.3046357615894039],[1380585600000,0.271523178807947],[1383264000000,0.2649006622516556],[1385856000000,0.2781456953642384],[1388534400000,0.3245033112582781],[1391212800000,0.3377483443708609],[1393632000000,0.3443708609271523],[1396310400000,0.3443708609271523],[1398902400000,0.3443708609271523],[1401580800000,0.3443708609271523],[1404172800000,0.3509933774834437],[1406851200000,0.3311258278145695],[1409529600000,0.3443708609271523],[1412121600000,0.3311258278145695],[1414800000000,0.3377483443708609],[1417392000000,0.357615894039735],[1420070400000,0.3642384105960265],[1422748800000,0.3774834437086093],[1425168000000,0.3443708609271523],[1427846400000,0.357615894039735]]},{"name":"uempmed","type":"line","data":[[1262304000000,0.7547169811320755],[1264982400000,0.75],[1267401600000,0.7735849056603773],[1270080000000,0.8537735849056605],[1272672000000,0.8632075471698114],[1275350400000,1],[1277942400000,0.8632075471698114],[1280620800000,0.8018867924528302],[1283299200000,0.768867924528302],[1285891200000,0.8113207547169812],[1288569600000,0.8018867924528302],[1291161600000,0.8443396226415094],[1293840000000,0.8254716981132075],[1296518400000,0.8066037735849058],[1298937600000,0.8254716981132075],[1301616000000,0.7971698113207547],[1304208000000,0.8301886792452832],[1306886400000,0.8679245283018867],[1309478400000,0.8490566037735849],[1312156800000,0.8679245283018867],[1314835200000,0.8490566037735849],[1317427200000,0.7830188679245284],[1320105600000,0.7924528301886793],[1322697600000,0.7783018867924528],[1325376000000,0.7924528301886793],[1328054400000,0.7405660377358491],[1330560000000,0.7169811320754716],[1333238400000,0.7122641509433963],[1335830400000,0.75],[1338508800000,0.7735849056603773],[1341100800000,0.6367924528301887],[1343779200000,0.6792452830188679],[1346457600000,0.6981132075471699],[1349049600000,0.75],[1351728000000,0.6886792452830189],[1354320000000,0.6462264150943396],[1356998400000,0.5566037735849058],[1359676800000,0.6226415094339622],[1362096000000,0.6415094339622642],[1364774400000,0.6179245283018869],[1367366400000,0.6179245283018869],[1370044800000,0.6132075471698113],[1372636800000,0.5754716981132075],[1375315200000,0.589622641509434],[1377993600000,0.589622641509434],[1380585600000,0.5801886792452831],[1383264000000,0.6179245283018869],[1385856000000,0.6273584905660378],[1388534400000,0.5377358490566038],[1391212800000,0.5613207547169812],[1393632000000,0.5566037735849058],[1396310400000,0.5518867924528301],[1398902400000,0.5],[1401580800000,0.4622641509433963],[1404172800000,0.4292452830188679],[1406851200000,0.419811320754717],[1409529600000,0.4433962264150944],[1412121600000,0.4528301886792453],[1414800000000,0.4245283018867925],[1417392000000,0.419811320754717],[1420070400000,0.4339622641509434],[1422748800000,0.419811320754717],[1425168000000,0.3773584905660378],[1427846400000,0.3537735849056604]]},{"name":"unemploy","type":"line","data":[[1262304000000,0.9758427409805005],[1264982400000,0.9811320754716981],[1267401600000,0.9881582063629905],[1270080000000,0.9978684771453383],[1272672000000,0.9602905186705613],[1275350400000,0.9306860345780374],[1277942400000,0.9336859556327465],[1280620800000,0.9444225151969685],[1283299200000,0.9389752901239441],[1285891200000,0.9340017367964001],[1288569600000,0.9786058261624694],[1291161600000,0.9207389279229494],[1293840000000,0.8942922554669614],[1296518400000,0.8790558143206758],[1298937600000,0.8725033551748638],[1301616000000,0.8898713191758112],[1304208000000,0.8818188995026447],[1306886400000,0.8902660456303781],[1309478400000,0.8745559327386121],[1312156800000,0.878897923738849],[1314835200000,0.8891608115575906],[1317427200000,0.8612141785742481],[1320105600000,0.8381621536275361],[1322697600000,0.8216625878266361],[1325376000000,0.7982947817162707],[1328054400000,0.799557906370885],[1330560000000,0.7916633772795453],[1333238400000,0.7863740427883477],[1335830400000,0.7874792768611353],[1338508800000,0.7900055261703639],[1341100800000,0.7871634956974817],[1343779200000,0.7725586168785032],[1346457600000,0.7444540933133339],[1349049600000,0.7451646009315545],[1351728000000,0.7357701113128602],[1354320000000,0.7589010815504855],[1356998400000,0.7725586168785032],[1359676800000,0.7314281203126234],[1362096000000,0.7108233993842268],[1364774400000,0.7164285150390779],[1367366400000,0.7080603142022578],[1370044800000,0.7157180074208573],[1372636800000,0.6828767664008842],[1375315200000,0.678455830109734],[1377993600000,0.6777453224915134],[1380585600000,0.6671666535091182],[1383264000000,0.6396147469803426],[1385856000000,0.6093787005605116],[1388534400000,0.5934317517960054],[1391212800000,0.6050367095602748],[1393632000000,0.6074840135785901],[1396310400000,0.5539591063393069],[1398902400000,0.5663535170127102],[1401580800000,0.5348543459382648],[1404172800000,0.5465382489934475],[1406851200000,0.5458277413752269],[1409529600000,0.5192231783374122],[1412121600000,0.4977500592089682],[1414800000000,0.5056445883003079],[1417392000000,0.4761979947896108],[1420070400000,0.4908818188995027],[1422748800000,0.4677508486618773],[1425168000000,0.4593826478250572],[1427846400000,0.4611194442251519]]}],"dataLabels":{"enabled":false},"stroke":{"curve":"straight","width":2,"dashArray":[8,5]},"yaxis":{"decimalsInFloat":2,"labels":{"style":{"colors":"#848484"}}},"xaxis":{"type":"datetime","labels":{"style":{"colors":"#848484"}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"2010-01-01","max":"2015-04-01"},"type":"line"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -292,15 +275,15 @@ below.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
