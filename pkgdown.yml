@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   extra/advanced-configuration: extra/advanced-configuration.html
@@ -9,7 +9,7 @@ articles:
   extra/shiny-integration: extra/shiny-integration.html
   extra/spark-box: extra/spark-box.html
   extra/sync-charts: extra/sync-charts.html
-last_built: 2024-09-06T06:17Z
+last_built: 2024-10-02T09:56Z
 urls:
   reference: https://dreamrs.github.io/apexcharter/reference
   article: https://dreamrs.github.io/apexcharter/articles
