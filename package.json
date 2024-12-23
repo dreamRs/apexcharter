@@ -35,7 +35,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "apexcharts": "^4.1.0",
+    "apexcharts": "^4.3.0",
     "d3-format": "^3.0.1"
   }
 }
