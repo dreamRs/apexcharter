@@ -1,6 +1,6 @@
 /*!
- * ApexCharts v4.3.0
- * (c) 2018-2024 ApexCharts
+ * ApexCharts v4.4.0
+ * (c) 2018-2025 ApexCharts
  * Released under the MIT License.
  */
 
