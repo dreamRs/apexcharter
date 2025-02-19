@@ -1,7 +1,7 @@
 apexcharter 0.4.5
 ==================
 
-* Updated ApexCharts.js to 4.4.0 (see https://github.com/apexcharts/apexcharts.js/releases).
+* Updated ApexCharts.js to 4.5.0 (see https://github.com/apexcharts/apexcharts.js/releases).
 
 
 
