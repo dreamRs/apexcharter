@@ -4,7 +4,7 @@
 \alias{format_num}
 \title{Format numbers (with D3)}
 \usage{
-format_num(format, prefix = "", suffix = "", locale = "en-US")
+format_num(format, prefix = "", suffix = "", locale = "en-US", na_label = "-")
 }
 \arguments{
 \item{format}{Format for numbers, currency, percentage, e.g. \code{".0\%"} for rounded percentage.
@@ -16,6 +16,8 @@ See online documentation : \url{https://github.com/d3/d3-format}.}
 
 \item{locale}{Localization to use, for example \code{"fr-FR"} for french,
 see possible values here: \url{https://github.com/d3/d3-format/tree/master/locale}.}
+
+\item{na_label}{The label to use when value is \code{NA}.}
 }
 \value{
 a \code{JS} function
