@@ -1,7 +1,7 @@
 apexcharter 0.4.5
 ==================
 
-* Updated ApexCharts.js to 5.3.0 (see https://github.com/apexcharts/apexcharts.js/releases).
+* Updated ApexCharts.js to 5.3.6 (see https://github.com/apexcharts/apexcharts.js/releases).
 * `format_num()`: added `na_label` argument to specify how to represent missing values.
 
 
