@@ -8,7 +8,7 @@
 A data frame with 3,033 observations and 3 variables.
 }
 \source{
-Rte (Réseau et transport d'électricité) (\url{https://www.rte-france.com/eco2mix} and \url{https://opendata.reseaux-energies.fr/})
+Rte (Réseau et transport d'électricité) (\url{https://www.rte-france.com/donnees-publications/eco2mix-donnees-temps-reel} and \url{https://opendata.reseaux-energies.fr/})
 }
 \usage{
 eco2mix
