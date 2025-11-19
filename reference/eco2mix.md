@@ -16,5 +16,5 @@ A data frame with 3,033 observations and 3 variables.
 ## Source
 
 Rte (Réseau et transport d'électricité)
-(<https://www.rte-france.com/eco2mix> and
-<https://opendata.reseaux-energies.fr/>)
+(<https://www.rte-france.com/donnees-publications/eco2mix-donnees-temps-reel>
+and <https://opendata.reseaux-energies.fr/>)
