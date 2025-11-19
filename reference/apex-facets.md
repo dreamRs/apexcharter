@@ -1,0 +1,242 @@
+# Facets for ApexCharts
+
+Create matrix of charts by row and column faceting variable
+(`ax_facet_grid`), or by specified number of row and column for faceting
+variable(s) (`ax_facet_wrap`).
+
+## Usage
+
+``` r
+ax_facet_wrap(
+  ax,
+  facets,
+  nrow = NULL,
+  ncol = NULL,
+  scales = c("fixed", "free", "free_y", "free_x"),
+  labeller = label_value,
+  chart_height = "300px",
+  grid_width = "100%"
+)
+
+ax_facet_grid(
+  ax,
+  rows = NULL,
+  cols = NULL,
+  scales = c("fixed", "free", "free_y", "free_x"),
+  labeller = label_value,
+  chart_height = "300px",
+  grid_width = "100%"
+)
+```
+
+## Arguments
+
+- ax:
+
+  An
+  [`apexchart()`](https://dreamrs.github.io/apexcharter/reference/apexchart.md)
+  `htmlwidget` object.
+
+- facets:
+
+  Variable(s) to use for facetting, wrapped in `vars(...)`.
+
+- nrow, ncol:
+
+  Number of row and column in output matrix.
+
+- scales:
+
+  Should scales be fixed (`"fixed"`, the default), free (`"free"`), or
+  free in one dimension (`"free_x"`, `"free_y"`)?
+
+- labeller:
+
+  A function with one argument containing for each facet the value of
+  the faceting variable.
+
+- chart_height:
+
+  Individual chart height, ignored if an height is defined in
+  [`apex()`](https://dreamrs.github.io/apexcharter/reference/apex.md) or
+  [`apexcharter()`](https://dreamrs.github.io/apexcharter/reference/apexcharter-package.md).
+
+- grid_width:
+
+  Total width for the grid, regardless of the number of column.
+
+- rows, cols:
+
+  A set of variables or expressions quoted by
+  [`vars()`](https://dreamrs.github.io/apexcharter/reference/apexcharter-exports.md)
+  and defining faceting groups on the rows or columns dimension.
+
+## Value
+
+An
+[`apexchart()`](https://dreamrs.github.io/apexcharter/reference/apexchart.md)
+`htmlwidget` object with an additionnal class `"apex_facet"`.
+
+## Warning
+
+To properly render in Shiny applications, use
+[`apexfacetOutput()`](https://dreamrs.github.io/apexcharter/reference/apexcharter-shiny-facets.md)
+(in UI) and
+[`renderApexfacet()`](https://dreamrs.github.io/apexcharter/reference/apexcharter-shiny-facets.md)
+(in Server).
+
+## Examples
+
+``` r
+### Wrap --------
+
+if (interactive()) {
+  library(apexcharter)
+  
+  # Scatter ----
+  
+  data("mpg", package = "ggplot2")
+  
+  # Create facets
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(vars(drv))
+  
+  # Change number of columns
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(vars(drv), ncol = 2)
+  
+  # Free axis
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(vars(drv), ncol = 2, scales = "free")
+  
+  # labels
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(
+      vars(drv), ncol = 2,
+      labeller = function(x) {
+        switch(
+          x,
+          "f" = "front-wheel drive", 
+          "r" = "rear wheel drive",
+          "4" = "4wd"
+        )
+      }
+    )
+  
+  # Title and subtitle are treated as global
+  apex(mpg, aes(displ, cty), type = "scatter") %>%
+    ax_labs(
+      title = "Facet wrap example",
+      subtitle = "mpg data from ggplot2"
+    ) %>% 
+    ax_facet_wrap(vars(drv), ncol = 2)
+  
+  
+  # Multiple variables
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(vars(year, drv))
+  
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_wrap(vars(year, drv), ncol = 2, nrow = 3)
+  
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_chart(toolbar = list(show = FALSE)) %>% 
+    ax_facet_wrap(
+      vars(year, drv),
+      labeller = function(x) {
+        paste(x, collapse = " / ")
+      }
+    )
+  
+  
+  
+  # Lines ----
+  
+  data("unhcr_ts")
+  refugees <- unhcr_ts %>% 
+    subset(population_type == "Refugees (incl. refugee-like situations)") %>% 
+    transform(date = as.Date(paste0(year, "-01-01")))
+  
+  
+  apex(refugees, aes(date, n), type = "line") %>% 
+    ax_yaxis(tickAmount = 5) %>% 
+    ax_facet_wrap(vars(continent_origin))
+  
+  
+  
+  # Free y-axis and synchronize
+  apex(refugees, aes(date, n), type = "line", synchronize = "my-id") %>% 
+    ax_yaxis(tickAmount = 5) %>% 
+    ax_xaxis(tooltip = list(enabled = FALSE)) %>% 
+    ax_tooltip(x = list(format = "yyyy")) %>% 
+    ax_facet_wrap(vars(continent_origin), scales = "free_y")
+  
+  
+  
+  # Bars ----
+  
+  data("unhcr_ts")
+  refugees <- unhcr_ts %>% 
+    subset(year == 2017)
+  
+  apex(refugees, aes(continent_origin, n), type = "column") %>% 
+    ax_yaxis(
+      labels = list(
+        formatter = format_num("~s")
+      ),
+      tickAmount = 5
+    ) %>% 
+    ax_facet_wrap(vars(population_type), ncol = 2)
+  
+}
+
+### Grid --------
+if (interactive()) {
+  library(apexcharter)
+  
+  # Scatter ----
+  
+  data("mpg", package = "ggplot2")
+  
+  # Only rows
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_grid(rows = vars(drv), chart_height = "200px")
+  
+  # Only cols
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_grid(cols = vars(year))
+  
+  # Rows and Cols
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_grid(rows = vars(drv), cols = vars(year))
+  
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_chart(toolbar = list(show = FALSE)) %>% 
+    ax_facet_grid(vars(drv), vars(cyl))
+  
+  
+  # Labels
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_facet_grid(
+      vars(drv),
+      labeller = function(x) {
+        switch(
+          x,
+          "f" = "front-wheel drive", 
+          "r" = "rear wheel drive",
+          "4" = "4wd"
+        )
+      }
+    )
+  
+  
+  # Title and subtitle are treated as global
+  apex(mpg, aes(displ, cty), type = "scatter") %>% 
+    ax_labs(
+      title = "Facet grid example",
+      subtitle = "mpg data from ggplot2"
+    ) %>% 
+    ax_facet_grid(rows = vars(drv), cols = vars(year))
+  
+}
+```

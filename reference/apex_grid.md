@@ -1,0 +1,82 @@
+# Create a grid of ApexCharts
+
+Create a grid of ApexCharts
+
+## Usage
+
+``` r
+apex_grid(
+  ...,
+  nrow = NULL,
+  ncol = NULL,
+  row_gap = "10px",
+  col_gap = "0px",
+  grid_area = NULL,
+  height = NULL,
+  width = NULL,
+  .list = NULL
+)
+```
+
+## Arguments
+
+- ...:
+
+  Several `apexcharts` `htmlwidget` objects.
+
+- nrow, ncol:
+
+  Number of rows and columns.
+
+- row_gap, col_gap:
+
+  Gap between rows and columns.
+
+- grid_area:
+
+  Custom grid area to make elements take more than a single cell in
+  grid, see <https://cssgrid-generator.netlify.app/> for examples.
+
+- height, width:
+
+  Height and width of the main grid.
+
+- .list:
+
+  A list of `apexcharts` `htmlwidget` objects.
+
+## Value
+
+Custom `apex_grid` object.
+
+## Note
+
+You have to provide either height for the grid or individual chart
+height to make it work.
+
+## Examples
+
+``` r
+if (interactive()) {
+  library(apexcharter)
+  data("mpg", package = "ggplot2")
+  
+  # Two chart side-by-side 
+  a1 <- apex(mpg, aes(manufacturer), type = "bar")
+  
+  a2 <- apex(mpg, aes(trans), type = "column")
+  
+  apex_grid(a1, a2, height = "400px")
+  
+  
+  # More complex layout:
+  a3 <- apex(mpg, aes(drv), type = "pie")
+  
+  apex_grid(
+    a1, a2, a3, 
+    grid_area = c("1 / 1 / 3 / 2", "1 / 2 / 2 / 4", "2 / 2 / 3 / 4"),
+    ncol = 3, nrow = 2,
+    height = "600px"
+  )
+}
+```

@@ -1,0 +1,213 @@
+# Customize chart options
+
+## Title, subtitle and axis titles
+
+Packages and data used below:
+
+``` r
+library(apexcharter)
+
+data("diamonds", package = "ggplot2")
+```
+
+### Labs
+
+You can set title, subtitle and axis’ titles at once with
+[`ax_labs()`](https://dreamrs.github.io/apexcharter/reference/ax_labs.md):
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
+  ax_labs(
+    title = "Cut distribution",
+    subtitle = "Data from ggplot2",
+    x = "Cut",
+    y = "Count"
+  )
+```
+
+If you want more control (font size, alignment, …), you can use
+[`ax_title()`](https://dreamrs.github.io/apexcharter/reference/ax_title.md),
+[`ax_subtitle()`](https://dreamrs.github.io/apexcharter/reference/ax_subtitle.md),
+[`ax_xaxis()`](https://dreamrs.github.io/apexcharter/reference/ax_xaxis.md)
+and
+[`ax_yaxis()`](https://dreamrs.github.io/apexcharter/reference/ax_yaxis.md),
+as described below.
+
+### Title
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_title(text = "Cut distribution")
+```
+
+You can set some options, for example:
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_title(
+    text = "Cut distribution", 
+    align = "center",
+    style = list(fontSize = "22px", fontWeight = 700)
+  )
+```
+
+Full list of parameters is available here :
+<https://apexcharts.com/docs/options/title/>
+
+### Subtitle
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_title(text = "Cut distribution") %>% 
+  ax_subtitle(text = "Data from ggplot2")
+```
+
+With same options than for title:
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_title(
+    text = "Cut distribution", 
+    align = "center",
+    style = list(fontSize = "22px", fontWeight = 700)
+  ) %>% 
+  ax_subtitle(
+    text = "Data from ggplot2", 
+    align = "center",
+    style = list(fontSize = "16px", fontWeight = 400, color = "#BDBDBD")
+  )
+```
+
+Full list of parameters is available here :
+<https://apexcharts.com/docs/options/subtitle/>
+
+### Axis title
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_yaxis(title = list(text = "Count")) %>% 
+  ax_xaxis(title = list(text = "Cut"))
+```
+
+With some options:
+
+``` r
+apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
+  ax_yaxis(title = list(
+    text = "Count",
+    style = list(fontSize = "14px", color = "#BDBDBD")
+  )) %>% 
+  ax_xaxis(title = list(
+    text = "Cut", 
+    style = list(fontSize = "14px", color = "#BDBDBD")
+  ))
+```
+
+## Lines
+
+``` r
+library(apexcharter)
+
+## economics dataset from ggplot2
+data("economics", package = "ggplot2")
+data("economics_long", package = "ggplot2")
+economics <- tail(economics, 50)
+economics_long <- subset(economics_long, date >= "2010-01-01")
+```
+
+### Type of line
+
+Classic line:
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
+```
+
+Spline curve:
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(curve = "smooth")
+```
+
+Steps chart:
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(curve = "stepline")
+```
+
+### Line appearance
+
+Color line with gradient:
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_fill(
+    type = "gradient",
+    gradient = list(
+      shade = "dark",
+      gradientToColors = list("#FDD835"),
+      shadeIntensity = 1,
+      type = "horizontal",
+      opacityFrom = 1,
+      opacityTo = 1,
+      stops = c(0, 100, 100, 100)
+    )
+  )
+```
+
+Solid area color:
+
+``` r
+apex(data = economics, type = "area", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_fill(type = "solid", opacity = 1)
+```
+
+Line width:
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(width = 1)
+```
+
+Dotted line
+
+``` r
+apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_stroke(dashArray = 6)
+```
+
+### Markers
+
+Add points to line :
+
+``` r
+apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_markers(size = 6)
+```
+
+Add labels over points
+
+``` r
+apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
+  ax_markers(size = 6) %>% 
+  ax_dataLabels(enabled = TRUE)
+```
+
+### Multiple lines
+
+You can use vectors of parameters to custom series separately:
+
+``` r
+apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) %>% 
+  ax_markers(size = c(3, 6)) %>% 
+  ax_stroke(width = c(1, 3))
+```
+
+``` r
+apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+  ax_yaxis(decimalsInFloat = 2) %>% 
+  ax_stroke(dashArray = c(8, 5))
+```
