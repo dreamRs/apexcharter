@@ -19,14 +19,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/dreamRs/apexcharter/blob/master/DESCRIPTION)
 
-Perrier V, Meyer F (2025). *apexcharter: Create Interactive Chart with
+Perrier V, Meyer F (2026). *apexcharter: Create Interactive Chart with
 the JavaScript 'ApexCharts' Library*. R package version 0.4.4.9800,
 <https://github.com/dreamRs/apexcharter>.
 
     @Manual{,
       title = {apexcharter: Create Interactive Chart with the JavaScript 'ApexCharts' Library},
       author = {Victor Perrier and Fanny Meyer},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.4.4.9800},
       url = {https://github.com/dreamRs/apexcharter},
     }
