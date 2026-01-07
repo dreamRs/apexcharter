@@ -1,7 +1,7 @@
 #  ------------------------------------------------------------------------
 #
 # temperature data for France
-# https://data.enedis.fr/explore/dataset/donnees-de-temperature-et-de-pseudo-rayonnement
+# https://opendata.enedis.fr/datasets/donnees-de-temperature-et-de-pseudo-rayonnement/
 #
 #  ------------------------------------------------------------------------
 
@@ -47,13 +47,13 @@ usethis::use_data(temperatures, internal = FALSE, overwrite = TRUE, compress = "
 
 pkgload::load_all()
 
-apex(temperatures, aes(x = date, ymin = low, ymax = high), type = "rangeArea", serie_name = "Low/High (2018-2021)") %>% 
-  add_line(aes(date, `2023`)) %>% 
-  ax_chart(animations = list(enabled = FALSE)) %>% 
-  ax_yaxis(tickAmount = 7, labels = list(formatter = format_num("~", suffix = "°C"))) %>% 
+apex(temperatures, aes(x = date, ymin = low, ymax = high), type = "rangeArea", serie_name = "Low/High (2018-2021)") %>%
+  add_line(aes(date, `2023`)) %>%
+  ax_chart(animations = list(enabled = FALSE)) %>%
+  ax_yaxis(tickAmount = 7, labels = list(formatter = format_num("~", suffix = "°C"))) %>%
   ax_colors(c("#8485854D", "#FF0000")) %>%
-  ax_stroke(width = c(1, 2)) %>% 
-  ax_fill(opacity = 1, type = "solid") %>% 
+  ax_stroke(width = c(1, 2)) %>%
+  ax_fill(opacity = 1, type = "solid") %>%
   ax_labs(
     title = "Temperatures in 2023 with range from 2018 to 2021",
     subtitle = "Data from ENEDIS"

@@ -76,7 +76,7 @@
 #'
 #' @format A data frame with 365 observations and 6 variables.
 #'
-#' @source Enedis (\url{https://data.enedis.fr/explore/dataset/donnees-de-temperature-et-de-pseudo-rayonnement/})
+#' @source Enedis (\url{https://opendata.enedis.fr/datasets/donnees-de-temperature-et-de-pseudo-rayonnement/})
 "temperatures"
 
 
