@@ -17,7 +17,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/dreamRs/apexcharter/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/dreamRs/apexcharter/blob/v0.4.5/DESCRIPTION)
 
 Perrier V, Meyer F (2026). *apexcharter: Create Interactive Chart with
 the JavaScript 'ApexCharts' Library*. R package version 0.4.5,
