@@ -9,24 +9,25 @@ apex(mpg, aes(manufacturer), type = "bar")
 # timeseries
 data("economics", package = "ggplot2")
 apex(
-  data = economics, 
-  mapping = aes(x = date, y = uempmed), 
+  data = economics,
+  mapping = aes(x = date, y = uempmed),
   type = "line"
 )
 
 # you can add option to apex result :
 apex(
-  data = economics, 
-  mapping = aes(x = date, y = uempmed), 
+  data = economics,
+  mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
-  ax_stroke(width = 1)
+) %>%
+  ax_stroke(width = 1) %>%
+  ax_yaxis(min = 0, decimalsInFloat = 0)
 
 
 # with group variable
 data("economics_long", package = "ggplot2")
 apex(
-  data = economics_long, 
-  mapping = aes(x = date, y = value01, group = variable), 
+  data = economics_long,
+  mapping = aes(x = date, y = value01, group = variable),
   type = "line"
 )
