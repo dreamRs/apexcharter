@@ -1,26 +1,10 @@
 /*!
- * ApexCharts v5.3.6
- * (c) 2018-2025 ApexCharts
+ * ApexCharts v5.10.1
+ * (c) 2018-2026 ApexCharts
  */
 
 /*!
-* @svgdotjs/svg.resize.js - An extension for svg.js which allows to resize elements which are selected
-* @version 2.0.4
-* https://github.com/svgdotjs/svg.resize.js
-*
-* @copyright [object Object]
-* @license MIT
-*
-* BUILT: Fri Sep 13 2024 12:43:14 GMT+0200 (Central European Summer Time)
-*/
-
-/*!
-* @svgdotjs/svg.select.js - An extension of svg.js which allows to select elements with mouse
-* @version 4.0.1
-* https://github.com/svgdotjs/svg.select.js
-*
-* @copyright Ulrich-Matthias Schäfer
-* @license MIT
-*
-* BUILT: Mon Jul 01 2024 15:04:42 GMT+0200 (Central European Summer Time)
-*/
+ * Path morphing for SVG path animations
+ * Based on svg.pathmorphing.js by Ulrich-Matthias Schäfer (MIT License)
+ * Refactored to be standalone (no SVG.js dependency)
+ */
