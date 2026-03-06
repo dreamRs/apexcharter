@@ -4,6 +4,13 @@
 
 CRAN release: 2026-01-07
 
+- Updated ApexCharts.js to 5.10.1 (see
+  <https://github.com/apexcharts/apexcharts.js/releases>).
+
+## apexcharter 0.4.5
+
+CRAN release: 2026-01-07
+
 - Updated ApexCharts.js to 5.3.6 (see
   <https://github.com/apexcharts/apexcharts.js/releases>).
 - [`format_num()`](https://dreamrs.github.io/apexcharter/reference/format_num.md):
