@@ -1,5 +1,5 @@
 Package: apexcharter
-Version: 0.4.5.9000
+Version: 0.4.5.9100
 Title: Create Interactive Chart with the JavaScript 'ApexCharts' Library
 Description: Provides an 'htmlwidgets' interface to 'apexcharts.js'. 
   'Apexcharts' is a modern JavaScript charting library to build interactive charts and visualizations with simple API.
@@ -28,8 +28,8 @@ Suggests:
     scales,
     rmarkdown,
     covr
-RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/dreamRs/apexcharter, https://dreamrs.github.io/apexcharter/
 BugReports: https://github.com/dreamRs/apexcharter/issues
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0

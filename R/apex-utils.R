@@ -10,48 +10,48 @@
 #' @param xaxis List of lists.
 #' @param points List of lists.
 #' @param ... Additional parameters.
-#' 
+#'
 #' @note See \url{https://apexcharts.com/docs/options/annotations/}.
 #'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics", package = "ggplot2")
-#' 
+#'
 #' # Horizontal line
 #' apex(
 #'   data = tail(economics, 200),
 #'   mapping = aes(x = date, y = uempmed),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_annotations(
 #'     yaxis = list(list(
 #'       y = 11.897,
-#'       borderColor = "firebrick", 
+#'       borderColor = "firebrick",
 #'       opacity = 1,
 #'       label = list(
 #'         text = "Mean uempmed",
-#'         position = "left", 
+#'         position = "left",
 #'         textAnchor = "start"
 #'       )
 #'     ))
 #'   )
-#' 
-#' 
+#'
+#'
 #' # Vertical line
 #' apex(
 #'   data = tail(economics, 200),
 #'   mapping = aes(x = date, y = uempmed),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_annotations(
 #'     xaxis = list(list(
 #'       x = htmlwidgets::JS("new Date('1 Mar 2007').getTime()"),
-#'       strokeDashArray = 0, 
+#'       strokeDashArray = 0,
 #'       borderColor = "#775DD0",
 #'       label = list(
 #'         text = "A label",
-#'         borderColor = "#775DD0", 
+#'         borderColor = "#775DD0",
 #'         style = list(
 #'           color = "#fff",
 #'           background = "#775DD0"
@@ -59,14 +59,14 @@
 #'       )
 #'     ))
 #'   )
-#' 
-#' 
+#'
+#'
 #' # Vertical range
 #' apex(
 #'   data = tail(economics, 200),
 #'   mapping = aes(x = date, y = uempmed),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_annotations(
 #'     xaxis = list(list(
 #'       x = htmlwidgets::JS("new Date('1 Jan 2009').getTime()"),
@@ -75,7 +75,7 @@
 #'       opacity = 0.4,
 #'       label = list(
 #'         text = "A label",
-#'         borderColor = "#B3F7CA", 
+#'         borderColor = "#B3F7CA",
 #'         style = list(
 #'           color = "#fff",
 #'           background = "#B3F7CA"
@@ -83,14 +83,14 @@
 #'       )
 #'     ))
 #'   )
-#' 
-#' 
+#'
+#'
 #' # Point annotation
 #' apex(
 #'   data = tail(economics, 200),
 #'   mapping = aes(x = date, y = uempmed),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_annotations(
 #'     points = list(list(
 #'       x = htmlwidgets::JS("new Date('1 Jun 2010').getTime()"),
@@ -104,7 +104,7 @@
 #'       label = list(
 #'         text = "Highest",
 #'         offsetY = 0,
-#'         borderColor = "#FF4560", 
+#'         borderColor = "#FF4560",
 #'         style = list(
 #'           color = "#fff",
 #'           background = "#FF4560"
@@ -128,14 +128,14 @@ ax_annotations <- function(ax,
 #' @template ax-default
 #' @param type Specify the chart type. Available Options: \code{"bar"}, \code{"column"}, \code{"line"},
 #'  \code{"pie"}, \code{"donut"}, \code{"radialBar"}, \code{"scatter"}, \code{"bubble"}, \code{"heatmap"}.
-#' @param stacked Logical. Enables stacked option for axis charts. 
+#' @param stacked Logical. Enables stacked option for axis charts.
 #' @param stackType When stacked, should the stacking be percentage based or normal stacking.
 #'  Available options: \code{"normal"} or \code{"100\%"}.
 #' @param defaultLocale Locale to use : \code{"ca"}, \code{"cs"}, \code{"de"},
-#'  \code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"}, \code{"he"}, 
-#'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"}, 
-#'  \code{"lt"}, \code{"nb"}, \code{"nl"}, \code{"pl"}, \code{"pt-br"}, \code{"pt"}, 
-#'  \code{"ru"}, \code{"se"}, \code{"sk"}, \code{"sl"}, \code{"th"}, \code{"tr"}, 
+#'  \code{"el"}, \code{"en"}, \code{"es"}, \code{"fi"}, \code{"fr"}, \code{"he"},
+#'  \code{"hi"}, \code{"hr"}, \code{"hy"}, \code{"id"}, \code{"it"}, \code{"ko"},
+#'  \code{"lt"}, \code{"nb"}, \code{"nl"}, \code{"pl"}, \code{"pt-br"}, \code{"pt"},
+#'  \code{"ru"}, \code{"se"}, \code{"sk"}, \code{"sl"}, \code{"th"}, \code{"tr"},
 #'  \code{"ua"}.
 #' @param locales Array of custom locales parameters.
 #' @param animations A list of parameters.
@@ -149,12 +149,12 @@ ax_annotations <- function(ax,
 #' @param sparkline List. Sparkline hides all the elements of the charts other than the primary paths. Helps to visualize data in small areas. .
 #' @param toolbar A list of parameters. See \url{https://apexcharts.com/docs/options/chart/toolbar/}.
 #' @param zoom A list of parameters. See \url{https://apexcharts.com/docs/options/chart/zoom/}.
-#' @param width Width of the chart. 
-#' @param height Height of the chart. 
-#' @param ... Additional parameters. 
+#' @param width Width of the chart.
+#' @param height Height of the chart.
+#' @param ... Additional parameters.
 #'
 #' @export
-#' 
+#'
 #' @example examples/ax_chart.R
 #' @example examples/localization.R
 ax_chart <- function(ax,
@@ -184,7 +184,7 @@ ax_chart <- function(ax,
 
 #' Specific options for chart
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param bar See [bar_opts()].
 #' @param heatmap See [heatmap_opts()].
 #' @param radialBar See [radialBar_opts()].
@@ -193,12 +193,12 @@ ax_chart <- function(ax,
 #' @param boxPlot See [boxplot_opts()].
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("diamonds", package = "ggplot2")
-#' 
+#'
 #' # Stack bar type
 #' apex(
 #'   data = diamonds,
@@ -207,27 +207,27 @@ ax_chart <- function(ax,
 #'   ax_plotOptions(
 #'     bar = bar_opts(endingShape = "rounded", columnWidth = "10%")
 #'   )
-#' 
+#'
 #' # Pie
 #' apex(
 #'   data = diamonds,
-#'   mapping = aes(x = cut), 
+#'   mapping = aes(x = cut),
 #'   type = "pie"
 #' ) %>%
 #'   ax_plotOptions(
 #'     pie = pie_opts(customScale = 0.5)
 #'   )
-#' 
-#' 
+#'
+#'
 #' # Radial
-#' apexchart() %>% 
-#'   ax_chart(type = "radialBar") %>% 
+#' apexchart() %>%
+#'   ax_chart(type = "radialBar") %>%
 #'   ax_plotOptions(
 #'     radialBar = radialBar_opts(
 #'       hollow = list(size = "70%")
 #'     )
-#'   ) %>% 
-#'   ax_series(70) %>% 
+#'   ) %>%
+#'   ax_series(70) %>%
 #'   ax_labels("Indicator")
 ax_plotOptions <- function(ax,
                            bar = NULL,
@@ -244,25 +244,25 @@ ax_plotOptions <- function(ax,
 
 #' Colors
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param ... Colors for the chart's series. When all colors are used, it starts from the beginning.
 #'
-#' 
+#'
 #' @export
-#' 
+#'
 #' @note See \url{https://apexcharts.com/docs/options/colors/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("diamonds", package = "ggplot2")
-#' 
+#'
 #' # Change default color(s)
 #' apex(
 #'   data = diamonds,
 #'   mapping = aes(x = cut)
 #' ) %>%
 #'   ax_colors("#F7D358")
-#' 
-#' 
+#'
+#'
 #' library(scales)
 #' apex(
 #'   data = diamonds,
@@ -280,7 +280,7 @@ ax_colors <- function(ax, ...) {
 
 #' Labels on data
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param enabled To determine whether to show dataLabels or not.
 #' @param textAnchor The alignment of text relative to dataLabel's drawing position.
 #'  Accepted values \code{"start"}, \code{"middle"} or \code{"end"}.
@@ -291,14 +291,14 @@ ax_colors <- function(ax, ...) {
 #' @param formatter The formatter function takes in a single value and allows you to format the value before displaying
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
-#' 
+#'
 #' @note See \url{https://apexcharts.com/docs/options/datalabels/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("diamonds", package = "ggplot2")
-#' 
+#'
 #' # Add data labels
 #' apex(
 #'   data = diamonds,
@@ -321,7 +321,7 @@ ax_dataLabels <- function(ax,
 
 #' Fill property
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param type Whether to fill the paths with solid colors or gradient.
 #'  Available options: \code{"solid"}, \code{"gradient"}, \code{"pattern"} or \code{"image"}.
 #' @param colors Colors to fill the svg paths..
@@ -331,30 +331,30 @@ ax_dataLabels <- function(ax,
 #' @param pattern A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
-#' 
+#'
 #' @note See \url{https://apexcharts.com/docs/options/fill/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("diamonds", package = "ggplot2")
-#' 
+#'
 #' # Use a pattern to fill bars
 #' apex(
 #'   data = diamonds,
 #'   mapping = aes(x = color, fill = cut)
-#' ) %>% 
+#' ) %>%
 #'   ax_fill(
-#'     type = "pattern", 
-#'     opacity = 1, 
+#'     type = "pattern",
+#'     opacity = 1,
 #'     pattern = list(
 #'       style = c("circles", "slantedLines", "verticalLines", "horizontalLines", "squares")
 #'     )
 #'   )
-#' 
-#' 
+#'
+#'
 #' data("economics", package = "ggplot2")
-#' 
+#'
 #' # Customise gradient
 #' apex(
 #'   data = economics,
@@ -384,7 +384,7 @@ ax_fill <- function(ax,
 
 #' Add grids on chart
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param show Logical. To show or hide grid area (including xaxis / yaxis)
 #' @param borderColor Colors of grid borders / lines.
 #' @param strokeDashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
@@ -396,36 +396,36 @@ ax_fill <- function(ax,
 #' @param padding A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/grid/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # Hide Y-axis and gridelines
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_grid(show = FALSE)
-#' 
+#'
 #' # just grid lines
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_grid(yaxis = list(lines = list(show = FALSE)))
-#' 
-#' 
+#'
+#'
 #' # both x & y
 #' data("economics", package = "ggplot2")
 #' apex(
 #'   data = economics,
 #'   mapping = aes(x = date, y = psavert),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_grid(
 #'     yaxis = list(lines = list(show = TRUE)),
 #'     xaxis = list(lines = list(show = TRUE))
@@ -448,28 +448,28 @@ ax_grid <- function(ax,
 
 #' Alternative axis labels
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param labels A vector to use as labels.
 #' @param ... Vector. In Axis Charts (line / column), labels can be set instead of setting xaxis categories
 #'  option. While, in pie/donut charts, each label corresponds to value in series array.
 #'
-#' 
+#'
 #' @export
-#' 
+#'
 #' @name ax_labels
 #'
 #' @note See \url{https://apexcharts.com/docs/options/labels/}
-#' 
+#'
 #' @examples
-#' apexchart() %>% 
-#'   ax_chart(type = "pie") %>% 
-#'   ax_series(23, 45, 56) %>% 
+#' apexchart() %>%
+#'   ax_chart(type = "pie") %>%
+#'   ax_series(23, 45, 56) %>%
 #'   ax_labels("A", "B", "C")
-#' 
-#' # same as 
-#' apexchart() %>% 
-#'   ax_chart(type = "pie") %>% 
-#'   ax_series2(c(23, 45, 56)) %>% 
+#'
+#' # same as
+#' apexchart() %>%
+#'   ax_chart(type = "pie") %>%
+#'   ax_series2(c(23, 45, 56)) %>%
 #'   ax_labels2(c("A", "B", "C"))
 ax_labels <- function(ax, ...) {
   .ax_opt(ax, "labels", ...)
@@ -484,7 +484,7 @@ ax_labels2 <- function(ax, labels) {
 
 #' Legend properties
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param show Logical. Whether to show or hide the legend container.
 #' @param position Available position options for legend: \code{"top"}, \code{"right"}, \code{"bottom"}, \code{"left"}.
 #' @param showForSingleSeries Show legend even if there is just 1 series.
@@ -510,26 +510,26 @@ ax_labels2 <- function(ax, labels) {
 #' @param floating Logical. The floating option will take out the legend from the chart area and make it float above the chart.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/legend/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # Legend position
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer, fill = year)
-#' ) %>% 
+#' ) %>%
 #'   ax_legend(position = "right")
-#' 
+#'
 #' # hide legend
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer, fill = year)
-#' ) %>% 
+#' ) %>%
 #'   ax_legend(show = FALSE)
 ax_legend <- function(ax,
                       show = NULL,
@@ -558,7 +558,7 @@ ax_legend <- function(ax,
 
 #' Markers properties
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param size Numeric. Size of the marker point.
 #' @param colors Sets the fill color(s) of the marker point.
 #' @param strokeColor Stroke Color of the marker.
@@ -572,21 +572,21 @@ ax_legend <- function(ax,
 #' @param hover List with item \code{size} (Size of the marker when it is active).
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/markers/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics", package = "ggplot2")
-#' 
+#'
 #' # show points
 #' apex(
 #'   data = tail(economics, 20),
-#'   type = "line", 
+#'   type = "line",
 #'   mapping = aes(x = date, y = uempmed)
-#' ) %>% 
-#'   ax_markers(size = 6) 
+#' ) %>%
+#'   ax_markers(size = 6)
 ax_markers <- function(ax,
                        size = NULL,
                        colors = NULL,
@@ -605,53 +605,28 @@ ax_markers <- function(ax,
 }
 
 
-#' No data specification
-#'
-#' @template ax-default 
-#' @param text 
-#' @param align 
-#' @param verticalAlign 
-#' @param offsetX 
-#' @param offsetY 
-#' @param style 
-#' @param ... Additional parameters.
-#'
-#' 
-#' @noRd
-#'
-ax_noData <- function(ax,
-                      text = NULL,
-                      align = NULL,
-                      verticalAlign = NULL,
-                      offsetX = NULL,
-                      offsetY = NULL,
-                      style = NULL,
-                      ...) {
-  params <- c(as.list(environment()), list(...))[-1]
-  .ax_opt2(ax, "noData", l = dropNulls(params))
-}
 
 
 #' Responsive options
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/responsive/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # Open in browser and resize window
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer, fill = year),
 #'   type = "bar"
-#' ) %>% 
-#'   ax_legend(position = "right") %>% 
+#' ) %>%
+#'   ax_legend(position = "right") %>%
 #'   ax_responsive(
 #'     list(
 #'       breakpoint = 1000,
@@ -674,25 +649,25 @@ ax_responsive <- function(ax, ...) {
 
 #' Add data to a chart
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param ... Lists containing data to plot, typically list with two items: \code{name} and \code{data}.
 #'
-#' 
+#'
 #' @export
-#' 
+#'
 #' @name ax-series
 #'
 #' @examples
-#' 
+#'
 #' # One serie
-#' apexchart() %>% 
+#' apexchart() %>%
 #'   ax_series(list(
 #'     name = "rnorm",
 #'     data = rnorm(10)
 #'   ))
-#' 
+#'
 #' # Two series
-#' apexchart() %>% 
+#' apexchart() %>%
 #'   ax_series(
 #'     list(
 #'       name = "rnorm 1",
@@ -717,26 +692,26 @@ ax_series2 <- function(ax, l) {
 
 #' Charts' states
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param normal A list of parameters.
 #' @param hover A list of parameters.
 #' @param active A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/states/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # Inverse effect on hover
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer),
 #'   type = "bar"
-#' ) %>% 
+#' ) %>%
 #'   ax_states(
 #'     hover = list(
 #'       filter = list(
@@ -756,7 +731,7 @@ ax_states <- function(ax,
 
 #' Chart's title
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param text Text to display as a title of chart.
 #' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
 #' @param margin Numeric. Vertical spacing around the title text.
@@ -766,18 +741,18 @@ ax_states <- function(ax,
 #' @param style List with two items: \code{fontSize} (Font Size of the title text) and \code{color} (Fore color of the title text).
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/title/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics", package = "ggplot2")
 #' apex(
 #'   data = economics,
 #'   mapping = aes(x = date, y = uempmed),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_title(
 #'     text = "Median duration of unemployment, in weeks"
 #'   )
@@ -797,7 +772,7 @@ ax_title <- function(ax,
 
 #' Chart's subtitle
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param text Text to display as a subtitle of chart.
 #' @param align Alignment of subtitle relative to chart area. Possible Options: \code{"left"}, \code{"center"} and \code{"right"}.
 #' @param margin Numeric. Vertical spacing around the subtitle text.
@@ -807,12 +782,12 @@ ax_title <- function(ax,
 #' @param style List with two items: \code{fontSize} (Font Size of the subtitle text) and \code{color} (Fore color of the subtitle text).
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/subtitle/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics", package = "ggplot2")
 #' apex(
 #'   data = economics,
@@ -841,26 +816,26 @@ ax_subtitle <- function(ax,
 
 #' Stroke properties
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param show Logical. To show or hide path-stroke / line
 #' @param curve In line / area charts, whether to draw smooth lines or straight lines.
-#'  Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline) 
+#'  Available Options: \code{"smooth"} (connects the points in a curve fashion. Also known as spline)
 #'  and \code{"straight"} (connect the points in straight lines.).
 #' @param lineCap For setting the starting and ending points of stroke. Available Options:
 #'  \code{"butt"} (ends the stroke with a 90-degree angle), \code{"square"}
-#'   (similar to butt except that it extends the stroke beyond the length of the path) 
+#'   (similar to butt except that it extends the stroke beyond the length of the path)
 #'   and \code{"round"} (ends the path-stroke with a radius that smooths out the start and end points)
 #' @param width Sets the width of border for svg path.
 #' @param colors Colors to fill the border for paths.
-#' @param dashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border. 
+#' @param dashArray Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/stroke/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics", package = "ggplot2")
 #' apex(
 #'   data = economics,
@@ -868,10 +843,10 @@ ax_subtitle <- function(ax,
 #'   type = "line"
 #' ) %>%
 #'   ax_stroke(
-#'     width = 1, 
+#'     width = 1,
 #'     dashArray = 4
 #'   )
-#' 
+#'
 #' data("economics_long", package = "ggplot2")
 #' apex(
 #'   data = economics_long,
@@ -879,7 +854,7 @@ ax_subtitle <- function(ax,
 #'   type = "line"
 #' ) %>%
 #'   ax_stroke(
-#'     width = c(1, 2, 3, 4, 5), 
+#'     width = c(1, 2, 3, 4, 5),
 #'     dashArray = c(1, 2, 3, 4, 5)
 #'   )
 ax_stroke <- function(ax,
@@ -897,13 +872,13 @@ ax_stroke <- function(ax,
 
 #' Tooltip options
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param enabled Logical. Show tooltip when user hovers over chart area.
 #' @param shared Logical. When having multiple series, show a shared tooltip.
 #' @param followCursor Logical. Follow user's cursor position instead of putting tooltip on actual data points.
 #' @param intersect Logical. Show tooltip only when user hovers exactly over datapoint.
 #' @param inverseOrder Logical. In multiple series, when having shared tooltip, inverse the order of series (for better comparison in stacked charts).
-#' @param custom JS function. Draw a custom html tooltip instead of the default one based on the values provided in the function arguments. 
+#' @param custom JS function. Draw a custom html tooltip instead of the default one based on the values provided in the function arguments.
 #' @param fillSeriesColor Logical. When enabled, fill the tooltip background with the corresponding series color.
 #' @param onDatasetHover A list of parameters.
 #' @param theme A list of parameters.
@@ -915,35 +890,35 @@ ax_stroke <- function(ax,
 #' @param fixed A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/tooltip/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # Hide tooltip
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer, fill = year)
-#' ) %>% 
+#' ) %>%
 #'   ax_tooltip(enabled = FALSE)
-#' 
+#'
 #' # Share between series
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer, fill = year)
-#' ) %>% 
+#' ) %>%
 #'   ax_tooltip(shared = TRUE)
-#' 
+#'
 #' # Fixed tooltip
 #' data("economics", package = "ggplot2")
 #' apex(
 #'   data = economics,
 #'   mapping = aes(x = date, y = psavert),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_tooltip(
 #'     fixed = list(enabled = TRUE, position = "topLeft")
 #'   )
@@ -971,7 +946,7 @@ ax_tooltip <- function(ax,
 
 #' X-axis options
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param type Character. Available Options : \code{"categories"} and \code{"datetime"}.
 #' @param categories Categories are labels which are displayed on the x-axis.
 #' @param labels A list of parameters.
@@ -990,44 +965,44 @@ ax_tooltip <- function(ax,
 #' @param tooltip A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/xaxis/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
-#' 
+#'
 #' # X axis title
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_xaxis(title = list(text = "Car's manufacturer"))
-#' 
+#'
 #' # force labels to rotate and increase height
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
-#' 
+#'
 #' # force to not rotate
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_xaxis(labels = list(rotate = 0, trim = FALSE))
-#' 
-#' 
+#'
+#'
 #' data("economics", package = "ggplot2")
-#' 
+#'
 #' # Custom crosshair
 #' apex(
 #'   data = tail(economics, 50),
 #'   mapping = aes(x = date, y = psavert),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_xaxis(
 #'     crosshairs = list(
 #'       opacity = 1,
@@ -1036,14 +1011,14 @@ ax_tooltip <- function(ax,
 #'       stroke = list(width = 0)
 #'     )
 #'   )
-#' 
-#' 
+#'
+#'
 #' # Date format (zoom to see changes)
 #' apex(
 #'   data = tail(economics, 150),
 #'   mapping = aes(x = date, y = psavert),
 #'   type = "line"
-#' ) %>% 
+#' ) %>%
 #'   ax_xaxis(
 #'     labels = list(
 #'       datetimeFormatter = list(
@@ -1076,7 +1051,7 @@ ax_xaxis <- function(ax,
 
 #' Y-axis options
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param opposite Logical. When enabled, will draw the yaxis on the right side of the chart.
 #' @param tickAmount Number of Tick Intervals to show.
 #' @param max Lowest number to be set for the y-axis. The graph drawing beyond this number will be clipped off.
@@ -1091,12 +1066,12 @@ ax_xaxis <- function(ax,
 #' @param crosshairs A list of parameters.
 #' @param ... Additional parameters.
 #'
-#' 
+#'
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/yaxis/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("economics_long", package = "ggplot2")
 #' apex(
 #'   data = economics_long,
@@ -1106,13 +1081,13 @@ ax_xaxis <- function(ax,
 #'   ax_yaxis(
 #'     decimalsInFloat = 2, title = list(text = "Rescaled to [0,1]")
 #'   )
-#'   
+#'
 #' # Format tick labels
 #' temperature <- data.frame(
 #'   month = head(month.name),
 #'   tp = c(4, -2, 2, 7, 11, 14)
 #' )
-#' apex(temperature, aes(month, tp), "line") %>% 
+#' apex(temperature, aes(month, tp), "line") %>%
 #'   ax_yaxis(
 #'     labels = list(
 #'       formatter = htmlwidgets::JS("function(value) {return value + '\u00b0C';}")
@@ -1145,13 +1120,13 @@ ax_yaxis <- function(ax,
 
 #' Secondary Y-axis options
 #'
-#' @template ax-default 
+#' @template ax-default
 #' @param ... See arguments from \code{\link{ax_yaxis}}.
 #'
-#' 
+#'
 #' @export
 #'
-#' @example examples/ax_yaxis2.R 
+#' @example examples/ax_yaxis2.R
 ax_yaxis2 <- function(ax, ...) {
   params <- dropNulls(list(...))
   yaxis <- .get_ax_opt(ax, "yaxis")
@@ -1179,30 +1154,30 @@ ax_yaxis2 <- function(ax, ...) {
 #' @export
 #'
 #' @note See \url{https://apexcharts.com/docs/options/theme/}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data("mpg", package = "ggplot2")
 #' data("diamonds", package = "ggplot2")
-#' 
+#'
 #' # Dark mode
 #' apex(
 #'   data = mpg,
 #'   mapping = aes(x = manufacturer)
-#' ) %>% 
+#' ) %>%
 #'   ax_theme(mode = "dark")
-#' 
+#'
 #' # Use predefined palette (1 to 10)
 #' apex(
 #'   data = diamonds,
 #'   mapping = aes(x = color, fill = cut)
-#' ) %>% 
+#' ) %>%
 #'   ax_theme(palette = "palette2")
-#' 
+#'
 #' # monochrome palette
 #' apex(
 #'   data = diamonds,
 #'   mapping = aes(x = color, fill = cut)
-#' ) %>% 
+#' ) %>%
 #'   ax_theme(monochrome = list(enabled = TRUE, color = "#0B6121"))
 ax_theme <- function(ax,
                      mode = c("light", "dark"),
@@ -1241,17 +1216,17 @@ ax_theme <- function(ax,
 #'   var1 = character(0),
 #'   var2 = numeric(0)
 #' )
-#' apex(empty, aes(var1, var2), "column") %>% 
+#' apex(empty, aes(var1, var2), "column") %>%
 #'   ax_nodata(
 #'     text = "Sorry no data to visualize",
 #'     fontSize = "30px"
 #'   )
-ax_nodata <- function(ax, 
-                      text = "No data", 
-                      align = "center", 
+ax_nodata <- function(ax,
+                      text = "No data",
+                      align = "center",
                       verticalAlign = "middle",
-                      color = NULL, 
-                      fontSize = NULL, 
+                      color = NULL,
+                      fontSize = NULL,
                       fontFamily = NULL,
                       offsetX = NULL,
                       offsetY = NULL) {
@@ -1293,9 +1268,9 @@ ax_nodata <- function(ax,
 #'     as.vector(lh),
 #'     as.vector(predict(arima(lh, order = c(1,0,1)), 5)$pred)
 #'   )
-#' ) %>% 
-#'   apex(aes(time, lh), type = "line") %>% 
-#'   ax_xaxis(type = "numeric") %>% 
+#' ) %>%
+#'   apex(aes(time, lh), type = "line") %>%
+#'   ax_xaxis(type = "numeric") %>%
 #'   ax_forecast_data_points(count = 5)
 ax_forecast_data_points <- function(ax,
                                     count = NULL,
