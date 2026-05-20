@@ -5,6 +5,7 @@
 Packages and data used below:
 
 ``` r
+
 library(apexcharter)
 
 data("diamonds", package = "ggplot2")
@@ -16,6 +17,7 @@ You can set title, subtitle and axis’ titles at once with
 [`ax_labs()`](https://dreamrs.github.io/apexcharter/reference/ax_labs.md):
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
   ax_labs(
     title = "Cut distribution",
@@ -36,6 +38,7 @@ as described below.
 ### Title
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(text = "Cut distribution")
 ```
@@ -43,6 +46,7 @@ apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
 You can set some options, for example:
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(
     text = "Cut distribution", 
@@ -57,6 +61,7 @@ Full list of parameters is available here :
 ### Subtitle
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(text = "Cut distribution") %>% 
   ax_subtitle(text = "Data from ggplot2")
@@ -65,6 +70,7 @@ apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
 With same options than for title:
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_title(
     text = "Cut distribution", 
@@ -84,6 +90,7 @@ Full list of parameters is available here :
 ### Axis title
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_yaxis(title = list(text = "Count")) %>% 
   ax_xaxis(title = list(text = "Cut"))
@@ -92,6 +99,7 @@ apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
 With some options:
 
 ``` r
+
 apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>% 
   ax_yaxis(title = list(
     text = "Count",
@@ -106,6 +114,7 @@ apex(data = diamonds, type = "column", mapping = aes(x = cut)) %>%
 ## Lines
 
 ``` r
+
 library(apexcharter)
 
 ## economics dataset from ggplot2
@@ -120,12 +129,14 @@ economics_long <- subset(economics_long, date >= "2010-01-01")
 Classic line:
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
 ```
 
 Spline curve:
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_stroke(curve = "smooth")
 ```
@@ -133,6 +144,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 Steps chart:
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_stroke(curve = "stepline")
 ```
@@ -142,6 +154,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 Color line with gradient:
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_fill(
     type = "gradient",
@@ -160,6 +173,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 Solid area color:
 
 ``` r
+
 apex(data = economics, type = "area", mapping = aes(x = date, y = uempmed)) %>% 
   ax_fill(type = "solid", opacity = 1)
 ```
@@ -167,6 +181,7 @@ apex(data = economics, type = "area", mapping = aes(x = date, y = uempmed)) %>%
 Line width:
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_stroke(width = 1)
 ```
@@ -174,6 +189,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 Dotted line
 
 ``` r
+
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_stroke(dashArray = 6)
 ```
@@ -183,6 +199,7 @@ apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>%
 Add points to line :
 
 ``` r
+
 apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_markers(size = 6)
 ```
@@ -190,6 +207,7 @@ apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uemp
 Add labels over points
 
 ``` r
+
 apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_markers(size = 6) %>% 
   ax_dataLabels(enabled = TRUE)
@@ -200,6 +218,7 @@ apex(data = tail(economics, 20), type = "line", mapping = aes(x = date, y = uemp
 You can use vectors of parameters to custom series separately:
 
 ``` r
+
 apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
   ax_yaxis(decimalsInFloat = 2) %>% 
   ax_markers(size = c(3, 6)) %>% 
@@ -207,6 +226,7 @@ apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, 
 ```
 
 ``` r
+
 apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
   ax_yaxis(decimalsInFloat = 2) %>% 
   ax_stroke(dashArray = c(8, 5))

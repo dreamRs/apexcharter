@@ -96,6 +96,7 @@ See <https://apexcharts.com/docs/options/chart/events/>.
 ## Examples
 
 ``` r
+
 if (interactive()) {
   library(shiny)
   

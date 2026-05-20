@@ -21,6 +21,7 @@ ax_proxy_options(proxy, options)
 ## Examples
 
 ``` r
+
 if (interactive()) {
   library(shiny)
 

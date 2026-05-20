@@ -1,6 +1,7 @@
 # Synchronize charts with each other
 
 ``` r
+
 library(apexcharter)
 data("economics", package = "ggplot2")
 ```
@@ -14,6 +15,7 @@ create two charts, tooltip will be displayed on both charts when you
 hover one, and if you zoom on one, the other one will be synced :
 
 ``` r
+
 apex(
   data = tail(economics, 150), 
   mapping = aes(x = date, y = pce),
@@ -52,6 +54,7 @@ when hovering or interacting.
 For an example in Shiny, you can run:
 
 ``` r
+
 run_sync_demo()
 ```
 
@@ -61,6 +64,7 @@ Create a brush chart to navigate into a synced chart : use the chart
 below to navigate in the chart above.
 
 ``` r
+
 apex(
   data = economics, 
   mapping = aes(x = date, y = psavert),

@@ -1,6 +1,7 @@
 # Create grid of charts
 
 ``` r
+
 library(apexcharter)
 ```
 
@@ -33,6 +34,7 @@ Create a grid of charts according to a variable of the data with
 :
 
 ``` r
+
 library(apexcharter)
 data("mpg", package = "ggplot2")
 
@@ -58,6 +60,7 @@ city miles per gallon
 Synchronized line charts with free y-axis :
 
 ``` r
+
 library(apexcharter)
 data("economics_long", package = "ggplot2")
 
@@ -84,6 +87,7 @@ with
 :
 
 ``` r
+
 library(apexcharter)
 data("mpg", package = "ggplot2")
 
@@ -123,6 +127,7 @@ You can construct a grid of (unrelated) charts with
 construct your charts independently then assemble them in the grid:
 
 ``` r
+
 library(apexcharter)
 data("mpg", package = "ggplot2")
 

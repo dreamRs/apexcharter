@@ -61,6 +61,7 @@ An
 ## Examples
 
 ``` r
+
 library(apexcharter)
 data("consumption")
 

@@ -68,6 +68,7 @@ If x-axis is of type datetime, value retrieved is of class `POSIXct`.
 ## Examples
 
 ``` r
+
 library(apexcharter)
 
 # Not in Shiny but you can still click on bars
@@ -78,7 +79,7 @@ data.frame(
   apex(aes(month, value)) %>% 
   set_input_click("month_click", multiple = TRUE)
 
-{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"value","type":"bar","data":[{"x":"Jan","y":90},{"x":"Feb","y":35},{"x":"Mar","y":95},{"x":"Apr","y":96},{"x":"May","y":33},{"x":"Jun","y":37},{"x":"Jul","y":89},{"x":"Aug","y":20},{"x":"Sep","y":19},{"x":"Oct","y":73},{"x":"Nov","y":65},{"x":"Dec","y":56}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false,"isDumbbell":false}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":true}},"xaxis":{"lines":{"show":false}}},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"states":{"active":{"allowMultipleDataPointsSelection":true,"filter":{"type":"darken","value":0.35}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Apr","max":"Sep"},"type":"column","shinyEvents":{"click":{"inputId":"month_click"}}},"evals":[],"jsHooks":[]}
+{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"value","type":"bar","data":[{"x":"Jan","y":90},{"x":"Feb","y":66},{"x":"Mar","y":73},{"x":"Apr","y":42},{"x":"May","y":12},{"x":"Jun","y":6},{"x":"Jul","y":45},{"x":"Aug","y":58},{"x":"Sep","y":99},{"x":"Oct","y":33},{"x":"Nov","y":17},{"x":"Dec","y":65}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false,"isDumbbell":false}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":true}},"xaxis":{"lines":{"show":false}}},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"states":{"active":{"allowMultipleDataPointsSelection":true,"filter":{"type":"darken","value":0.35}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Apr","max":"Sep"},"type":"column","shinyEvents":{"click":{"inputId":"month_click"}}},"evals":[],"jsHooks":[]}
 
 # Interactive examples:
 if (interactive()) {

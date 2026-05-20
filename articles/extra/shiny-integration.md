@@ -1,6 +1,7 @@
 # Use in Shiny application
 
 ``` r
+
 library(apexcharter)
 ```
 
@@ -20,12 +21,14 @@ and [`apex()`](https://dreamrs.github.io/apexcharter/reference/apex.md))
 By default, `auto_update` is `TRUE` :
 
 ``` r
+
 apex(..., auto_update = TRUE)
 ```
 
 If you want to re-create the whole chart, set the option to `FALSE`:
 
 ``` r
+
 apex(..., auto_update = FALSE)
 ```
 
@@ -34,6 +37,7 @@ You can also use
 to specify what to update :
 
 ``` r
+
 apex(..., auto_update = config_update(update_options = TRUE))
 ```
 
@@ -43,6 +47,7 @@ A proxy is also implemented to update charts manually server-side. You
 can update data:
 
 ``` r
+
 output$my_chart <- renderApexchart({
   apex(data = isolate(data_reactive()), ..., auto_update = FALSE)
 })
@@ -66,6 +71,7 @@ to update data.
 If you want to update chart’s options, use :
 
 ``` r
+
 observeEvent(input$update, {
   apexchartProxy("my_chart") %>% 
     ax_proxy_options(list(
@@ -89,6 +95,7 @@ with
 :
 
 ``` r
+
 data.frame(
   month = month.abb,
   value = sample(1:100, 12)
@@ -113,6 +120,7 @@ Multiple selection is possible and you can change the darken effect of
 selected bars :
 
 ``` r
+
 data.frame(
   month = month.abb,
   value = sample(1:100, 12)
@@ -129,6 +137,7 @@ data.frame(
 More examples are available with:
 
 ``` r
+
 run_demo_input("click")
 ```
 
@@ -137,6 +146,7 @@ run_demo_input("click")
 Retrieve the coordinates of the axes when the graph is zoomed in:
 
 ``` r
+
 data("economics", package = "ggplot2")
 apex(economics, aes(date, psavert), type = "line", height = "250px") %>% 
   set_input_zoom("zoom")
@@ -166,6 +176,7 @@ but for a scatter chart for example you can zoom on both axis.
 More examples are available with:
 
 ``` r
+
 run_demo_input("zoom")
 ```
 
@@ -175,6 +186,7 @@ Retrieve the coordinates of the axes when user select an area on a chart
 (without zooming):
 
 ``` r
+
 apex(economics, aes(date, psavert), type = "line", height = "250px") %>% 
   set_input_selection("selection")
 ```
@@ -192,6 +204,7 @@ form :
 You can define a selected area at start:
 
 ``` r
+
 apex(economics, aes(date, psavert), type = "line", height = "250px") %>% 
   set_input_selection(
     inputId = "selection", 
@@ -204,6 +217,7 @@ Above selection is only made possible on x-axis, but in case of scatter
 chart for example, you can select a rectangle (both axis):
 
 ``` r
+
 apex(iris, aes(Sepal.Length, Sepal.Width), type = "scatter", height = "250px") %>% 
   set_input_selection("selection_scatter", type = "xy")
 ```
@@ -228,5 +242,6 @@ In this case, input value will look like this:
 More examples are available with:
 
 ``` r
+
 run_demo_input("selection")
 ```

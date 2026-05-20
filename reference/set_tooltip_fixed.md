@@ -43,6 +43,7 @@ An
 ## Examples
 
 ``` r
+
 library(apexcharter)
 data("economics", package = "ggplot2")
 

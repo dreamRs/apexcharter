@@ -7,6 +7,7 @@ give an overview of the different graphics available.
 Data used are from `ggplot2` package.
 
 ``` r
+
 library(ggplot2)
 library(scales)
 library(apexcharter)
@@ -17,6 +18,7 @@ library(apexcharter)
 Simple bar charts can be created with:
 
 ``` r
+
 data("mpg")
 
 apex(data = mpg, type = "column", mapping = aes(x = manufacturer))
@@ -25,18 +27,21 @@ apex(data = mpg, type = "column", mapping = aes(x = manufacturer))
 Flipping coordinates can be done by using `type = "bar"`:
 
 ``` r
+
 apex(data = mpg, type = "bar", mapping = aes(x = manufacturer))
 ```
 
 To create a dodge bar charts, use aesthetic `fill` :
 
 ``` r
+
 apex(data = mpg, type = "column", mapping = aes(x = manufacturer, fill = year))
 ```
 
 For stacked bar charts, specify option `stacked` in `ax_chart` :
 
 ``` r
+
 apex(data = mpg, type = "column", mapping = aes(x = manufacturer, fill = year)) %>% 
   ax_chart(stacked = TRUE)
 ```
@@ -47,6 +52,7 @@ Simple line charts can be created with (works with `character`, `Date`
 or `POSIXct`):
 
 ``` r
+
 data("economics")
 
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
@@ -56,6 +62,7 @@ To represent several lines, use a `data.frame` in long format and the
 `group` aesthetic:
 
 ``` r
+
 data("economics_long")
 
 apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
@@ -67,6 +74,7 @@ apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, 
 Create area charts with `type = "area"`:
 
 ``` r
+
 data("eco2mix", package = "apexcharter")
 
 apex(eco2mix, aes(datetime, production, fill = source), type = "area") %>% 
@@ -97,6 +105,7 @@ apex(eco2mix, aes(datetime, production, fill = source), type = "area") %>%
 You can create ribbon charts using `ymin` and `ymax` aesthetics :
 
 ``` r
+
 data("temperatures", package = "apexcharter")
 
 apex(
@@ -122,18 +131,21 @@ apex(
 Simple bar charts can be created with:
 
 ``` r
+
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg))
 ```
 
 Color points according to a third variable:
 
 ``` r
+
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, fill = cyl))
 ```
 
 And change point size using `z` aesthetics:
 
 ``` r
+
 apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, z = scales::rescale(qsec)))
 ```
 
@@ -142,6 +154,7 @@ apex(data = mtcars, type = "scatter", mapping = aes(x = wt, y = mpg, z = scales:
 Simple pie charts can be created with:
 
 ``` r
+
 poll <- data.frame(
   answer = c("Yes", "No"),
   n = c(254, 238)
@@ -153,6 +166,7 @@ apex(data = poll, type = "pie", mapping = aes(x = answer, y = n))
 It’s also possible to make donut chart:
 
 ``` r
+
 apex(data = poll, type = "donut", mapping = aes(x = answer, y = n))
 ```
 
@@ -162,12 +176,14 @@ Simple radial charts can be created with (here we pass values directly
 in `aes`, but you can use a `data.frame`) :
 
 ``` r
+
 apex(data = NULL, type = "radialBar", mapping = aes(x = "My value", y = 65))
 ```
 
 Multi radial chart (more than one value):
 
 ``` r
+
 fruits <- data.frame(
   name = c('Apples', 'Oranges', 'Bananas', 'Berries'),
   value = c(44, 55, 67, 83)
@@ -181,6 +197,7 @@ apex(data = fruits, type = "radialBar", mapping = aes(x = name, y = value))
 Simple radar charts can be created with:
 
 ``` r
+
 mtcars$model <- rownames(mtcars)
 
 apex(data = head(mtcars), type = "radar", mapping = aes(x = model, y = qsec))
@@ -189,6 +206,7 @@ apex(data = head(mtcars), type = "radar", mapping = aes(x = model, y = qsec))
 With a grouping variable:
 
 ``` r
+
 # extremely complicated reshaping
 new_mtcars <- reshape(
   data = head(mtcars), 
@@ -208,6 +226,7 @@ apex(data = new_mtcars, type = "radar", mapping = aes(x = model, y = value, grou
 With some custom options for color mapping:
 
 ``` r
+
 apex(mtcars, aes(rownames(mtcars), mpg), type = "polarArea") %>% 
   ax_legend(show = FALSE) %>% 
   ax_colors(col_numeric("Blues", domain = NULL)(mtcars$mpg)) %>% 
@@ -221,6 +240,7 @@ apex(mtcars, aes(rownames(mtcars), mpg), type = "polarArea") %>%
 Create a heatmap with :
 
 ``` r
+
 # create some data
 sales <- expand.grid(year = 2010:2020, month = month.name)
 sales$value <- sample(-10:30, nrow(sales), TRUE)
@@ -239,6 +259,7 @@ apex(
 Create a treemap with:
 
 ``` r
+
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(x = manufacturer), "treemap")
@@ -249,6 +270,7 @@ apex(mpg, aes(x = manufacturer), "treemap")
 Create a candlestick chart with:
 
 ``` r
+
 data("candles", package = "apexcharter")
 
 apex(
@@ -263,6 +285,7 @@ apex(
 Create boxplot (without outliers for now) with:
 
 ``` r
+
 data("mpg", package = "ggplot2")
 apex(mpg, aes(hwy, class), "boxplot") %>% 
   ax_plotOptions(
@@ -280,6 +303,7 @@ apex(mpg, aes(hwy, class), "boxplot") %>%
 Create Dumbbell chart with:
 
 ``` r
+
 data("life_expec", package = "apexcharter")
 
 apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>% 
@@ -301,6 +325,7 @@ apex(life_expec, aes(country, x = `1972`, xend = `2007`), type = "dumbbell") %>%
 Create a slope chart with:
 
 ``` r
+
 data("life_expec_long", package = "apexcharter")
 
 apex(

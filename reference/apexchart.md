@@ -65,7 +65,7 @@ apexchart(ax_opts = list(
   )
 ))
 
-{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"Example","data":[85,44,61,34,70]}],"xaxis":{"categories":["A","B","C","D","E"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
+{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"Example","data":[47,31,68,73,69]}],"xaxis":{"categories":["A","B","C","D","E"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
 
 # Or use apexchart() to initialize the chart
 # before passing parameters
@@ -82,5 +82,5 @@ apexchart() %>%
     categories = LETTERS[1:5]
   )
 
-{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"Example","data":[63,4,34,35,89]}],"xaxis":{"categories":["A","B","C","D","E"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
+{"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":"Example","data":[5,24,79,77,2]}],"xaxis":{"categories":["A","B","C","D","E"]}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
 ```

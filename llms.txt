@@ -12,6 +12,7 @@ Install from [CRAN](https://CRAN.R-project.org/package=apexcharter)
 with:
 
 ``` r
+
 install.packages("apexcharter")
 ```
 
@@ -19,6 +20,7 @@ Or install the development version from
 [GitHub](https://github.com/dreamRs/apexcharter) with:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("dreamRs/apexcharter")
 ```
@@ -28,6 +30,7 @@ remotes::install_github("dreamRs/apexcharter")
 Use `apex` function to quickly create visualizations :
 
 ``` r
+
 library(apexcharter)
 data("mpg", package = "ggplot2")
 apex(data = mpg, type = "bar", mapping = aes(manufacturer))
@@ -38,6 +41,7 @@ apex(data = mpg, type = "bar", mapping = aes(manufacturer))
 With datetime:
 
 ``` r
+
 data("economics", package = "ggplot2")
 apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed)) %>% 
   ax_stroke(width = 1)
@@ -51,6 +55,7 @@ All methods from ApexCharts are available with function like `ax_*`
 compatible with pipe from `magrittr` :
 
 ``` r
+
 library(apexcharter)
 data(mpg, package = "ggplot2")
 
@@ -86,6 +91,7 @@ apexchart() %>%
 Pass a list of parameters to the function:
 
 ``` r
+
 apexchart(ax_opts = list(
   chart = list(
     type = "line"
@@ -141,12 +147,14 @@ manage JavaScript assets, see packer’s
 Install nodes modules with:
 
 ``` r
+
 packer::npm_install()
 ```
 
 Modify `srcjs/widgets/apexcharter.js`, then run:
 
 ``` r
+
 packer::bundle()
 ```
 

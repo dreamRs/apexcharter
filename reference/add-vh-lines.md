@@ -52,6 +52,7 @@ An
 ## Examples
 
 ``` r
+
 library(apexcharter)
 
 # On a column chart

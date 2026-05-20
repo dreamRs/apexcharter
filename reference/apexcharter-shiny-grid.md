@@ -38,6 +38,7 @@ An Apexcharts output that can be included in the application UI.
 ## Examples
 
 ``` r
+
 library(shiny)
 library(apexcharter)
 

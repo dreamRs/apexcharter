@@ -25,6 +25,7 @@ ax_proxy_series(proxy, newSeries, animate = TRUE)
 ## Examples
 
 ``` r
+
 if (interactive()) {
   library(shiny)
 

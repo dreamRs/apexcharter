@@ -1,6 +1,7 @@
 # Create boxes with sparklines
 
 ``` r
+
 library(apexcharter)
 
 spark_data <- data.frame(
@@ -14,6 +15,7 @@ spark_data <- data.frame(
 Create boxes with a sparkline to display a specific value:
 
 ``` r
+
 spark_box(
   data = spark_data,
   title = mean(spark_data$var1), 
@@ -24,6 +26,7 @@ spark_box(
 With more styles :
 
 ``` r
+
 spark_box(
   data = spark_data,
   title = mean(spark_data$var1), 
@@ -38,6 +41,7 @@ You can also use spark boxes in Shiny application, use code to launch an
 example :
 
 ``` r
+
 run_sparkbox_demo()
 ```
 

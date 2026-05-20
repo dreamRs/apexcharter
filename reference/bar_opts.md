@@ -69,6 +69,7 @@ See <https://apexcharts.com/docs/options/plotoptions/bar/>.
 ## Examples
 
 ``` r
+
 data("mpg", package = "ggplot2")
 
 apex(mpg, aes(manufacturer)) %>% 

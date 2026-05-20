@@ -1,6 +1,7 @@
 # Advanced configuration examples
 
 ``` r
+
 library(apexcharter)
 library(dplyr)
 ```
@@ -17,6 +18,7 @@ This example is taken from
 Transform data and initialize the chart :
 
 ``` r
+
 data("mpg", package = "ggplot2")
 
 bars <- count(mpg, class) %>% 
@@ -27,6 +29,7 @@ bars <- count(mpg, class) %>%
 Change color used :
 
 ``` r
+
 bars <- bars %>% 
   ax_colors("#617a89")
 ```
@@ -34,6 +37,7 @@ bars <- bars %>%
 Modify the y-axis and add a percent symbol after the labels :
 
 ``` r
+
 bars <- bars %>% 
   ax_yaxis(
     title = list(text = "Weight (tons)"),
@@ -48,6 +52,7 @@ bars <- bars %>%
 Add a title to the x-axis :
 
 ``` r
+
 bars <- bars %>% 
   ax_xaxis(
     title = list(text = "Fuel efficiency (mpg)")
@@ -58,6 +63,7 @@ Modify the tooltip to display “Percentage” instead of the variable name
 “pct” :
 
 ``` r
+
 bars <- bars %>% 
   ax_tooltip(
     y = list(
@@ -71,6 +77,7 @@ bars <- bars %>%
 Add title and subtitle and format them :
 
 ``` r
+
 bars <- bars %>% 
   ax_labs(
     title = "Seminal ggplot2 column chart example with percents",
@@ -87,12 +94,14 @@ bars <- bars %>%
 Final result looks like :
 
 ``` r
+
 bars
 ```
 
 View full code
 
 ``` r
+
 data("mpg", package = "ggplot2")
 
 count(mpg, class) %>% 
@@ -140,6 +149,7 @@ about UNHCR’s populations of concern summarised by continent of origin.
 Transform data and initialize the chart :
 
 ``` r
+
 data("unhcr_ts")
 
 lines <- unhcr_ts %>% 
@@ -153,6 +163,7 @@ lines <- unhcr_ts %>%
 Put the legend at the bottom :
 
 ``` r
+
 lines <- lines %>% 
   ax_legend(position = "bottom")
 ```
@@ -160,6 +171,7 @@ lines <- lines %>%
 Change the width of the lines :
 
 ``` r
+
 lines <- lines %>% 
   ax_stroke(width = 2)
 ```
@@ -167,6 +179,7 @@ lines <- lines %>%
 Change the colors (Viridis palette) :
 
 ``` r
+
 lines <- lines %>% 
   ax_colors("#440154", "#414487", "#2A788E",
             "#22A884", "#7AD151", "#FDE725")
@@ -176,6 +189,7 @@ Data are in million, in the y-axis we divide by `1e6` to limit the
 number of digits :
 
 ``` r
+
 lines <- lines %>% 
   ax_yaxis(
     labels = list(
@@ -188,6 +202,7 @@ lines <- lines %>%
 Only display the years in the x-axis labels :
 
 ``` r
+
 lines <- lines %>% 
   ax_xaxis(labels = list(format = "yyyy"))
 ```
@@ -195,6 +210,7 @@ lines <- lines %>%
 Same in tooltip, and a thousand separator in the value displayed :
 
 ``` r
+
 lines <- lines %>% 
   ax_tooltip(
     x = list(format = "yyyy"),
@@ -212,6 +228,7 @@ crisis](https://en.wikipedia.org/wiki/Great_Lakes_refugee_crisis) in
 1994 :
 
 ``` r
+
 lines <- lines %>% 
   ax_annotations(
     points = list(
@@ -228,6 +245,7 @@ lines <- lines %>%
 Add title and subtitle and format them :
 
 ``` r
+
 lines <- lines %>% 
   ax_labs(
     title = "Continent of origin for refugees population",
@@ -244,12 +262,14 @@ lines <- lines %>%
 Final result looks like :
 
 ``` r
+
 lines
 ```
 
 View full code
 
 ``` r
+
 data("unhcr_ts")
 
 unhcr_ts %>% 
@@ -309,6 +329,7 @@ Dataset used is from
 Transform data and initialize the chart :
 
 ``` r
+
 data("gapminder", package = "gapminder")
 
 scatter <- gapminder %>% 
@@ -331,6 +352,7 @@ scatter <- gapminder %>%
 Enable zoom on both axis :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_chart(zoom = list(
     enabled = TRUE, type = "xy"
@@ -340,6 +362,7 @@ scatter <- scatter %>%
 Show y-axis border and ticks, no decimals in labels :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_yaxis(
     decimalsInFloat = 0, 
@@ -354,6 +377,7 @@ Configuration for x-axis, hide the tooltip displayed on the axis itself
 zooming, since values are logarithm there’s a lot of decimals) :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_xaxis(
     tickAmount = 8,
@@ -369,6 +393,7 @@ Display vertical grid lines (on the x-axis, those on the y-axis are
 enabled by default) :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_grid(xaxis = list(lines = list(show = TRUE)))
 ```
@@ -376,6 +401,7 @@ scatter <- scatter %>%
 Legend on the right and slightly offset downwards :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_legend(position = "right", offsetY = 70)
 ```
@@ -389,6 +415,7 @@ it’s possible to use custom aesthetics to include more data in the chart
 configuration script.
 
 ``` r
+
 scatter <- scatter %>% 
   ax_tooltip(custom = JS(paste(
     "function({ series, seriesIndex, dataPointIndex, w }) {",
@@ -440,6 +467,7 @@ scatter <- scatter %>%
 Add title and subtitle and format them :
 
 ``` r
+
 scatter <- scatter %>% 
   ax_labs(
     title = "Life expectancy, GDP and population",
@@ -456,12 +484,14 @@ scatter <- scatter %>%
 Final result looks like :
 
 ``` r
+
 scatter
 ```
 
 View full code
 
 ``` r
+
 data("gapminder", package = "gapminder")
 
 gapminder %>% 
@@ -558,6 +588,7 @@ example](http://jkunst.com/highcharter/showcase.md), based from this
 visualization](http://graphics.wsj.com/infectious-diseases-and-vaccines/).
 
 ``` r
+
 data("vaccines", package = "highcharter")
 
 heatmap <- apex(
@@ -571,6 +602,7 @@ heatmap <- apex(
 Remove the animations (little slow otherwise) :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_chart(animations = list(enabled = FALSE))
 ```
@@ -578,6 +610,7 @@ heatmap <- heatmap %>%
 Remove values displayed in the heatmap :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_dataLabels(enabled = FALSE)
 ```
@@ -585,6 +618,7 @@ heatmap <- heatmap %>%
 Remove space between squared of the heatmap :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_stroke(width = 0)
 ```
@@ -593,6 +627,7 @@ That’s not possible to make a continuous scale in the legend (like with
 highcharter), so we use breakpoints :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_plotOptions(
     heatmap = heatmap_opts(
@@ -644,6 +679,7 @@ Missing values are colored by default, above we set them to be displayed
 in white, and now we hide the corresponding legend :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_legend(
     formatter = JS(
@@ -658,6 +694,7 @@ heatmap <- heatmap %>%
 Set size of the y-axis labels :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_yaxis(
     labels = list(
@@ -670,6 +707,7 @@ Add a vertical line to identify the year when the vaccine was introduced
 :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_annotations(
     xaxis = list(
@@ -695,6 +733,7 @@ heatmap <- heatmap %>%
 As usual, add title and subtitle and format them :
 
 ``` r
+
 heatmap <- heatmap %>% 
   ax_labs(
     title = "Infectious Diseases and Vaccines",
@@ -711,12 +750,14 @@ heatmap <- heatmap %>%
 Final result looks like :
 
 ``` r
+
 heatmap
 ```
 
 View full code
 
 ``` r
+
 data("vaccines", package = "highcharter")
 
 apex(vaccines, aes(year, state, fill = count), type = "heatmap") %>% 
