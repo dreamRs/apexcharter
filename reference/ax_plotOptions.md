@@ -83,7 +83,7 @@ apex(
 # Pie
 apex(
   data = diamonds,
-  mapping = aes(x = cut), 
+  mapping = aes(x = cut),
   type = "pie"
 ) %>%
   ax_plotOptions(
@@ -93,14 +93,14 @@ apex(
 {"x":{"ax_opts":{"chart":{"type":"pie"},"series":[1610,4906,12082,13791,21551],"labels":["Fair","Good","Very Good","Premium","Ideal"],"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}},"plotOptions":{"pie":{"customScale":0.5}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"Fair","max":"Very Good"},"type":"pie"},"evals":[],"jsHooks":[]}
 
 # Radial
-apexchart() %>% 
-  ax_chart(type = "radialBar") %>% 
+apexchart() %>%
+  ax_chart(type = "radialBar") %>%
   ax_plotOptions(
     radialBar = radialBar_opts(
       hollow = list(size = "70%")
     )
-  ) %>% 
-  ax_series(70) %>% 
+  ) %>%
+  ax_series(70) %>%
   ax_labels("Indicator")
 
 {"x":{"ax_opts":{"chart":{"type":"radialBar"},"plotOptions":{"radialBar":{"hollow":{"size":"70%"}}},"series":[70],"labels":["Indicator"]},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}

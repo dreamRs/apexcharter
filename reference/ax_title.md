@@ -79,7 +79,7 @@ apex(
   data = economics,
   mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
+) %>%
   ax_title(
     text = "Median duration of unemployment, in weeks"
   )

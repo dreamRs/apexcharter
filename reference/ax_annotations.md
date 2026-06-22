@@ -64,15 +64,15 @@ apex(
   data = tail(economics, 200),
   mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
+) %>%
   ax_annotations(
     yaxis = list(list(
       y = 11.897,
-      borderColor = "firebrick", 
+      borderColor = "firebrick",
       opacity = 1,
       label = list(
         text = "Mean uempmed",
-        position = "left", 
+        position = "left",
         textAnchor = "start"
       )
     ))
@@ -85,15 +85,15 @@ apex(
   data = tail(economics, 200),
   mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
+) %>%
   ax_annotations(
     xaxis = list(list(
       x = htmlwidgets::JS("new Date('1 Mar 2007').getTime()"),
-      strokeDashArray = 0, 
+      strokeDashArray = 0,
       borderColor = "#775DD0",
       label = list(
         text = "A label",
-        borderColor = "#775DD0", 
+        borderColor = "#775DD0",
         style = list(
           color = "#fff",
           background = "#775DD0"
@@ -109,7 +109,7 @@ apex(
   data = tail(economics, 200),
   mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
+) %>%
   ax_annotations(
     xaxis = list(list(
       x = htmlwidgets::JS("new Date('1 Jan 2009').getTime()"),
@@ -118,7 +118,7 @@ apex(
       opacity = 0.4,
       label = list(
         text = "A label",
-        borderColor = "#B3F7CA", 
+        borderColor = "#B3F7CA",
         style = list(
           color = "#fff",
           background = "#B3F7CA"
@@ -134,7 +134,7 @@ apex(
   data = tail(economics, 200),
   mapping = aes(x = date, y = uempmed),
   type = "line"
-) %>% 
+) %>%
   ax_annotations(
     points = list(list(
       x = htmlwidgets::JS("new Date('1 Jun 2010').getTime()"),
@@ -148,7 +148,7 @@ apex(
       label = list(
         text = "Highest",
         offsetY = 0,
-        borderColor = "#FF4560", 
+        borderColor = "#FF4560",
         style = list(
           color = "#fff",
           background = "#FF4560"

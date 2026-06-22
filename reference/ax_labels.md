@@ -41,16 +41,16 @@ See <https://apexcharts.com/docs/options/labels/>
 ## Examples
 
 ``` r
-apexchart() %>% 
-  ax_chart(type = "pie") %>% 
-  ax_series(23, 45, 56) %>% 
+apexchart() %>%
+  ax_chart(type = "pie") %>%
+  ax_series(23, 45, 56) %>%
   ax_labels("A", "B", "C")
 
 {"x":{"ax_opts":{"chart":{"type":"pie"},"series":[23,45,56],"labels":["A","B","C"]},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
-# same as 
-apexchart() %>% 
-  ax_chart(type = "pie") %>% 
-  ax_series2(c(23, 45, 56)) %>% 
+# same as
+apexchart() %>%
+  ax_chart(type = "pie") %>%
+  ax_series2(c(23, 45, 56)) %>%
   ax_labels2(c("A", "B", "C"))
 
 {"x":{"ax_opts":{"chart":{"type":"pie"},"series":[23,45,56],"labels":["A","B","C"]},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}

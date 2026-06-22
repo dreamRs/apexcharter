@@ -38,7 +38,7 @@ An
 ``` r
 
 # One serie
-apexchart() %>% 
+apexchart() %>%
   ax_series(list(
     name = "rnorm",
     data = rnorm(10)
@@ -46,7 +46,7 @@ apexchart() %>%
 
 {"x":{"ax_opts":{"series":[{"name":"rnorm","data":[1.969424843410351,0.463174706888703,-0.8561524259895877,0.6480432853289468,0.07580395979082789,0.4917614404956936,-0.7535407057758068,0.3490273528349259,-0.1708489717643287,1.631206007177528]}]},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":[],"jsHooks":[]}
 # Two series
-apexchart() %>% 
+apexchart() %>%
   ax_series(
     list(
       name = "rnorm 1",

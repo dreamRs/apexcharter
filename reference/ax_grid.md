@@ -89,7 +89,7 @@ data("mpg", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) %>% 
+) %>%
   ax_grid(show = FALSE)
 
 {"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":[],"type":"bar","data":[{"x":"audi","y":18},{"x":"chevrolet","y":19},{"x":"dodge","y":37},{"x":"ford","y":25},{"x":"honda","y":9},{"x":"hyundai","y":14},{"x":"jeep","y":8},{"x":"land rover","y":4},{"x":"lincoln","y":3},{"x":"mercury","y":4},{"x":"nissan","y":13},{"x":"pontiac","y":5},{"x":"subaru","y":14},{"x":"toyota","y":34},{"x":"volkswagen","y":27}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false,"isDumbbell":false}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":true}},"xaxis":{"lines":{"show":false}},"show":false},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"audi","max":"volkswagen"},"type":"column"},"evals":[],"jsHooks":[]}
@@ -97,7 +97,7 @@ apex(
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) %>% 
+) %>%
   ax_grid(yaxis = list(lines = list(show = FALSE)))
 
 {"x":{"ax_opts":{"chart":{"type":"bar"},"series":[{"name":[],"type":"bar","data":[{"x":"audi","y":18},{"x":"chevrolet","y":19},{"x":"dodge","y":37},{"x":"ford","y":25},{"x":"honda","y":9},{"x":"hyundai","y":14},{"x":"jeep","y":8},{"x":"land rover","y":4},{"x":"lincoln","y":3},{"x":"mercury","y":4},{"x":"nissan","y":13},{"x":"pontiac","y":5},{"x":"subaru","y":14},{"x":"toyota","y":34},{"x":"volkswagen","y":27}]}],"dataLabels":{"enabled":false},"plotOptions":{"bar":{"horizontal":false,"isDumbbell":false}},"tooltip":{"shared":true,"intersect":false,"followCursor":true},"grid":{"yaxis":{"lines":{"show":false}},"xaxis":{"lines":{"show":false}}},"yaxis":{"labels":{"style":{"colors":"#848484"}}},"xaxis":{"labels":{"style":{"colors":"#848484"}}}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false,"xaxis":{"min":"audi","max":"volkswagen"},"type":"column"},"evals":[],"jsHooks":[]}
@@ -108,7 +108,7 @@ apex(
   data = economics,
   mapping = aes(x = date, y = psavert),
   type = "line"
-) %>% 
+) %>%
   ax_grid(
     yaxis = list(lines = list(show = TRUE)),
     xaxis = list(lines = list(show = TRUE))

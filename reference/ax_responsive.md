@@ -40,8 +40,8 @@ apex(
   data = mpg,
   mapping = aes(x = manufacturer, fill = year),
   type = "bar"
-) %>% 
-  ax_legend(position = "right") %>% 
+) %>%
+  ax_legend(position = "right") %>%
   ax_responsive(
     list(
       breakpoint = 1000,

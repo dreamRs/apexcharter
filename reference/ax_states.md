@@ -52,7 +52,7 @@ apex(
   data = mpg,
   mapping = aes(x = manufacturer),
   type = "bar"
-) %>% 
+) %>%
   ax_states(
     hover = list(
       filter = list(

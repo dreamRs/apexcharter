@@ -81,7 +81,7 @@ apex(
   type = "line"
 ) %>%
   ax_stroke(
-    width = 1, 
+    width = 1,
     dashArray = 4
   )
 
@@ -93,7 +93,7 @@ apex(
   type = "line"
 ) %>%
   ax_stroke(
-    width = c(1, 2, 3, 4, 5), 
+    width = c(1, 2, 3, 4, 5),
     dashArray = c(1, 2, 3, 4, 5)
   )
 
