@@ -35,14 +35,22 @@ To create a dodge bar charts, use aesthetic `fill` :
 
 ``` r
 
-apex(data = mpg, type = "column", mapping = aes(x = manufacturer, fill = year))
+apex(
+  data = mpg, 
+  type = "column",
+  mapping = aes(x = manufacturer, fill = year)
+)
 ```
 
 For stacked bar charts, specify option `stacked` in `ax_chart` :
 
 ``` r
 
-apex(data = mpg, type = "column", mapping = aes(x = manufacturer, fill = year)) %>% 
+apex(
+  data = mpg, 
+  type = "column", 
+  mapping = aes(x = manufacturer, fill = year)
+) %>% 
   ax_chart(stacked = TRUE)
 ```
 
@@ -55,7 +63,33 @@ or `POSIXct`):
 
 data("economics")
 
-apex(data = economics, type = "line", mapping = aes(x = date, y = uempmed))
+apex(
+  data = economics, 
+  type = "line", 
+  mapping = aes(x = date, y = uempmed)
+)
+```
+
+With large dataset, you can enabled LTTB downsampling with :
+
+``` r
+
+data("economics")
+
+apex(
+  data = economics, 
+  type = "line", 
+  mapping = aes(x = date, y = uempmed)
+) %>% 
+  ax_chart(
+    animations = list(enabled = FALSE),
+    dataReducer = list(
+      enabled = TRUE,
+      algorithm = "lttb",
+      targetPoints = 500,
+      threshold = 1000
+    )
+  )
 ```
 
 To represent several lines, use a `data.frame` in long format and the
@@ -65,7 +99,11 @@ To represent several lines, use a `data.frame` in long format and the
 
 data("economics_long")
 
-apex(data = economics_long, type = "line", mapping = aes(x = date, y = value01, group = variable)) %>% 
+apex(
+  data = economics_long,
+  type = "line",
+  mapping = aes(x = date, y = value01, group = variable)
+) %>% 
   ax_yaxis(decimalsInFloat = 2) # number of decimals to keep
 ```
 
