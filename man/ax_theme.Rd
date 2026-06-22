@@ -34,20 +34,20 @@ data("diamonds", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_theme(mode = "dark")
 
 # Use predefined palette (1 to 10)
 apex(
   data = diamonds,
   mapping = aes(x = color, fill = cut)
-) \%>\% 
+) \%>\%
   ax_theme(palette = "palette2")
 
 # monochrome palette
 apex(
   data = diamonds,
   mapping = aes(x = color, fill = cut)
-) \%>\% 
+) \%>\%
   ax_theme(monochrome = list(enabled = TRUE, color = "#0B6121"))
 }

@@ -53,7 +53,7 @@ apex(
 # Pie
 apex(
   data = diamonds,
-  mapping = aes(x = cut), 
+  mapping = aes(x = cut),
   type = "pie"
 ) \%>\%
   ax_plotOptions(
@@ -62,13 +62,13 @@ apex(
 
 
 # Radial
-apexchart() \%>\% 
-  ax_chart(type = "radialBar") \%>\% 
+apexchart() \%>\%
+  ax_chart(type = "radialBar") \%>\%
   ax_plotOptions(
     radialBar = radialBar_opts(
       hollow = list(size = "70\%")
     )
-  ) \%>\% 
-  ax_series(70) \%>\% 
+  ) \%>\%
+  ax_series(70) \%>\%
   ax_labels("Indicator")
 }

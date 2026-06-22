@@ -41,8 +41,8 @@ data.frame(
     as.vector(lh),
     as.vector(predict(arima(lh, order = c(1,0,1)), 5)$pred)
   )
-) \%>\% 
-  apex(aes(time, lh), type = "line") \%>\% 
-  ax_xaxis(type = "numeric") \%>\% 
+) \%>\%
+  apex(aes(time, lh), type = "line") \%>\%
+  ax_xaxis(type = "numeric") \%>\%
   ax_forecast_data_points(count = 5)
 }

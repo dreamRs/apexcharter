@@ -62,8 +62,8 @@ data("economics", package = "ggplot2")
 # show points
 apex(
   data = tail(economics, 20),
-  type = "line", 
+  type = "line",
   mapping = aes(x = date, y = uempmed)
-) \%>\% 
-  ax_markers(size = 6) 
+) \%>\%
+  ax_markers(size = 6)
 }

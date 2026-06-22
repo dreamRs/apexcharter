@@ -26,14 +26,14 @@ Add data to a chart
 \examples{
 
 # One serie
-apexchart() \%>\% 
+apexchart() \%>\%
   ax_series(list(
     name = "rnorm",
     data = rnorm(10)
   ))
 
 # Two series
-apexchart() \%>\% 
+apexchart() \%>\%
   ax_series(
     list(
       name = "rnorm 1",

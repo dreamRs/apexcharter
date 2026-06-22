@@ -1,5 +1,5 @@
 /*!
- * ApexCharts v5.12.0
+ * ApexCharts v5.15.2
  * (c) 2018-2026 ApexCharts
  */
 
@@ -7,4 +7,13 @@
  * Path morphing for SVG path animations
  * Based on svg.pathmorphing.js by Ulrich-Matthias Schäfer (MIT License)
  * Refactored to be standalone (no SVG.js dependency)
+ *
+ * Two algorithms are exported:
+ *   - morphPaths()    — command-level interpolation; preserves curves but can
+ *                       produce "wings/flips" when two shapes have very
+ *                       different topology (e.g. bar rect → pie arc).
+ *   - morphPolygons() — resamples both shapes into N evenly-spaced perimeter
+ *                       points and tweens point-by-point with rotation-search
+ *                       alignment; always smooth and non-self-intersecting,
+ *                       at the cost of throwing away curve smoothness.
  */

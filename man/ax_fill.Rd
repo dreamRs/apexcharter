@@ -49,10 +49,10 @@ data("diamonds", package = "ggplot2")
 apex(
   data = diamonds,
   mapping = aes(x = color, fill = cut)
-) \%>\% 
+) \%>\%
   ax_fill(
-    type = "pattern", 
-    opacity = 1, 
+    type = "pattern",
+    opacity = 1,
     pattern = list(
       style = c("circles", "slantedLines", "verticalLines", "horizontalLines", "squares")
     )

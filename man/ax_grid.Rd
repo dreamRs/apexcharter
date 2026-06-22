@@ -57,14 +57,14 @@ data("mpg", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_grid(show = FALSE)
 
 # just grid lines
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_grid(yaxis = list(lines = list(show = FALSE)))
 
 
@@ -74,7 +74,7 @@ apex(
   data = economics,
   mapping = aes(x = date, y = psavert),
   type = "line"
-) \%>\% 
+) \%>\%
   ax_grid(
     yaxis = list(lines = list(show = TRUE)),
     xaxis = list(lines = list(show = TRUE))

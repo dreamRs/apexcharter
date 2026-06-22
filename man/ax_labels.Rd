@@ -27,14 +27,14 @@ Alternative axis labels
 See \url{https://apexcharts.com/docs/options/labels/}
 }
 \examples{
-apexchart() \%>\% 
-  ax_chart(type = "pie") \%>\% 
-  ax_series(23, 45, 56) \%>\% 
+apexchart() \%>\%
+  ax_chart(type = "pie") \%>\%
+  ax_series(23, 45, 56) \%>\%
   ax_labels("A", "B", "C")
 
-# same as 
-apexchart() \%>\% 
-  ax_chart(type = "pie") \%>\% 
-  ax_series2(c(23, 45, 56)) \%>\% 
+# same as
+apexchart() \%>\%
+  ax_chart(type = "pie") \%>\%
+  ax_series2(c(23, 45, 56)) \%>\%
   ax_labels2(c("A", "B", "C"))
 }

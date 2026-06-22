@@ -75,14 +75,14 @@ data("mpg", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer, fill = year)
-) \%>\% 
+) \%>\%
   ax_tooltip(enabled = FALSE)
 
 # Share between series
 apex(
   data = mpg,
   mapping = aes(x = manufacturer, fill = year)
-) \%>\% 
+) \%>\%
   ax_tooltip(shared = TRUE)
 
 # Fixed tooltip
@@ -91,7 +91,7 @@ apex(
   data = economics,
   mapping = aes(x = date, y = psavert),
   type = "line"
-) \%>\% 
+) \%>\%
   ax_tooltip(
     fixed = list(enabled = TRUE, position = "topLeft")
   )

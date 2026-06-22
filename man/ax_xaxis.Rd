@@ -74,21 +74,21 @@ data("mpg", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_xaxis(title = list(text = "Car's manufacturer"))
 
 # force labels to rotate and increase height
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_xaxis(labels = list(rotateAlways = TRUE, maxHeight = 180))
 
 # force to not rotate
 apex(
   data = mpg,
   mapping = aes(x = manufacturer)
-) \%>\% 
+) \%>\%
   ax_xaxis(labels = list(rotate = 0, trim = FALSE))
 
 
@@ -99,7 +99,7 @@ apex(
   data = tail(economics, 50),
   mapping = aes(x = date, y = psavert),
   type = "line"
-) \%>\% 
+) \%>\%
   ax_xaxis(
     crosshairs = list(
       opacity = 1,
@@ -115,7 +115,7 @@ apex(
   data = tail(economics, 150),
   mapping = aes(x = date, y = psavert),
   type = "line"
-) \%>\% 
+) \%>\%
   ax_xaxis(
     labels = list(
       datetimeFormatter = list(

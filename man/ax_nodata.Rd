@@ -44,7 +44,7 @@ empty <- data.frame(
   var1 = character(0),
   var2 = numeric(0)
 )
-apex(empty, aes(var1, var2), "column") \%>\% 
+apex(empty, aes(var1, var2), "column") \%>\%
   ax_nodata(
     text = "Sorry no data to visualize",
     fontSize = "30px"

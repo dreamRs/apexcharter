@@ -89,13 +89,13 @@ data("mpg", package = "ggplot2")
 apex(
   data = mpg,
   mapping = aes(x = manufacturer, fill = year)
-) \%>\% 
+) \%>\%
   ax_legend(position = "right")
 
 # hide legend
 apex(
   data = mpg,
   mapping = aes(x = manufacturer, fill = year)
-) \%>\% 
+) \%>\%
   ax_legend(show = FALSE)
 }
