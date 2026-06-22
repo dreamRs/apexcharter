@@ -14,7 +14,8 @@
 #'  `"pie"`, `"donut"`,
 #'  `"radialBar"`, `"radar"`, `"scatter"`,
 #'  `"heatmap"`, `"treemap"`,
-#'  `"timeline"`, `"dumbbell"` and `"slope"`.
+#'  `"timeline"`, `"dumbbell"`, `"slope"`,
+#'  `"boxplot"`
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
@@ -56,7 +57,8 @@ apex <- function(data, mapping,
       "treemap",
       "timeline",
       "candlestick",
-      "boxplot"
+      "boxplot",
+      "violin"
     )
   )
   data <- as.data.frame(data)
@@ -69,7 +71,7 @@ apex <- function(data, mapping,
     type <- "bubble"
   }
   mapdata <- lapply(mapping, rlang::eval_tidy, data = data)
-  type_no_compute <- c("candlestick", "boxplot", "timeline", "heatmap", "rangeArea", "rangeBar", "dumbbell", "slope")
+  type_no_compute <- c("candlestick", "boxplot", "violin", "timeline", "heatmap", "rangeArea", "rangeBar", "dumbbell", "slope")
   if (is.null(mapdata$y) & !type %in% type_no_compute) {
     mapdata <- compute_count(mapdata)
   }
@@ -121,7 +123,9 @@ apex <- function(data, mapping,
 # Construct series
 #' @importFrom rlang %||%
 make_series <- function(mapdata, mapping, type = NULL, serie_name = NULL, force_datetime_names = FALSE) {
-  if (identical(type, "boxplot")) {
+  if (identical(type, "violin")) {
+    series <- parse_violin_data(mapdata, serie_name = serie_name)
+  } else if (identical(type, "boxplot")) {
     series <- parse_boxplot_data(mapdata, serie_name = serie_name)
   } else if (identical(type, "candlestick")) {
     if (!all(c("x", "open", "high", "low", "close") %in% names(mapping)))

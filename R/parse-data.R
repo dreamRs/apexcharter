@@ -1,27 +1,27 @@
 
 #' @title Convert a \code{data.frame} to a \code{list}
-#' 
+#'
 #' @description Convert data to a format suitable for ApexCharts.js
 #'
 #' @param data A \code{data.frame} or an object coercible to \code{data.frame}.
 #' @param add_names Use names of columns in output. Can be logical to
 #'  reuse \code{data} names or a character vector of new names.
-#'  
+#'
 #' @return A \code{list} that can be used to specify data in \code{\link{ax_series}} for example.
 #'
 #' @export
 #' @importFrom stats setNames
-#' 
-#' @examples 
-#' 
+#'
+#' @examples
+#'
 #' # All iris dataset
 #' parse_df(iris)
-#' 
+#'
 #' # Keep variables names
 #' parse_df(iris[, 1:2], add_names = TRUE)
-#' 
+#'
 #' # Use custom names
-#' 
+#'
 #' parse_df(iris[, 1:2], add_names = c("x", "y"))
 #'
 parse_df <- function(data, add_names = FALSE) {
@@ -171,7 +171,7 @@ parse_boxplot_data <- function(.list, serie_name = NULL) {
   if (!is.numeric(.list$y) & is.numeric(.list$x)) {
     .list[c("x", "y")] <- .list[c("y", "x")]
   }
-  boxed <- boxplot(y ~ x, data = .list, plot = FALSE) 
+  boxed <- boxplot(y ~ x, data = .list, plot = FALSE)
   list(dropNulls(list(
     serie_name = serie_name,
     type = "boxPlot",
@@ -186,6 +186,31 @@ parse_boxplot_data <- function(.list, serie_name = NULL) {
             boxed$stats[3, i],
             boxed$stats[4, i],
             boxed$stats[5, i]
+          )
+        )
+      }
+    )
+  )))
+}
+
+#' @importFrom stats density
+parse_violin_data <- function(.list, serie_name = NULL) {
+  if (!is.numeric(.list$y) & is.numeric(.list$x)) {
+    .list[c("x", "y")] <- .list[c("y", "x")]
+  }
+  .list_split <- split(.list$y, f = .list$x)
+  list(dropNulls(list(
+    serie_name = serie_name,
+    type = "violin",
+    data = lapply(
+      X = names(.list_split),
+      FUN = function(cat) {
+        d <- density(.list_split[[cat]])[c("x", "y")]
+        list(
+          x = as.character(cat),
+          y = list(
+            density = jsonlite::toJSON(unname(as.data.frame(d)), dataframe = "rows"),
+            points = .list_split[[cat]]
           )
         )
       }

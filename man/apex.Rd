@@ -30,7 +30,8 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \code{"pie"}, \code{"donut"},
 \code{"radialBar"}, \code{"radar"}, \code{"scatter"},
 \code{"heatmap"}, \code{"treemap"},
-\code{"timeline"}, \code{"dumbbell"} and \code{"slope"}.}
+\code{"timeline"}, \code{"dumbbell"}, \code{"slope"},
+\code{"boxplot"}}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
