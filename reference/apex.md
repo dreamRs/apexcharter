@@ -36,8 +36,8 @@ apex(
   Specify the chart type. Available options: `"column"`, `"bar"`,
   `"line"`, `"step"`, `"spline"`, `"area"`, `"area-step"`,
   `"area-spline"`, `"pie"`, `"donut"`, `"radialBar"`, `"radar"`,
-  `"scatter"`, `"heatmap"`, `"treemap"`, `"timeline"`, `"dumbbell"` and
-  `"slope"`.
+  `"scatter"`, `"heatmap"`, `"treemap"`, `"timeline"`, `"dumbbell"`,
+  `"slope"`, `"boxplot"`
 
 - ...:
 
