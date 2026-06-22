@@ -257,7 +257,7 @@ Create a heatmap with :
 ```{r heatmap}
 # create some data
 sales <- expand.grid(year = 2010:2020, month = month.name)
-sales$value <- sample(-10:30, nrow(sales), TRUE)
+sales$value <- sample(0:50, nrow(sales), TRUE)
 
 apex(
   data = sales,
@@ -265,7 +265,23 @@ apex(
   mapping = aes(x = year, y = month, fill = value)
 ) %>% 
   ax_dataLabels(enabled = FALSE) %>% 
-  ax_colors("#008FFB")
+  ax_colors("#008FFB") %>%
+  ax_plotOptions(
+    heatmap = list(
+      shadeIntensity = 0.5,
+      radius = 2,
+      useFillColorAsStroke = FALSE,
+      colorScale = list(
+        gradientLegend = list(
+          enabled = TRUE,
+          width = "75%",
+          thickness = 14,
+          showHoverValue = TRUE
+        )
+      )
+    )
+  ) %>% 
+  ax_legend(position = "right")
 ```
 
 
