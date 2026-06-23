@@ -31,7 +31,7 @@ a \code{data.frame}, it will be coerced to with \code{as.data.frame}.}
 \code{"radialBar"}, \code{"radar"}, \code{"scatter"},
 \code{"heatmap"}, \code{"treemap"},
 \code{"timeline"}, \code{"dumbbell"}, \code{"slope"},
-\code{"boxplot"}}
+\code{"boxplot"}, \code{"violin"}.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 

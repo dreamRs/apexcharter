@@ -15,7 +15,7 @@
 #'  `"radialBar"`, `"radar"`, `"scatter"`,
 #'  `"heatmap"`, `"treemap"`,
 #'  `"timeline"`, `"dumbbell"`, `"slope"`,
-#'  `"boxplot"`
+#'  `"boxplot"`, `"violin"`.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param synchronize Give a common id to charts to synchronize them (tooltip and zoom).
 #' @param serie_name Name for the serie displayed in tooltip,
