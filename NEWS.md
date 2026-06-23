@@ -1,11 +1,13 @@
-apexcharter 0.4.6
+apexcharter 0.5.0
 ==================
 
 * Updated ApexCharts.js to 5.15.2 (see https://github.com/apexcharts/apexcharts.js/releases).
+* `apex()` : added support for `type = "violin"`, see vignette for an example.
+* `apexchart()` changed default size in rmarkdown document to "400px".
 
 
 
-apexcharter 0.4.5
+apexcharter 0.4.6
 ==================
 
 * Updated ApexCharts.js to 5.10.1 (see https://github.com/apexcharts/apexcharts.js/releases).
