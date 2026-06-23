@@ -61,7 +61,7 @@ or `POSIXct`):
 
 ``` r
 
-data("economics")
+data("economics", package = "ggplot2")
 
 apex(
   data = economics, 
@@ -74,7 +74,7 @@ With large dataset, you can enabled LTTB downsampling with :
 
 ``` r
 
-data("economics")
+data("economics", package = "ggplot2")
 
 apex(
   data = economics, 
@@ -97,7 +97,7 @@ To represent several lines, use a `data.frame` in long format and the
 
 ``` r
 
-data("economics_long")
+data("economics_long", package = "ggplot2")
 
 apex(
   data = economics_long,
@@ -350,6 +350,22 @@ apex(mpg, aes(hwy, class), "boxplot") %>%
     xaxis = list(lines = list(show = TRUE)),
     yaxis = list(lines = list(show = FALSE))
   )
+```
+
+## Violin
+
+``` r
+
+data("mpg", package = "ggplot2")
+apex(mpg, aes(hwy, class), "violin") %>%
+  ax_plotOptions(
+    bar = list(distributed = TRUE),
+    violin = list(
+      bandwidthScale = 1,
+      points = list(show = TRUE, size = 3)
+    )
+  ) %>%
+  ax_colors(scales::brewer_pal(type = "qual")(7))
 ```
 
 ## Dumbbell charts

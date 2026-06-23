@@ -37,7 +37,7 @@ apex(
   `"line"`, `"step"`, `"spline"`, `"area"`, `"area-step"`,
   `"area-spline"`, `"pie"`, `"donut"`, `"radialBar"`, `"radar"`,
   `"scatter"`, `"heatmap"`, `"treemap"`, `"timeline"`, `"dumbbell"`,
-  `"slope"`, `"boxplot"`
+  `"slope"`, `"boxplot"`, `"violin"`.
 
 - ...:
 
