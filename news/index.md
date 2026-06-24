@@ -2,6 +2,8 @@
 
 ## apexcharter 0.5.0
 
+CRAN release: 2026-06-23
+
 - Updated ApexCharts.js to 5.15.2 (see
   <https://github.com/apexcharts/apexcharts.js/releases>).
 - [`apex()`](https://dreamrs.github.io/apexcharter/reference/apex.md) :
