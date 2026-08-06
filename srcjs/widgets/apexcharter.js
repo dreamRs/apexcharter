@@ -1,5 +1,6 @@
 import "widgets";
 import ApexCharts from "apexcharts";
+import "apexcharts/features/renderer-canvas";
 import {format, formatLocale} from "d3-format";
 import * as utils from "../modules/utils";
 import "../css/apexcharter.css";
