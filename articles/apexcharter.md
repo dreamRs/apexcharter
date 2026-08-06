@@ -70,7 +70,7 @@ apex(
 )
 ```
 
-With large dataset, you can enabled LTTB downsampling with :
+With large dataset, you can enable LTTB downsampling with :
 
 ``` r
 
