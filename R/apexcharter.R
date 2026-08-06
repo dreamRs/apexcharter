@@ -13,6 +13,7 @@
 #' @export
 #'
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @importFrom rlang is_function
 #'
 #' @example examples/apexchart.R
 apexchart <- function(ax_opts = list(),
@@ -30,6 +31,14 @@ apexchart <- function(ax_opts = list(),
     auto_update = auto_update,
     sparkbox = FALSE
   )
+
+  if (is_function(getOption("APEXCHART_TOJSON_FUNC"))) {
+    attr(x, "TOJSON_FUNC") <- getOption("APEXCHART_TOJSON_FUNC")
+    # For example to use (faster than jsonlite)
+    # options("APEXCHART_TOJSON_FUNC" = function(x) {
+    #   yyjsonr::write_json_str(x, opts = yyjsonr::opts_write_json(auto_unbox = TRUE))
+    # })
+  }
 
   # create widget
   htmlwidgets::createWidget(
