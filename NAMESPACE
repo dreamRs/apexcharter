@@ -80,48 +80,60 @@ export(set_tooltip_fixed)
 export(sparkBoxOutput)
 export(spark_box)
 export(vars)
-importFrom(ggplot2,aes)
-importFrom(ggplot2,label_value)
-importFrom(ggplot2,vars)
+importFrom(ggplot2,
+  aes,
+  label_value,
+  vars
+)
 importFrom(graphics,boxplot)
-importFrom(htmltools,css)
-importFrom(htmltools,renderTags)
-importFrom(htmltools,resolveDependencies)
-importFrom(htmltools,tagList)
-importFrom(htmltools,tags)
-importFrom(htmltools,validateCssUnit)
-importFrom(htmlwidgets,JS)
-importFrom(htmlwidgets,JSEvals)
-importFrom(htmlwidgets,createWidget)
-importFrom(htmlwidgets,getDependency)
-importFrom(htmlwidgets,shinyRenderWidget)
-importFrom(htmlwidgets,shinyWidgetOutput)
-importFrom(htmlwidgets,sizingPolicy)
+importFrom(htmltools,
+  css,
+  renderTags,
+  resolveDependencies,
+  tagList,
+  tags,
+  validateCssUnit
+)
+importFrom(htmlwidgets,
+  JS,
+  JSEvals,
+  createWidget,
+  getDependency,
+  shinyRenderWidget,
+  shinyWidgetOutput,
+  sizingPolicy
+)
 importFrom(jsonlite,fromJSON)
 importFrom(magrittr,"%>%")
-importFrom(rlang,"!!")
-importFrom(rlang,"%||%")
-importFrom(rlang,as_label)
-importFrom(rlang,eval_tidy)
-importFrom(rlang,is_function)
-importFrom(rlang,is_list)
-importFrom(rlang,is_named)
-importFrom(rlang,is_null)
-importFrom(rlang,quo)
-importFrom(rlang,quos)
-importFrom(rlang,sym)
-importFrom(rlang,syms)
-importFrom(shiny,createRenderFunction)
-importFrom(shiny,createWebDependency)
-importFrom(shiny,exprToFunction)
-importFrom(shiny,getDefaultReactiveDomain)
-importFrom(shiny,registerInputHandler)
-importFrom(shiny,shinyAppFile)
-importFrom(shiny,uiOutput)
-importFrom(stats,complete.cases)
-importFrom(stats,density)
-importFrom(stats,lm)
-importFrom(stats,loess)
-importFrom(stats,predict)
-importFrom(stats,setNames)
+importFrom(rlang,
+  "!!",
+  "%||%",
+  as_label,
+  eval_tidy,
+  is_function,
+  is_list,
+  is_named,
+  is_null,
+  quo,
+  quos,
+  sym,
+  syms
+)
+importFrom(shiny,
+  createRenderFunction,
+  createWebDependency,
+  exprToFunction,
+  getDefaultReactiveDomain,
+  registerInputHandler,
+  shinyAppFile,
+  uiOutput
+)
+importFrom(stats,
+  complete.cases,
+  density,
+  lm,
+  loess,
+  predict,
+  setNames
+)
 importFrom(utils,modifyList)
