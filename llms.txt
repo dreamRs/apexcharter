@@ -320,6 +320,9 @@ functions.
 - [`bar_opts()`](https://dreamrs.github.io/apexcharter/reference/bar_opts.md)
   : Bar options
 
+- [`blockbusters`](https://dreamrs.github.io/apexcharter/reference/blockbusters.md)
+  : Worldwide Blockbusters 2019-1977
+
 - [`boxplot_opts()`](https://dreamrs.github.io/apexcharter/reference/boxplot_opts.md)
   : Boxplot options
 
