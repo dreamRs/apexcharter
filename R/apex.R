@@ -58,7 +58,8 @@ apex <- function(data, mapping,
       "timeline",
       "candlestick",
       "boxplot",
-      "violin"
+      "violin",
+      "streamgraph"
     )
   )
   data <- as.data.frame(data)

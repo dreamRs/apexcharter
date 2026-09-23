@@ -4,6 +4,7 @@ inst/doc
 .RData
 *.Rproj
 data-raw/*.csv
+data-raw/*.zip
 node_modules
 docs
 data-raw/inputs/

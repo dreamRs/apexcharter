@@ -98,3 +98,14 @@
 #' @source gapminder package (\url{https://jennybc.github.io/gapminder/} and \url{https://www.gapminder.org/data/})
 "life_expec_long"
 
+
+
+#' @title Worldwide Blockbusters 2019-1977
+#'
+#' @description The dataset contains data about about blockbusters gross (in millions USD) by genre and per year between 1977 and 2019.
+#'
+#' @format A data frame with 183 observations and 3 variables.
+#'
+#' @source Kaggle (\url{https://www.kaggle.com/datasets/narmelan/top-ten-blockbusters-20191977})
+"blockbusters"
+
