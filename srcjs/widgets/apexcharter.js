@@ -1,6 +1,8 @@
 import "widgets";
-import ApexCharts from "apexcharts";
+import ApexCharts from "apexcharts/full";
+//import ApexCharts from "apexcharts";
 import "apexcharts/features/renderer-canvas";
+//import "apexcharts/features/streamgraph";
 import {format, formatLocale} from "d3-format";
 import * as utils from "../modules/utils";
 import "../css/apexcharter.css";
