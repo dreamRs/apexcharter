@@ -1,6 +1,13 @@
 # Changelog
 
+## apexcharter 0.5.2
+
+- Updated ApexCharts.js to 8.2.0 (see
+  <https://github.com/apexcharts/apexcharts.js/releases>).
+
 ## apexcharter 0.5.1
+
+CRAN release: 2026-09-23
 
 - Updated ApexCharts.js to 7.4.0 (see
   <https://github.com/apexcharts/apexcharts.js/releases>).
